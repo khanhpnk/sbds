@@ -1,0 +1,153 @@
+/*********** *********** *********** BASIC *********** *********** ***********/
+html, body {
+  height: 100%; /* need by map */
+}
+a { color: #333; }
+a:hover,
+a:focus{
+  color: mediumseagreen;
+  text-decoration: none;
+  outline: 0; /*removes the dotted border*/
+}
+/*********** *********** *********** LAYOUT *********** *********** ***********/
+/*********** *********** SOCIAL MODULE *********** ***********/
+.navbar-social {
+  padding: 15px 15px 10px;
+}
+.footer-social {
+  float: right;
+}
+.social-facebook,
+.social-tweet,
+.social-google {
+  background-image: url("/images/social.png");
+  display: inline-block;
+  height: 20px;
+  margin-left: 10px;
+}
+.social-facebook {
+  background-position: 0 0;
+  width: 20px;
+}
+.social-facebook:hover {
+  background-position: -20px 0;
+}
+.social-tweet {
+  background-position: -40px 0;
+  width: 27px;
+}
+.social-tweet:hover {
+  background-position: -69px 0;
+}
+.social-google {
+  background-position: -96px 0;
+  width: 26px;
+}
+.social-google:hover {
+  background-position: -122px 0;
+}
+/*********** *********** NAV *********** ***********/
+/* navbar */
+.navbar {
+  margin-bottom: 0;
+}
+.navbar-default .navbar-nav > li > a {
+  font-weight: 500;
+  font-size: 16px;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #22be73;
+}
+/* avatar */
+.navbar .avatar {
+  display: inline;
+  height: 36px;
+  width: 36px;
+  border: 1px solid #ccc;
+}
+.round {
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  line-height: 36px;
+  -moz-border-radius: 18px;
+  border-radius: 18px;
+  background-color: #3EA6CE;
+  color: #FFF;
+  text-align: center;
+}
+/* login & register */
+.well {
+  background-color: #fff;
+  width: 276px;
+}
+.tab-content {
+  margin-top: 10px;
+}
+.help-block a {
+  color: #737373;
+}
+.help-block a:hover {
+  color: #22be73;
+}
+/*********** *********** MAP *********** ***********/
+/*/!* map *!/*/
+/*#map-canvas {*/
+  /*height: 50%;*/
+  /*width: 100%;*/
+/*}*/
+/*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
+/*.gm-style-iw { max-height: 600px; }*/
+/*.iw-container  .iw-name {*/
+  /*font-size: 20px;*/
+  /*font-weight: 400;*/
+  /*padding: 10px;*/
+  /*margin: 0;*/
+  /*background-color: #48b5e9;*/
+  /*color: white;*/
+  /*border-radius: 2px 2px 0 0;*/
+/*}*/
+/*/!* search *!/*/
+/*.form-search {*/
+  /*position: absolute;*/
+  /*top: 30%;*/
+  /*left: 30%;*/
+  /*background: #fff;*/
+  /*padding: 8px;*/
+  /*z-index: 10000;*/
+  /*border: 1px solid #ccc;*/
+  /*border-radius: 4px;*/
+/*}*/
+/*********** *********** FOOTER *********** ***********/
+/* footer */
+.footer {
+  padding-top: 80px;
+  background-color: #82A28B;
+  border-top: 6px solid mediumseagreen;
+}
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-header {
+  color: #fff;
+  font-size: 16px;
+  padding-bottom: 6px;
+  text-transform: uppercase;
+}
+.footer ul li a {
+  display: block;
+  color: #f2f2f2;
+  padding: 3px 0;
+}
+.footer ul li a:hover,
+.footer ul li a:focus {
+  color: #3c5543;
+}
+.footer-site-generator {
+  border-top: 1px solid #6e8875;
+  color: #f2f2f2;
+  margin-top: 60px;
+  padding: 20px 0;
+}
