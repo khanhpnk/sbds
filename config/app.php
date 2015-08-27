@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
+    'key' => env('APP_KEY', 'Klz8hsd3mhHgqDHojbmpqKjs3RRQWCFK'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -144,6 +144,13 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Custom Service Providers...
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Rukan\AjaxAuth\AjaxAuthServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Rukan\EasySocialite\EasySocialiteServiceProvider::class,
     ],
 
     /*
@@ -192,6 +199,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Custom Facades...
+         */
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'EasySocialite' => Rukan\EasySocialite\Facades\EasySocialite::class,
     ],
 
 ];

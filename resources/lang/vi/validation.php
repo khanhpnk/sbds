@@ -13,32 +13,30 @@ return [
     |
     */
 
-	'required'			=> 'Bạn chưa nhập :attribute.',
-	'email'        	=> 'Địa chỉ :attribute không hợp lệ.',
+	'required'			=> ':attribute cần được nhập.',
+	'email'        	=> ':attribute không hợp lệ.',
 	'unique'			=> ':attribute đã tồn tại trong hệ thống.',
 	'confirmed'		=> ':attribute xác nhận không khớp.',
+	'max'                  => [
+		'string'  => ':attribute không vượt quá :max ký tự.',
+	],
+	'min'                  => [
+		'string'  => ':attribute phải từ :min ký tự trở lên.',
+	],
 
-    'custom' => [
-        'name' => [
-            'required' 	=> 'Bạn chưa nhập tên',
-        	'between'	=> 'Tên phải từ :min đến :max ký tự',
-        	'unique' 	=> 'Tên bạn nhập đã tồn tại. Hãy nhập một tên khác',
-        ],
-    	'title' => [
-    		'required' 	=> 'Bạn chưa nhập tiêu đề bài viết',
-    		'between'	=> 'Tiêu đề phải chứ từ :min đến :max ký tự',
-    		'unique' 	=> 'Tiêu đề bạn nhập đã tồn tại. Hãy nhập một tên khác',
-    	],
-    	'content' => [
-    		'required' 	=> 'Bạn chưa nhập nội dung bài viết',
-    	],
-    	'category_id' => [
-    		'required' 	=> 'Bạn cần chọn một danh mục cho bài viết.',
-    	],
-    	'published_at' => [
-    		'required' 	=> 'Bạn cần chọn một ngày xuất bản cho bài viết.',
-    	],
-    		
-    ],
+	/*
+	|--------------------------------------------------------------------------
+	| Custom Validation Attributes
+	|--------------------------------------------------------------------------
+	|
+	| The following language lines are used to swap attribute place-holders
+	| with something more reader friendly such as E-Mail Address instead
+	| of "email". This simply helps us make messages a little cleaner.
+	|
+	*/
+	'attributes' => [
+		'email' => 'Địa chỉ email',
+		'password' => 'Mật khẩu',
+	],
 
 ];

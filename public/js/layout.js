@@ -29,7 +29,7 @@ $(function() {
 });
 
 function loginAction($form) {
-    var $btnSubmit = $form.find('.btn-info').button('loading');
+    var $btnSubmit = $('#loginBtnSubmit').button('loading');
     var $errorMessage = $form.find('.text-danger');
 
     $.ajax({
@@ -43,19 +43,15 @@ function loginAction($form) {
     }).fail(function(data) { // catch HttpResponseException
         var $response = data.responseJSON;
 
-        if ($response.email) {
-            $errorMessage.html($response.email[0]);
-        } else if ($response.password) {
-            $errorMessage.html($response.password[0]);
-        } else if ($response.message) {
-            $errorMessage.html($response.message);
-        }
+        $.each($response, function(i, value) {
+            $errorMessage.html(value);
+        });
         $btnSubmit.button('reset');
     });
 }
 
 function registerAction($form) {
-    var $btnSubmit = $form.find('.btn-info').button('loading');
+    var $btnSubmit = $('#registerBtnSubmit').button('loading');
     var $errorMessage = $form.find('.text-danger');
 
     $.ajax({
@@ -69,11 +65,9 @@ function registerAction($form) {
     }).fail(function(data) { // catch HttpResponseException
         var $response = data.responseJSON;
 
-        if ($response.email) {
-            $errorMessage.html($response.email[0]);
-        } else if ($response.password) {
-            $errorMessage.html($response.password[0]);
-        }
+        $.each($response, function(i, value) {
+            $errorMessage.html(value);
+        });
         $btnSubmit.button('reset');
     });
 }

@@ -1,0 +1,92 @@
+/*********** *********** *********** LAYOUT *********** *********** ***********/
+.sidebar {
+  background-color: #e5e8ef;
+  padding: 0;
+}
+.main {
+  padding: 0;
+}
+/*********** *********** MAIN *********** ***********/
+/* MAIN HEAD */
+.main-head {
+  background-color: #5bc0de;
+  color: #fff;
+  min-height: 80px;
+  padding: 20px;
+}
+.main-head > h3 {
+  display: inline-block;
+  margin: 0;
+  padding-top: 8px;
+  text-transform: uppercase;
+}
+.main-head-input {
+  border: medium none;
+  border-radius: 4px 0 0 4px;
+  color: #8a8a8a;
+  float: left;
+  height: 40px;
+  padding: 0 10px;
+}
+.main-head-btn {
+  background-color: #00a6b2;
+  border-radius: 0 4px 4px 0;
+  color: #fff;
+  height: 40px;
+}
+/* MAIN BODY */
+.main-body {
+  padding: 20px;
+}
+/*********** *********** SIDEBAR *********** ***********/
+/* USER HEAD */
+.user-head {
+  background-color: #337ab7;
+  height: 80px;
+  padding: 10px;
+}
+.user-head-avatar,
+.user-head-body {
+  float: left;
+}
+.user-head-body {
+  margin-left: 10px;
+}
+.user-head-username {
+  margin-bottom: 0;
+  margin-top: 15px;
+}
+.user-head-username > a {
+  color: #fff;
+}
+.user-head-email {
+  color: #5BC0DE;
+  font-size: 11px;
+}
+.user-head-bnt-collapse {
+  font-size: 10px;
+  margin-top: 20px;
+  padding: 3px 5px;
+  float: right;
+}
+/* USER NAV */
+.user-nav li.active a,
+.user-nav li a:hover,
+.user-nav li a:focus {
+  background-color: #d5d7de;
+  color: #333;
+}
+.user-nav li a i {
+  padding-right: 6px;
+}
+.user-nav-divider {
+  background-color: #d5d8df;
+  height: 1px;
+  margin: 8px 0;
+}
+.user-nav-header {
+  font-size: 16px;
+  padding: 0 8px;
+  color: #337AB7;
+  text-transform: uppercase;
+}

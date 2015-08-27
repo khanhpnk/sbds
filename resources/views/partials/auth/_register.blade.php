@@ -14,5 +14,5 @@
     <label class="sr-only">Confirm Password</label>
     <input type="password" name="password_confirmation" class="form-control" placeholder="NHẬP LẠI MẬT KHẨU">
   </div>
-  <button type="submit" class="btn btn-info btn-block" autocomplete="off">ĐĂNG KÝ</button>
+  <button type="submit" class="btn btn-info btn-block" id="registerBtnSubmit" autocomplete="off">ĐĂNG KÝ</button>
 </form>

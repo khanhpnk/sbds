@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "barryvdh/laravel-debugbar": "^2.0",
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -16,10 +18,13 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "helpers"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Rukan\\AjaxAuth\\": "packages/rukan/ajax-auth/src",
+            "Rukan\\EasySocialite\\": "packages/rukan/easy-socialite/src"
         }
     },
     "autoload-dev": {

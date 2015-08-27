@@ -1,4 +1,9 @@
-@extends('app')
+@extends('layout')
+
+@section('style')
+	@parent
+	<link href="/css/home.css" rel="stylesheet">
+@stop
 
 @section('content')
 	<section class="house">
@@ -61,89 +66,3 @@
 		</div><!-- /.house-content -->
 	</section>
 @stop
-
-@section('style')
-	@parent
-	<style>
-		/*********** *********** GLOBAL *********** ***********/
-		.color-msg {
-			color: mediumseagreen;
-		}
-		.header-msg {
-			background-color: mediumseagreen;
-		}
-		.border-right-msg {
-			border-right: 10px solid mediumseagreen !important;
-		}
-		/*********** *********** HOUSE SECTION MODULE *********** ***********/
-		.house-content {
-			border-bottom: 1px dashed mediumseagreen;
-			margin: 20px 0;
-			padding-bottom: 20px;
-		}
-		.house article {
-			padding-right: 0;
-			padding-left: 12px;
-		}
-		/*********** *********** BORDER COLOR MODULE *********** ***********/
-		.house-bg-bf {
-			background-color: buttonface;
-		}
-		/*********** *********** TITLE MODULE *********** ***********/
-		.house-title {
-			text-transform: uppercase;
-			color: #fff;
-			padding: 6px 30px;
-			margin: 0;
-			font-size: 22px;
-			display: inline-block;
-		}
-		/*********** *********** HOUSE THUMB MODULE *********** ***********/
-		.house-thumb {
-			border: 1px dashed mediumseagreen;
-			border-right: none;
-			display: block;
-			margin-bottom: 30px;
-		}
-		.house-thumb-cap {
-			padding: 2px;
-		}
-		.house-thumb-title {
-			font-size: 18px;
-			font-weight: 400;
-			line-height: 20px;
-			margin-top: 15px;
-		}
-		.house-thumb-address {
-			color: #7e7e7e;
-			margin-bottom: 2px;
-			font-style: italic;
-		}
-		.house-thumb-footer {
-			background-color: #F7F7F7;
-			padding: 6px 4px;
-		}
-		.house-thumb-price {
-			float: left;
-			font-style: italic;
-		}
-		.house-thumb-date {
-			color: #B8B8B8;
-			float: right;
-			font-style: italic;
-		}
-		/*********** *********** BTN VIEW MORE MODULE *********** ***********/
-		.house-btn-view-more {
-			text-transform: uppercase;
-			background-color: #f7f7f7;
-			border: 0 none;
-			color: #333;
-			border-radius: 0;
-			padding: 10px 20px;
-		}
-		.house-btn-view-more:hover {
-			background-color: mediumseagreen;
-			color: #fff;
-		}
-	</style>
-@endsection

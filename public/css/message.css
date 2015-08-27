@@ -1,0 +1,29 @@
+/*********** *********** TABLE MODULE *********** ***********/
+.table {
+  border: 1px solid #d3d3d3;
+}
+.table > tbody > tr > td:hover {
+  cursor: pointer;
+}
+.table > tbody > tr.unread {
+  background-color: #f7f7f7;
+  font-weight: 600;
+}
+/*********** *********** PAGINATION MODULE *********** ***********/
+.simple-pagination {
+  float: right;
+}
+.simple-pagination > .pager {
+  margin: 0;
+}
+.simple-pagination > .pager li > a,
+.simple-pagination > .pager li > span {
+  border-radius: 2px;
+}
+/*********** *********** MESSAGE TOOLBAR COMPONENT *********** ***********/
+.message-toolbar {
+  margin-bottom: 10px;
+}
+.message-toolbar .dropdown {
+  display: inline-block;
+}

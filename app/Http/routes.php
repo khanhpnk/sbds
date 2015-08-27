@@ -15,14 +15,17 @@
 Route::get('/', 'HomeController@index');
 // Authentication with social
 Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
-// Manage home page
-Route::group(['middleware' => 'auth'], function()
-{
-    Route::get('m', 'ManageController@index');
-});
 /*********** *********** MANAGE *********** ***********/
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function()
 {
+    // Change password
+    Route::get('user/password', ['uses' => 'UserController@getPassword', 'as' => 'user.password.edit']);
+    Route::post('user/password', ['uses' => 'UserController@postPassword', 'as' => 'user.password.update']);
+
+    Route::resource('profile', 'ProfileController', [
+        'only' => ['create', 'store'],
+    ]);
+
     Route::get('message/f/{inbox}', ['uses' => 'MessageController@index', 'as' => 'message.index']);
     Route::delete('message/md', ['uses' => 'MessageController@mutilDestroy', 'as' => 'message.mutildestroy']);
     Route::resource('message', 'MessageController', [

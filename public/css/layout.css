@@ -9,6 +9,9 @@ a:focus{
   text-decoration: none;
   outline: 0; /*removes the dotted border*/
 }
+.btn {
+  text-transform: uppercase;
+}
 /*********** *********** *********** LAYOUT *********** *********** ***********/
 /*********** *********** SOCIAL MODULE *********** ***********/
 .navbar-social {
@@ -47,7 +50,7 @@ a:focus{
   background-position: -122px 0;
 }
 /*********** *********** NAV *********** ***********/
-/* navbar */
+/* NAVBAR */
 .navbar {
   margin-bottom: 0;
 }
@@ -59,13 +62,16 @@ a:focus{
   color: #22be73;
 }
 /* avatar */
-.navbar .avatar {
+.navbar-avatar {
+  margin: 7px;
+}
+.navbar-avatar img {
   display: inline;
   height: 36px;
   width: 36px;
   border: 1px solid #ccc;
 }
-.round {
+.navbar-avatar .round {
   display: inline-block;
   height: 36px;
   width: 36px;
@@ -76,7 +82,12 @@ a:focus{
   color: #FFF;
   text-align: center;
 }
-/* login & register */
+.navbar .open > a,
+.navbar .open > a:focus,
+.navbar .open > a:hover {
+  background-color: #F8F8F8;
+}
+/* LOGIN & REGISTER */
 .well {
   background-color: #fff;
   width: 276px;
@@ -90,36 +101,7 @@ a:focus{
 .help-block a:hover {
   color: #22be73;
 }
-/*********** *********** MAP *********** ***********/
-/*/!* map *!/*/
-/*#map-canvas {*/
-  /*height: 50%;*/
-  /*width: 100%;*/
-/*}*/
-/*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
-/*.gm-style-iw { max-height: 600px; }*/
-/*.iw-container  .iw-name {*/
-  /*font-size: 20px;*/
-  /*font-weight: 400;*/
-  /*padding: 10px;*/
-  /*margin: 0;*/
-  /*background-color: #48b5e9;*/
-  /*color: white;*/
-  /*border-radius: 2px 2px 0 0;*/
-/*}*/
-/*/!* search *!/*/
-/*.form-search {*/
-  /*position: absolute;*/
-  /*top: 30%;*/
-  /*left: 30%;*/
-  /*background: #fff;*/
-  /*padding: 8px;*/
-  /*z-index: 10000;*/
-  /*border: 1px solid #ccc;*/
-  /*border-radius: 4px;*/
-/*}*/
 /*********** *********** FOOTER *********** ***********/
-/* footer */
 .footer {
   padding-top: 80px;
   background-color: #82A28B;

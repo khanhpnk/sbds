@@ -32,4 +32,24 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * User 1-n Message
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messagesTo()
+    {
+        return $this->hasMany('App\Message', 'to');
+    }
+
+    /**
+     * User 1-n Message
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messagesFrom()
+    {
+        return $this->hasMany('App\Message', 'from');
+    }
 }

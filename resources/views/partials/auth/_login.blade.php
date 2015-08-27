@@ -10,7 +10,7 @@
     <label class="sr-only">Password</label>
     <input type="password" name="password" class="form-control" placeholder="MẬT KHẨU">
   </div>
-  <button type="submit" class="btn btn-info btn-block" autocomplete="off">ĐĂNG NHẬP</button>
+  <button type="submit" class="btn btn-info btn-block" id="loginBtnSubmit" autocomplete="off">ĐĂNG NHẬP</button>
   <p class="help-block">
     <a href="#register">Bạn cần một tài khoản?</a><br>
     <a href="#resetpassword">Quên mật khẩu?</a>

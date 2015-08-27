@@ -1,4 +1,4 @@
-@extends('manage')
+@extends('manage.layout')
 
 @section('content')
   <div class="main-head">
