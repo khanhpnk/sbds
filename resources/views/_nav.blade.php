@@ -48,11 +48,7 @@
       @else
         <div class="dropdown navbar-avatar">
           <a class="dropdown-toggle" id="userDropdownMenu" data-toggle="dropdown" data-target="#" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            @if (Auth::user()->avatar)
-              <img src="{{ Auth::user()->avatar }}" width="36" height="36" class="img-responsive img-circle" alt="{{ Auth::user()->email }}">
-            @else
-              <div class="round" title="{{ Auth::user()->email }}"><span class="glyphicon glyphicon-user"></span></div>
-            @endif
+            <img src="{{ UserHelper::avatar() }}" width="36" height="36" class="img-responsive img-circle">
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdownMenu">

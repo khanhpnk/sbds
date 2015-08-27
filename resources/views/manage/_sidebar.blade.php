@@ -1,7 +1,7 @@
 <div class="user-head">
   <div class="user-head-avatar">
     <a href="#">
-      <img  width="60" hieght="60" alt="avatar" class="img-rounded" src="http://bootsnipp.com/img/avatars/ebeb306fd7ec11ab68cbcaa34282158bd80361a7.jpg">
+      <img  width="60" hieght="60" alt="avatar" class="img-rounded" src="{{ UserHelper::avatar() }}">
     </a>
   </div>
   <div class="user-head-body">
@@ -26,8 +26,8 @@
     <li><a href="#"><i class="fa fa-inbox"></i>Quản lý tin đã đăng</a></li>
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Quản lý tài khoản</li>
-    <li><a href="#"><i class="fa fa-inbox"></i>Thông tin cá nhân</a></li>
-    <li><a href="{{ route('user.password.edit') }}"><i class="fa fa-inbox"></i>Đổi mật khẩu</a> </li>
+    <li><a href="{{ route('profile.edit', ['id' => Auth::user()->id]) }}"><i class="fa fa-inbox"></i>Thông tin cá nhân</a></li>
+    <li><a href="{{ route('password.edit') }}"><i class="fa fa-inbox"></i>Đổi mật khẩu</a> </li>
     <li><a href="#"><i class="fa fa-inbox"></i>Hộp tin nhắn</a></li>
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Hướng dẫn</li>

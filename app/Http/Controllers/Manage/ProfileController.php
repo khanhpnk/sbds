@@ -3,72 +3,36 @@
 namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Profile;
 
 class ProfileController extends Controller
 {
     /**
-     * Show the form for creating a new resource.
+     * Show the form for editing the password
      *
+     * @param  Article  $article
      * @return Response
      */
-    public function create()
+    public function getProfile(Profile $profile)
     {
-        echo 'aaa';
+        return view('manage.profiles.profile', compact('profile'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Update the password in storage.
      *
-     * @param  Request  $request
+     * @param  ProfileRequest $request
      * @return Response
      */
-    public function store(Request $request)
+    public function putProfile(ProfileRequest $request)
     {
-        //
-    }
+        //Auth::user()->update($request->only('name', 'email'));
+//        Auth::user()->profile()->updateOrCreate($request->except('name', 'email', '_token'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+//        $profile = new Profile();
+//        $profile->updateOrCreate()
+        return redirect('m/user/profile')->with('flash_message', 'Thông tin cá nhân của bạn đã được cập nhật!');
     }
 }

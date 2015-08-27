@@ -18,9 +18,12 @@ Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function()
 {
+    // Change profile
+    Route::get('user/profile/{profile}',    ['uses' => 'ProfileController@getProfile',  'as' => 'profile.edit']);
+    Route::put('user/profile',              ['uses' => 'ProfileController@putProfile',  'as' => 'profile.update']);
     // Change password
-    Route::get('user/password', ['uses' => 'UserController@getPassword', 'as' => 'user.password.edit']);
-    Route::post('user/password', ['uses' => 'UserController@postPassword', 'as' => 'user.password.update']);
+    Route::get('user/password',             ['uses' => 'UserController@getPassword',    'as' => 'password.edit']);
+    Route::put('user/password',             ['uses' => 'UserController@putPassword',    'as' => 'password.update']);
 
     Route::resource('profile', 'ProfileController', [
         'only' => ['create', 'store'],

@@ -71,17 +71,6 @@ a:focus{
   width: 36px;
   border: 1px solid #ccc;
 }
-.navbar-avatar .round {
-  display: inline-block;
-  height: 36px;
-  width: 36px;
-  line-height: 36px;
-  -moz-border-radius: 18px;
-  border-radius: 18px;
-  background-color: #3EA6CE;
-  color: #FFF;
-  text-align: center;
-}
 .navbar .open > a,
 .navbar .open > a:focus,
 .navbar .open > a:hover {

@@ -1,0 +1,1 @@
+Đảm bảo bảng uses và profiles là luôn toàn vẹn ánh xạ 1-1 cả về khóa chính
