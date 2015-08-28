@@ -27,8 +27,9 @@ class UserController extends Controller
      */
     public function putPassword(UserRequest $request)
     {
-        $password = $request->input('password');
-        Auth::user()->update(['password' => bcrypt($password)]);
+        Auth::user()->update([
+            'password' => bcrypt($request->input('password'))
+        ]);
 
         return redirect('m/user/password')->with('flash_message', 'Mật khẩu của bạn đã thay đổi thành công!');
     }

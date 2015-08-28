@@ -2,6 +2,7 @@
 
 namespace Rukan\AjaxAuth\Auth;
 
+use Illuminate\Support\Facades\DB;
 use Rukan\AjaxAuth\Requests\UserRegisterRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
@@ -43,15 +44,21 @@ trait RegistersUsers
 
     /**
      * Create a new user instance after a valid registration.
+     * And now, include profiles
      *
      * @param  array  $data
      * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        return DB::transaction(function () use ($data) {
+            $userModel = User::create([
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+            $userModel->profile()->create([]);
+
+            return $userModel;
+        });
     }
 }

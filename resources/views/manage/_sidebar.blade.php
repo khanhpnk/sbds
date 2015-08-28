@@ -26,7 +26,7 @@
     <li><a href="#"><i class="fa fa-inbox"></i>Quản lý tin đã đăng</a></li>
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Quản lý tài khoản</li>
-    <li><a href="{{ route('profile.edit', ['id' => Auth::user()->id]) }}"><i class="fa fa-inbox"></i>Thông tin cá nhân</a></li>
+    <li><a href="{{ route('profile.edit', ['id' => Auth::user()->profile]) }}"><i class="fa fa-inbox"></i>Thông tin cá nhân</a></li>
     <li><a href="{{ route('password.edit') }}"><i class="fa fa-inbox"></i>Đổi mật khẩu</a> </li>
     <li><a href="#"><i class="fa fa-inbox"></i>Hộp tin nhắn</a></li>
     <li class="user-nav-divider" role="separator"></li>

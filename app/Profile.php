@@ -11,14 +11,7 @@ class Profile extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'phone',
-        'mobile',
-        'skype',
-        'facebook',
-        'website',
-        'address',
-    ];
+    //protected $fillable = ['phone', 'mobile', 'skype', 'facebook', 'website', 'address'];
 
     /**
      * User 1-n Profile

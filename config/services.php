@@ -14,6 +14,24 @@ return [
     |
     */
 
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIEN_SECRET'),
+        'redirect' => $app->runningInConsole() ? config('app.url') : url('social-login/github'),
+    ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIEN_SECRET'),
+        'redirect' => $app->runningInConsole() ? config('app.url') : url('social-login/facebook'),
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIEN_SECRET'),
+        'redirect' => $app->runningInConsole() ? config('app.url') : url('social-login/google'),
+    ],
+
     'mailgun' => [
         'domain' => '',
         'secret' => '',

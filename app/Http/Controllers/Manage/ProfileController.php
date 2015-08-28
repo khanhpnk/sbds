@@ -28,11 +28,22 @@ class ProfileController extends Controller
      */
     public function putProfile(ProfileRequest $request)
     {
-        //Auth::user()->update($request->only('name', 'email'));
-//        Auth::user()->profile()->updateOrCreate($request->except('name', 'email', '_token'));
+        if (! empty($_FILES['avatar']['name'])) {
+            $image = \Image::make($_FILES['avatar']['tmp_name']);
+            $fileName = uniqid('a_').'.jpg';
+            $image->fit(180, 180)->save(public_path('images/uploads/avatars/'.$fileName), 100);
 
-//        $profile = new Profile();
-//        $profile->updateOrCreate()
-        return redirect('m/user/profile')->with('flash_message', 'Thông tin cá nhân của bạn đã được cập nhật!');
+            Auth::user()->update([
+                'name'      => $request->input('name'),
+                'email'     => $request->input('email'),
+                'avatar'    => $fileName,
+            ]);
+        } else {
+            Auth::user()->update($request->only('name', 'email'));
+        }
+
+        Auth::user()->profile()->update($request->only('phone', 'mobile', 'skype', 'facebook', 'website', 'address'));
+
+        return redirect('m/user/profile/' . Auth::user()->profile->id)->with('flash_message', 'Thông tin cá nhân của bạn đã được cập nhật!');
     }
 }

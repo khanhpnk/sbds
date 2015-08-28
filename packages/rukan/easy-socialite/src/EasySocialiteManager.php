@@ -2,8 +2,10 @@
 
 namespace Rukan\EasySocialite;
 
-use Socialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Socialite;
+use App\Profile;
 use App\User;
 
 class EasySocialiteManager implements Contracts\Factory
@@ -61,9 +63,14 @@ class EasySocialiteManager implements Contracts\Factory
             ->first();
 
         if (! $userModel) {
-            $userModel = User::create($socialUser);
+            $userModel = DB::transaction(function () use ($socialUser) {
+                $userModel = User::create($socialUser);
+                $userModel->profile()->create([]);
+
+                return $userModel;
+            });
         } else {
-            // Maybe User needs updating new data?
+            // Maybe User needs updating new data? (name, email_provider, avatar)
             if (! empty($diff = array_diff($socialUser, $userModel->toArray()))) {
                 $userModel->update($diff);
             }

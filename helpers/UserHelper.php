@@ -5,7 +5,11 @@ class UserHelper
     public static function avatar()
     {
         if (Auth::user()->avatar) {
-            return Auth::user()->avatar;
+            if (Auth::user()->provider) {
+                return Auth::user()->avatar;
+            } else {
+                return asset('images/uploads/avatars/'.Auth::user()->avatar);
+            }
         }
 
         return asset('images/noavatar1.jpg');

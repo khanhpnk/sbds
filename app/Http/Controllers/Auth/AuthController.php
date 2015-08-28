@@ -2,27 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use EasySocialite;
 
 class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
     /**
      * Create a new authentication controller instance.
      *
@@ -31,5 +16,19 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    /**
+     * Social login along the Provider (GitHub, Facebook, etc..)
+     *
+     * @return Response
+     */
+    public function socialLogin(Request $request, $provider = null)
+    {
+        if ($request->all()) {
+            return EasySocialite::handleProviderCallback($provider);
+        }
+
+        return EasySocialite::redirectToProvider($provider);
     }
 }
