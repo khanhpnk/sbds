@@ -1,7 +1,7 @@
 /*!
  * CSS jQuery.filer
  * Copyright (c) 2015 CreativeDream
- * Version: 1.0.3 (26-Aug-2015)
+ * Version: 1.0 (30-01-2015)
 */
 @import url('../assets/fonts/jquery.filer-icons/jquery-filer.css');
 
@@ -325,7 +325,7 @@ span.jFiler-icon-file.f-audio:after {
     background: linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,0) 100%);
     z-index: 9;
     opacity: 0;
-    filter: alpha(opacity(0));
+    filter: aplpha(opacity(0));
     -webkit-transition: all 0.12s;
     -moz-transition: all 0.12s;
     transition: all 0.12s;
@@ -344,7 +344,7 @@ span.jFiler-icon-file.f-audio:after {
 .jFiler-item .jFiler-item-container .jFiler-item-info .jFiler-item-title {
     display: block;
     font-weight: bold;
-    word-break: break-all;
+    word-break: break-word;
     line-height: 1;
 }
 

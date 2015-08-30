@@ -9,6 +9,8 @@
   @show
 </head>
 <body>
+  @include('_facebook_sdk')
+
   <nav class="navbar navbar-default">
     <div class="container">
       @include('_nav')

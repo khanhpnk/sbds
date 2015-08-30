@@ -30,8 +30,10 @@ class ProfileController extends Controller
     {
         if (! empty($_FILES['avatar']['name'])) {
             $image = \Image::make($_FILES['avatar']['tmp_name']);
-            $fileName = uniqid('a_').'.jpg';
-            $image->fit(180, 180)->save(public_path('images/uploads/avatars/'.$fileName), 100);
+
+            $fileName = md5(config('app.key').Auth::user()->id).'.jpg';
+            $image->fit(config('image.sizes.avatar.w'), config('image.sizes.avatar.h'))
+                  ->save(public_path(config('image.paths.avatar').$fileName), 100);
 
             Auth::user()->update([
                 'name'      => $request->input('name'),

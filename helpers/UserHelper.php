@@ -8,7 +8,7 @@ class UserHelper
             if (Auth::user()->provider) {
                 return Auth::user()->avatar;
             } else {
-                return asset('images/uploads/avatars/'.Auth::user()->avatar);
+                return asset(config('image.paths.avatar').Auth::user()->avatar);
             }
         }
 

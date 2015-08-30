@@ -51,7 +51,6 @@ class EasySocialiteManager implements Contracts\Factory
 
     /**
      * Return user if exists; create and return if doesn't
-     * Update new data if need
      *
      * @param $userObtain
      * @return static
@@ -69,11 +68,6 @@ class EasySocialiteManager implements Contracts\Factory
 
                 return $userModel;
             });
-        } else {
-            // Maybe User needs updating new data? (name, email_provider, avatar)
-            if (! empty($diff = array_diff($socialUser, $userModel->toArray()))) {
-                $userModel->update($diff);
-            }
         }
 
         return $userModel;

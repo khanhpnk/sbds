@@ -7,35 +7,6 @@
 @section('style')
   @parent
   <link href="{{ asset('vendor/jquery.filer-master/css/jquery.filer.css') }}" type="text/css" rel="stylesheet" />
-  <style>
-    .file-input {
-      display: inline-block;
-      padding: 10px 16px;
-      outline: none;
-      cursor: pointer;
-      text-decoration: none;
-      text-align: center;
-      white-space: nowrap;
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-size: 11px;
-      font-weight: bold;
-      border-radius: 3px;
-      color: #008BFF;
-      border: 1px solid #008BFF;
-      vertical-align: middle;
-      background-color: #fff;
-      margin-bottom: 10px;
-      box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
-      -webkit-transition: all 0.2s;
-      -moz-transition: all 0.2s;
-      transition: all 0.2s;
-    }
-    .file-input:hover,
-    .file-input:active {
-      background: #008BFF;
-      color: #fff;
-    }
-  </style>
 @stop
 
 @section('javascript')
