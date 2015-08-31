@@ -16,7 +16,7 @@
       background-color: #F0F0F0;
     }
   </style>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.css" rel="stylesheet" />
 @stop
 
 @section('javascript')
@@ -42,23 +42,60 @@
     });
   </script>
   <!-- Selected option -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.js"></script>
   <script>
     $(function() {
-      var $location = {!! LocationOption::getJsonOptions() !!}
-      $('#city').select2({
-        placeholder: "Tỉnh thành"
-      });
+      var $city = [
+        {
+          id: 1,
+          text: 'Hà Nội',
+          district: [
+            {
+              id: 1,
+              text: 'Hoàn Kiếm'
+            },
+            {
+              id: 2,
+              text: 'Hai Bà Trưng'
+            }
+          ]
+        },
+        {
+          id: 2,
+          text: 'Hồ Chí Minh',
+          district: [
+            {
+              id: 1,
+              text: 'Quận 1'
+            },
+            {
+              id: 2,
+              text: 'Quận 2'
+            }
+          ]
+        }
+      ];
+
+      $('#city').select2();
+//      $('#district').select2({
+//        placeholder: "Quận / huyện",
+//      });
+//
+      function getElementByText(text) {
+        return $city.filter(
+            function($city){ return $city.text == text }
+        );
+      }
+
       //minimumResultsForSearch: Infinity, // Hiding the search box
       $('#city').on("change", function (e) {
-        var $city = this.options[e.target.selectedIndex].text;
+        var $citySelected = this.options[e.target.selectedIndex].text;
+        var $element = getElementByText($citySelected);
 
-        console.log($location);
-        console.log($location.$city);
-//        $('#district').select2({
-//          data: location
-//        });
-      });
+        $('#district').select2({
+          data: $element[0].district
+        })
+      })
     });
   </script>
   <script type="text/javascript">
@@ -77,6 +114,10 @@
 @section('content')
     <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('house.store') }}" method="POST" role="form">
       {!! csrf_field() !!}
+      <select name="attribute" id="attribute">
+        <option value="0">Color</option>
+        <option value="1">Size</option>
+      </select>
       <div class="form-group">
         <label class="sr-only">Tiêu đề</label>
         <input type="text" name="title" class="form-control" value="" placeholder="Tiêu đề">
@@ -139,11 +180,9 @@
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label class="sr-only">Thành phố</label>
+            <label class="sr-only">Tỉnh thành</label>
             <select id="city" name="city" class="form-control" style="width: 100%">
-              @foreach (LocationOption::getOptions() as $key => $value)
-                <option value="{{ $key }}">{{ $key }}</option>
-              @endforeach
+              <option value="">Tỉnh thành</option>
             </select>
           </div>
         </div>
