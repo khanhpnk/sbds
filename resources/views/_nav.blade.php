@@ -52,7 +52,7 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
-            <li><a href="#" class="navbar-link">Chính chủ đăng tin</a></li>
+            <li><a href="{{ route('house.create') }}" class="navbar-link"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
             <li><a href="#" class="navbar-link">Môi giới đăng tin</a></li>
             <li><a href="#" class="navbar-link">Dự án đăng tin</a></li>
             <li><a href="#" class="navbar-link">Quản lý tin đã đăng</a></li>

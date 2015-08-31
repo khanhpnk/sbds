@@ -18,13 +18,15 @@ Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function()
 {
-    Route::group(['prefix' => 'p', 'namespace' => 'Property'], function()
+    Route::group(['namespace' => 'House'], function()
     {
-        Route::resource('self', 'SelfController', [
+        Route::resource('house', 'HouseController', [
             'only' => ['create', 'store', 'edit', 'update'],
             'names' => [
-                'create' => 'self.create',
-                'store' => 'self.store',
+                'create' => 'house.create',
+                'store' => 'house.store',
+                'edit' => 'house.edit',
+                'update' => 'house.update',
             ]
         ]);
     });

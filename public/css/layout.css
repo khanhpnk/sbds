@@ -9,22 +9,36 @@ a:focus{
   text-decoration: none;
   outline: 0; /*removes the dotted border*/
 }
+i {
+  padding-right: 4px;
+}
+/* BUTTON */
 .btn {
   text-transform: uppercase;
-}
-i {
-  padding-right: 6px;
 }
 .btn-main {
   color: #337ab7;
   border: 1px solid #337ab7;
   font-weight: 600;
   margin: 10px 0;
+  border-radius: 0;
 }
 .btn-main:hover,
 .btn-main:active {
   background: #337ab7;
   color: #fff;
+}
+/* PAGINATION */
+.simple-pagination {
+  float: right;
+  font-size: 17px;
+}
+.simple-pagination > .pager {
+  margin: 0;
+}
+.simple-pagination > .pager li > a,
+.simple-pagination > .pager li > span {
+  border-radius: 0;
 }
 /*********** *********** *********** LAYOUT *********** *********** ***********/
 /*********** *********** SOCIAL MODULE *********** ***********/

@@ -5,7 +5,7 @@
   @section('style')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link href="/css/layout.css" rel="stylesheet">
+    <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
   @show
 </head>
 <body>
@@ -34,6 +34,16 @@
     </div>
   </footer>
 
-  @include('_javascript')
+  @section('javascript')
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+      // CSRF protection for your AJAX based applications
+      $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+      });
+    </script>
+    <script src="{{ asset('js/layout.js') }}"></script>
+  @show
 </body>
 </html>

@@ -4,7 +4,9 @@ class UserHelper
 {
     public static function avatar()
     {
-        if (Auth::user()->avatar) {
+        if (empty(Auth::user()->avatar)) {
+            return asset('images/noavatar1.jpg');
+        } else {
             if (Auth::user()->provider) {
                 return Auth::user()->avatar;
             } else {
@@ -12,7 +14,8 @@ class UserHelper
             }
         }
 
-        return asset('images/noavatar1.jpg');
+
+
     }
 
     public static function name()

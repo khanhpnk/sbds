@@ -32,7 +32,7 @@ class MessageController extends Controller
                 $messages = Auth::user()->messagesFrom();
                 break;
         }
-        $messages = $messages->orderBy('id', 'desc')->simplePaginate(20);
+        $messages = $messages->orderBy('id', 'desc')->simplePaginate(2);
 
         return view('manage.messages.index', compact('messages'));
     }
