@@ -1,0 +1,16 @@
+.form-title {
+  font-size: 18px;
+  padding: 6px 12px;
+  margin: 10px 0;
+  text-transform: uppercase;
+  background-color: #F0F0F0;
+}
+.select2-container .select2-selection--single {
+  height: 34px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 34px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 32px;
+}

@@ -7,16 +7,6 @@
 @section('style')
   @parent
   <link href="{{ asset('vendor/jquery.filer-master/css/jquery.filer.css') }}" type="text/css" rel="stylesheet" />
-  <style>
-    .form-title {
-      font-size: 18px;
-      padding: 6px 12px;
-      margin: 10px 0;
-      text-transform: uppercase;
-      background-color: #F0F0F0;
-    }
-  </style>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 @stop
 
 @section('javascript')
@@ -41,8 +31,7 @@
       }]
     });
   </script>
-  <!-- Selected option -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
   <script>
     $(function() {
       var $city = [
@@ -68,13 +57,6 @@
         placeholder: "Tỉnh thành",
         data: $city
       });
-      $('#district').select2({
-        placeholder: "Quận / huyện",
-      });
-      $('#ward').select2({
-        placeholder: "Xã / phường",
-      });
-
       var $district;
 
       function getElementByText(jsonStore, text) {
@@ -86,7 +68,6 @@
       $('#city').on("select2:select", function (e) {
         var $element = getElementByText($city, this.options[e.target.selectedIndex].text);
         $district = $element[0].district;
-        console.log($district);
 
         $("#district option:not(:first)").remove();
         $('#district').select2({
@@ -97,7 +78,6 @@
 
       $('#district').on("select2:select", function (e) {
         var $element = getElementByText($district, this.options[e.target.selectedIndex].text);
-        console.log($element);
 
         $("#ward option:not(:first)").remove();
         $('#ward').select2({
@@ -105,34 +85,6 @@
           data: $element[0].ward
         });
       })
-
-
-
-      var $option = [1,2,3,4,5,6,7,8,9,10];
-
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-
-      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
-      $('#balcony').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Ban công"});
-      $('#common_room').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Phòng sinh hoạt chung"});
-
-    });
-  </script>
-  <script type="text/javascript">
-    $(function() {
-      $('.datepicker').pickadate({
-        format: 'dd/mm/yyyy',
-        formatSubmit: 'yyyy-mm-dd',
-        hiddenName: true,
-        min: true, // today
-        max: +31, // relative to today
-      });
     });
   </script>
 @stop
@@ -140,10 +92,7 @@
 @section('content')
     <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('house.store') }}" method="POST" role="form">
       {!! csrf_field() !!}
-      <div class="form-group">
-        <label class="sr-only">Tiêu đề</label>
-        <input type="text" name="title" class="form-control" value="" placeholder="Tiêu đề">
-      </div>
+      @include('partial.form._text', ['name' => 'title', 'label' => 'Tiêu đề'])
       <div class="row">
         <div class="col-md-1">
           <div class="radio">
@@ -156,46 +105,22 @@
           </div>
         </div>
         <div class="col-md-2">
-          <div class="form-group">
-            <label class="sr-only">Giá tiền</label>
-            <input type="text" name="price" class="form-control" value="" placeholder="Giá tiền">
-          </div>
+          @include('partial.form._text', ['name' => 'price', 'label' => 'Giá tiền'])
         </div>
         <div class="col-md-2">
-          <div class="form-group">
-            <label class="sr-only">Đơn vị</label>
-            <select name="unit" class="form-control">
-              @foreach (SellUnitOption::getOptions() as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
-              @endforeach
-            </select>
-          </div>
+          @include('partial.form._select', ['name' => 'unit', 'label' => 'Đơn vị', 'option' => SellUnitOption::getOptions()])
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-4">
-          <div class="form-group">
-            <label class="sr-only">Loại BĐS</label>
-            <select name="type" class="form-control">
-              <option value="">Loại BĐS</option>
-              @foreach (SellType::getOptions() as $key => $value)
-                <option value="{{ $key }}">{{ $value }}</option>
-              @endforeach
-            </select>
-          </div>
+          @include('partial.form._select', ['name' => 'type', 'label' => 'Loại BĐS', 'option' => SellType::getOptions()])
         </div>
         <div class="col-md-4">
-          <div class="form-group">
-            <label class="sr-only">Ngày bắt đầu</label>
-            <input type="text" name="start_date" class="form-control datepicker" {{--data-value="2015-09-12"--}} placeholder="Ngày bắt đầu">
-          </div>
+          @include('partial.form._datepicker', ['name' => 'start_date', 'label' => 'Ngày bắt đầu'])
         </div>
         <div class="col-md-4">
-          <div class="form-group">
-            <label class="sr-only">Ngày kết thúc</label>
-            <input type="text" name="end_date" class="form-control datepicker" value="" placeholder="Ngày kết thúc">
-          </div>
+          @include('partial.form._datepicker', ['name' => 'end_date', 'label' => 'Ngày kết thúc'])
         </div>
       </div>
 
@@ -203,47 +128,25 @@
         <div class="col-md-4">
           <div class="form-group">
             <label class="sr-only">Tỉnh thành</label>
-            <select id="city" name="city" class="form-control" style="width: 100%">
+            <select id="city" name="city" class="form-control" lang="vi" style="width: 100%">
               <option value="">Tỉnh thành</option>
             </select>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="form-group">
-            <label class="sr-only">Quận / huyện</label>
-            <select id="district" name="district" class="form-control">
-              <option value="">Quận / huyện</option>
-            </select>
-          </div>
+          @include('partial.form._select', ['name' => 'district', 'label' => 'Quận / huyện', 'option' => []])
         </div>
         <div class="col-md-4">
-          <div class="form-group">
-            <label class="sr-only">Xã / phường</label>
-            <select id="ward" name="ward" class="form-control">
-              <option value="">Xã / phường</option>
-            </select>
-          </div>
+          @include('partial.form._select', ['name' => 'ward', 'label' => 'Xã / phường', 'option' => []])
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="sr-only">Địa chỉ cụ thể</label>
-        <input type="text" name="address" class="form-control" value="" placeholder="Địa chỉ cụ thể">
-      </div>
-
+      @include('partial.form._text', ['name' => 'address', 'label' => 'Địa chỉ cụ thể'])
       <a class="btn btn-main" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
+      @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube'])
+      @include('partial.form._textarea', ['name' => 'description', 'label' => 'Mô tả ngắn ngọn BĐS', 'rows' => 8])
 
-      <div class="form-group">
-        <label class="sr-only">Đường dẫn video youtube</label>
-        <input type="text" name="youtube" class="form-control" value="" placeholder="Đường dẫn video youtube">
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Mô tả ngắn ngọn về BĐS</label>
-        <textarea rows="8" name="description" class="form-control" placeholder="Mô tả ngắn ngọn về BĐS"></textarea>
-      </div>
-
-      @include('manage.house.partial.section._detail')
-      @include('manage.house.partial.section._feature')
+      @include('manage.house.partial.section._detail_feature')
       <button type="submit" class="btn btn-primary btn-block">Đăng tin</button>
     </form>
 @stop

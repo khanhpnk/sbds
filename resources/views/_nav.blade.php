@@ -34,13 +34,13 @@
             <!-- Tab panes -->
             <div class="tab-content">
               <div aria-labelledby="home-tab" id="login" class="tab-pane active" role="tabpanel">
-                @include('partials.auth._login') <!-- Form Login -->
+                @include('partial.auth._login') <!-- Form Login -->
               </div>
               <div id="register" class="tab-pane" role="tabpanel">
-                @include('partials.auth._register') <!-- Form Register -->
+                @include('partial.auth._register') <!-- Form Register -->
               </div>
               <div id="resetpassword" class="tab-pane" role="tabpanel">
-                @include('partials.auth._password') <!-- Form Reset Password -->
+                @include('partial.auth._password') <!-- Form Reset Password -->
               </div>
             </div>
           </div>

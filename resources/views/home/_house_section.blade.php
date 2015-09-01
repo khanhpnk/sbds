@@ -6,7 +6,7 @@
 
 	<div class="house-content house-br clearfix">
 		@for ($j = 0; $j < 4; $j++)
-			@include('partials.house._article')
+			@include('partial.house._article')
 		@endfor
 
 		<a class="btn btn-main" href="{{ $viewMoreRoute }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>

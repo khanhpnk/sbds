@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/partials.css') }}" rel="stylesheet">
+    <link href="{{ asset('partial') }}" rel="stylesheet">
   @show
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
   @include('_facebook_sdk')
@@ -50,7 +51,6 @@
   </footer>
 
   @section('javascript')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script>
       // CSRF protection for your AJAX based applications

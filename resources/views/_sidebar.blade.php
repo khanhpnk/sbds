@@ -13,7 +13,7 @@
 <section>
     @for ($j = 0; $j < 4; $j++)
       <div class="row">
-        @include('partials.house._article', ['col' => 12, 'figcaption' => 'Nhà đất bán'])
+        @include('partial.house._article', ['col' => 12, 'figcaption' => 'Nhà đất bán'])
       </div>
     @endfor
 </section>
