@@ -1,1 +1,0 @@
-@include('home._house_section', ['title' => 'Tin mới'])

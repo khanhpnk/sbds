@@ -13,6 +13,7 @@
 
 /*********** *********** FRONTEND *********** ***********/
 Route::get('/', 'HomeController@index');
+Route::get('house', 'House\HouseController@index');
 // Authentication with social
 Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/

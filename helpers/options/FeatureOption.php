@@ -18,7 +18,6 @@ class FeatureOption
             'Internet / điện thoại',
             'Điện / nước',
             'Tầng hầm',
-            'Điều hòa',
             // leave blanh
             'Tầng tum',
             'Kho',
@@ -26,7 +25,6 @@ class FeatureOption
             'Phòng thể dục',
             'Gần trường học',
             'Siêu thị',
-            'Điều hòa',
             // leave blanh
             'Biển',
             'Hồ bơi',

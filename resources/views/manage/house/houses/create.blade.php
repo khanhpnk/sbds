@@ -16,7 +16,7 @@
       background-color: #F0F0F0;
     }
   </style>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.css" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
 @stop
 
 @section('javascript')
@@ -42,60 +42,86 @@
     });
   </script>
   <!-- Selected option -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
   <script>
     $(function() {
       var $city = [
-        {
-          id: 1,
-          text: 'Hà Nội',
-          district: [
-            {
-              id: 1,
-              text: 'Hoàn Kiếm'
-            },
-            {
-              id: 2,
-              text: 'Hai Bà Trưng'
-            }
-          ]
-        },
-        {
-          id: 2,
-          text: 'Hồ Chí Minh',
-          district: [
-            {
-              id: 1,
-              text: 'Quận 1'
-            },
-            {
-              id: 2,
-              text: 'Quận 2'
-            }
-          ]
-        }
+        {id:1,text:'Hà Nội',district:[
+          {id:1,text:'Hoàn Kiếm',ward:[
+            {id:1,text:'Phường HK1'},{id:2,text:'Phường HK2'}
+          ]},
+          {id:2,text:'Hai Bà Trưng',ward:[
+            {id:1,text:'Phường HBT1'},{id:2,text:'Phường HBT2'}
+          ]},
+        ]},
+        {id:2,text:'Hồ Chí Minh',district:[
+          {id:1,text:'Quận 1',ward:[
+            {id:1,text:'Phường Q11'},{id:2,text:'Phường Q12'}
+          ]},
+          {id:2,text:'Quận 2',ward:[
+            {id:1,text:'Phường Q21'},{id:2,text:'Phường Q22'}
+          ]},
+        ]},
       ];
 
-      $('#city').select2();
-//      $('#district').select2({
-//        placeholder: "Quận / huyện",
-//      });
-//
-      function getElementByText(text) {
-        return $city.filter(
-            function($city){ return $city.text == text }
+      $('#city').select2({
+        placeholder: "Tỉnh thành",
+        data: $city
+      });
+      $('#district').select2({
+        placeholder: "Quận / huyện",
+      });
+      $('#ward').select2({
+        placeholder: "Xã / phường",
+      });
+
+      var $district;
+
+      function getElementByText(jsonStore, text) {
+        return jsonStore.filter(
+            function(jsonStore){ return jsonStore.text == text }
         );
       }
 
-      //minimumResultsForSearch: Infinity, // Hiding the search box
-      $('#city').on("change", function (e) {
-        var $citySelected = this.options[e.target.selectedIndex].text;
-        var $element = getElementByText($citySelected);
+      $('#city').on("select2:select", function (e) {
+        var $element = getElementByText($city, this.options[e.target.selectedIndex].text);
+        $district = $element[0].district;
+        console.log($district);
 
+        $("#district option:not(:first)").remove();
         $('#district').select2({
-          data: $element[0].district
-        })
+          placeholder: "Quận / huyện",
+          data: $district
+        });
       })
+
+      $('#district').on("select2:select", function (e) {
+        var $element = getElementByText($district, this.options[e.target.selectedIndex].text);
+        console.log($element);
+
+        $("#ward option:not(:first)").remove();
+        $('#ward').select2({
+          placeholder: "Xã / phường",
+          data: $element[0].ward
+        });
+      })
+
+
+
+      var $option = [1,2,3,4,5,6,7,8,9,10];
+
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+
+      $('#logia').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Logia",});
+      $('#balcony').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Ban công"});
+      $('#common_room').select2({minimumResultsForSearch: Infinity, data: $option, allowClear: true, placeholder: "Phòng sinh hoạt chung"});
+
     });
   </script>
   <script type="text/javascript">
@@ -114,10 +140,6 @@
 @section('content')
     <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('house.store') }}" method="POST" role="form">
       {!! csrf_field() !!}
-      <select name="attribute" id="attribute">
-        <option value="0">Color</option>
-        <option value="1">Size</option>
-      </select>
       <div class="form-group">
         <label class="sr-only">Tiêu đề</label>
         <input type="text" name="title" class="form-control" value="" placeholder="Tiêu đề">
@@ -197,7 +219,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label class="sr-only">Xã / phường</label>
-            <select name="ward" class="form-control">
+            <select id="ward" name="ward" class="form-control">
               <option value="">Xã / phường</option>
             </select>
           </div>
@@ -220,9 +242,8 @@
         <textarea rows="8" name="description" class="form-control" placeholder="Mô tả ngắn ngọn về BĐS"></textarea>
       </div>
 
-      @include('manage.house._detail')
-      @include('manage.house._feature')
-
+      @include('manage.house.partial.section._detail')
+      @include('manage.house.partial.section._feature')
       <button type="submit" class="btn btn-primary btn-block">Đăng tin</button>
     </form>
 @stop

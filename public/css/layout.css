@@ -40,6 +40,66 @@ i {
 .simple-pagination > .pager li > span {
   border-radius: 0;
 }
+/*********** *********** *********** HOUSE THUMB MODULE *********** *********** ***********/
+.house-thumb {
+  border: 1px dashed mediumseagreen;
+  border-right: none;
+  display: block;
+  margin-bottom: 30px;
+}
+.house-thumb-img {
+  height: 200px;
+  width: 100%;
+}
+.house-thumb-img:hover {
+  opacity: 0.8;
+}
+.house-thumb-figcaption {
+  background-color: #337ab7;
+  color: #fff;
+  font-size: 20px;
+  margin: 0;
+  padding: 6px 9px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.house-thumb-cap {
+  padding: 2px;
+}
+.house-thumb-title {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+.house-thumb-title a:hover {
+  color: #337ab7;
+}
+.house-thumb-type {
+  color: mediumseagreen;
+}
+.house-thumb-address {
+  color: #7e7e7e;
+  margin-bottom: 2px;
+  font-style: italic;
+  font-size: 12px;
+}
+.house-thumb-footer {
+  background-color: #F7F7F7;
+  padding: 4px 2px;
+  font-style: italic;
+}
+.house-thumb-price {
+  float: left;
+  color: mediumseagreen;
+}
+.house-thumb-date {
+  color: #B8B8B8;
+  float: right;
+  font-size: 11px;
+  line-height: 20px;
+}
 /*********** *********** *********** LAYOUT *********** *********** ***********/
 /*********** *********** SOCIAL MODULE *********** ***********/
 .navbar-social {
@@ -51,7 +111,7 @@ i {
 .social-facebook,
 .social-tweet,
 .social-google {
-  background-image: url("/images/social.png");
+  background-image: url("images/social.png");
   display: inline-block;
   height: 20px;
   margin-left: 10px;
@@ -77,7 +137,15 @@ i {
 .social-google:hover {
   background-position: -122px 0;
 }
-/*********** *********** NAV *********** ***********/
+/*********** *********** BREADCRUMB *********** ***********/
+.breadcrumb-container {
+  background-color: #F5F5F5;
+  margin-bottom: 10px;
+}
+.breadcrumb {
+  margin-bottom: 0;
+}
+/*********** *********** breadcrumb *********** ***********/
 /* NAVBAR */
 .navbar {
   margin-bottom: 0;

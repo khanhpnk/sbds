@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/partials.css') }}" rel="stylesheet">
   @show
 </head>
 <body>
@@ -16,6 +17,20 @@
       @include('_nav')
     </div>
   </nav>
+  
+  <div>
+    <img style="width:100%;height:500px;border: 1px solid #ccc;" src="{{ UserHelper::avatar() }}">
+  </div>
+
+  <section class="breadcrumb-container">
+    <div class="container">
+      <ol class="breadcrumb">
+        <li><a href="/">Trang chủ</a></li>
+        <li><a href="#">Tin nổi bật</a></li>
+        <li class="active">Cho thuê chung cư cao cấp</li>
+      </ol>
+    </div>
+  </section>
 
   <div class="container">
     <div class="row">

@@ -37,14 +37,14 @@
     </ul>
   </li>
   <li class="col-lg-3">
-    <div class="fb-page" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-small-header="true" data-tabs="timeline,messages"
-         data-href="https://www.facebook.com/facebook">
-      <div class="fb-xfbml-parse-ignore">
-        <blockquote cite="https://www.facebook.com/facebook">
-          <a href="https://www.facebook.com/facebook">Facebook</a>
-        </blockquote>
-      </div>
-    </div>
+    {{--<div class="fb-page" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-small-header="true" data-tabs="timeline,messages"--}}
+         {{--data-href="https://www.facebook.com/facebook">--}}
+      {{--<div class="fb-xfbml-parse-ignore">--}}
+        {{--<blockquote cite="https://www.facebook.com/facebook">--}}
+          {{--<a href="https://www.facebook.com/facebook">Facebook</a>--}}
+        {{--</blockquote>--}}
+      {{--</div>--}}
+    {{--</div>--}}
   </li>
 </ul>
 

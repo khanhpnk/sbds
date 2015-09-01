@@ -14,7 +14,7 @@ class HouseController extends Controller
      */
     public function create()
     {
-        return view('manage.house.self.create');
+        return view('manage.house.houses.create');
     }
 
     /**
