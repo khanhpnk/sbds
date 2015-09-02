@@ -4,7 +4,7 @@ class FeatureOption
 {
     public static function getOptions()
     {
-        return array(
+        return [
             'Chỗ để xe hơi',
             'Chỗ để xe máy',
             'Sân thượng',
@@ -32,7 +32,7 @@ class FeatureOption
             'Nhà thờ / chùa',
             'Bệnh viện',
             'Giao thông công cộng',
-        );
+        ];
     }
 
     public static function getLabel($type)
@@ -40,5 +40,4 @@ class FeatureOption
         $options = self::getOptions();
         return $options[$type];
     }
-
 }

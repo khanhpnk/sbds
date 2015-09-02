@@ -4,16 +4,7 @@ class DirectionOption
 {
     public static function getOptions()
     {
-        return array(
-            'Đông',
-            'Tây',
-            'Nam',
-            'Bắc',
-            'Đông bắc',
-            'Tây bắc',
-            'Đông nam',
-            'Tây nam',
-        );
+        return ['Đông', 'Tây', 'Nam', 'Bắc', 'Đông bắc', 'Tây bắc', 'Đông nam', 'Tây nam'];
     }
 
     public static function getLabel($type)
@@ -21,5 +12,4 @@ class DirectionOption
         $options = self::getOptions();
         return $options[$type];
     }
-
 }

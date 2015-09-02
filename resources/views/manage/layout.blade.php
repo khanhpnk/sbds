@@ -11,23 +11,26 @@
     <link href="{{ asset('vendor/pickadate/lib/compressed/themes/default.date.css') }}" rel="stylesheet">
     <!-- Select2 -->
     <link href="{{ asset('vendor/select2-4.0.0/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- Image upload -->
+    <link href="{{ asset('vendor/jquery.filer-master/css/jquery.filer.css') }}" rel="stylesheet" />
     <!-- Custom -->
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('css/manage/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('css/manage/form.css') }}" rel="stylesheet">
   @show
-  <!-- Jquery -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script>
-    // CSRF protection for your AJAX based applications
-    $.ajaxSetup({
-      headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
-    });
-  </script>
+  @section('jshead')
+    <!-- Jquery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      // CSRF protection for your AJAX based applications
+      $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+      });
+    </script>
+  @show
+
 </head>
 <body>
-  @include('_facebook_sdk')
-
   <nav class="navbar navbar-default">
     <div class="container">
       @include('_nav')
@@ -61,8 +64,16 @@
     <!-- Select2 -->
     <script src="{{ asset('vendor/select2-4.0.0/js/select2.min.js') }}"></script>
     <script src="{{ asset('vendor/select2-4.0.0/js/i18n/vi.js') }}"></script>
+    <!-- Google map -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <!-- Image upload -->
+    <script src="{{ asset('vendor/jquery.filer-master/js/jquery.filer.js') }}"></script>
     <!-- Custom -->
+    <script src="{{ asset('js/function.js') }}"></script>
     <script src="{{ asset('js/layout.js') }}"></script>
+    <script src="{{ asset('js/location.js') }}"></script>
+    <script src="{{ asset('js/manage/form.js') }}"></script>
+    <script src="{{ asset('js/manage/map.js') }}"></script>
   @show
 </body>
 </html>
