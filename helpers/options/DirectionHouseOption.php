@@ -1,6 +1,6 @@
 <?php
 
-class DirectionOption
+class DirectionHouseOption
 {
     public static function getOptions()
     {

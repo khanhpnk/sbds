@@ -7,8 +7,10 @@
 @section('jshead')
   @parent
   <script>
-    var $unitRent = {!! RentUnitOption::getJsonOptions() !!};
-    var $unitSell = {!! SellUnitOption::getJsonOptions() !!};
+    var unitRent = {!! RentUnitOption::getJsonOptions() !!};
+    var unitSell = {!! SellUnitOption::getJsonOptions() !!};
+    var sellType = {!! HouseSellType::getJsonOptions() !!};
+    var rentType = {!! HouseRentType::getJsonOptions() !!};
   </script>
 @stop
 
@@ -19,12 +21,12 @@
       <div class="row">
         <div class="col-md-1">
           <div class="radio">
-            <label><input type="radio" name="category" value="1" checked>Bán</label>
+            <label><input type="radio" name="type" value="1" checked>Bán</label>
           </div>
         </div>
         <div class="col-md-3">
           <div class="radio">
-            <label><input type="radio" name="category" value="2">Cho thuê</label>
+            <label><input type="radio" name="type" value="2">Cho thuê</label>
           </div>
         </div>
         <div class="col-md-2">
@@ -37,7 +39,7 @@
 
       <div class="row">
         <div class="col-md-4">
-          @include('partial.form._select', ['name' => 'type', 'label' => 'Loại BĐS', 'option' => SellType::getOptions()])
+          @include('partial.form._select', ['name' => 'type', 'label' => 'Loại BĐS', 'option' => HouseSellType::getOptions()])
         </div>
         <div class="col-md-4">
           @include('partial.form._datepicker', ['name' => 'start_date', 'label' => 'Ngày bắt đầu'])

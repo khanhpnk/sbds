@@ -1,4 +1,4 @@
-var $locationJsonGlobal = [
+var locationJSON = [
     {id:1,text:'Hà Nội',district:[
         {id:1,text:'Hoàn Kiếm',ward:[
             {id:1,text:'Phường HK1'},{id:2,text:'Phường HK2'}

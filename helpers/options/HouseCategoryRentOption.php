@@ -1,6 +1,6 @@
 <?php
 
-class SellType
+class HouseCategoryRentOption
 {
     const HOME		    = 1;
     const APARTMENT		= 2;
@@ -9,8 +9,10 @@ class SellType
     const PROJECT_LAND  = 5;
     const LAND		    = 6;
     const WAREHOUSE		= 7;
-    const RESORT		= 8;
-    const OTHER		    = 9;
+    const MOTEL		    = 8;
+    const OFFICE		= 9;
+    const SHOP		    = 10;
+    const OTHER		    = 11;
 
     public static function getOptions()
     {
@@ -22,7 +24,9 @@ class SellType
             self::PROJECT_LAND  => 'Đất nền dự án',
             self::LAND          => 'Đất',
             self::WAREHOUSE     => 'Kho, nhà xưởng',
-            self::RESORT        => 'Trang trại, khu nghỉ dưỡng',
+            self::MOTEL         => 'Nhà trọ',
+            self::OFFICE        => 'Văn phòng',
+            self::SHOP          => 'Kiot, cửa hàng',
             self::OTHER         => 'Thể loại khác',
         );
     }
@@ -31,5 +35,11 @@ class SellType
     {
         $options = self::getOptions();
         return $options[$type];
+    }
+
+    public static function getJsonOptions()
+    {
+        $options = self::getOptions();
+        return json_encode(array_values($options));
     }
 }

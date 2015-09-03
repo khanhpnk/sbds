@@ -1,6 +1,6 @@
 <?php
 
-class FeatureOption
+class FeatureHouseOption
 {
     public static function getOptions()
     {

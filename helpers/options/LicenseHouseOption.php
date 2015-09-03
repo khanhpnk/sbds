@@ -1,6 +1,6 @@
 <?php
 
-class LegalOption
+class LicenseHouseOption
 {
     public static function getOptions()
     {

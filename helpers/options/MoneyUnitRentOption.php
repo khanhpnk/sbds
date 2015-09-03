@@ -1,10 +1,10 @@
 <?php
 
-class SellUnitOption
+class MoneyUnitRentOption
 {
     public static function getOptions()
     {
-        return ['VNĐ', 'VNĐ/m2', 'Thỏa thuận'];
+        return ['VNĐ', 'VNĐ/tháng'];
     }
 
     public static function getLabel($type)

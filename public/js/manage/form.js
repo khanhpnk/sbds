@@ -2,36 +2,82 @@
  * Module xử lý cho location thực thi Revealing Module Pattern
  */
 var locationModule = (function() {
-  var $cityElement      = $('#city');
-  var $districtElement  = $('#district');
-  var $wardElement      = $('#ward');
-  var $addressElement   = $('#address');
-  var $districtJson     = {};
+  var positionJSON = {
+    address:  "",
+    ward: "",
+    district: "",
+    city: ""
+  };
+  var cityElement      = $("#city");
+  var districtElement  = $("#district");
+  var wardElement      = $("#ward");
+  var districtJson     = {};
 
   var init = function() {
-    $cityElement.select2({placeholder: "Tỉnh thành", data: $locationJsonGlobal});
+    citySelect();
+    districtSelect();
+    wardSelect();
+    addressInputText();
+  };
 
-    $cityElement.on("change", function (e) {
-      $districtJson = searchJson($locationJsonGlobal, this.options[e.target.selectedIndex].text).district;
-
-      $("#district option:not(:first)").remove();
-      $districtElement.select2({placeholder: "Quận / huyện", data: $districtJson});
-    });
-
-    $districtElement.on("change", function (e) {
-      var $ward = searchJson($districtJson, this.options[e.target.selectedIndex].text).ward;
-
-      $("#ward option:not(:first)").remove();
-      $wardElement.select2({placeholder: "Xã / phường", data: $ward});
-    })
-
-    $addressElement.on("keyup", function () {
-      var $val = $(this).val();
+  var addressInputText = function() {
+    $("#address").on("keyup", function () {
+      positionJSON.address = $(this).val();
 
       delay(function(){
-        mapModule.searchAddress($val);
+        searchAddress();
       }, 1000 );
     });
+  };
+
+  var wardSelect = function() {
+    wardElement.on("change", function (e) {
+      positionJSON.ward = this.options[e.target.selectedIndex].text;
+
+      searchAddress();
+    });
+  };
+
+  var districtSelect = function() {
+    districtElement.on("change", function (e) {
+      positionJSON.district = this.options[e.target.selectedIndex].text;
+      positionJSON.ward = '';
+
+      searchAddress();
+
+      $("#ward option:not(:first)").remove();
+      wardElement.select2({
+        placeholder: "Xã / phường",
+        data: searchJson(districtJson, positionJSON.district).ward});
+    });
+  };
+
+  var citySelect = function() {
+    cityElement.select2({placeholder: "Tỉnh thành", data: locationJSON});
+    cityElement.on("change", function (e) {
+      positionJSON.city = this.options[e.target.selectedIndex].text;
+      positionJSON.district = '';
+      positionJSON.ward = '';
+
+      searchAddress();
+
+      $("#district option:not(:first)").remove();
+      districtElement.select2({
+        placeholder: "Quận / huyện",
+        data: districtJson = searchJson(locationJSON, positionJSON.city).district
+      });
+    });
+  };
+
+  var searchAddress = function() {
+    var fullAddress = "";
+    $.each(positionJSON, function(key, value) {
+      if ("" != value) {
+        fullAddress += value + ", ";
+      }
+    });
+
+    mapModule.searchAddress(fullAddress.substring(0, fullAddress.length-2));
   };
 
   return {
@@ -39,13 +85,53 @@ var locationModule = (function() {
   };
 })();
 
+/**
+ * Module xử lý cho form thực thi Revealing Module Pattern
+ */
+var formModule = (function() {
+  var init = function() {
+    $('input:radio[name=category]').on('change', function () {
+      var unit;
+      var type;
 
-var $addressCombine = '';
+      switch(this.value) {
+        case '1':
+          unit = unitSell;
+          type = sellType;
+          break;
+        case '2':
+          unit = unitRent;
+          type = rentType;
+          break;
+      }
 
+      $("#unit option:not(:first)").remove();
+      $('#unit').select2({
+        minimumResultsForSearch: Infinity,
+        allowClear: true,
+        placeholder: "Đơn vị",
+        data: unit
+      });
+
+      $("#type option:not(:first)").remove();
+      $('#type').select2({
+        minimumResultsForSearch: Infinity,
+        allowClear: true,
+        placeholder: "Loại BĐS",
+        data: type
+      });
+    })
+  };
+
+  return {
+    init: init
+  };
+})();
 
 $(function() {
+  formModule.init();
   locationModule.init();
-  mapModule.init();
+  mapModule.init("form-map-canvas");
 
   //$(document).on('submit', '#houseForm', function (event) {
   //  var latlng = markerManage[0].getPosition();
@@ -55,27 +141,7 @@ $(function() {
   //});
 });
 
-//$(function() {
-//  $('input:radio[name=category]').on('change', function () {
-//    $("#unit option:not(:first)").remove();
-//    var $data;
-//
-//    switch(this.value) {
-//      case '1':
-//        $data = $unitSell; break;
-//      case '2':
-//        $data = $unitRent; break;
-//    }
-//
-//    $('#unit').select2({
-//      minimumResultsForSearch: Infinity,
-//      allowClear: true,
-//      placeholder: "Đơn vị",
-//      data: $data
-//    });
-//  })
-//});
-//
+
 //$(function() {
 //  // Note:Core library file had edit
 //  $('#fileImage').filer({
