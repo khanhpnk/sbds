@@ -16,9 +16,10 @@ class HouseController extends Controller
      */
     public function index()
     {
+        echo '<pre>';
         $houses = House::all();
         foreach ($houses as $house) {
-            var_dump($house->feature);
+            var_dump($house->images);
         }
         die;
     }
@@ -41,11 +42,57 @@ class HouseController extends Controller
      */
     public function store(HouseRequest $request)
     {
-        \Debugbar::info($request->all());
-//        $temp = serialize($request->input('feature'));
+//        array:5 [
+//        "name" => array:1 [
+//        0 => ""
+//    ]
+//  "type" => array:1 [
+//        0 => ""
+//    ]
+//  "tmp_name" => array:1 [
+//        0 => ""
+//    ]
+//  "error" => array:1 [
+//        0 => 4
+//    ]
+//  "size" => array:1 [
+//        0 => 0
+//    ]
+//]
+        \Debugbar::info($_FILES['images']);
+        foreach ($_FILES['images'] as $file) {
+            \Debugbar::info($file);
+        }
+
+
+//        if (! empty($_FILES['images']['name'])) {
+//            $image = \Image::make($_FILES['avatar']['tmp_name']);
+//
+//            $fileName = md5(config('app.key').Auth::user()->id).'.jpg';
+//            $image->fit(config('image.sizes.avatar.w'), config('image.sizes.avatar.h'))
+//                ->save(public_path(config('image.paths.avatar').$fileName), 100);
+//
+//            Auth::user()->update([
+//                'name'      => $request->input('name'),
+//                'email'     => $request->input('email'),
+//                'avatar'    => $fileName,
+//            ]);
+//        } else {
+//            Auth::user()->update($request->only('name', 'email'));
+//        }
+
+
+//        \Debugbar::info($request->all());
+//        \Debugbar::info($request->file('images'));
+//        foreach ($request->file('images') as $aa) {
+//            \Debugbar::info($aa->getRealPath());
+//        }
+
+
+
 //        \Debugbar::info($temp);
 
-        Auth::user()->houses()->create($request->all());
+//        Auth::user()->houses()->create($request->all());
         return view('manage.house.houses.create');
     }
 
