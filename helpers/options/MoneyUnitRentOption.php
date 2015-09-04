@@ -7,12 +7,6 @@ class MoneyUnitRentOption
         return ['VNĐ', 'VNĐ/tháng'];
     }
 
-    public static function getLabel($type)
-    {
-        $options = self::getOptions();
-        return $options[$type];
-    }
-
     public static function getJsonOptions()
     {
         $options = self::getOptions();

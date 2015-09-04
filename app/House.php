@@ -11,7 +11,45 @@ class House extends Model
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = [
+        'title',
+        'type',
+        'price',
+        'money_unit',
+        'category',
+        'start_date',
+        'end_date',
+        'city',
+        'district',
+        'ward',
+        'address',
+        'lat',
+        'lng',
+        'youtube',
+        'description',
+        'm2',
+        'toilet',
+        'floors',
+        'direction',
+        'road',
+        'bedroom',
+        'kitchen',
+        'living_room',
+        'common_room',
+        'balcony',
+        'logia',
+        'license',
+        'feature',
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'feature' => 'array',
+    ];
 
     /**
      * User 1-n House

@@ -22,7 +22,7 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
     Route::group(['namespace' => 'House'], function()
     {
         Route::resource('house', 'HouseController', [
-            'only' => ['create', 'store', 'edit', 'update'],
+            'only' => ['index', 'create', 'store', 'edit', 'update'],
             'names' => [
                 'create' => 'house.create',
                 'store' => 'house.store',

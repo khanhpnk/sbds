@@ -90,60 +90,27 @@ var locationModule = (function() {
  */
 var formModule = (function() {
   var init = function() {
-    $('input:radio[name=category]').on('change', function () {
-      var unit;
-      var type;
-
-      switch(this.value) {
-        case '1':
-          unit = unitSell;
-          type = sellType;
-          break;
-        case '2':
-          unit = unitRent;
-          type = rentType;
-          break;
-      }
-
-      $("#unit option:not(:first)").remove();
-      $('#unit').select2({
-        minimumResultsForSearch: Infinity,
-        allowClear: true,
-        placeholder: "Đơn vị",
-        data: unit
-      });
-
-      $("#type option:not(:first)").remove();
-      $('#type').select2({
-        minimumResultsForSearch: Infinity,
-        allowClear: true,
-        placeholder: "Loại BĐS",
-        data: type
-      });
-    })
+    typeRadio();
+    formSubmit();
+    imageUpload();
   };
 
-  return {
-    init: init
+  var formSubmit = function() {
+    $(document).on('submit', '#houseForm', function (event) {
+      var latlng = mapModule.getMapMarker();
+
+      $('#lat').val(latlng.lat());
+      $('#lng').val(latlng.lng());
+    });
   };
-})();
 
-$(function() {
-  formModule.init();
-  locationModule.init();
-  mapModule.init("form-map-canvas");
-
-  //$(document).on('submit', '#houseForm', function (event) {
-  //  var latlng = markerManage[0].getPosition();
-  //
-  //  $('#lat').val(latlng.lat());
-  //  $('#lng').val(latlng.lng());
-  //});
-});
-
-
-//$(function() {
-//  // Note:Core library file had edit
+  // Note:Core library file had edit
+  var imageUpload = function() {
+    $('#fileImage').filer({
+      limit: 20,
+      maxSize: 2, // MB
+      addMore: true,
+    });
 //  $('#fileImage').filer({
 //    limit: 20,
 //    maxSize: 2, // MB
@@ -160,7 +127,52 @@ $(function() {
 //    //  file: "http://dummyimage.com/158x113/f9f9f9/191a1a.png",
 //    //}]
 //  });
-//});
+  };
+
+  var typeRadio = function() {
+    $('input:radio[name=type]').on('change', function () {
+      var moneyUnit;
+      var category;
+
+      switch(this.value) {
+        case '1':
+          moneyUnit = moneyUnitSale;
+          category = houseCategorySale;
+          break;
+        case '2':
+          moneyUnit = moneyUnitRent;
+          category = houseCategoryRent;
+          break;
+      }
+
+      $("#money_unit option:not(:first)").remove();
+      $('#money_unit').select2({
+        minimumResultsForSearch: Infinity,
+        allowClear: true,
+        placeholder: "Đơn vị",
+        data: moneyUnit
+      });
+
+      $("#category option:not(:first)").remove();
+      $('#category').select2({
+        minimumResultsForSearch: Infinity,
+        allowClear: true,
+        placeholder: "Loại BĐS",
+        data: category
+      });
+    })
+  };
+
+  return {
+    init: init
+  };
+})();
+
+$(function() {
+  formModule.init();
+  locationModule.init();
+  mapModule.init("form-map-canvas");
+});
 
 
 

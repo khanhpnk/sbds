@@ -34,13 +34,23 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * User 1-n Profile
+     * User 1-1 Profile
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasOne
      */
     public function profile()
     {
         return $this->hasOne('App\Profile');
+    }
+
+    /**
+     * User 1-n Houses
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function houses()
+    {
+        return $this->hasOne('App\House');
     }
 
     /**

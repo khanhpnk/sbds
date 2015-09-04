@@ -40,6 +40,13 @@ var mapModule = (function() {
     markerManage.push(marker);
   };
 
+  /**
+   * Get one markers for map
+   */
+  var getMapMarker = function() {
+    return markerManage[0].getPosition();
+  };
+
   var clearAllMapMarkers = function() {
     for (var i = 0; i < markerManage.length; i++) {
       markerManage[i].setMap(null);
@@ -62,6 +69,7 @@ var mapModule = (function() {
 
   return {
     init: init,
-    searchAddress: searchAddress
+    searchAddress: searchAddress,
+    getMapMarker: getMapMarker,
   };
 })();

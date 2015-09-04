@@ -2,7 +2,7 @@
 
 class HouseCategorySaleOption
 {
-    const HOME		    = 1;
+    const HOME	 = 1;
     const APARTMENT		= 2;
     const VILLA		    = 3;
     const STREET_SIDE   = 4;
@@ -25,12 +25,6 @@ class HouseCategorySaleOption
             self::RESORT        => 'Trang trại, khu nghỉ dưỡng',
             self::OTHER         => 'Thể loại khác',
         );
-    }
-
-    public static function getLabel($type)
-    {
-        $options = self::getOptions();
-        return $options[$type];
     }
 
     public static function getJsonOptions()
