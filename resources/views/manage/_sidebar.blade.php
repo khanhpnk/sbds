@@ -20,7 +20,7 @@
     <li><a href="#"><i class="fa fa-envelope-o"></i>Hộp tin đi</a></li>
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Đăng tin</li>
-    <li><a href="{{ route('house.create') }}"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
+    <li><a href="{{ route('m.house.create') }}"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
     <li><a href="#"><i class="fa fa-balance-scale"></i>Môi giới đăng tin</a> </li>
     <li><a href="#"><i class="fa fa-bank"></i>Dự án đăng tin</a></li>
     <li><a href="#"><i class="fa fa-inbox"></i>Quản lý đăng tin</a></li>

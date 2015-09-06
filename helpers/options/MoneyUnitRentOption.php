@@ -2,14 +2,16 @@
 
 class MoneyUnitRentOption
 {
+    use TraitJsonOption;
+
+    const VND        = 0;
+    const VND_THANG  = 1;
+
     public static function getOptions()
     {
-        return ['VNĐ', 'VNĐ/tháng'];
-    }
-
-    public static function getJsonOptions()
-    {
-        $options = self::getOptions();
-        return json_encode($options);
+        return [
+            self::VND       => 'VNĐ',
+            self::VND_THANG => 'VNĐ/tháng'
+        ];
     }
 }

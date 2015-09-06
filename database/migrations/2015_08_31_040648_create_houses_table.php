@@ -16,34 +16,34 @@ class CreateHousesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('title');
-            $table->integer('type');
-            $table->string('price');
-            $table->integer('money_unit');
-            $table->integer('category');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->integer('city');
-            $table->integer('district');
-            $table->integer('ward');
+            $table->boolean('type')->nullable();            // 1,2
+            $table->smallInteger('price')->nullable();
+            $table->tinyInteger('money_unit')->nullable();
+            $table->tinyInteger('category')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
+            $table->tinyInteger('city')->nullable();
+            $table->tinyInteger('district')->nullable();
+            $table->tinyInteger('ward')->nullable();
             $table->string('address');
-            $table->integer('lat');
-            $table->integer('lng');
+            $table->double('lat', 16, 6)->nullable();       // FLOAT(10, 6)
+            $table->double('lng', 16, 6)->nullable();       // FLOAT(10, 6)
             $table->string('youtube');
             $table->text('description');
-            $table->text('m2');
-            $table->text('road');
-            $table->integer('toilet');
-            $table->integer('floors');
-            $table->integer('direction');
-            $table->integer('bedroom');
-            $table->integer('kitchen');
-            $table->integer('living_room');
-            $table->integer('common_room');
-            $table->integer('balcony');
-            $table->integer('logia');
-            $table->integer('license');
-            $table->string('feature');
-            $table->string('images', 1024);
+            $table->integer('m2')->nullable();
+            $table->string('road');
+            $table->tinyInteger('toilet')->nullable();
+            $table->tinyInteger('floors')->nullable();
+            $table->tinyInteger('direction')->nullable();
+            $table->tinyInteger('bedroom')->nullable();
+            $table->tinyInteger('kitchen')->nullable();
+            $table->tinyInteger('living_room')->nullable();
+            $table->tinyInteger('common_room')->nullable();
+            $table->tinyInteger('balcony')->nullable();
+            $table->tinyInteger('logia')->nullable();
+            $table->tinyInteger('license')->nullable();
+            $table->string('feature');                      // JSON
+            $table->text('images');                         // JSON
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')

@@ -3,7 +3,7 @@
   <select id="{{ $name }}" name="{{ $name }}" class="form-control" lang="vi" style="width: 100%">
     <option value="">{{ $label }}</option>
     @foreach ($option as $key => $value)
-      <option value="{{ $key }}">{{ $value }}</option>
+      <option value="{{ $key }}" @if (isset($house) && $house->$name == $key) selected="selected" @endif >{{ $value }}</option>
     @endforeach
   </select>
 </div>

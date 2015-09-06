@@ -19,22 +19,14 @@ return array(
 
 
 	'paths' => [
-		'avatar' => 'images/uploads/avatars/',
+		'avatar' => 'images/uploads/avatar/',
+		'house' => 'images/uploads/house/',
 	],
 
 	'sizes' => [
-		'avatar' => [
-			'w' => 180,
-			'h' => 180
-		],
-		'medium' => [
-			'w' => 246,
-			'h' => 160
-		],
-		'small' => [
-			'w' => 80,
-			'h' => 52
-		]
+		'avatar' => ['w' => 180, 'h' => 180],
+		'medium' => ['w' => 246, 'h' => 160],
+		'small' => ['w' => 80, 'h' => 52]
 	]
 
 );

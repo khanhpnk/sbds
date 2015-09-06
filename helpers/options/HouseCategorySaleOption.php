@@ -2,34 +2,30 @@
 
 class HouseCategorySaleOption
 {
-    const HOME	 = 1;
-    const APARTMENT		= 2;
-    const VILLA		    = 3;
-    const STREET_SIDE   = 4;
-    const PROJECT_LAND  = 5;
-    const LAND		    = 6;
-    const WAREHOUSE		= 7;
-    const RESORT		= 8;
-    const OTHER		    = 9;
+    use TraitJsonOption;
+
+    const NHA_RIENG     = 0;
+    const CAN_HO        = 1;
+    const NHA_BIET_THU  = 2;
+    const NHA_MAT_PHO   = 3;
+    const DAT_NEN_DU_AN = 4;
+    const DAT	        = 5;
+    const KHO_NHA_XUONG = 6;
+    const TRANG_TRAI	= 7;
+    const KHAC		    = 8;
 
     public static function getOptions()
     {
-        return array(
-            self::HOME   	    => 'Nhà riêng',
-            self::APARTMENT     => 'Căn hộ',
-            self::VILLA         => 'Nhà biệt thự, liền kê',
-            self::STREET_SIDE   => 'Nhà mặt phố',
-            self::PROJECT_LAND  => 'Đất nền dự án',
-            self::LAND          => 'Đất',
-            self::WAREHOUSE     => 'Kho, nhà xưởng',
-            self::RESORT        => 'Trang trại, khu nghỉ dưỡng',
-            self::OTHER         => 'Thể loại khác',
-        );
-    }
-
-    public static function getJsonOptions()
-    {
-        $options = self::getOptions();
-        return json_encode(array_values($options));
+        return [
+            self::NHA_RIENG     => 'Nhà riêng',
+            self::CAN_HO        => 'Căn hộ',
+            self::NHA_BIET_THU  => 'Nhà biệt thự, liền kê',
+            self::NHA_MAT_PHO   => 'Nhà mặt phố',
+            self::DAT_NEN_DU_AN => 'Đất nền dự án',
+            self::DAT           => 'Đất',
+            self::KHO_NHA_XUONG => 'Kho, nhà xưởng',
+            self::TRANG_TRAI    => 'Trang trại, khu nghỉ dưỡng',
+            self::KHAC          => 'Thể loại khác'
+        ];
     }
 }
