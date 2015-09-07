@@ -130,7 +130,7 @@ var formModule = (function() {
   };
 
   var typeRadio = function() {
-    $('input:radio[name=type]').on('change', function () {
+    $('input:radio[name=type]').on("change", function () {
       var moneyUnit;
       var category;
 

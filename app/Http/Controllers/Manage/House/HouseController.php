@@ -16,12 +16,9 @@ class HouseController extends Controller
      */
     public function index()
     {
-        echo '<pre>';
-        $houses = House::all();
-        foreach ($houses as $house) {
-            var_dump($house->images);
-        }
-        die;
+        $houses = House::orderBy('id', 'desc')->paginate(10);
+
+        return view('manage.house.houses.index', compact('houses'));
     }
 
     /**
@@ -57,10 +54,9 @@ class HouseController extends Controller
             }
         }
 
-        \Debugbar::info($data);
-
         Auth::user()->houses()->create($data);
-        return view('manage.house.houses.create');
+
+        return redirect('m/house')->with('flash_message', 'da tao moi');
     }
 
     /**
@@ -83,7 +79,25 @@ class HouseController extends Controller
      */
     public function update(HouseRequest $request, House $house)
     {
-        \Debugbar::info($request->all());
-        return view('manage.house.houses.edit', compact('house'));
+        $data = $request->all();
+
+        $data['feature'] = isset($data['feature']) ? $data['feature'] : null;
+        unset($data['images']);
+
+        $house->fill($data)->save();
+
+        return redirect('m/house')->with('flash_message', 'da cap nhat');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  House  $house
+     * @return Response
+     */
+    public function destroy(House $house)
+    {
+        $house->delete();
+        return redirect('m/house')->with('flash_message', 'da xoa');
     }
 }

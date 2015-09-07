@@ -1,9 +1,9 @@
 <div class="form-group">
   <label class="sr-only">{{ $label }}</label>
-  <select id="{{ $name }}" name="{{ $name }}" class="form-control" lang="vi" style="width: 100%">
+  <select id="{{ $name }}" name="{{ $name }}" class="form-control" lang="vi" style="width: 100%" autocomplete="off">
     <option value="">{{ $label }}</option>
-    @foreach ($option as $key => $value)
-      <option value="{{ $key }}" @if (isset($house) && $house->$name == $key) selected="selected" @endif >{{ $value }}</option>
+    @foreach ($options as $key => $val)
+      <option value="{{ $key }}" @if ($value == $key) selected="selected" @endif >{{ $val }}</option>
     @endforeach
   </select>
 </div>

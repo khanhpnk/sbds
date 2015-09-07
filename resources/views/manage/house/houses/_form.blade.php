@@ -3,28 +3,34 @@
   @include('partial.form._text', ['name' => 'title', 'label' => 'Tiêu đề'])
   <div class="row">
     <div class="col-md-1">
-      @include('partial.form._radio', ['model' => isset($house) ? $house : null,
-                                       'name' => 'type',
-                                       'label' => 'Bán',
-                                       'value' => 1])
+      @include('partial.form._radio', ['name' => 'type',
+                                            'label' => 'Bán',
+                                            'checked' => !isset($house) || (isset($house) && 1 == $house->type) ? true : false,
+                                            'value' => 1])
     </div>
     <div class="col-md-3">
-      @include('partial.form._radio', ['model' => isset($house) ? $house : null,
-                                       'name' => 'type',
-                                       'label' => 'Cho thuê',
-                                       'value' => 2])
+      @include('partial.form._radio', ['name' => 'type',
+                                            'label' => 'Cho thuê',
+                                            'checked' => (isset($house) && 2 == $house->type) ? true : false,
+                                            'value' => 2])
     </div>
     <div class="col-md-2">
       @include('partial.form._text', ['name' => 'price', 'label' => 'Giá tiền'])
     </div>
     <div class="col-md-2">
-      @include('partial.form._select', ['name' => 'money_unit', 'label' => 'Đơn vị', 'option' => MoneyUnitSaleOption::getOptions()])
+      @include('partial.form._select', ['name' => 'money_unit',
+                                             'label' => 'Đơn vị',
+                                             'options' => (isset($house) && 2 == $house->type) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
+                                             'value' => isset($house) ? $house->money_unit : null])
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'category', 'label' => 'Loại BĐS', 'option' => HouseCategorySaleOption::getOptions()])
+      @include('partial.form._select', ['name' => 'category',
+                                             'label' => 'Loại BĐS',
+                                             'options' => (isset($house) && 2 == $house->type) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
+                                             'value' => isset($house) ? $house->category : null])
     </div>
     <div class="col-md-4">
       @include('partial.form._datepicker', ['name' => 'start_date', 'label' => 'Ngày bắt đầu'])
@@ -36,13 +42,22 @@
 
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'city', 'label' => 'Tỉnh thành', 'option' => []])
+      @include('partial.form._select', ['name' => 'city',
+                                             'label' => 'Tỉnh thành',
+                                             'options' => isset($house) ? [] : [],
+                                             'value' => isset($house) ? $house->city : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'district', 'label' => 'Quận / huyện', 'option' => []])
+      @include('partial.form._select', ['name' => 'district',
+                                             'label' => 'Quận / huyện',
+                                             'options' => isset($house) ? [] : [],
+                                             'value' => isset($house) ? $house->district : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'ward', 'label' => 'Xã / phường', 'option' => []])
+      @include('partial.form._select', ['name' => 'ward',
+                                             'label' => 'Xã / phường',
+                                             'options' => isset($house) ? [] : [],
+                                             'value' => isset($house) ? $house->ward : null])
     </div>
   </div>
   @include('partial.form._text', ['name' => 'address', 'label' => 'Địa chỉ cụ thể'])
@@ -61,21 +76,51 @@
   <div class="row">
     <div class="col-md-4">
       @include('partial.form._text',   ['name' => 'm2', 'label' => 'Diện tích sử dụng (m2)'])
-      @include('partial.form._select', ['name' => 'toilet', 'label' => 'Số phòng vệ sinh', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'floors', 'label' => 'Số tầng', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'direction', 'label' => 'Hướng nhà', 'option' => HouseDirectionOption::getOptions()])
+      @include('partial.form._select', ['name' => 'toilet',
+                                             'label' => 'Số phòng vệ sinh',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->toilet : null])
+      @include('partial.form._select', ['name' => 'floors',
+                                             'label' => 'Số tầng',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->floors : null])
+      @include('partial.form._select', ['name' => 'direction',
+                                             'label' => 'Hướng nhà',
+                                             'options' => HouseDirectionOption::getOptions(),
+                                             'value' => isset($house) ? $house->direction : null])
     </div>
     <div class="col-md-4">
       @include('partial.form._text',   ['name' => 'road', 'label' => 'Đường trước nhà'])
-      @include('partial.form._select', ['name' => 'bedroom', 'label' => 'Số phòng ngủ', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'kitchen', 'label' => 'Bếp', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'living_room', 'label' => 'Phòng khách', 'option' => [1,2,3,4,5,6,7,8,9,10]])
+      @include('partial.form._select', ['name' => 'bedroom',
+                                             'label' => 'Số phòng ngủ',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->bedroom : null])
+      @include('partial.form._select', ['name' => 'kitchen',
+                                             'label' => 'Bếp',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->kitchen : null])
+      @include('partial.form._select', ['name' => 'living_room',
+                                             'label' => 'Phòng khách',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->living_room : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'common_room', 'label' => 'Phòng sinh hoạt chung', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'balcony', 'label' => 'Ban công', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'logia', 'label' => 'Logia', 'option' => [1,2,3,4,5,6,7,8,9,10]])
-      @include('partial.form._select', ['name' => 'license', 'label' => 'Tình trạng pháp lý', 'option' => HouseLicenseOption::getOptions()])
+      @include('partial.form._select', ['name' => 'common_room',
+                                             'label' => 'Phòng sinh hoạt chung',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->common_room : null])
+      @include('partial.form._select', ['name' => 'balcony',
+                                             'label' => 'Ban công',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->balcony : null])
+      @include('partial.form._select', ['name' => 'logia',
+                                             'label' => 'Logia',
+                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'value' => isset($house) ? $house->logia : null])
+      @include('partial.form._select', ['name' => 'license',
+                                             'label' => 'Tình trạng pháp lý',
+                                             'options' => HouseLicenseOption::getOptions(),
+                                             'value' => isset($house) ? $house->license : null])
     </div>
   </div>
 </section>
@@ -85,9 +130,10 @@
   <div class="row">
     @for ($i = 0; $i < count(HouseFeatureOption::getOptions());  $i++)
       @if (0 == $i % 6) <div class="col-md-3"> @endif
-        <div class="checkbox">
-          <label><input name="feature[]" type="checkbox" value="{{ $i }}" @if (isset($house) && in_array($i, $house->feature)) checked @endif > {{ HouseFeatureOption::getLabel($i) }}</label>
-        </div>
+        @include('partial.form._checbox', ['name' => 'feature[]',
+                                                'label' => HouseFeatureOption::getLabel($i),
+                                                'checked' => isset($house) && !is_null($house->feature) && in_array($i, $house->feature) ? true : false,
+                                                'value' => $i])
         @if (0 == ($i + 1) % 6) </div> @endif
     @endfor
   </div>

@@ -15,7 +15,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->boolean('type')->nullable();            // 1,2
             $table->smallInteger('price')->nullable();
             $table->tinyInteger('money_unit')->nullable();
@@ -25,13 +25,13 @@ class CreateHousesTable extends Migration
             $table->tinyInteger('city')->nullable();
             $table->tinyInteger('district')->nullable();
             $table->tinyInteger('ward')->nullable();
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->double('lat', 16, 6)->nullable();       // FLOAT(10, 6)
             $table->double('lng', 16, 6)->nullable();       // FLOAT(10, 6)
-            $table->string('youtube');
-            $table->text('description');
+            $table->string('youtube')->nullable();
+            $table->text('description')->nullable();
             $table->integer('m2')->nullable();
-            $table->string('road');
+            $table->string('road')->nullable();
             $table->tinyInteger('toilet')->nullable();
             $table->tinyInteger('floors')->nullable();
             $table->tinyInteger('direction')->nullable();
@@ -42,8 +42,8 @@ class CreateHousesTable extends Migration
             $table->tinyInteger('balcony')->nullable();
             $table->tinyInteger('logia')->nullable();
             $table->tinyInteger('license')->nullable();
-            $table->string('feature');                      // JSON
-            $table->text('images');                         // JSON
+            $table->string('feature')->nullable();          // JSON
+            $table->text('images')->nullable();             // JSON
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')
