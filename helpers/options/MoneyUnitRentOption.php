@@ -4,8 +4,8 @@ class MoneyUnitRentOption
 {
     use TraitJsonOption;
 
-    const VND        = 0;
-    const VND_THANG  = 1;
+    const VND        = 1;
+    const VND_THANG  = 2;
 
     public static function getOptions()
     {

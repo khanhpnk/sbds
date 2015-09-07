@@ -2,14 +2,14 @@
 
 class HouseDirectionOption
 {
-    const DONG      = 0;
-    const TAY       = 1;
-    const NAM       = 2;
-    const BAC       = 3;
-    const DONG_BAC  = 4;
-    const TAY_BAC   = 5;
-    const DONG_NAM  = 6;
-    const TAY_NAM   = 7;
+    const DONG      = 1;
+    const TAY       = 2;
+    const NAM       = 3;
+    const BAC       = 4;
+    const DONG_BAC  = 5;
+    const TAY_BAC   = 6;
+    const DONG_NAM  = 7;
+    const TAY_NAM   = 8;
 
     public static function getOptions()
     {

@@ -4,17 +4,17 @@ class HouseCategoryRentOption
 {
     use TraitJsonOption;
 
-    const NHA_RIENG     = 0;
-    const CAN_HO        = 1;
-    const NHA_BIET_THU  = 2;
-    const NHA_MAT_PHO   = 3;
-    const DAT_NEN_DU_AN = 4;
-    const DAT	        = 5;
-    const KHO_NHA_XUONG = 6;
-    const NHA_TRO       = 7;
-    const VAN_PHONG     = 8;
-    const CUA_HANG      = 9;
-    const KHAC          = 10;
+    const NHA_RIENG     = 1;
+    const CAN_HO        = 2;
+    const NHA_BIET_THU  = 3;
+    const NHA_MAT_PHO   = 4;
+    const DAT_NEN_DU_AN = 5;
+    const DAT	        = 6;
+    const KHO_NHA_XUONG = 7;
+    const NHA_TRO       = 8;
+    const VAN_PHONG     = 9;
+    const CUA_HANG      = 10;
+    const KHAC          = 11;
 
     public static function getOptions()
     {

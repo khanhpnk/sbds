@@ -10,27 +10,27 @@
     </div>
     <div class="col-md-3">
       @include('partial.form._radio', ['name' => 'type',
-                                            'label' => 'Cho thuê',
-                                            'checked' => (isset($house) && 2 == $house->type) ? true : false,
-                                            'value' => 2])
+                                       'label' => 'Cho thuê',
+                                       'checked' => (isset($house) && 2 == $house->type) ? true : false,
+                                       'value' => 2])
     </div>
     <div class="col-md-2">
       @include('partial.form._text', ['name' => 'price', 'label' => 'Giá tiền'])
     </div>
     <div class="col-md-2">
       @include('partial.form._select', ['name' => 'money_unit',
-                                             'label' => 'Đơn vị',
-                                             'options' => (isset($house) && 2 == $house->type) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
-                                             'value' => isset($house) ? $house->money_unit : null])
+                                        'label' => 'Đơn vị',
+                                        'options' => (isset($house) && 2 == $house->type) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
+                                        'value' => isset($house) ? $house->money_unit : null])
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-4">
       @include('partial.form._select', ['name' => 'category',
-                                             'label' => 'Loại BĐS',
-                                             'options' => (isset($house) && 2 == $house->type) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
-                                             'value' => isset($house) ? $house->category : null])
+                                        'label' => 'Loại BĐS',
+                                        'options' => (isset($house) && 2 == $house->type) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
+                                        'value' => isset($house) ? $house->category : null])
     </div>
     <div class="col-md-4">
       @include('partial.form._datepicker', ['name' => 'start_date', 'label' => 'Ngày bắt đầu'])
@@ -78,11 +78,11 @@
       @include('partial.form._text',   ['name' => 'm2', 'label' => 'Diện tích sử dụng (m2)'])
       @include('partial.form._select', ['name' => 'toilet',
                                              'label' => 'Số phòng vệ sinh',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->toilet : null])
       @include('partial.form._select', ['name' => 'floors',
                                              'label' => 'Số tầng',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->floors : null])
       @include('partial.form._select', ['name' => 'direction',
                                              'label' => 'Hướng nhà',
@@ -93,29 +93,29 @@
       @include('partial.form._text',   ['name' => 'road', 'label' => 'Đường trước nhà'])
       @include('partial.form._select', ['name' => 'bedroom',
                                              'label' => 'Số phòng ngủ',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->bedroom : null])
       @include('partial.form._select', ['name' => 'kitchen',
                                              'label' => 'Bếp',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->kitchen : null])
       @include('partial.form._select', ['name' => 'living_room',
                                              'label' => 'Phòng khách',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->living_room : null])
     </div>
     <div class="col-md-4">
       @include('partial.form._select', ['name' => 'common_room',
                                              'label' => 'Phòng sinh hoạt chung',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->common_room : null])
       @include('partial.form._select', ['name' => 'balcony',
                                              'label' => 'Ban công',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->balcony : null])
       @include('partial.form._select', ['name' => 'logia',
                                              'label' => 'Logia',
-                                             'options' => [1,2,3,4,5,6,7,8,9,10],
+                                             'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => isset($house) ? $house->logia : null])
       @include('partial.form._select', ['name' => 'license',
                                              'label' => 'Tình trạng pháp lý',

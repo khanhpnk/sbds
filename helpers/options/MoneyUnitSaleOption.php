@@ -4,9 +4,9 @@ class MoneyUnitSaleOption
 {
     use TraitJsonOption;
 
-    const VND           = 0;
-    const VND_M2        = 1;
-    const THOA_THUAN    = 2;
+    const VND           = 1;
+    const VND_M2        = 2;
+    const THOA_THUAN    = 3;
 
     public static function getOptions()
     {
