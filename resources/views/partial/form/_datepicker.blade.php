@@ -5,8 +5,9 @@
 
 <script>
   $(function() {
-    var $name = '{{ $name }}';
-    $('#'+$name).pickadate({
+    // private for start_date & end_date
+    var name = "{{ $name }}";
+    $("#"+name).pickadate({
       format: 'dd/mm/yyyy',
       formatSubmit: 'yyyy-mm-dd',
       hiddenName: true,
@@ -15,7 +16,9 @@
       max: +31, // relative to today
       onStart: function() {
         var date = new Date();
-        this.set('select', [date.getFullYear(), date.getMonth() + 1, date.getDate()]);
+        var month = ('start_date' == name) ? date.getMonth() : date.getMonth()+1;
+
+        this.set('select', [date.getFullYear(), month, date.getDate()]);
       }
     });
   });

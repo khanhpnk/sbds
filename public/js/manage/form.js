@@ -15,26 +15,39 @@ var locationModule = (function() {
   var districtJSON     = {};
 
   var init = function() {
-    //// city
-    //cityElement.select2({placeholder: "Tỉnh thành", data: locationStorageJSON});
-    //cityElement.find('option[value="'+locationDbJSON.city+'"]').attr("selected",true);
-    //cityElement.select2({placeholder: "Tỉnh thành"});
-    //// district
-    //var citySelected = searchJsonById(locationStorageJSON, locationDbJSON.city);
-    //locationSelectedJSON.city = citySelected.text;
-    //districtElement.select2({placeholder: "Quận / huyện", data: districtJSON = citySelected.district});
-    //districtElement.find('option[value="'+locationDbJSON.district+'"]').attr("selected",true);
-    //districtElement.select2({placeholder: "Quận / huyện"});
-    //// ward
-    //var districtSelected = searchJsonById(districtJSON, locationDbJSON.district);
-    //locationSelectedJSON.district = districtSelected.text;
-    //wardElement.select2({placeholder: "Quận / huyện", data: districtSelected.ward});
-    //wardElement.find('option[value="'+locationDbJSON.ward+'"]').attr("selected",true);
-    //wardElement.select2({placeholder: "Quận / huyện"});
-    //locationSelectedJSON.ward = wardElement.find("option:selected").text();
-    //// search & add marker
-    //locationSelectedJSON.address = locationDbJSON.address;
-    //searchAddress();
+
+    // city
+    cityElement.select2({placeholder: "Tỉnh thành", data: locationStorageJSON});
+    if ('' != locationDbJSON.city) {
+      cityElement.find('option[value="'+locationDbJSON.city+'"]').attr("selected",true);
+      cityElement.select2({placeholder: "Tỉnh thành"});
+      locationSelectedJSON.city = cityElement.find("option:selected").text();
+    }
+
+    // district
+    if ('' != locationDbJSON.district) {
+      var citySelected = searchJsonById(locationStorageJSON, locationDbJSON.city);
+      districtElement.select2({placeholder: "Quận / huyện", data: districtJSON = citySelected.district});
+      districtElement.find('option[value="' + locationDbJSON.district + '"]').attr("selected", true);
+      districtElement.select2({placeholder: "Quận / huyện"});
+      locationSelectedJSON.district = districtElement.find("option:selected").text();
+    }
+
+    // ward
+    if ('' != locationDbJSON.ward) {
+      var districtSelected = searchJsonById(districtJSON, locationDbJSON.district);
+      wardElement.select2({placeholder: "Quận / huyện", data: districtSelected.ward});
+      wardElement.find('option[value="' + locationDbJSON.ward + '"]').attr("selected", true);
+      wardElement.select2({placeholder: "Quận / huyện"});
+      locationSelectedJSON.ward = wardElement.find("option:selected").text();
+    }
+
+    // search & add marker
+    if ('' != locationDbJSON.address) {
+      locationSelectedJSON.address = locationDbJSON.address;
+    }
+
+    searchAddress();
 
     cityChangeEvent();
     districtChangeEvent();
