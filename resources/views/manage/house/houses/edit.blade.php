@@ -11,6 +11,13 @@
     var moneyUnitRent     = {!! MoneyUnitRentOption::getJsonOptions() !!};
     var houseCategorySale = {!! HouseCategorySaleOption::getJsonOptions() !!};
     var houseCategoryRent = {!! HouseCategoryRentOption::getJsonOptions() !!};
+
+    var locationDbJSON = {
+      address: "{!! $house->address !!}",
+      ward: "{{ $house->ward }}",
+      district: "{{ $house->district }}",
+      city: "{{ $house->city }}"
+    };
   </script>
 @stop
 

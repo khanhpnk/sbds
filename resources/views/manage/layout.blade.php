@@ -66,6 +66,9 @@
     <script src="{{ asset('vendor/select2-4.0.0/js/i18n/vi.js') }}"></script>
     <!-- Google map -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <!-- JQuery Validation -->
+    <script src="{{ asset('vendor/jquery-validation-1.14.0/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-validation-1.14.0/localization/messages_vi.min.js') }}"></script>
     <!-- Image upload -->
     <script src="{{ asset('vendor/jquery.filer-master/js/jquery.filer.js') }}"></script>
     <!-- Custom -->

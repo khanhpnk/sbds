@@ -6,8 +6,8 @@ var delay = (function(){
   };
 })();
 
-function searchJson(json, text) {
+function searchJsonById(json, id) {
   return json.filter(
-    function(json){ return json.text == text }
+    function(json){ return json.id == id }
   )[0];
 }
