@@ -40,6 +40,7 @@ class House extends Model
         'logia',
         'license',
         'feature',
+        'images',
     ];
 
     /**
@@ -49,6 +50,7 @@ class House extends Model
      */
     protected $casts = [
         'feature' => 'array',
+        'images' => 'array',
     ];
 
     /**

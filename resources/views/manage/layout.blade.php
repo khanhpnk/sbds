@@ -26,12 +26,13 @@
       $.ajaxSetup({
         headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
       });
+      var baseUrl = "{{ url() }}";
     </script>
   @show
 
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       @include('_nav')
     </div>
@@ -71,6 +72,8 @@
     <script src="{{ asset('vendor/jquery-validation-1.14.0/localization/messages_vi.min.js') }}"></script>
     <!-- Image upload -->
     <script src="{{ asset('vendor/jquery.filer-master/js/jquery.filer.js') }}"></script>
+    <!-- Jquery mockjax for TEST -->
+    <script src="{{ asset('vendor/jquery-mockjax/jquery.mockjax.js') }}"></script>
     <!-- Custom -->
     <script src="{{ asset('js/function.js') }}"></script>
     <script src="{{ asset('js/layout.js') }}"></script>

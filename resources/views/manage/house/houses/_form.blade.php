@@ -1,3 +1,11 @@
+@section('meta_title')
+  Chính chủ đăng tin
+@stop
+
+@section('title')
+  Chính chủ đăng tin
+@stop
+
 @section('jshead')
   @parent
   <script>
@@ -12,6 +20,9 @@
       district: "{{ $house->district or '' }}",
       city: "{{ $house->city or '' }}"
     };
+
+
+    var imagesDbJSON = {!! isset($house->images) ? json_encode($house->images) : '' !!};
   </script>
 @stop
 
@@ -19,14 +30,24 @@
   @parent
   <script>
     $(function() {
-      // just for the demos, avoids form submit
-      jQuery.validator.setDefaults({
-        debug: true,
-        success: "valid"
+      $.mockjax({
+        url: "house.action",
+        response: function(settings) {
+          var house = settings.data.title,
+              houses = ["12345678", "aaaaaaaa"];
+          this.responseText = "true";
+          if ($.inArray(house, houses) !== -1) {
+            this.responseText = "false";
+          }
+        },
+        responseTime: 500
       });
+
+      // just for the demos, avoids form submit
+      //jQuery.validator.setDefaults({debug: true, success: "valid"});
       $('form').validate({
         rules: {
-          title: {rangelength: [8, 64], required: true}, // thingking
+          title: {rangelength: [8, 64], required: true, remote: "house.action"}, // thingking
           price: {maxlength: 16, digits: true, required: true},　// thingking
           money_unit: {required: true},
           category: {required: true},
@@ -35,7 +56,16 @@
           ward: {required: true},
           youtube: {url: true},
           description: {rangelength: [8, 2000], required: true},
-          m2: {digits: true},
+          m2: {digits: true, maxlength: 16},
+          road: {maxlength: 64},
+        },
+        messages: {
+          title: {
+            required: "Bạn cần nhập tiêu đề.",
+            minlength: jQuery.validator.format("Bạn cần nhập ít nhất {0} ký tự"),
+            remote: jQuery.validator.format("Tiêu đề với nội dung {0} là đã được sử dụng")
+          },
+          price: "Bạn cần nhập giá tiền.",
         },
         highlight: function(element) {
           $(element).closest('.form-group').addClass('has-error');
@@ -46,7 +76,11 @@
         errorElement: 'span',
         errorClass: 'help-block',
         errorPlacement: function(error, element) {
-          error.insertAfter(element);
+          if (element.is("select")) {
+            error.appendTo(element.closest('.form-group'));
+          } else {
+            error.insertAfter(element);
+          }
         }
       });
     });

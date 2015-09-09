@@ -1,5 +1,11 @@
+$(function() {
+  mapModule.init("form-map-canvas");
+  formModule.init();
+  delay(function(){locationModule.init()}, 1000);
+});
+
 /**
- * Module xử lý cho location thực thi Revealing Module Pattern
+ * Module locationModule implement Revealing Module Pattern
  */
 var locationModule = (function() {
   var locationSelectedJSON = {
@@ -15,16 +21,35 @@ var locationModule = (function() {
   var districtJSON     = {};
 
   var init = function() {
+    initOptions();
+    searchAddress();
+    locationEventListener();
+  };
 
-    // city
+  var initOptions = function() {
+    initCity();
+    initDistrict();
+    initWard();
+    initAddress();
+  };
+
+  var locationEventListener = function() {
+    cityEventListener();
+    districtEventListener();
+    wardEventListener();
+    addressEventListener();
+  };
+
+  var initCity = function() {
     cityElement.select2({placeholder: "Tỉnh thành", data: locationStorageJSON});
     if ('' != locationDbJSON.city) {
       cityElement.find('option[value="'+locationDbJSON.city+'"]').attr("selected",true);
       cityElement.select2({placeholder: "Tỉnh thành"});
       locationSelectedJSON.city = cityElement.find("option:selected").text();
     }
+  };
 
-    // district
+  var initDistrict = function() {
     if ('' != locationDbJSON.district) {
       var citySelected = searchJsonById(locationStorageJSON, locationDbJSON.city);
       districtElement.select2({placeholder: "Quận / huyện", data: districtJSON = citySelected.district});
@@ -32,8 +57,9 @@ var locationModule = (function() {
       districtElement.select2({placeholder: "Quận / huyện"});
       locationSelectedJSON.district = districtElement.find("option:selected").text();
     }
+  };
 
-    // ward
+  var initWard = function() {
     if ('' != locationDbJSON.ward) {
       var districtSelected = searchJsonById(districtJSON, locationDbJSON.district);
       wardElement.select2({placeholder: "Quận / huyện", data: districtSelected.ward});
@@ -41,21 +67,15 @@ var locationModule = (function() {
       wardElement.select2({placeholder: "Quận / huyện"});
       locationSelectedJSON.ward = wardElement.find("option:selected").text();
     }
+  };
 
-    // search & add marker
+  var initAddress = function() {
     if ('' != locationDbJSON.address) {
       locationSelectedJSON.address = locationDbJSON.address;
     }
-
-    searchAddress();
-
-    cityChangeEvent();
-    districtChangeEvent();
-    wardChangeEvent();
-    addressInputKeyupEvent();
   };
 
-  var cityChangeEvent = function() {
+  var cityEventListener = function() {
     cityElement.on("change", function (e) {
       var citySelected = searchJsonById(locationStorageJSON, $(this).val());
       locationSelectedJSON.city = citySelected.text;
@@ -68,7 +88,7 @@ var locationModule = (function() {
     });
   };
 
-  var districtChangeEvent = function() {
+  var districtEventListener = function() {
     districtElement.on("change", function (e) {
       var districtSelected = searchJsonById(districtJSON, $(this).val());
       locationSelectedJSON.district = districtSelected.text;
@@ -80,14 +100,14 @@ var locationModule = (function() {
     });
   };
 
-  var wardChangeEvent = function() {
+  var wardEventListener = function() {
     wardElement.on("change", function (e) {
       locationSelectedJSON.ward =  $(this).find('option:selected').text();
       searchAddress();
     });
   };
 
-  var addressInputKeyupEvent = function() {
+  var addressEventListener = function() {
     addressElement.on("keyup", function () {
       locationSelectedJSON.address = $(this).val();
       delay(function(){searchAddress()}, 1000);
@@ -111,79 +131,85 @@ var locationModule = (function() {
 })();
 
 /**
- * Module xử lý cho form thực thi Revealing Module Pattern
+ * Module formModule implement Revealing Module Pattern
  */
 var formModule = (function() {
+  var moneyUnitElement = $('#money_unit');
+  var categoryElement = $('#category');
+  var latElement = $('#lat');
+  var lngElement = $('#lng');
+  var fileImageElement = $('#fileImage');
+  var imageUrl = baseUrl + "/images/uploads/house/";
+
   var init = function() {
-    typeRadio();
-    formSubmit();
+    radioEventListener();
+    formSubmitEventListener();
     imageUpload();
   };
 
-  var formSubmit = function() {
+  var formSubmitEventListener = function() {
     $(document).on('submit', '#houseForm', function (event) {
       var latlng = mapModule.getMapMarker();
 
-      $('#lat').val(latlng.lat());
-      $('#lng').val(latlng.lng());
+      latElement.val(latlng.lat());
+      lngElement.val(latlng.lng());
     });
   };
 
   // Note:Core library file had edit
   var imageUpload = function() {
-    $('#fileImage').filer({
-      limit: 20,
-      maxSize: 2, // MB
-      addMore: true,
-    });
-//  $('#fileImage').filer({
-//    limit: 20,
-//    maxSize: 2, // MB
-//    addMore: true,
-//    //files: [{
-//    //  name: "appended_file.jpg",
-//    //  size: 5453,
-//    //  type: "image/jpg",
-//    //  file: "http://dummyimage.com/158x113/f9f9f9/191a1a.jpg",
-//    //},{
-//    //  name: "appended_file_2.png",
-//    //  size: 9503,
-//    //  type: "image/png",
-//    //  file: "http://dummyimage.com/158x113/f9f9f9/191a1a.png",
-//    //}]
-//  });
+    if ('' == imagesDbJSON) {
+      fileImageElement.filer({
+        limit: 20,
+        maxSize: 2, // MB
+        addMore: true,
+      });
+    } else {
+      var files = [];
+      for(var key in imagesDbJSON) {
+        files.push({
+          "name": imagesDbJSON[key],
+          "type": "image/jpg",
+          "file": imageUrl + imagesDbJSON[key],
+        });
+      }
+
+      fileImageElement.filer({
+        limit: 20,
+        maxSize: 2, // MB
+        addMore: true,
+        files: files,
+        excludeName: null,
+        beforeShow: function(){return true},
+        onSelect: function(){},
+        afterShow: function(){},
+        onRemove: function(e){
+          console.log(e);
+        },
+        onEmpty: function(){},
+      });
+    }
   };
 
-  var typeRadio = function() {
-    $('input:radio[name=type]').on("change", function () {
-      var moneyUnit;
-      var category;
+  var radioEventListener = function() {
+    $("input:radio[name=type]").on("change", function () {
+      var moneyUnit; var category;
 
       switch(this.value) {
         case '1':
-          moneyUnit = moneyUnitSale;
-          category = houseCategorySale;
-          break;
+          moneyUnit = moneyUnitSale; category = houseCategorySale; break;
         case '2':
-          moneyUnit = moneyUnitRent;
-          category = houseCategoryRent;
-          break;
+          moneyUnit = moneyUnitRent; category = houseCategoryRent; break;
       }
 
-      $("#money_unit option:not(:first)").remove();
-      $('#money_unit').select2({
-        minimumResultsForSearch: Infinity,
-        allowClear: true,
-        placeholder: "Đơn vị",
-        data: moneyUnit
+      moneyUnitElement.find("option:not(:first)").remove();
+      moneyUnitElement.select2({
+        minimumResultsForSearch: Infinity, allowClear: true, placeholder: "Đơn vị", data: moneyUnit
       });
 
-      $("#category option:not(:first)").remove();
-      $('#category').select2({
-        minimumResultsForSearch: Infinity,
-        allowClear: true,
-        placeholder: "Loại BĐS",
-        data: category
+      categoryElement.find("option:not(:first)").remove();
+      categoryElement.select2({
+        minimumResultsForSearch: Infinity, allowClear: true, placeholder: "Loại BĐS", data: category
       });
     })
   };
@@ -192,12 +218,6 @@ var formModule = (function() {
     init: init
   };
 })();
-
-$(function() {
-  mapModule.init("form-map-canvas");
-  formModule.init();
-  delay(function(){locationModule.init()}, 1000);
-});
 
 
 

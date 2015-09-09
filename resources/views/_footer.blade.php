@@ -37,6 +37,17 @@
     </ul>
   </li>
   <li class="col-lg-3">
+    <ul>
+      <li class="footer-header">Danh sách hữu ích</li>
+      <li><a href="#"><i class="fa fa-link"></i>Nhà đất bán</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Nhà đất cho thuê</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Dự án</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Thiết kế thi công</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Báo giá thiết kế thi công</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Tuyển dụng</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
+      <li><a href="#"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
+    </ul>
   </li>
 </ul>
 
@@ -47,4 +58,8 @@
     <a class="social-tweet" target="_blank" href="https://twitter.com"></a>
     <a class="social-google" target="_blank" href="https://plus.google.com"></a>
   </div>
+</div>
+
+<div class="scrollToTop">
+  <a href="#" class="well well-sm"><i class="glyphicon glyphicon-chevron-up"></i>Đầu trang</a>
 </div>

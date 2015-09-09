@@ -13,9 +13,6 @@ class UserHelper
                 return asset(config('image.paths.avatar').Auth::user()->avatar);
             }
         }
-
-
-
     }
 
     public static function name()

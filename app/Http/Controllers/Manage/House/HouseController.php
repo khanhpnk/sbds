@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers\Manage\House;
 
-use App\House;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HouseRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
+use App\House;
 
 class HouseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        $houses = House::orderBy('id', 'desc')->paginate(10);
+    protected $width = '';
+    protected $height = '';
+    protected $basepath = '';
+    const QUANLITY = 100;
 
-        return view('manage.house.houses.index', compact('houses'));
+    public function __construct() {
+        $this->width = config('image.sizes.medium.w');
+        $this->height = config('image.sizes.medium.h');
+        $this->basepath = config('image.paths.house');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -42,21 +41,20 @@ class HouseController extends Controller
         $i = 0;
         $data = $request->all();
 
-        foreach ($_FILES['images']['tmp_name'] as $tmpName) {
-            if (!empty($tmpName)) {
-                $image = \Image::make($tmpName);
+        foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+            if (!empty($tmpPath)) {
+                $image = \Image::make($tmpPath);
 
                 $fileName = Auth::user()->id . '.' . date('His.dmY') . ".$i.jpg";
-                $image->fit(config('image.sizes.medium.w'), config('image.sizes.medium.h'))
-                    ->save(public_path(config('image.paths.house').$fileName), 100);
+                $image->fit($this->width, $this->height)
+                      ->save($this->basepath.$fileName, self::QUANLITY);
 
                 $data['images'][$i++] = $fileName;
             }
         }
-
         Auth::user()->houses()->create($data);
 
-        return redirect('m/house')->with('flash_message', 'da tao moi');
+        return redirect('m/management')->with('flash_message', Lang::get('system.store'));
     }
 
     /**
@@ -79,6 +77,7 @@ class HouseController extends Controller
      */
     public function update(HouseRequest $request, House $house)
     {
+        dd($request->all());
         $data = $request->all();
 
         $data['feature'] = isset($data['feature']) ? $data['feature'] : null;
@@ -87,17 +86,5 @@ class HouseController extends Controller
         $house->fill($data)->save();
 
         return redirect('m/house')->with('flash_message', 'da cap nhat');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  House  $house
-     * @return Response
-     */
-    public function destroy(House $house)
-    {
-        $house->delete();
-        return redirect('m/house')->with('flash_message', 'da xoa');
     }
 }

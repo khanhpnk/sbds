@@ -17,13 +17,10 @@ Route::get('house', 'House\HouseController@index');
 // Authentication with social
 Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
-Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function()
-{
-    Route::group(['namespace' => 'House'], function()
-    {
-        Route::resource('house', 'HouseController', [
-            'only' => ['index', 'create', 'store', 'edit', 'update']
-        ]);
+Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function() {
+    Route::group(['namespace' => 'House'], function() {
+        Route::resource('management', 'ManagementController', ['only' => ['index']]);
+        Route::resource('house', 'HouseController', ['only' => ['create', 'store', 'update', 'edit']]);
     });
 
     // Change profile

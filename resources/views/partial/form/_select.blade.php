@@ -1,5 +1,5 @@
 <div class="form-group">
-  <label class="sr-only">{{ $label }}</label>
+  <label class="sr-only" for="{{ $name }}">{{ $label }}</label>
   <select id="{{ $name }}" name="{{ $name }}" class="form-control" lang="vi" style="width: 100%" autocomplete="off">
     <option value="">{{ $label }}</option>
     @foreach ($options as $key => $val)

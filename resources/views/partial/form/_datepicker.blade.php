@@ -1,6 +1,6 @@
 <div class="form-group">
-  <label class="sr-only">{{ $label }}</label>
-  <input type="text" name="{{ $name }}" id="{{ $name }}" data-value="{{ $house->$name or '' }}" value="" class="form-control" placeholder="{{ $label }}">
+  <label class="sr-only" for="{{ $name }}">{{ $label }}</label>
+  <input type="text" name="{{ $name }}" id="{{ $name }}" data-value="{{ $house->$name or '' }}" class="form-control" placeholder="{{ $label }}">
 </div>
 
 <script>

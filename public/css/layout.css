@@ -1,6 +1,7 @@
 /*********** *********** *********** BASIC *********** *********** ***********/
 html, body {
-  height: 100%; /* need by map */
+  height: 100%; /* need if used map by percent */
+  padding-top: 28px;
 }
 a { color: #333; }
 a:hover,
@@ -11,6 +12,13 @@ a:focus{
 }
 i {
   padding-right: 4px;
+}
+/* SCROLL TO TOP */
+.scrollToTop {
+  position: fixed;
+  bottom: 70px;
+  right: 0;
+  display: none;
 }
 /* BUTTON */
 .btn {

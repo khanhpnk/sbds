@@ -1,17 +1,21 @@
 /**
- * Module xử lý cho map thực thi Revealing Module Pattern
+ * Module mapModule implement Revealing Module Pattern
  */
 var mapModule = (function() {
   var map;
   var markerManage = []; // Manage all makers
+  var HANOI = new google.maps.LatLng(21.0277644, 105.83415979999995);
 
   var init = function(id) {
-    var HANOI = new google.maps.LatLng(21.0277644, 105.83415979999995);
-
     google.maps.event.addDomListener(window, "load", function() {
       map = new google.maps.Map(document.getElementById(id), {
         zoom: 15,
-        center: HANOI
+        center: HANOI,
+        scrollwheel: false
+      });
+
+      map.addListener("click", function() {
+        map.set("scrollwheel", true);
       });
 
       // Responsive map
