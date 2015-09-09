@@ -40,9 +40,10 @@ class HouseController extends Controller
     {
         $i = 0;
         $data = $request->all();
-
+        $data['images'] = '';
         foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
             if (!empty($tmpPath)) {
+                var_dump($tmpPath);
                 $image = \Image::make($tmpPath);
 
                 $fileName = Auth::user()->id . '.' . date('His.dmY') . ".$i.jpg";

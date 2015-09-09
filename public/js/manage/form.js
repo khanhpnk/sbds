@@ -175,7 +175,7 @@ var formModule = (function() {
       }
 
       fileImageElement.filer({
-        limit: 20,
+        limit: 4,
         maxSize: 2, // MB
         addMore: true,
         files: files,

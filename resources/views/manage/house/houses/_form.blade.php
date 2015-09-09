@@ -21,8 +21,11 @@
       city: "{{ $house->city or '' }}"
     };
 
+    var imagesDbJSON = "";
+    @if (isset($house->images))
+      imagesDbJSON = {!! json_encode($house->images) !!};
+    @endif
 
-    var imagesDbJSON = {!! isset($house->images) ? json_encode($house->images) : '' !!};
   </script>
 @stop
 
