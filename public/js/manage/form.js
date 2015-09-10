@@ -139,7 +139,12 @@ var formModule = (function() {
   var latElement = $('#lat');
   var lngElement = $('#lng');
   var fileImageElement = $('#fileImage');
+  var filesDeletedElement = $('#files_deleted');
   var imageUrl = baseUrl + "/images/uploads/house/";
+  var UPLOAD_FILE_LIMIT = 20;
+  var UPLOAD_FILE_MAX_SIZE = 2; // MB
+  var filesDeleted = [];
+
 
   var init = function() {
     radioEventListener();
@@ -153,46 +158,33 @@ var formModule = (function() {
 
       latElement.val(latlng.lat());
       lngElement.val(latlng.lng());
+      filesDeletedElement.val(JSON.stringify(filesDeleted));
     });
   };
 
-  // Note:Core library file had edit
+  // Note: Core library file had edit
   var imageUpload = function() {
     if ('' == imagesDbJSON) {
-      fileImageElement.filer({
-        limit: 20,
-        maxSize: 2, // MB
-        addMore: true,
-      });
+      fileImageElement.filer({limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE, addMore: true});
     } else {
       var files = [];
       for(var key in imagesDbJSON) {
-        files.push({
-          "name": imagesDbJSON[key],
-          "type": "image/jpg",
-          "file": imageUrl + imagesDbJSON[key],
-        });
+        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl + imagesDbJSON[key]});
       }
 
       fileImageElement.filer({
-        limit: 4,
-        maxSize: 2, // MB
-        addMore: true,
-        files: files,
+        limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE,
+        addMore: true, files: files,
         excludeName: null,
-        beforeShow: function(){return true},
-        onSelect: function(){},
-        afterShow: function(){},
-        onRemove: function(e){
-          console.log(e);
-        },
-        onEmpty: function(){},
+        onRemove: function(itemEl, file, id, listEl, boxEl, newInputEl, inputEl) {
+          filesDeleted.push(file.name);
+        }
       });
     }
   };
 
   var radioEventListener = function() {
-    $("input:radio[name=type]").on("change", function () {
+    $("input:radio[name=is_sale]").on("change", function () {
       var moneyUnit; var category;
 
       switch(this.value) {

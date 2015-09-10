@@ -1,11 +1,3 @@
-@section('meta_title')
-  Chính chủ đăng tin
-@stop
-
-@section('title')
-  Chính chủ đăng tin
-@stop
-
 @section('jshead')
   @parent
   <script>
@@ -25,7 +17,6 @@
     @if (isset($house->images))
       imagesDbJSON = {!! json_encode($house->images) !!};
     @endif
-
   </script>
 @stop
 
@@ -57,10 +48,12 @@
           city: {required: true},
           district: {required: true},
           ward: {required: true},
+          address: {required: true},
           youtube: {url: true},
           description: {rangelength: [8, 2000], required: true},
           m2: {digits: true, maxlength: 16},
           road: {maxlength: 64},
+          "feature[]": {required: true},
         },
         messages: {
           title: {
@@ -69,6 +62,7 @@
             remote: jQuery.validator.format("Tiêu đề với nội dung {0} là đã được sử dụng")
           },
           price: "Bạn cần nhập giá tiền.",
+          "feature[]": "Bạn cần chọn ít nhất một giá trị.",
         },
         highlight: function(element) {
           $(element).closest('.form-group').addClass('has-error');
@@ -79,7 +73,7 @@
         errorElement: 'span',
         errorClass: 'help-block',
         errorPlacement: function(error, element) {
-          if (element.is("select")) {
+          if (element.is("select") || element.is(":checkbox")) {
             error.appendTo(element.closest('.form-group'));
           } else {
             error.insertAfter(element);
@@ -95,13 +89,13 @@
   @include('partial.form._text', ['name' => 'title', 'label' => 'Tiêu đề'])
   <div class="row">
     <div class="col-md-1">
-      @include('partial.form._radio', ['name' => 'type',
+      @include('partial.form._radio', ['name' => 'is_sale',
                                             'label' => 'Bán',
                                             'checked' => !isset($house) || (isset($house) && 1 == $house->type) ? true : false,
                                             'value' => 1])
     </div>
     <div class="col-md-3">
-      @include('partial.form._radio', ['name' => 'type',
+      @include('partial.form._radio', ['name' => 'is_sale',
                                        'label' => 'Cho thuê',
                                        'checked' => (isset($house) && 2 == $house->type) ? true : false,
                                        'value' => 2])
@@ -155,11 +149,18 @@
   @include('partial.form._text', ['name' => 'address', 'label' => 'Địa chỉ cụ thể'])
 
   <div id="form-map-canvas" style="height: 400px; width: 100%;"></div>
+  <span id="helpBlock" class="help-block">
+    *Trong trường hợp kết quả tìm kiếm không chính xác, nhấn chuột vào biểu tượng và di chuyển đến vị trí nhà đất của bạn.
+  </span>
   <input type="hidden" id="lat" name="lat">
   <input type="hidden" id="lng" name="lng">
 
-  <a class="btn btn-main" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
+  <a class="btn btn-main" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
+  <input type="hidden" id="files_deleted" name="files_deleted">
   @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube'])
+  <span id="helpBlock" class="help-block">
+    *Xem thêm hướng dẫn cách đưa video lên youtube
+  </span>
   @include('partial.form._textarea', ['name' => 'description', 'label' => 'Mô tả ngắn ngọn BĐS', 'rows' => 8])
 </section>
 
@@ -219,7 +220,7 @@
 
 <section>
   <header><h2 class="form-title">Tính năng</h2></header>
-  <div class="row">
+  <div class="row form-group">
     @for ($i = 0; $i < count(HouseFeatureOption::getOptions());  $i++)
       @if (0 == $i % 6) <div class="col-md-3"> @endif
         @include('partial.form._checbox', ['name' => 'feature[]',

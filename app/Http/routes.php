@@ -13,14 +13,16 @@
 
 /*********** *********** FRONTEND *********** ***********/
 Route::get('/', 'HomeController@index');
-Route::get('house', 'House\HouseController@index');
-// Authentication with social
-Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
+//Route::get('house', 'House\HouseController@index');
+//// Authentication with social
+//Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function() {
     Route::group(['namespace' => 'House'], function() {
         Route::resource('management', 'ManagementController', ['only' => ['index']]);
-        Route::resource('house', 'HouseController', ['only' => ['create', 'store', 'update', 'edit']]);
+        Route::resource('owner', 'OwnerController', ['only' => ['create', 'store', 'update', 'edit']]);
+        Route::resource('agency', 'AgencyController', ['only' => ['create', 'store', 'update', 'edit']]);
+        Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
     });
 
     // Change profile

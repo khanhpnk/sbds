@@ -52,10 +52,10 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
-            <li><a href="{{ route('m.house.create') }}" class="navbar-link"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
-            <li><a href="#" class="navbar-link">Môi giới đăng tin</a></li>
-            <li><a href="#" class="navbar-link">Dự án đăng tin</a></li>
-            <li><a href="#" class="navbar-link">Quản lý tin đã đăng</a></li>
+            <li><a href="{{ route('m.owner.create') }}" class="navbar-link"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
+            <li><a href="{{ route('m.agency.create') }}" class="navbar-link"><i class="fa fa-balance-scale"></i>Môi giới đăng tin</a></li>
+            <li><a href="{{ route('m.project.create') }}" class="navbar-link"><i class="fa fa-bank"></i>Dự án đăng tin</a></li>
+            <li><a href="{{ route('m.management.index') }}" class="navbar-link"><i class="fa fa-inbox"></i>Quản lý tin đã đăng</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#" class="navbar-link">Quản lý tài khoản</a></li>
             <li><a href="#" class="navbar-link">Đổi mật khẩu</a></li>

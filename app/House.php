@@ -12,6 +12,7 @@ class House extends Model
      * @var array
      */
     protected $fillable = [
+        'is_owner',
         'title',
         'type',
         'price',
