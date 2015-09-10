@@ -39,7 +39,7 @@
 
       // just for the demos, avoids form submit
       //jQuery.validator.setDefaults({debug: true, success: "valid"});
-      $('form').validate({
+      $('#houseForm').validate({
         rules: {
           title: {rangelength: [8, 64], required: true, remote: "house.action"}, // thingking
           price: {maxlength: 16, digits: true, required: true},　// thingking

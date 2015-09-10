@@ -33,6 +33,9 @@ var scrollModule = (function () {
 		init: init
 	};
 })();
+
+
+
 /*********** *********** Authentication *********** ***********/
 $(function () {
 	$('#loginForm').submit(function (event) {

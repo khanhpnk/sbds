@@ -15,6 +15,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('company_id')->unsigned();
             $table->boolean('is_owner');            // 1,2
             $table->string('title');
             $table->boolean('is_sale');            // 1,2
