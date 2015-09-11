@@ -23,6 +23,10 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
         Route::resource('owner', 'OwnerController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::resource('agency', 'AgencyController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
+
+        Route::post('company/store', ['uses' => 'CompanyController@store', 'as' => 'company.store']);
+        Route::post('company/update', ['uses' => 'CompanyController@update', 'as' => 'company.update']);
+        Route::get('company/unique', ['uses' => 'CompanyController@unique', 'as' => 'company.unique']);
     });
 
     // Change profile

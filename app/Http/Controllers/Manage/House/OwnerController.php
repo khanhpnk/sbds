@@ -1,13 +1,16 @@
 <?php
 namespace App\Http\Controllers\Manage\House;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\HouseRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\House;
 
-class OwnerController extends BaseController
+class OwnerController extends Controller
 {
+    const QUANLITY = 100;
+
     /**
      * Show the form for creating a new resource.
      *
@@ -70,5 +73,30 @@ class OwnerController extends BaseController
         $house->fill($data)->save();
 
         return redirect('m/management')->with('flash_message', Lang::get('system.update'));
+    }
+
+    /**
+     * Note: Passing by Reference
+     * @param array $data
+     */
+    protected function uploadImage(&$data)
+    {
+        $width = config('image.sizes.medium.w');
+        $height = config('image.sizes.medium.h');
+        $basepath = config('image.paths.house');
+        $userId = Auth::user()->id;
+        $now = date('His.dmY');
+        $i = 0;
+
+        foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+            if (!empty($tmpPath)) {
+                $image = \Image::make($tmpPath);
+                $fileName = $userId . '.' . $now . '.' . $i++ . '.jpg';
+                $image->fit($width, $height)
+                    ->save($basepath.$fileName, self::QUANLITY);
+
+                array_push($data['images'], $fileName);
+            }
+        }
     }
 }

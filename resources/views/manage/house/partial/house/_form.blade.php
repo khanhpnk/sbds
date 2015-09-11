@@ -22,66 +22,7 @@
 
 @section('javascript')
   @parent
-  <script>
-    $(function() {
-      $.mockjax({
-        url: "house.action",
-        response: function(settings) {
-          var house = settings.data.title,
-              houses = ["12345678", "aaaaaaaa"];
-          this.responseText = "true";
-          if ($.inArray(house, houses) !== -1) {
-            this.responseText = "false";
-          }
-        },
-        responseTime: 500
-      });
-
-      // just for the demos, avoids form submit
-      //jQuery.validator.setDefaults({debug: true, success: "valid"});
-      $('#houseForm').validate({
-        rules: {
-          title: {rangelength: [8, 64], required: true, remote: "house.action"}, // thingking
-          price: {maxlength: 16, digits: true, required: true},　// thingking
-          money_unit: {required: true},
-          category: {required: true},
-          city: {required: true},
-          district: {required: true},
-          ward: {required: true},
-          address: {required: true},
-          youtube: {url: true},
-          description: {rangelength: [8, 2000], required: true},
-          m2: {digits: true, maxlength: 16},
-          road: {maxlength: 64},
-          "feature[]": {required: true},
-        },
-        messages: {
-          title: {
-            required: "Bạn cần nhập tiêu đề.",
-            minlength: jQuery.validator.format("Bạn cần nhập ít nhất {0} ký tự"),
-            remote: jQuery.validator.format("Tiêu đề với nội dung {0} là đã được sử dụng")
-          },
-          price: "Bạn cần nhập giá tiền.",
-          "feature[]": "Bạn cần chọn ít nhất một giá trị.",
-        },
-        highlight: function(element) {
-          $(element).closest('.form-group').addClass('has-error');
-        },
-        unhighlight: function(element) {
-          $(element).closest('.form-group').removeClass('has-error');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function(error, element) {
-          if (element.is("select") || element.is(":checkbox")) {
-            error.appendTo(element.closest('.form-group'));
-          } else {
-            error.insertAfter(element);
-          }
-        }
-      });
-    });
-  </script>
+  <script src="{{ asset('js/manage/house.js') }}"></script>
 @stop
 
 {!! csrf_field() !!}
