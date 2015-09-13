@@ -8,35 +8,19 @@
   Môi giới đăng tin
 @stop
 
-@section('javascript')
-  @parent
-  <script>
-    $(function() {
-      @if (1 == count($company))
-        companyModule.setId({{ $company->id }});
-      @endif
-      companyModule.setUrl("{{ route('company.unique') }}");
-      companyModule.init();
-    });
-  </script>
-  <script src="{{ asset('js/manage/company.js') }}"></script>
-@stop
-
 @section('content')
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
-            Giới thiệu về công ty môi giới ({{ (0 == count($company)) ? 'Tạo mới' : 'Chỉnh sửa' }})
+            Giới thiệu về công ty môi giới
         </a></h4>
       </div>
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          @if (0 == count($company))
-            @include('manage.house.partial.company._form', ['url' => route('company.store'), 'submitBtnText' => 'Tạo mới công ty ngay để đăng tin'])
-          @else
-            @include('manage.house.partial.company._form', ['url' => route('company.update'), 'submitBtnText' => 'Đồng ý'])
-          @endif
+          <form accept-charset="UTF-8" action="{{ route('company.save') }}" role="form" id="companyForm">
+            @include('manage.house.partial.company._form')
+          </form>
         </div>
       </div>
     </div>

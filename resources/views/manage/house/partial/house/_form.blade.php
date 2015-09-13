@@ -1,27 +1,34 @@
-@section('jshead')
-  @parent
-  <script>
-    var moneyUnitSale     = {!! MoneyUnitSaleOption::getJsonOptions() !!};
-    var moneyUnitRent     = {!! MoneyUnitRentOption::getJsonOptions() !!};
-    var houseCategorySale = {!! HouseCategorySaleOption::getJsonOptions() !!};
-    var houseCategoryRent = {!! HouseCategoryRentOption::getJsonOptions() !!};
-
-    var locationDbJSON = {
-      address: "{!! $house->address or '' !!}",
-      ward: "{{ $house->ward or '' }}",
-      district: "{{ $house->district or '' }}",
-      city: "{{ $house->city or '' }}"
-    };
-
-    var imagesDbJSON = "";
-    @if (isset($house->images))
-      imagesDbJSON = {!! json_encode($house->images) !!};
-    @endif
-  </script>
-@stop
-
 @section('javascript')
   @parent
+  <script>
+    $(function() {
+      @if (!isset($house))
+        houseModule.setCheckUniqueUrl("{{ route('owner.unique') }}");
+      @else
+        houseModule.setCheckUniqueUrl("{{ route('owner.unique', ['id' => $house->id]) }}");
+      @endif
+
+      @if (isset($house->images))
+        houseModule.setImagesDbJSON({!! json_encode($house->images) !!});
+      @endif
+
+			houseModule.setMoneyUnitSale({!! MoneyUnitSaleOption::getJsonOptions() !!});
+      houseModule.setMoneyUnitRent({!! MoneyUnitRentOption::getJsonOptions() !!});
+      houseModule.setMoneyCategorySale({!! HouseCategorySaleOption::getJsonOptions() !!});
+      houseModule.setMoneyCategoryRent({!! HouseCategoryRentOption::getJsonOptions() !!});
+
+      houseModule.init();
+      mapModule.init("form-map-canvas");
+
+      locationModule.setLocationDbJSON({
+        address: "{!! $house->address or '' !!}",
+        ward: "{{ $house->ward or '' }}",
+        district: "{{ $house->district or '' }}",
+        city: "{{ $house->city or '' }}"
+      });
+      delay(function(){locationModule.init()}, 1000);
+      });
+  </script>
   <script src="{{ asset('js/manage/house.js') }}"></script>
 @stop
 
@@ -31,9 +38,9 @@
   <div class="row">
     <div class="col-md-1">
       @include('partial.form._radio', ['name' => 'is_sale',
-                                            'label' => 'Bán',
-                                            'checked' => !isset($house) || (isset($house) && 1 == $house->type) ? true : false,
-                                            'value' => 1])
+                                       'label' => 'Bán',
+                                       'checked' => !isset($house) || (isset($house) && 1 == $house->type) ? true : false,
+                                       'value' => 1])
     </div>
     <div class="col-md-3">
       @include('partial.form._radio', ['name' => 'is_sale',

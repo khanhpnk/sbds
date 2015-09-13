@@ -19,14 +19,17 @@ Route::get('/', 'HomeController@index');
 /*********** *********** MANAGE *********** ***********/
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function() {
     Route::group(['namespace' => 'House'], function() {
-        Route::resource('management', 'ManagementController', ['only' => ['index']]);
         Route::resource('owner', 'OwnerController', ['only' => ['create', 'store', 'update', 'edit']]);
-        Route::resource('agency', 'AgencyController', ['only' => ['create', 'store', 'update', 'edit']]);
-        Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
+        Route::get('owner/unique/{id?}', ['uses' => 'OwnerController@unique', 'as' => 'owner.unique']);
 
-        Route::post('company/store', ['uses' => 'CompanyController@store', 'as' => 'company.store']);
-        Route::post('company/update', ['uses' => 'CompanyController@update', 'as' => 'company.update']);
-        Route::get('company/unique', ['uses' => 'CompanyController@unique', 'as' => 'company.unique']);
+        Route::resource('agency', 'AgencyController', ['only' => ['create', 'store', 'update', 'edit']]);
+        Route::post('company/save', ['uses' => 'CompanyController@store', 'as' => 'company.save']);
+        Route::put('company/save', ['uses' => 'CompanyController@update', 'as' => 'company.save']);
+        Route::get('company/unique/{id?}', ['uses' => 'CompanyController@unique', 'as' => 'company.unique']);
+
+        Route::resource('management', 'ManagementController', ['only' => ['index']]);
+
+        Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
     });
 
     // Change profile

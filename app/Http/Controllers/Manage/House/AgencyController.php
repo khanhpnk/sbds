@@ -47,7 +47,8 @@ class AgencyController extends Controller
 	 */
 	public function edit(House $house)
 	{
-		return view('manage.house.agencies.edit', compact('house'));
+		$company = Auth::user()->company()->first();
+		return view('manage.house.agencies.edit', compact('house', 'company'));
 	}
 
 	/**
@@ -98,6 +99,25 @@ class AgencyController extends Controller
 					->save($basepath.$fileName, self::QUANLITY);
 
 				array_push($data['images'], $fileName);
+			}
+		}
+	}
+
+	/**
+	 * Check Unique Url
+	 *
+	 * @param Request $request
+	 * @return string Jquery Validation plugin only expect returns value string true or false
+	 */
+	public function unique(Request $request, $id = null)
+	{
+		if ($request->ajax()) {
+			$title = $request->input('title');
+
+			if (is_null($id)) {
+				return (0 == House::where('title', $title)->count()) ? 'true' : 'false';
+			} else {
+				return (0 == House::where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
 			}
 		}
 	}

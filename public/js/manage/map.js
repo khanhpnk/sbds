@@ -28,6 +28,13 @@ var mapModule = (function() {
   };
 
   /**
+   * Solve problem with google map inside of a hidden div
+   */
+  var resize = function() {
+    google.maps.event.trigger(map, 'resize');
+  };
+
+  /**
    * Add one markers for map
    */
   var addMapMarker = function(pos) {
@@ -75,5 +82,6 @@ var mapModule = (function() {
     init: init,
     searchAddress: searchAddress,
     getMapMarker: getMapMarker,
+    resize: resize
   };
 })();

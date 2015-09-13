@@ -63,4 +63,14 @@ class House extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * Scope a query to only house of a given type is owner or not.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsOwner($query, $value)
+    {
+        return $query->where('is_owner', $value);
+    }
 }

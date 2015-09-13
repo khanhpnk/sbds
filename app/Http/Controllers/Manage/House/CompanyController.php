@@ -16,7 +16,7 @@ class CompanyController extends Controller
 	 * Store a newly created resource in storage.
 	 *
 	 * @param  CompanyRequest $request
-	 * @return Response
+	 * @return JsonResponse
 	 */
 	public function store(CompanyRequest $request)
 	{
@@ -31,10 +31,9 @@ class CompanyController extends Controller
 	 * Update the specified resource in storage.
 	 *
 	 * @param  CompanyRequest  $request
-	 * @param  House  $house
-	 * @return Response
+	 * @return JsonResponse
 	 */
-	public function update(CompanyRequest $request, Company $company)
+	public function update(CompanyRequest $request)
 	{
 		if ($request->ajax()) {
 			Auth::user()->company()->update($request->all());
@@ -49,13 +48,12 @@ class CompanyController extends Controller
 	 * @param Request $request
 	 * @return string Jquery Validation plugin only expect returns value string true or false
 	 */
-	public function unique(Request $request)
+	public function unique(Request $request, $id = null)
 	{
 		if ($request->ajax()) {
 			$title = $request->input('title');
-			$id = $request->input('id');
 
-			if (0 == $id) {
+			if (is_null($id)) {
 				return (0 == Company::where('title', $title)->count()) ? 'true' : 'false';
 			} else {
 				return (0 == Company::where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';

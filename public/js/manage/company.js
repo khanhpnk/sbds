@@ -1,16 +1,18 @@
 /**
- * Module locationModule implement Revealing Module Pattern
+ * Module companyModule implement Revealing Module Pattern
  */
 var companyModule = (function() {
   var companyForm = $('#companyForm');
   var companyColapse = $('#collapseOne');
   var houseColapse = $('#collapseTwo');
   var checkUniqueUrl = "";
-  var id = 0; // if is new resource => id is 0, else => id is id of resource
+  var baseUpdateUrl = "";
+  var isEdit = false; // new resource is false, else true
 
   var init = function() {
-    // default in css config display house form, change to display company form if is still has not been added
-    if (0 != id) {
+    // by default in css config display house form, change to display company form
+    // is new company
+    if (false == isEdit) {
       companyColapse.collapse('show');
       houseColapse.collapse('hide');
     }
@@ -19,12 +21,12 @@ var companyModule = (function() {
     formEventListener();
   };
 
-  var setUrl = function(url) {
+  var setCheckUniqueUrl = function(url) {
     checkUniqueUrl = url;
   };
 
-  var setId = function(val) {
-    id = val;
+  var setIsEdit = function(val) {
+    isEdit = val;
   };
 
   var accordionEventListener = function(val) {
@@ -36,16 +38,7 @@ var companyModule = (function() {
   var formEventListener = function() {
     companyForm.validate({
       rules: {
-        title: {
-          rangelength: [8, 50],
-          required: true,
-          remote: {
-            url: checkUniqueUrl,
-            data: {
-              id: function() {return id;}
-            }
-          }
-        },
+        title: {rangelength: [8, 50], required: true, remote: checkUniqueUrl},
         short_description: {rangelength: [8, 1000], required: true},
         description: {rangelength: [8, 2000], required: true},
       },
@@ -66,13 +59,16 @@ var companyModule = (function() {
 
         $.ajax({
           url: $(form).attr("action"),
-          type: $(form).attr("method"),
+          type: isEdit ? "PUT" : "POST",
           dataType: "json",
           data: $(form).serialize()
         }).done(function (data) {
+          isEdit = true;
           companyColapse.collapse('hide');
           houseColapse.collapse('show');
           submitBtn.button('reset');
+
+          mapModule.resize();
         });
       }
     });
@@ -80,8 +76,8 @@ var companyModule = (function() {
 
   return {
     init: init,
-    setUrl: setUrl,
-    setId: setId
+    setCheckUniqueUrl: setCheckUniqueUrl,
+    setIsEdit: setIsEdit
   };
 })();
 

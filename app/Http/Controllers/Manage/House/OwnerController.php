@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Manage\House;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HouseRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\House;
@@ -96,6 +97,26 @@ class OwnerController extends Controller
                     ->save($basepath.$fileName, self::QUANLITY);
 
                 array_push($data['images'], $fileName);
+            }
+        }
+    }
+
+
+    /**
+     * Check Unique Url
+     *
+     * @param Request $request
+     * @return string Jquery Validation plugin only expect returns value string true or false
+     */
+    public function unique(Request $request, $id = null)
+    {
+        if ($request->ajax()) {
+            $title = $request->input('title');
+
+            if (is_null($id)) {
+                return (0 == House::isOwner(1)->where('title', $title)->count()) ? 'true' : 'false';
+            } else {
+                return (0 == House::isOwner(1)->where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
             }
         }
     }
