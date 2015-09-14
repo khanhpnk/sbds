@@ -21,6 +21,7 @@ return array(
 	'paths' => [
 		'avatar' => 'images/uploads/avatar/',
 		'house' => public_path('images/uploads/house/'),
+        'project' => public_path('images/uploads/project/'),
 	],
 
 	'sizes' => [

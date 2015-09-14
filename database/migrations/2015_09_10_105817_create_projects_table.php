@@ -19,10 +19,9 @@ class CreateProjectsTable extends Migration
             $table->text('description');
             $table->text('schedule');
             $table->text('location');
-            $table->string('project');
             $table->tinyInteger('category');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->tinyInteger('city');
             $table->tinyInteger('district');
             $table->tinyInteger('ward');

@@ -132,51 +132,28 @@ var locationModule = (function() {
 })();
 
 /**
- * Module houseModule implement Revealing Module Pattern
+ * Module projectModule implement Revealing Module Pattern
  */
-var houseModule = (function() {
-  var houseForm = $('#houseForm');
-  var moneyUnitSelect = $('#money_unit');
-  var categorySelect = $('#category');
+var projectModule = (function() {
+  var projectForm = $('#projectForm');
   var fileImageInput = $('#fileImage');
   var latInput = $('#lat');
   var lngInput = $('#lng');
   var filesDeletedHiddenInput = $('#files_deleted');
   var filesDeleted = [];
   var imagesDbJSON = "";
-  var imageUrl = baseUrl + "/images/uploads/house/";
+  var imageUrl = baseUrl + "/images/uploads/project/";
   var UPLOAD_FILE_LIMIT = 20;
   var UPLOAD_FILE_MAX_SIZE = 2; // MB
   var checkUniqueUrl = "";
-  var moneyUnitSale = [];
-  var moneyUnitRent = [];
-  var houseCategorySale = [];
-  var houseCategoryRent = [];
 
   var init = function() {
-    radioEventListener();
     imageUploadEventListener();
     formEventListener();
   };
 
   var setCheckUniqueUrl = function(url) {
     checkUniqueUrl = url;
-  };
-
-  var setMoneyUnitSale = function(val) {
-    moneyUnitSale = val;
-  };
-
-  var setMoneyUnitRent = function(val) {
-    moneyUnitRent = val;
-  };
-
-  var setMoneyCategorySale = function(val) {
-    houseCategorySale = val;
-  };
-
-  var setMoneyCategoryRent = function(val) {
-    houseCategoryRent = val;
   };
 
   var setImagesDbJSON = function(val) {
@@ -204,48 +181,20 @@ var houseModule = (function() {
     }
   };
 
-  var radioEventListener = function() {
-    $("input:radio[name=is_sale]").on("change", function () {
-      var moneyUnit; var category;
-
-      switch(this.value) {
-        case '1':
-          moneyUnit = moneyUnitSale; category = houseCategorySale; break;
-        case '2':
-          moneyUnit = moneyUnitRent; category = houseCategoryRent; break;
-      }
-
-      moneyUnitSelect.find("option:not(:first)").remove();
-      moneyUnitSelect.select2({
-        minimumResultsForSearch: Infinity, allowClear: true, placeholder: "Đơn vị", data: moneyUnit
-      });
-
-      categorySelect.find("option:not(:first)").remove();
-      categorySelect.select2({
-        minimumResultsForSearch: Infinity, allowClear: true, placeholder: "Loại BĐS", data: category
-      });
-    })
-  };
-
   var formEventListener = function() {
-    houseForm.validate({
+    projectForm.validate({
       rules: {
         title: {rangelength: [8, 64], required: true, remote: checkUniqueUrl},
-        price: {maxlength: 16, digits: true, required: true},
-        money_unit: {required: true},
+        description: {rangelength: [8, 2000], required: true},
+        schedule: {rangelength: [8, 2000], required: true},
+        location: {rangelength: [8, 2000], required: true},
         category: {required: true},
         city: {required: true},
         district: {required: true},
         ward: {required: true},
         address: {required: true},
         youtube: {url: true},
-        description: {rangelength: [8, 2000], required: true},
-        m2: {digits: true, maxlength: 16},
-        road: {maxlength: 64},
-        "feature[]": {required: true},
-      },
-      messages: {
-        "feature[]": "Bạn cần chọn ít nhất một giá trị.",
+
       },
       highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');
@@ -264,7 +213,7 @@ var houseModule = (function() {
       }
     });
 
-    $(document).on('submit', '#houseForm', function (event) {
+    $(document).on('submit', '#projectForm', function (event) {
       var latlng = mapModule.getMapMarker();
 
       latInput.val(latlng.lat());
@@ -276,10 +225,6 @@ var houseModule = (function() {
   return {
     init: init,
     setCheckUniqueUrl: setCheckUniqueUrl,
-    setMoneyUnitSale: setMoneyUnitSale,
-    setMoneyUnitRent: setMoneyUnitRent,
-    setMoneyCategorySale: setMoneyCategorySale,
-    setMoneyCategoryRent: setMoneyCategoryRent,
     setImagesDbJSON: setImagesDbJSON
   };
 })();

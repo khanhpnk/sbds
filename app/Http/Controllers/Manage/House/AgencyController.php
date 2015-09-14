@@ -2,8 +2,8 @@
 namespace App\Http\Controllers\Manage\House;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompanyRequest;
 use App\Http\Requests\HouseRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\House;
@@ -20,7 +20,8 @@ class AgencyController extends Controller
 	public function create()
 	{
 		$company = Auth::user()->company()->first();
-		return view('manage.house.agencies.create', compact('company'));
+		$house = null;
+		return view('manage.house.agencies.create', compact('company', 'house'));
 	}
 
 	/**
@@ -115,9 +116,9 @@ class AgencyController extends Controller
 			$title = $request->input('title');
 
 			if (is_null($id)) {
-				return (0 == House::where('title', $title)->count()) ? 'true' : 'false';
+				return (0 == House::isOwner(2)->where('title', $title)->count()) ? 'true' : 'false';
 			} else {
-				return (0 == House::where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
+				return (0 == House::isOwner(2)->where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
 			}
 		}
 	}

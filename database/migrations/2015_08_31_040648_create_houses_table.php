@@ -15,15 +15,14 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('company_id')->unsigned();
             $table->boolean('is_owner');            // 1,2
             $table->string('title');
             $table->boolean('is_sale');            // 1,2
             $table->bigInteger('price');
             $table->tinyInteger('money_unit');
             $table->tinyInteger('category');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->tinyInteger('city');
             $table->tinyInteger('district');
             $table->tinyInteger('ward');

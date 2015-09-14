@@ -14,7 +14,7 @@ class House extends Model
     protected $fillable = [
         'is_owner',
         'title',
-        'type',
+        'is_sale',
         'price',
         'money_unit',
         'category',
@@ -53,16 +53,6 @@ class House extends Model
         'feature' => 'array',
         'images' => 'array',
     ];
-
-    /**
-     * User 1-n House
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 
     /**
      * Scope a query to only house of a given type is owner or not.

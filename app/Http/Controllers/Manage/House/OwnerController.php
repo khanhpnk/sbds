@@ -19,7 +19,8 @@ class OwnerController extends Controller
      */
     public function create()
     {
-        return view('manage.house.owner.create');
+        $house = null;
+        return view('manage.house.owner.create', compact('house'));
     }
 
     /**

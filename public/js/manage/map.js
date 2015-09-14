@@ -37,16 +37,17 @@ var mapModule = (function() {
   /**
    * Add one markers for map
    */
-  var addMapMarker = function(pos) {
+  var addMapMarker = function(lat, lng) {
     clearAllMapMarkers();
 
+    var latlng = new google.maps.LatLng(lat, lng);
     var marker = new google.maps.Marker({
       map: map,
-      position: new google.maps.LatLng(pos.lat(), pos.lng()),
+      position: latlng,
       draggable: true,
       animation: google.maps.Animation.DROP,
     });
-    map.setCenter(pos);
+    map.setCenter(latlng);
 
     markerManage.push(marker);
   };
@@ -70,9 +71,10 @@ var mapModule = (function() {
       var geocoder = new google.maps.Geocoder();
       geocoder.geocode({address: value}, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          addMapMarker(results[0].geometry.location);
+          var pos = results[0].geometry.location;
+          addMapMarker(pos.lat(), pos.lng());
         } else {
-          alert("Không tìm thấy địa chỉ tương ứng trên bản đồ!");
+          return false; // not found
         }
       });
     }
@@ -82,6 +84,7 @@ var mapModule = (function() {
     init: init,
     searchAddress: searchAddress,
     getMapMarker: getMapMarker,
-    resize: resize
+    resize: resize,
+    addMapMarker: addMapMarker
   };
 })();

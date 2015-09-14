@@ -11,6 +11,9 @@
 @section('content')
   <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('m.owner.update', ['id' => $house->id]) }}" method="POST" role="form" id="houseForm">
     <input type="hidden" name="_method" value="PUT">
-    @include('manage.house.partial.house._form', ['submitBtnText' => 'Cập nhật thay đổi'])
+    @include('manage.house.partial.house._form', [
+      'submitBtnText' => 'Cập nhật thay đổi',
+      'checkUniqueUrl' => route('owner.unique', ['id' => $house->id])
+    ])
   </form>
 @stop
