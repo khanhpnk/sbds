@@ -10,10 +10,10 @@
       mapModule.init("form-map-canvas");
 
       locationModule.setLocationDbJSON({
-        address: "{!! $project->address or '' !!}",
-        ward: "{{ $project->ward or '' }}",
-        district: "{{ $project->district or '' }}",
-        city: "{{ $project->city or '' }}"
+        address: "{{ $house->address or '' }}",
+        ward: "{{ $house->ward or '' }}",
+        district: "{{ $house->district or '' }}",
+        city: "{{ $house->city or '' }}"
       });
       delay(function(){locationModule.init()}, 1000);
     });

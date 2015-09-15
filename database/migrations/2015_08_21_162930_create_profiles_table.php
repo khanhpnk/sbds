@@ -20,12 +20,13 @@ class CreateProfilesTable extends Migration
             $table->string('skype');
             $table->string('facebook');
             $table->string('website');
+            $table->tinyInteger('city');
+            $table->tinyInteger('district');
+            $table->tinyInteger('ward');
             $table->string('address');
-            $table->string('city');
-            $table->string('district');
-            $table->string('ward');
-            $table->string('street');
-            $table->string('gender');
+            $table->double('lat', 16, 6);       // FLOAT(10, 6)
+            $table->double('lng', 16, 6);       // FLOAT(10, 6)
+            $table->tinyInteger('gender');
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')

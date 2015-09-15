@@ -79,6 +79,7 @@
     <script src="{{ asset('js/layout.js') }}"></script>
     <script src="{{ asset('js/location.js') }}"></script>
     <script src="{{ asset('js/manage/map.js') }}"></script>
+    <script src="{{ asset('js/manage/location.js') }}"></script>
   @show
 </body>
 </html>

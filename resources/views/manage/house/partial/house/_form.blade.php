@@ -15,7 +15,7 @@
       mapModule.init("form-map-canvas");
 
       locationModule.setLocationDbJSON({
-        address: "{!! $house->address or '' !!}",
+        address: "{{ $house->address or '' }}",
         ward: "{{ $house->ward or '' }}",
         district: "{{ $house->district or '' }}",
         city: "{{ $house->city or '' }}"

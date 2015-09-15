@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index');
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function() {
+    // House Catalog Management
     Route::group(['namespace' => 'House'], function() {
         Route::resource('owner', 'OwnerController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::get('owner/unique/{id?}', ['uses' => 'OwnerController@unique', 'as' => 'owner.unique']);
@@ -33,18 +34,13 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
 
         Route::resource('management', 'ManagementController', ['only' => ['index']]);
     });
-
-    // Change profile
-    Route::get('user/profile/{profile}',    ['uses' => 'ProfileController@getProfile',  'as' => 'profile.edit']);
-    Route::put('user/profile',              ['uses' => 'ProfileController@putProfile',  'as' => 'profile.update']);
     // Change password
-    Route::get('user/password',             ['uses' => 'UserController@getPassword',    'as' => 'password.edit']);
-    Route::put('user/password',             ['uses' => 'UserController@putPassword',    'as' => 'password.update']);
-
-    Route::resource('profile', 'ProfileController', [
-        'only' => ['create', 'store'],
-    ]);
-
+    Route::get('user/password', ['uses' => 'UserController@edit', 'as' => 'password.edit']);
+    Route::put('user/password', ['uses' => 'UserController@update', 'as' => 'password.update']);
+    // Change profile
+    Route::get('user/profile',    ['uses' => 'ProfileController@edit',  'as' => 'profile.edit']);
+    Route::put('user/profile',    ['uses' => 'ProfileController@update',  'as' => 'profile.update']);
+    // Message Management
     Route::get('message/f/{inbox}', ['uses' => 'MessageController@index', 'as' => 'message.index']);
     Route::delete('message/md', ['uses' => 'MessageController@mutilDestroy', 'as' => 'message.mutildestroy']);
     Route::resource('message', 'MessageController', [

@@ -14,7 +14,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function getPassword()
+    public function edit()
     {
         return view('manage.users.password');
     }
@@ -25,11 +25,9 @@ class UserController extends Controller
      * @param  UserRequest $request
      * @return Response
      */
-    public function putPassword(UserRequest $request)
+    public function update(UserRequest $request)
     {
-        Auth::user()->update([
-            'password' => bcrypt($request->input('password'))
-        ]);
+        Auth::user()->update(['password' => bcrypt($request->input('password'))]);
 
         return redirect('m/user/password')->with('flash_message', 'Mật khẩu của bạn đã thay đổi thành công!');
     }

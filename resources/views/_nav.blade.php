@@ -57,8 +57,8 @@
             <li><a href="{{ route('m.project.create') }}" class="navbar-link"><i class="fa fa-bank"></i>Dự án đăng tin</a></li>
             <li><a href="{{ route('m.management.index') }}" class="navbar-link"><i class="fa fa-inbox"></i>Quản lý tin đã đăng</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#" class="navbar-link">Quản lý tài khoản</a></li>
-            <li><a href="#" class="navbar-link">Đổi mật khẩu</a></li>
+            <li><a href="{{ route('profile.edit') }}" class="navbar-link"><i class="fa fa-user-plus"></i>Thông tin cá nhân</a></li>
+            <li><a href="{{ route('password.edit') }}" class="navbar-link"><i class="fa fa-cog"></i>Đổi mật khẩu</a></li>
             <li><a href="{{ route('message.index') }}" class="navbar-link">Hộp tin nhắn</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/ajax-auth/logout" class="navbar-link">Thoát</a></li>

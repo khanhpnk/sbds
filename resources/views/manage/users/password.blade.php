@@ -1,5 +1,9 @@
 @extends('manage.layout')
 
+@section('meta_title')
+  Đổi mật khẩu
+@stop
+
 @section('title')
   Đổi mật khẩu
 @stop
@@ -14,9 +18,9 @@
         <input type="password" name="password" class="form-control" placeholder="NHẬP MẬT KHẨU MỚI">
       </div>
       <div class="form-group">
-        <label class="sr-only">Nhập lại mất khẩu</label>
+        <label class="sr-only">Nhập lại mật khẩu</label>
         <input type="password" name="password_confirmation" class="form-control" placeholder="NHẬP LẠI MẬT KHẨU MỚI">
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Thay đổi</button>
+      <button type="submit" class="btn btn-primary btn-block">Xác nhận</button>
     </form>
 @stop

@@ -1,70 +1,80 @@
 @extends('manage.layout')
 
+@section('meta_title')
+  Thông tin cá nhân
+@stop
+
 @section('title')
   Thông tin cá nhân
 @stop
 
-@section('style')
-  @parent
-  <link href="{{ asset('vendor/jquery.filer-master/css/jquery.filer.css') }}" type="text/css" rel="stylesheet" />
-@stop
-
 @section('javascript')
   @parent
-  <script type="text/javascript" src="{{ asset('vendor/jquery.filer-master/js/jquery.filer.js') }}"></script>
   <script>
-    // Must edit core file, plugin is suck
     $(function() {
-      $('.file-input').filer({
-        limit: 1,
-        addMore: false,
-        files: [{
-          name: "Ảnh đại diện",
-          type: "image/jpg",
-          file: "{{ UserHelper::avatar() }}",
-        }],
+      profileModule.setAvatarPath("{{ UserHelper::avatar() }}");
+      profileModule.init();
+      mapModule.init("form-map-canvas");
+
+      locationModule.setLocationDbJSON({
+        address: "{{ $house->address or '' }}",
+        ward: "{{ (0 == $profile->ward) ? '' : $profile->ward }}",
+        district: "{{ (0 == $profile->district) ? '' : $profile->district }}",
+        city: "{{ (0 == $profile->city) ? '' : $profile->city }}"
       });
+      delay(function(){locationModule.init()}, 1000);
     });
   </script>
+  <script src="{{ asset('js/manage/profile.js') }}"></script>
 @stop
 
 @section('content')
-    <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('profile.update') }}" method="POST" role="form">
+    <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('profile.update') }}" method="POST" role="form" id="profileForm">
       {!! csrf_field() !!}
       <input type="hidden" name="_method" value="PUT">
+      <a class="btn btn-main" id="fileImage" data-jfiler-name="avatar" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải ảnh đại diện</a>
       <div class="form-group">
         <label class="sr-only">Họ và tên</label>
-        <input type="text" name="name" class="form-control" value="{{ old('name', UserHelper::name()) }}" placeholder="HỌ VÀ TÊN">
+        <input type="text" name="name" class="form-control" value="{{ UserHelper::name() }}" placeholder="Họ và tên">
       </div>
       <div class="form-group">
         <label class="sr-only">Địa chỉ email</label>
-        <input type="email" name="email" class="form-control" value="{{ old('email', UserHelper::email()) }}" placeholder="ĐỊA CHỈ EMAIL">
+        <input type="email" name="email" class="form-control" value="{{ UserHelper::email() }}" placeholder="Địa chỉ email">
       </div>
-      <div class="form-group">
-        <label class="sr-only">Điện thoại</label>
-        <input type="text" name="phone" class="form-control" value="{{ old('phone', $profile->phone) }}" placeholder="ĐIỆN THOẠI">
+      @include('partial.form._text', ['model' => $profile, 'name' => 'phone', 'label' => 'Điện thoại'])
+      @include('partial.form._text', ['model' => $profile, 'name' => 'mobile', 'label' => 'Di động'])
+      @include('partial.form._text', ['model' => $profile, 'name' => 'skype', 'label' => 'Skype'])
+      @include('partial.form._text', ['model' => $profile, 'name' => 'facebook', 'label' => 'Facebook'])
+      @include('partial.form._text', ['model' => $profile, 'name' => 'website', 'label' => 'Website'])
+      <div class="row">
+        <div class="col-md-4">
+          @include('partial.form._select', ['name' => 'city',
+																								 'label' => 'Tỉnh thành',
+																								 'options' => [],
+																								 'value' => $profile->city])
+        </div>
+        <div class="col-md-4">
+          @include('partial.form._select', ['name' => 'district',
+																								 'label' => 'Quận / huyện',
+																								 'options' => [],
+																								 'value' => $profile->district])
+        </div>
+        <div class="col-md-4">
+          @include('partial.form._select', ['name' => 'ward',
+																								 'label' => 'Xã / phường',
+																								 'options' => [],
+																								 'value' => $profile->ward])
+        </div>
       </div>
-      <div class="form-group">
-        <label class="sr-only">Di động</label>
-        <input type="text" name="mobile" class="form-control" value="{{ old('mobile', $profile->mobile) }}" placeholder="DI ĐỘNG">
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Skype</label>
-        <input type="text" name="skype" class="form-control" value="{{ old('skype', $profile->skype) }}" placeholder="SKYPE">
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Facebook</label>
-        <input type="text" name="facebook" class="form-control" value="{{ old('facebook', $profile->facebook) }}" placeholder="FACEBOOK">
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Website</label>
-        <input type="text" name="website" class="form-control" value="{{ old('website', $profile->website) }}" placeholder="WEBSITE">
-      </div>
-      <div class="form-group">
-        <label class="sr-only">Địa chỉ cụ thể</label>
-        <input type="text" name="address" class="form-control" value="{{ old('address', $profile->address) }}" placeholder="ĐỊA CHỈ CỤ THỂ">
-      </div>
-      <a class="file-input" data-jfiler-name="avatar" data-jfiler-extensions="jpg, jpeg, png, gif"><i class="icon-jfi-paperclip"></i> ẢNH ĐẠI DIỆN</a>
+      @include('partial.form._text', ['model' => $profile, 'name' => 'address', 'label' => 'Địa chỉ cụ thể'])
+
+      <div id="form-map-canvas" style="height: 400px; width: 100%;"></div>
+      <span id="helpBlock" class="help-block">
+        *Trong trường hợp kết quả tìm kiếm không chính xác, nhấn chuột vào biểu tượng và di chuyển đến vị trí của bạn.
+      </span>
+      @include('partial.form._hidden', ['model' => $profile, 'name' => 'lat'])
+      @include('partial.form._hidden', ['model' => $profile, 'name' => 'lng'])
+
       <button type="submit" class="btn btn-primary btn-block">Thay đổi</button>
     </form>
 @stop

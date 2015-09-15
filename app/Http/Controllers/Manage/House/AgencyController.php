@@ -87,7 +87,7 @@ class AgencyController extends Controller
 	{
 		$width = config('image.sizes.medium.w');
 		$height = config('image.sizes.medium.h');
-		$basepath = config('image.paths.house');
+		$basepath = public_path(config('image.paths.house'));
 		$userId = Auth::user()->id;
 		$now = date('His.dmY');
 		$i = 0;

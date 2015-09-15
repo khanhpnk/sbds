@@ -4,19 +4,22 @@ namespace App\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
-use Illuminate\Support\Facades\Auth;
 use App\Profile;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class ProfileController extends Controller
 {
+    const QUANLITY = 100;
+
     /**
      * Show the form for editing the password
      *
-     * @param  Article  $article
      * @return Response
      */
-    public function getProfile(Profile $profile)
+    public function edit()
     {
+        $profile = Auth::user()->profile()->first();
         return view('manage.profiles.profile', compact('profile'));
     }
 
@@ -26,26 +29,51 @@ class ProfileController extends Controller
      * @param  ProfileRequest $request
      * @return Response
      */
-    public function putProfile(ProfileRequest $request)
+    public function update(ProfileRequest $request)
     {
-        if (! empty($_FILES['avatar']['name'])) {
-            $image = \Image::make($_FILES['avatar']['tmp_name']);
+        $data = $request->all();
 
-            $fileName = md5(config('app.key').Auth::user()->id).'.jpg';
-            $image->fit(config('image.sizes.avatar.w'), config('image.sizes.avatar.h'))
-                  ->save(public_path(config('image.paths.avatar').$fileName), 100);
+        $profile = Auth::user()->profile()->first();
+        $profile->fill($data)->save();
+
+        if (! empty($_FILES['avatar']['tmp_name'])) {
+            $fileName = $this->uploadImage($_FILES['avatar']['tmp_name']);
+
+            $basepath = config('image.paths.avatar');
+            \File::delete($basepath.Auth::user()->avatar);
 
             Auth::user()->update([
-                'name'      => $request->input('name'),
-                'email'     => $request->input('email'),
-                'avatar'    => $fileName,
+                'name'      => $data['name'],
+                'email'     => $data['email'],
+                'avatar'    => $fileName
             ]);
         } else {
-            Auth::user()->update($request->only('name', 'email'));
+            Auth::user()->update([
+                'name'      => $data['name'],
+                'email'     => $data['email']
+            ]);
         }
 
-        Auth::user()->profile()->update($request->only('phone', 'mobile', 'skype', 'facebook', 'website', 'address'));
+        return redirect('m/user/profile/')->with('flash_message', Lang::get('system.update'));
+    }
 
-        return redirect('m/user/profile/' . Auth::user()->profile->id)->with('flash_message', 'Thông tin cá nhân của bạn đã được cập nhật!');
+    /**
+     * Note: Passing by Reference
+     * @param array $data
+     */
+    protected function uploadImage($tmpPath)
+    {
+        $width = config('image.sizes.avatar.w');
+        $height = config('image.sizes.avatar.h');
+        $basepath = public_path(config('image.paths.avatar'));
+        $userId = Auth::user()->id;
+        $now = date('His.dmY');
+
+        $image = \Image::make($tmpPath);
+        $fileName = $userId . '.' . $now . '.jpg';
+        $image->fit($width, $height)
+            ->save($basepath.$fileName, self::QUANLITY);
+
+        return $fileName;
     }
 }

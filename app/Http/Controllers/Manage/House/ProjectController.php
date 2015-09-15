@@ -85,7 +85,7 @@ class ProjectController extends Controller
 	{
 		$width = config('image.sizes.medium.w');
 		$height = config('image.sizes.medium.h');
-		$basepath = config('image.paths.project');
+		$basepath = public_path(config('image.paths.project'));
 		$userId = Auth::user()->id;
 		$now = date('His.dmY');
 		$i = 0;

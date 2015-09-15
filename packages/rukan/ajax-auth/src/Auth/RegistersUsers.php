@@ -15,7 +15,7 @@ trait RegistersUsers
      *
      * @var string
      */
-    protected $redirectAfterRegister = '/m/profile/create';
+    protected $redirectAfterRegister = 'm/user/profile';
 
     /**
      * Show the application registration form.

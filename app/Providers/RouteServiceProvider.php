@@ -28,10 +28,6 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('agency', 'App\House');
         $router->model('project', 'App\Project');
 
-        $router->model('user', 'App\User');
-        $router->model('profile', 'App\Profile');
-
-
         parent::boot($router);
     }
 
