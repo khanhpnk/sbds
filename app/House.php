@@ -63,4 +63,18 @@ class House extends Model
     {
         return $query->where('is_owner', $value);
     }
+
+    /**
+     * Mutator: Slug, meta_title, meta_description should auto set
+     *
+     * @param string $value
+     */
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+
+        $this->attributes['meta_title'] = $value;
+        $this->attributes['meta_description'] = $value;
+        $this->attributes['slug'] = str_slug($value);
+    }
 }

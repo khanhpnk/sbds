@@ -15,24 +15,25 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->boolean('is_owner');            // 1,2
+
+            $table->string('slug')->unique();
+            $table->string('meta_title');
+            $table->string('meta_description');
+
             $table->string('title');
-            $table->boolean('is_sale');            // 1,2
+            $table->string('address');
+            $table->string('road');
+            $table->string('youtube');
+            $table->text('description');
+            $table->double('lat', 16, 6);       // FLOAT(10, 6)
+            $table->double('lng', 16, 6);       // FLOAT(10, 6)
             $table->bigInteger('price');
+            $table->integer('m2');
             $table->tinyInteger('money_unit');
             $table->tinyInteger('category');
-            $table->date('start_date');
-            $table->date('end_date');
             $table->tinyInteger('city');
             $table->tinyInteger('district');
             $table->tinyInteger('ward');
-            $table->string('address');
-            $table->double('lat', 16, 6);       // FLOAT(10, 6)
-            $table->double('lng', 16, 6);       // FLOAT(10, 6)
-            $table->string('youtube');
-            $table->text('description');
-            $table->integer('m2');
-            $table->string('road');
             $table->tinyInteger('toilet');
             $table->tinyInteger('floors');
             $table->tinyInteger('direction');
@@ -43,8 +44,14 @@ class CreateHousesTable extends Migration
             $table->tinyInteger('balcony');
             $table->tinyInteger('logia');
             $table->tinyInteger('license');
+            $table->boolean('is_owner');            // 1,2
+            $table->boolean('is_sale');            // 1,2
+
+            $table->date('start_date');
+            $table->date('end_date');
             $table->string('feature');          // JSON
             $table->text('images');             // JSON
+
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')

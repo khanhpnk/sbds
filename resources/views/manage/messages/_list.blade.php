@@ -3,11 +3,11 @@
   <table class="table table-hover" id="messageList">
     <tbody>
       @foreach ($messages as $message)
-        <tr @if (isInbox() && 0 == $message->read) class="unread" @endif data-url="{{ route('message.show', ['id' => $message->id]) }}">
+        <tr @if (MessageHelper::isInbox() && 0 == $message->read) class="unread" @endif data-url="{{ route('message.show', ['id' => $message->id]) }}">
           <td><input type="checkbox" name="checkbox[]" value="{{ $message->id }}"></td>
-          <td>@if (isInbox()) {{ $message->userFrom->email }} @else {{ $message->userTo->email }} @endif</td>
+          <td>@if (MessageHelper::isInbox()) {{ $message->userFrom->email }} @else {{ $message->userTo->email }} @endif</td>
           <td>{{ str_limit($message->subject, 40, '') }}</td>
-          <td class="text-right">{{ dateFormat($message->created_at) }}</td>
+          <td class="text-right">{{ MessageHelper::dateFormat($message->created_at) }}</td>
         </tr>
       @endforeach
     </tbody>

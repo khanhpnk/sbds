@@ -18,7 +18,7 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading">{{ $message->subject }}</h4>
-        {{ dateFormat($message->created_at) }} gửi bởi {{ $message->userTo->email }}
+        {{ MessageHelper::dateFormat($message->created_at) }} gửi bởi {{ $message->userTo->email }}
       </div>
     </div>
     <hr>

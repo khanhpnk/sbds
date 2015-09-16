@@ -13,6 +13,9 @@ a:focus{
 i {
   padding-right: 4px;
 }
+.container {
+  width: 940px;
+}
 /* SCROLL TO TOP */
 .scrollToTop {
   position: fixed;
@@ -48,6 +51,49 @@ i {
 .simple-pagination > .pager li > span {
   border-radius: 0;
 }
+/*********** *********** *********** ARTICLE MODULE *********** *********** ***********/
+.article-title {
+  color: #337ab7;
+  border-bottom: 1px solid #7e7e7e;
+  font-size: 24px;
+  margin: 10px 0;
+  padding: 4px 0;
+}
+.article-address {
+  color: #7e7e7e;
+  font-size: 12px;
+  font-style: italic;
+  margin-bottom: 4px;
+  float: left;
+}
+.article-fb-like {
+  float: right;
+}
+.article-price {
+  color: indianred;
+  font-size: 20px;
+}
+.article-date {
+  color: #7e7e7e;
+  font-style: italic;
+  text-align: right;
+}
+.article-code {
+  color: #7e7e7e;
+  font-style: italic;
+}
+/*********** *********** *********** SECTION MODULE *********** *********** ***********/
+.section-title {
+  background-color: #f0f0f0;
+  font-size: 16px;
+  margin: 10px 0;
+  padding: 6px 12px;
+  color: #7e7e7e;
+}
+/*********** *********** *********** DETAIL MODULE *********** *********** ***********/
+/*********** *********** *********** FEATURE MODULE *********** *********** ***********/
+
+
 /*********** *********** *********** HOUSE THUMB MODULE *********** *********** ***********/
 .house-thumb {
   border: 1px dashed mediumseagreen;

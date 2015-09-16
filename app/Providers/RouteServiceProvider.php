@@ -24,9 +24,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        $router->bind('house', function($value) {
+            return \App\House::where('slug', $value)->firstOrFail();
+        });
+
         $router->model('owner', 'App\House');
         $router->model('agency', 'App\House');
         $router->model('project', 'App\Project');
+
+        $router->model('message', 'App\Message');
 
         parent::boot($router);
     }

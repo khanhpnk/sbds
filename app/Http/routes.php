@@ -13,7 +13,7 @@
 
 /*********** *********** FRONTEND *********** ***********/
 Route::get('/', 'HomeController@index');
-//Route::get('house', 'House\HouseController@index');
+Route::resource('house', 'HouseController', ['only' => ['index', 'show']]);
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
@@ -50,4 +50,6 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
             'show' => 'message.show'
         ]
     ]);
+    // Design Management
+    Route::resource('design', 'DesignController', ['only' => ['create', 'store', 'update', 'edit']]);
 });
