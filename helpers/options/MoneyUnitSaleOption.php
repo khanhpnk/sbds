@@ -3,17 +3,22 @@
 class MoneyUnitSaleOption
 {
     use TraitJsonOption;
+    use TraitLabelOption;
 
-    const VND           = 1;
-    const VND_M2        = 2;
-    const THOA_THUAN    = 3;
+    const THOA_THUAN           = 1;
+    const TRIEU        = 2;
+    const TY    = 3;
+    const NGHIN_M2    = 4;
+    const TRIEU_M2    = 5;
 
     public static function getOptions()
     {
         return [
-            self::VND           => 'VNĐ',
-            self::VND_M2        => 'VNĐ/m2',
-            self::THOA_THUAN    => 'Thỏa thuận'
+            self::THOA_THUAN    => 'Thỏa thuận',
+            self::TRIEU         => 'triệu',
+            self::TY            => 'tỷ',
+            self::NGHIN_M2      => 'nghìn/m2',
+            self::TRIEU_M2      => 'triệu/m2',
         ];
     }
 }

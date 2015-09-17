@@ -68,6 +68,7 @@ class OwnerController extends Controller
             if (($key = array_search($file, $data['images'])) !== false) {
                 unset($data['images'][$key]);
                 \File::delete($basepath.$file);
+                \File::delete($basepath.'thumb-'.$file);
             }
         }
 
@@ -83,8 +84,10 @@ class OwnerController extends Controller
      */
     protected function uploadImage(&$data)
     {
-        $width = config('image.sizes.medium.w');
-        $height = config('image.sizes.medium.h');
+        $largeWidth = config('image.sizes.large.w');
+        $largeHeight = config('image.sizes.large.h');
+        $smallWidth = config('image.sizes.small.w');
+        $smallHeight = config('image.sizes.small.h');
         $basepath = public_path(config('image.paths.house'));
         $userId = Auth::user()->id;
         $now = date('His.dmY');
@@ -94,8 +97,10 @@ class OwnerController extends Controller
             if (!empty($tmpPath)) {
                 $image = \Image::make($tmpPath);
                 $fileName = $userId . '.' . $now . '.' . $i++ . '.jpg';
-                $image->fit($width, $height)
+                $image->fit($largeWidth, $largeHeight)
                     ->save($basepath.$fileName, self::QUANLITY);
+                $image->fit($smallWidth, $smallHeight)
+                    ->save($basepath.'thumb-'.$fileName, self::QUANLITY);
 
                 array_push($data['images'], $fileName);
             }

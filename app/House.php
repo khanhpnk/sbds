@@ -77,4 +77,15 @@ class House extends Model
         $this->attributes['meta_description'] = $value;
         $this->attributes['slug'] = str_slug($value);
     }
+
+    /**
+     * Mutators: Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getStartDateAttribute($value)
+    {
+        return (new \DateTime($value))->format('d/m/Y');
+    }
 }

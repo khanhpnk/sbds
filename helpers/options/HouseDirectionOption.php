@@ -2,6 +2,8 @@
 
 class HouseDirectionOption
 {
+    use TraitLabelOption;
+
     const DONG      = 1;
     const TAY       = 2;
     const NAM       = 3;

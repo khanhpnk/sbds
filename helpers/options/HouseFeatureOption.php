@@ -2,8 +2,6 @@
 
 class HouseFeatureOption
 {
-    use TraitLabelOption;
-
     public static function getOptions()
     {
         return [

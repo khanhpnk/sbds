@@ -2,6 +2,8 @@
 
 class HouseLicenseOption
 {
+    use TraitLabelOption;
+
     const GIAY_PHEP_XAY_DUNG    = 1;
     const HOP_DONG_MUA_BAN      = 2;
     const SO_DO                 = 3;

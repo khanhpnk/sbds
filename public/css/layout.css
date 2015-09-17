@@ -10,6 +10,11 @@ a:focus{
   text-decoration: none;
   outline: 0; /*removes the dotted border*/
 }
+ul {
+  list-style: outside none none;
+  margin: 0;
+  padding: 0
+}
 i {
   padding-right: 4px;
 }
@@ -64,10 +69,9 @@ i {
   font-size: 12px;
   font-style: italic;
   margin-bottom: 4px;
-  float: left;
 }
 .article-fb-like {
-  float: right;
+  text-align: right;
 }
 .article-price {
   color: indianred;
@@ -82,18 +86,46 @@ i {
   color: #7e7e7e;
   font-style: italic;
 }
-/*********** *********** *********** SECTION MODULE *********** *********** ***********/
-.section-title {
+.article-description {
+  color: #7e7e7e;
+  font-style: italic;
+  margin-top: 10px;
+}
+/*********** *********** *********** ARTICLE SECTION MODULE *********** *********** ***********/
+.article-section-title {
   background-color: #f0f0f0;
   font-size: 16px;
   margin: 10px 0;
   padding: 6px 12px;
   color: #7e7e7e;
 }
-/*********** *********** *********** DETAIL MODULE *********** *********** ***********/
-/*********** *********** *********** FEATURE MODULE *********** *********** ***********/
+.article-section-content {
+  margin-left: -5px;
+}
+section li {
+  padding-top: 4px;
+  padding-bottom: 4px;
 
-
+}
+/* ARTICLE SECTION FEATURE */
+.feature li  {
+  color: #7e7e7e;
+  padding-left: 24px;
+  padding-right: 8px;
+}
+.feature li .glyphicon {
+  display: none;
+}
+.feature li.selected {
+  color: #333;
+  padding-left: 10px;
+}
+.feature li.selected .glyphicon {
+  color: #3CB371;
+  padding-right: 4px;
+  font-size: 10px;
+  display: inline;
+}
 /*********** *********** *********** HOUSE THUMB MODULE *********** *********** ***********/
 .house-thumb {
   border: 1px dashed mediumseagreen;

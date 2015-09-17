@@ -162,16 +162,16 @@
 
 <section>
   <header><h2 class="form-title">Tính năng</h2></header>
-  <div class="row form-group">
-    @for ($i = 0; $i < count(HouseFeatureOption::getOptions());  $i++)
-      @if (0 == $i % 6) <div class="col-md-3"> @endif
+  <ul class="row form-group">
+    @foreach(HouseFeatureOption::getOptions() as $feature => $label)
+      <li class="col-md-3">
         @include('partial.form._checbox', ['name' => 'feature[]',
-                                                'label' => HouseFeatureOption::getLabel($i),
-                                                'checked' => !is_null($house) && !is_null($house->feature) && in_array($i, $house->feature) ? true : false,
-                                                'value' => $i])
-        @if (0 == ($i + 1) % 6) </div> @endif
-    @endfor
-  </div>
+																				'label' => $label,
+																				'checked' => !is_null($house) && !is_null($house->feature) && in_array($feature, $house->feature) ? true : false,
+																				'value' => $feature])
+      </li>
+    @endforeach
+  </ul>
 </section>
 
 <button type="submit" class="btn btn-primary btn-block">{{ $submitBtnText }}</button>
