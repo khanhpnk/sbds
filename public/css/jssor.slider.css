@@ -21,7 +21,7 @@
 .slider-loading-background {
 	position: absolute;
 	display: block;
-	background: url(../img/loading.gif) no-repeat center center;
+	background: url(../vendor/jssor.slider/img/loading.gif) no-repeat center center;
 	top: 0px; left: 0px;
 	width: 100%; height:100%;
 }
@@ -32,7 +32,52 @@
 	position: relative; top: 0px; left: 0px; width: 675px; height: 402px; overflow: hidden;
 }
 .videoCover {
-	position: absolute; top: 0px; left: 0px; background-color: #000; background-image: url(../img/play.png); background-position: center center; background-repeat: no-repeat; filter: alpha(opacity=40); opacity: .4; cursor: pointer; display: none; z-index: 1;
+	position: absolute; top: 0px; left: 0px; background-color: #000; background-image: url(../vendor/jssor.slider/img/play.png); background-position: center center; background-repeat: no-repeat; filter: alpha(opacity=40); opacity: .4; cursor: pointer; display: none; z-index: 1;
+}
+/* Cover */
+.cover {
+	position:absolute;
+	width:50px;
+}
+.cover-tl {
+	top:-20px;left:-20px;
+	height:47px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-TL.png)
+}
+.cover-tr {
+	top:-20px;right:-20px;
+	height:47px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-TR.png)
+}
+.cover-bl {
+	bottom:-20px;left:-20px;
+	height:58px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-BL.png)
+}
+.cover-br {
+	bottom:-20px;right:-20px;
+	height:58px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-BR.png)
+}
+.cover-t {
+	top:-20px;left:30px;
+	width:620px;height:47px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-T.png)
+}
+.cover-b {
+	bottom:-20px;left:30px;
+	width:620px;height:58px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-B.png)
+}
+.cover-l {
+	top:27px;left:-20px;
+	height:440px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-L.png)
+}
+.cover-r {
+	top:27px;right:-20px;
+	height:440px;
+	background-image:url(../vendor/jssor.slider/img/cover/0001-R.png)
 }
 /* jssor slider arrow navigator skin 05 css */
 /*
@@ -50,7 +95,7 @@
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
-	background: url(../img/a17.png) no-repeat;
+	background: url(../vendor/jssor.slider/img/a17.png) no-repeat;
 	overflow: hidden;
 }
 .jssora05l {
@@ -82,7 +127,7 @@
 	position: absolute;
 	/* size of thumbnail navigator container */
 	width: 675px;
-	height: 100px;
+	height: 110px;
 }
 .jssort01 .p {
 	position: absolute;
@@ -114,7 +159,7 @@
 	height: 68px;
 	border: #000 2px solid;
 	box-sizing: content-box;
-	background: url(../img/t01.png) -675px -675px no-repeat;
+	background: url(../vendor/jssor.slider/img/t01.png) -675px -675px no-repeat;
 	_background: none;
 }
 .jssort01 .pav .c {

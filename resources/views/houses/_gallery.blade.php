@@ -18,14 +18,13 @@
 				<div class="slider-loading-filter"></div>
 				<div class="slider-loading-background"></div>
 			</div>
-			<!-- Slides Container -->
+
 			<div u="slides" class="slider-container">
 				@if (!empty($house->youtube))
 					<div>
 						<div u="player" class="slider-player">
 							<iframe pHandler="ytiframe" pHideControls="0" width="675" height="402" style="z-index: 0;" url="{{ $house->youtube }}" frameborder="0" scrolling="no"></iframe>
-							<!-- play cover begin (optional, can remove play cover) -->
-							<div u="cover" class="videoCover"></div>
+							<div u="cover" class="videoCover"></div><!-- play cover begin (optional, can remove play cover) -->
 						</div>
 					</div>
 				@endif
@@ -37,11 +36,9 @@
 				@endforeach
 			</div>
 
-			<!--#region Arrow Navigator Skin Begin -->
-			<span u="arrowleft" class="jssora05l" style="top: 158px; left: 8px;"></span>
-			<span u="arrowright" class="jssora05r" style="top: 158px; right: 8px"></span>
-			<!--#endregion Arrow Navigator Skin End -->
-			<!--#region Thumbnail Navigator Skin Begin -->
+			<span u="arrowleft" class="jssora05l" style="top: 188px; left: 16px;"></span>
+			<span u="arrowright" class="jssora05r" style="top: 188px; right: 16px"></span>
+
 			<div u="thumbnavigator" class="jssort01" style="left: 0px; bottom: 0px;">
 				<div u="slides" style="cursor: default;">
 					<div u="prototype" class="p">
@@ -50,7 +47,17 @@
 					</div>
 				</div>
 			</div>
-			<!--#region Thumbnail Navigator Skin End -->
+
+			<!-- Cover Begin -->
+			<div class="cover cover-tl"></div>
+			<div class="cover cover-tr"></div>
+			<div class="cover cover-bl"></div>
+			<div class="cover cover-br"></div>
+
+			<div class="cover cover-t"></div>
+			<div class="cover cover-b"></div>
+			<div class="cover cover-l"></div>
+			<div class="cover cover-r"></div>
 		</div>
 	</section>
 @endif

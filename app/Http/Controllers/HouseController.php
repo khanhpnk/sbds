@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\House;
-use App\Http\Controllers\Controller;
 
 class HouseController extends Controller
 {
@@ -14,7 +13,9 @@ class HouseController extends Controller
      */
     public function index()
     {
-        return view('houses.index');
+        $houses = House::orderBy('id', 'desc')->simplePaginate(6);
+
+        return view('houses.index', compact('houses'));
     }
 
     /**
