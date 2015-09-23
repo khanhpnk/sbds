@@ -42,10 +42,10 @@
                                        'checked' => (!is_null($house) && 2 == $house->is_sale) ? true : false,
                                        'value' => 2])
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       @include('partial.form._text', ['model' => $house, 'name' => 'price', 'label' => 'Giá tiền'])
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       @include('partial.form._select', ['name' => 'money_unit',
                                         'label' => 'Đơn vị',
                                         'options' => (!is_null($house) && 2 == $house->is_sale) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
@@ -125,7 +125,7 @@
                                              'value' => !is_null($house) ? $house->direction : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._text',   ['model' => $house, 'name' => 'road', 'label' => 'Đường trước nhà'])
+      @include('partial.form._text',   ['model' => $house, 'name' => 'road', 'label' => 'Đường trước nhà (m2)'])
       @include('partial.form._select', ['name' => 'bedroom',
                                              'label' => 'Số phòng ngủ',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],

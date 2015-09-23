@@ -11,7 +11,7 @@ class MoneyHelper
         if (1 == $isSale) {
             return $price . ' ' . MoneyUnitSaleOption::getLabel($moneyUnit);
         } else if (2 == $isSale) {
-            return $price . ' ' . MoneyRentSaleOption::getLabel($moneyUnit);
+            return $price . ' ' . MoneyUnitRentOption::getLabel($moneyUnit);
         }
     }
 }

@@ -12,10 +12,29 @@
 </section>
 <section class="recommend">
   <div class="thumb thumb-br-default clearfix">
+    <div class="thumb-caption">Nhà đất bán</div>
     <div class="row">
-      @include('partial._article', ['col' => 12, 'imgWidth' => 194, 'caption' => 'Chính chủ'])
-      @include('partial._article', ['col' => 12, 'imgWidth' => 194, 'caption' => 'Môi giới'])
-      @include('partial._article', ['col' => 12, 'imgWidth' => 194, 'caption' => 'Chính chủ'])
+      @if (!is_null($houseSaleRecommend))
+        @include('partial._article', ['model' => $houseSaleRecommend,
+                                      'isSale' => IsSaleOption::BAN,
+                                      'col' => 12, 'iw' => 195, 'ih' => 150])
+      @endif
+    </div>
+    <div class="thumb-caption">Nhà đất cho thuê</div>
+    <div class="row">
+      @if (!is_null($houseRentRecommend))
+        @include('partial._article', ['model' => $houseRentRecommend,
+                                      'isSale' => IsSaleOption::CHO_THUE,
+                                      'col' => 12, 'iw' => 195, 'ih' => 150])
+      @endif
+    </div>
+    <div class="thumb-caption">Dự án nổi bật</div>
+    <div class="row">
+      @if (!is_null($houseProjectRecommend))
+        @include('partial._article', ['model' => $houseProjectRecommend,
+                                      'isSale' => IsSaleOption::CHO_THUE,
+                                      'col' => 12, 'iw' => 195, 'ih' => 150])
+      @endif
     </div>
   </div>
 </section>

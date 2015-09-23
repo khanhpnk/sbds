@@ -67,8 +67,9 @@ class OwnerController extends Controller
         foreach ($files as $file) {
             if (($key = array_search($file, $data['images'])) !== false) {
                 unset($data['images'][$key]);
-                \File::delete($basepath.$file);
-                \File::delete($basepath.'thumb-'.$file);
+                \File::delete($basepath.'large-'.$file);
+                \File::delete($basepath.'medium-'.$file);
+                \File::delete($basepath.'small-'.$file);
             }
         }
 
@@ -86,6 +87,8 @@ class OwnerController extends Controller
     {
         $largeWidth = config('image.sizes.large.w');
         $largeHeight = config('image.sizes.large.h');
+        $mediumWidth = config('image.sizes.medium.w');
+        $mediumHeight = config('image.sizes.medium.h');
         $smallWidth = config('image.sizes.small.w');
         $smallHeight = config('image.sizes.small.h');
         $basepath = public_path(config('image.paths.house'));
@@ -98,9 +101,11 @@ class OwnerController extends Controller
                 $image = \Image::make($tmpPath);
                 $fileName = $userId . '.' . $now . '.' . $i++ . '.jpg';
                 $image->fit($largeWidth, $largeHeight)
-                    ->save($basepath.$fileName, self::QUANLITY);
+                    ->save($basepath.'large-'.$fileName, self::QUANLITY);
+                $image->fit($mediumWidth, $mediumHeight)
+                    ->save($basepath.'medium-'.$fileName, self::QUANLITY);
                 $image->fit($smallWidth, $smallHeight)
-                    ->save($basepath.'thumb-'.$fileName, self::QUANLITY);
+                    ->save($basepath.'small-'.$fileName, self::QUANLITY);
 
                 array_push($data['images'], $fileName);
             }

@@ -20,7 +20,7 @@
   @show
   @section('jshead')
     <!-- Jquery -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{ asset('vendor/jquery-2.1.3.min.js') }}"></script>
     <script>
       // CSRF protection for your AJAX based applications
       $.ajaxSetup({
@@ -72,8 +72,6 @@
     <script src="{{ asset('vendor/jquery-validation-1.14.0/localization/messages_vi.min.js') }}"></script>
     <!-- Image upload -->
     <script src="{{ asset('vendor/jquery.filer-master/js/jquery.filer.js') }}"></script>
-    <!-- Jquery mockjax for TEST -->
-    <script src="{{ asset('vendor/jquery-mockjax/jquery.mockjax.js') }}"></script>
     <!-- Custom -->
     <script src="{{ asset('js/function.js') }}"></script>
     <script src="{{ asset('js/layout.js') }}"></script>

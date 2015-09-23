@@ -148,6 +148,7 @@ return [
         /*
          * Custom Service Providers...
          */
+        App\Providers\ViewComposerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Rukan\AjaxAuth\AjaxAuthServiceProvider::class,

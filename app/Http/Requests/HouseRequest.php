@@ -14,11 +14,18 @@ class HouseRequest extends Request
      */
     public function authorize()
     {
-        if (!is_null($this->route('owner'))) {
-            return Gate::allows('update', $this->route('owner'));
-        } else if (!is_null($this->route('agency'))) {
-            return Gate::allows('update', $this->route('agency'));
+        $owner = $this->route('owner');
+        $agency = $this->route('agency');
+
+        if ($this->isMethod('PATCH')) {
+            if (!is_null($owner)) {
+                return Gate::allows('update', $owner);
+            } else if (!is_null($agency)) {
+                return Gate::allows('update', $agency);
+            }
         }
+
+        return true;
     }
 
     /**

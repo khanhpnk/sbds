@@ -97,18 +97,18 @@ var houseModule = (function() {
   var formEventListener = function() {
     houseForm.validate({
       rules: {
-        title: {rangelength: [8, 64], required: true, remote: checkUniqueUrl},
-        price: {maxlength: 16, digits: true, required: true},
+        title: {rangelength: [8, 48], required: true, remote: checkUniqueUrl},
+        price: {maxlength: 5, number: true, required: true},
         money_unit: {required: true},
         category: {required: true},
         city: {required: true},
         district: {required: true},
         ward: {required: true},
-        address: {required: true},
+        address: {maxlength: 32, required: true},
         youtube: {url: true},
         description: {rangelength: [8, 2000], required: true},
         m2: {digits: true, maxlength: 16},
-        road: {maxlength: 64},
+        road: {digits: true, maxlength: 16},
         "feature[]": {required: true},
       },
       messages: {

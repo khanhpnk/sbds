@@ -65,12 +65,23 @@ class House extends Model
     }
 
     /**
+     * Scope a query to show house is sale or rent
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsSale($query, $value)
+    {
+        return $query->where('is_sale', $value);
+    }
+
+    /**
      * Mutator: Slug, meta_title, meta_description should auto set
      *
      * @param string $value
      */
     public function setTitleAttribute($value)
     {
+        $value = mb_strtolower($value, 'UTF-8');
         $this->attributes['title'] = $value;
 
         $this->attributes['meta_title'] = $value;

@@ -13,7 +13,11 @@
 
 /*********** *********** FRONTEND *********** ***********/
 Route::get('/', 'HomeController@index');
-Route::resource('house', 'HouseController', ['only' => ['index', 'show']]);
+Route::resource('test', 'TestController');
+Route::get('nha-dat-ban/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', ['uses' => 'HouseController@saleList', 'as' => 'house.saleList']);
+Route::get('nha-dat-cho-thue', ['uses' => 'HouseController@rentList', 'as' => 'house.rentList']);
+Route::get('nha-dat-ban/{house}', ['uses' => 'HouseController@saleShow', 'as' => 'house.saleShow']);
+Route::get('nha-dat-cho-thue/{house}', ['uses' => 'HouseController@rentShow', 'as' => 'house.rentShow']);
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/

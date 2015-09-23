@@ -30,8 +30,8 @@
 				@endif
 				@foreach ($house->images as $image)
 					<div>
-						<img u="image" src="{{ asset('/images/uploads/house/'.$image) }}" />
-						<img u="thumb" src="{{ asset('/images/uploads/house/thumb-'.$image) }}" />
+						<img u="image" src="{{ ImageHelper::image($image, 'house', 'large') }}" />
+						<img u="thumb" src="{{ ImageHelper::image($image, 'house', 'small') }}" />
 					</div>
 				@endforeach
 			</div>

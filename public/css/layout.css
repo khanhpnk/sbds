@@ -56,7 +56,74 @@ i {
 .simple-pagination > .pager li > span {
   border-radius: 0;
 }
-/*********** *********** *********** ARTICLE MODULE *********** *********** ***********/
+/*********** *********** *********** MAIN:HOUSE THUMB MODULE *********** *********** ***********/
+.thumb {
+  border-bottom: 1px dashed #777;
+  margin: 20px 0;
+  padding-bottom: 20px;
+}
+.thumb-caption {
+  background-color: #337ab7;
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  padding: 6px 8px;
+  margin-right: 1px;
+  text-transform: uppercase;
+}
+.thumb-br-default {
+  border-right: 9px solid #3CB371;
+}
+.thumb-item {
+  border: 1px dashed #777;
+  border-right: none;
+  border-top: none;
+  display: block;
+  margin-bottom: 30px;
+  text-transform: lowercase;
+}
+.thumb-img:hover {
+  opacity: 0.8;
+}
+.thumb-cap {
+  padding: 4px;
+  height: 106px;
+}
+.thumb-title {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+.thumb-type {
+  color: #337ab7;
+}
+.thumb-address {
+  margin-bottom: 2px;
+  font-style: italic;
+  font-size: 12px;
+}
+.thumb-footer {
+  background-color: #f5f5f5;
+  padding: 4px 2px;
+  font-style: italic;
+  margin-top: 10px;
+}
+.thumb-price {
+  float: left;
+  color: #CD5C5C;
+}
+.thumb-date {
+  color: #777;
+  float: right;
+  font-size: 11px;
+  line-height: 20px;
+}
+.thumb-m2 {
+  float: right;
+}
+/*********** *********** *********** MAIN:ARTICLE MODULE *********** *********** ***********/
 .article {}
 .article li {
   padding-top: 4px;
@@ -83,6 +150,7 @@ i {
   font-size: 12px;
   font-style: italic;
   margin-bottom: 4px;
+  text-transform: lowercase;
 }
 .article-head-fb-like {
   text-align: right;
@@ -164,71 +232,6 @@ i {
 /*********** *********** *********** RECOMEND MODULE *********** *********** ***********/
 .recommend {
   margin-top: 20px;
-}
-/*********** *********** *********** HOUSE THUMB MODULE *********** *********** ***********/
-.thumb {
-  border-bottom: 1px dashed #777;
-  margin: 20px 0;
-  padding-bottom: 20px;
-}
-.thumb-caption {
-  background-color: #337ab7;
-  color: #fff;
-  font-size: 16px;
-  margin: 0;
-  padding: 6px 8px;
-  margin-right: 1px;
-}
-.thumb-br-default {
-  border-right: 9px solid #3CB371;
-}
-.thumb-item {
-  border: 1px dashed #777;
-  border-right: none;
-  border-top: none;
-  display: block;
-  margin-bottom: 30px;
-}
-.thumb-img:hover {
-  opacity: 0.8;
-}
-.thumb-cap {
-  padding: 4px;
-  height: 106px;
-}
-.thumb-title {
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 18px;
-  margin-top: 0;
-  margin-bottom: 14px;
-}
-.thumb-type {
-  color: #337ab7;
-}
-.thumb-address {
-  margin-bottom: 2px;
-  font-style: italic;
-  font-size: 12px;
-}
-.thumb-footer {
-  background-color: #f5f5f5;
-  padding: 4px 2px;
-  font-style: italic;
-  margin-top: 10px;
-}
-.thumb-price {
-  float: left;
-  color: #CD5C5C;
-}
-.thumb-date {
-  color: #777;
-  float: right;
-  font-size: 11px;
-  line-height: 20px;
-}
-.thumb-m2 {
-  float: right;
 }
 /*********** *********** HOUSE SECTION MODULE *********** ***********/
 .house-title {

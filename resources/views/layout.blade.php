@@ -8,7 +8,7 @@
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('partial') }}" rel="stylesheet">
   @show
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="{{ asset('vendor/jquery-2.1.3.min.js') }}"></script>
 </head>
 <body>
   {{--Initialize the JavaScript SDK--}}
@@ -35,8 +35,7 @@
     <div class="container">
       <ol class="breadcrumb">
         <li><a href="/">Trang chủ</a></li>
-        <li><a href="#">Tin nổi bật</a></li>
-        <li class="active">Cho thuê chung cư cao cấp</li>
+        @yield('breadcrumb')
       </ol>
     </div>
   </section>
@@ -66,7 +65,10 @@
         headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
       });
     </script>
+    <!-- Custom -->
+    <script src="{{ asset('js/function.js') }}"></script>
     <script src="{{ asset('js/layout.js') }}"></script>
+    <script src="{{ asset('js/location.js') }}"></script>
   @show
 </body>
 </html>

@@ -6,12 +6,13 @@
 		<section class="article-head">
 			<div class="row">
 				<div class="col-md-9">
+					{{-- */ $location = LocationHelper::full($house->city, $house->district, $house->ward) /* --}}
 					<address class="article-head-address">
 						Địa chỉ:
-						<a href="#">16 Phú mỹ hưng</a>,
-						<a href="#">Lâm tiến</a>,
-						<a href="#">Hai bà trưng</a>,
-						<a href="#">Hồ chí minh</a>
+						<a href="#">{{ $house->address }}</a>,
+						<a href="#">{{ $location['ward'] }}</a>,
+						<a href="#">{{ $location['district'] }}</a>,
+						<a href="#">{{ $location['city'] }}</a>
 					</address>
 				</div>
 				<div class="col-md-3">
@@ -97,11 +98,26 @@
 			<header><h3 class="article-section-title">Nhà đất tương tự</h3></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
-					@for ($j = 0; $j < 3; $j++)
-						@include('partial._article', ['col' => 4, 'imgWidth' => 200, 'caption' => 'Chính chủ'])
-					@endfor
+					@foreach ($housesRelation as $relation)
+						@include('partial._article', ['model' => $relation,
+													  'isSale' => IsSaleOption::CHO_THUE,
+													  'col' => 4, 'iw' => 200, 'ih' => 150])
+					@endforeach
 				</div>
 			</div>
 		</section>
 	</article>
+@stop
+
+@section('breadcrumb')
+	<li><a href="{{ route('house.rentList') }}">Nhà đất cho thuê</a></li>
+	<li class="active">{{ $house->title }}</li>
+@stop
+
+@section('meta_title')
+{{ $house->meta_title }}
+@stop
+
+@section('meta_description')
+{{ $house->meta_description }}
 @stop
