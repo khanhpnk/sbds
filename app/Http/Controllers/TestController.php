@@ -39,8 +39,8 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-//        \Cache::forget('key');
-//        \Cache::forever('location', $_POST['mydata']);
+        \Cache::forget('location');
+        \Cache::forever('location', $_POST['mydata']);
 //        return;
 
 //        $cityArray = [];

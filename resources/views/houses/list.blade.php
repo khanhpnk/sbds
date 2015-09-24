@@ -2,12 +2,12 @@
 
 @section('content')
 	@if (0 < count($houses))
-		<section>
+		<section class="list">
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($houses as $house)
 						@include('partial._article', ['model' => $house,
-													  'isSale' => IsSaleOption::CHO_THUE,
+													  'isSale' => $house->is_sale,
 													  'col' => 4, 'iw' => 200, 'ih' => 150])
 					@endforeach
 				</div>
@@ -15,18 +15,12 @@
 		</section>
 		<nav class="simple-pagination">{!! $houses->render() !!}</nav>
 	@else
-		Không có dữ liệu
+		Không có dữ liệu!
 	@endif
 @stop
 
 @section('breadcrumb')
-	<li class="active">Nhà đất cho thuê</li>
+  <li class="active">{{ TextHelper::isSale($isSale) }}</li>
 @stop
-
-@section('meta_title')
-Nhà đất cho thuê
-@stop
-
-@section('meta_description')
-Nhà đất cho thuê
-@stop
+@section('meta_title'){{ TextHelper::isSale($isSale) }}@stop
+@section('meta_description'){{ TextHelper::isSale($isSale) }}@stop

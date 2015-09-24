@@ -27,14 +27,4 @@ class LocationHelper
             }
         }
     }
-
-    public static function district($value)
-    {
-        $locations = \Cache::get('location');
-        foreach ($locations as $city) {
-            if ($city['id'] == $value) {
-                return $city['text'];
-            }
-        }
-    }
 }

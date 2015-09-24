@@ -8,11 +8,24 @@
 				<div class="col-md-9">
 					{{-- */ $location = LocationHelper::full($house->city, $house->district, $house->ward) /* --}}
 					<address class="article-head-address">
-						Địa chỉ:
-						<a href="#">{{ $house->address }}</a>,
-						<a href="#">{{ $location['ward'] }}</a>,
-						<a href="#">{{ $location['district'] }}</a>,
-						<a href="#">{{ $location['city'] }}</a>
+						{{ $house->address }},
+						<a href="{{ UrlHelper::all($house->is_sale, ['city' 				=> str_slug($location['city']),
+																													'cityId' 			=> $house->city,
+																													'district' 		=> str_slug($location['district']),
+																													'districtId' 	=> $house->district,
+																													'ward' 				=> str_slug($location['ward']),
+																													'wardId' 			=> $house->ward]) }}">
+							{{ $location['ward'] }}
+						</a>
+						<a href="{{ UrlHelper::all($house->is_sale, ['city' 				=> str_slug($location['city']),
+																													'cityId' 			=> $house->city,
+																													'district' 		=> str_slug($location['district']),
+																													'districtId' 	=> $house->district]) }}">
+							{{ $location['district'] }}
+						</a>
+						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']), 'cityId' => $house->city]) }}">
+							{{ $location['city'] }}
+						</a>
 					</address>
 				</div>
 				<div class="col-md-3">
@@ -100,7 +113,7 @@
 				<div class="row">
 					@foreach ($housesRelation as $relation)
 						@include('partial._article', ['model' => $relation,
-													  'isSale' => IsSaleOption::CHO_THUE,
+													  'isSale' => $relation->is_sale,
 													  'col' => 4, 'iw' => 200, 'ih' => 150])
 					@endforeach
 				</div>
@@ -110,14 +123,26 @@
 @stop
 
 @section('breadcrumb')
-	<li><a href="{{ route('house.rentList') }}">Nhà đất cho thuê</a></li>
+	<li><a href="{{ UrlHelper::all($house->is_sale) }}">{{ TextHelper::isSale($house->is_sale) }}</a></li>
 	<li class="active">{{ $house->title }}</li>
 @stop
 
-@section('meta_title')
-{{ $house->meta_title }}
+@section('contactInfo')
+	<section class="contact-info">
+		<header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
+		<ul>
+			<li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
+			{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
+			<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
+			<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
+			<li><i class="fa fa-envelope"></i>{{ str_limit($contactInfo->email, 24) }}</li>
+			<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
+			<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
+			<li><i class="fa fa-skype"></i>{{ str_limit($contactInfo->skype, 24) }}</li>
+			<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
+		</ul>
+	</section>
 @stop
 
-@section('meta_description')
-{{ $house->meta_description }}
-@stop
+@section('meta_title'){{ $house->meta_title }}@stop
+@section('meta_description'){{ $house->meta_description }}@stop

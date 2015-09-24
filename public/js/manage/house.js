@@ -14,6 +14,7 @@ var houseModule = (function() {
   var imageUrl = baseUrl + "/images/uploads/house/";
   var UPLOAD_FILE_LIMIT = 20;
   var UPLOAD_FILE_MAX_SIZE = 2; // MB
+  var imageType = "medium";
   var checkUniqueUrl = "";
   var moneyUnitSale = [];
   var moneyUnitRent = [];
@@ -57,7 +58,7 @@ var houseModule = (function() {
     } else {
       var files = [];
       for(var key in imagesDbJSON) {
-        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl + imagesDbJSON[key]});
+        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl+imageType+"."+imagesDbJSON[key]});
       }
 
       fileImageInput.filer({
@@ -107,8 +108,8 @@ var houseModule = (function() {
         address: {maxlength: 32, required: true},
         youtube: {url: true},
         description: {rangelength: [8, 2000], required: true},
-        m2: {digits: true, maxlength: 16},
-        road: {digits: true, maxlength: 16},
+        m2: {digits: true, maxlength: 8},
+        road: {digits: true, maxlength: 8},
         "feature[]": {required: true},
       },
       messages: {

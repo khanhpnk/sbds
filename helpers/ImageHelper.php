@@ -12,12 +12,12 @@ class ImageHelper
 
         if (is_array($image)) {
             if (0 < count($image)) {
-                return asset($path . $sizes . '-' . $image[0]);
+                return asset($path . $sizes . '.' . $image[0]);
             } else {
                 return asset('images/default/' . $sizes . '.jpg');
             }
         } else {
-            return asset($path . $sizes . '-' . $image);
+            return asset($path . $sizes . '.' . $image);
         }
     }
 }

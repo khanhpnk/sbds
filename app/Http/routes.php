@@ -14,10 +14,20 @@
 /*********** *********** FRONTEND *********** ***********/
 Route::get('/', 'HomeController@index');
 Route::resource('test', 'TestController');
-Route::get('nha-dat-ban/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', ['uses' => 'HouseController@saleList', 'as' => 'house.saleList']);
-Route::get('nha-dat-cho-thue', ['uses' => 'HouseController@rentList', 'as' => 'house.rentList']);
+
+/* House */
 Route::get('nha-dat-ban/{house}', ['uses' => 'HouseController@saleShow', 'as' => 'house.saleShow']);
 Route::get('nha-dat-cho-thue/{house}', ['uses' => 'HouseController@rentShow', 'as' => 'house.rentShow']);
+Route::get('nha-dat-ban/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
+    'uses' => 'HouseController@saleList', 'as' => 'house.saleList'
+]);
+Route::get('nha-dat-cho-thue/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
+    'uses' => 'HouseController@rentList', 'as' => 'house.rentList'
+]);
+
+/* Company */
+Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'company.show']);
+Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/

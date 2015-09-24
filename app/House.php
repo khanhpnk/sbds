@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class House extends Model
@@ -55,7 +56,17 @@ class House extends Model
     ];
 
     /**
-     * Scope a query to only house of a given type is owner or not.
+     * Scope a query to show house is sale or rent
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsSale($query, $value)
+    {
+        return $query->where('is_sale', $value);
+    }
+
+    /**
+     * Scope a query to show house is owner or not
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -65,14 +76,19 @@ class House extends Model
     }
 
     /**
-     * Scope a query to show house is sale or rent
+     * Scope a query to show house is expired or not
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeIsSale($query, $value)
+    public function scopeExpired($query, $value)
     {
-        return $query->where('is_sale', $value);
+        if ($value) { // Expired
+            return $query->where('end_date', '<', Carbon::now());
+        } else { // UnExpired
+            return $query->where('end_date', '>=', Carbon::now());
+        }
     }
+
 
     /**
      * Mutator: Slug, meta_title, meta_description should auto set
