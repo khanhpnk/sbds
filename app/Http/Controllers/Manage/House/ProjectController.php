@@ -1,17 +1,14 @@
 <?php
 namespace App\Http\Controllers\Manage\House;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\Project;
 
-class ProjectController extends Controller
+class ProjectController extends BaseController
 {
-	const QUANLITY = 100;
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -61,13 +58,12 @@ class ProjectController extends Controller
 	{
 		$data = $request->all();
 		$data['images'] = $project->images;
-		$basepath = config('image.paths.project');
 
 		$files = json_decode($data['files_deleted']);
 		foreach ($files as $file) {
 			if (($key = array_search($file, $data['images'])) !== false) {
 				unset($data['images'][$key]);
-				\File::delete($basepath.$file);
+				$this->deleteImage($file);
 			}
 		}
 
@@ -78,32 +74,6 @@ class ProjectController extends Controller
 	}
 
 	/**
-	 * Note: Passing by Reference
-	 * @param array $data
-	 */
-	protected function uploadImage(&$data)
-	{
-		$width = config('image.sizes.medium.w');
-		$height = config('image.sizes.medium.h');
-		$basepath = public_path(config('image.paths.project'));
-		$userId = Auth::user()->id;
-		$now = date('His.dmY');
-		$i = 0;
-
-		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
-			if (!empty($tmpPath)) {
-				$image = \Image::make($tmpPath);
-				$fileName = $userId . '.' . $now . '.' . $i++ . '.jpg';
-				$image->fit($width, $height)
-					->save($basepath.$fileName, self::QUANLITY);
-
-				array_push($data['images'], $fileName);
-			}
-		}
-	}
-
-
-	/**
 	 * Check Unique Url
 	 *
 	 * @param Request $request
@@ -111,14 +81,6 @@ class ProjectController extends Controller
 	 */
 	public function unique(Request $request, $id = null)
 	{
-		if ($request->ajax()) {
-			$title = $request->input('title');
-
-			if (is_null($id)) {
-				return (0 == Project::where('title', $title)->count()) ? 'true' : 'false';
-			} else {
-				return (0 == Project::where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
-			}
-		}
+		return $this->checkUniqueUrl($request, 'project', $id);
 	}
 }

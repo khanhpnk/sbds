@@ -22,3 +22,16 @@
   margin-bottom: 4px;
   margin-top: 4px;
 }
+.btn-form-upload {
+  text-transform: uppercase;
+  color: #337ab7;
+  border: 1px solid #337ab7;
+  font-weight: 600;
+  margin: 10px 0;
+  border-radius: 0;
+}
+.btn-form-upload:hover,
+.btn-form-upload:active {
+  background: #337ab7;
+  color: #fff;
+}

@@ -14,7 +14,11 @@ class ProjectRequest extends Request
      */
     public function authorize()
     {
-        return Gate::allows('update', $this->route('project'));
+        if ($this->isMethod('PATCH')) {
+            return Gate::allows('update', $this->route('project'));
+        }
+
+        return true;
     }
 
     /**

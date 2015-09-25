@@ -76,6 +76,16 @@ class House extends Model
     }
 
     /**
+     * Scope a query to show house is owner or not
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsSold($query, $value)
+    {
+        return $query->where('is_sold', $value);
+    }
+
+    /**
      * Scope a query to show house is expired or not
      *
      * @return \Illuminate\Database\Eloquent\Builder

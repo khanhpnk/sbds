@@ -3,12 +3,9 @@
 <head>
   @include('_head')
   @section('style')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('partial') }}" rel="stylesheet">
   @show
-  <script src="{{ asset('vendor/jquery-2.1.3.min.js') }}"></script>
 </head>
 <body>
   {{--Initialize the JavaScript SDK--}}
@@ -58,13 +55,6 @@
   </footer>
 
   @section('javascript')
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script>
-      // CSRF protection for your AJAX based applications
-      $.ajaxSetup({
-        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
-      });
-    </script>
     <!-- Custom -->
     <script src="{{ asset('js/function.js') }}"></script>
     <script src="{{ asset('js/layout.js') }}"></script>

@@ -36,7 +36,7 @@ class CompanyController extends Controller
 	public function update(CompanyRequest $request)
 	{
 		if ($request->ajax()) {
-			Auth::user()->company()->update($request->all());
+			Auth::user()->company->update($request->all());
 
 			return new JsonResponse(['message' => Lang::get('system.update')], 200);
 		}

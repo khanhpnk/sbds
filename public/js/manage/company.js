@@ -6,7 +6,6 @@ var companyModule = (function() {
   var companyColapse = $('#collapseOne');
   var houseColapse = $('#collapseTwo');
   var checkUniqueUrl = "";
-  var baseUpdateUrl = "";
   var isEdit = false; // new resource is false, else true
 
   var init = function() {

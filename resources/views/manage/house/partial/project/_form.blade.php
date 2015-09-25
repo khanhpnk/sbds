@@ -3,19 +3,20 @@
   <script>
     $(function() {
       @if (isset($project->images))
-        projectModule.setImagesDbJSON({!! json_encode($project->images) !!});
+        imageModule.setImagesDbJSON({!! json_encode($project->images) !!});
+        imageModule.setImageUrl(publicUrl + "/upload/house/{{ $project->user_id }}/");
       @endif
       projectModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
       projectModule.init();
       mapModule.init("form-map-canvas");
 
       locationModule.setLocationDbJSON({
-        address: "{{ $house->address or '' }}",
-        ward: "{{ $house->ward or '' }}",
-        district: "{{ $house->district or '' }}",
-        city: "{{ $house->city or '' }}"
+        address: "{{ $project->address or '' }}",
+        ward: "{{ $project->ward or '' }}",
+        district: "{{ $project->district or '' }}",
+        city: "{{ $project->city or '' }}"
       });
-      delay(function(){locationModule.init()}, 1000);
+      delay(function(){locationModule.init()}, 2000);
     });
   </script>
   <script src="{{ asset('js/manage/project.js') }}"></script>
@@ -71,7 +72,7 @@
   @include('partial.form._hidden', ['model' => $project, 'name' => 'lat'])
   @include('partial.form._hidden', ['model' => $project, 'name' => 'lng'])
 
-  <a class="btn btn-main" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
+  <a class="btn btn-form-upload" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
   <input type="hidden" id="files_deleted" name="files_deleted">
   @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube'])
   <span id="helpBlock" class="help-block">

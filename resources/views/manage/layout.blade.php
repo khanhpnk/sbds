@@ -3,9 +3,6 @@
 <head>
   @include('_head')
   @section('style')
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Datepicker -->
     <link href="{{ asset('vendor/pickadate/lib/compressed/themes/default.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/pickadate/lib/compressed/themes/default.date.css') }}" rel="stylesheet">
@@ -19,15 +16,7 @@
     <link href="{{ asset('css/manage/form.css') }}" rel="stylesheet">
   @show
   @section('jshead')
-    <!-- Jquery -->
-    <script src="{{ asset('vendor/jquery-2.1.3.min.js') }}"></script>
-    <script>
-      // CSRF protection for your AJAX based applications
-      $.ajaxSetup({
-        headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
-      });
-      var baseUrl = "{{ url() }}";
-    </script>
+
   @show
 
 </head>
@@ -56,8 +45,6 @@
   </footer>
 
   @section('javascript')
-    <!-- Bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Datepicker -->
     <script type="text/javascript" src="{{ asset('vendor/pickadate/lib/compressed/picker.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/pickadate/lib/compressed/picker.date.js') }}"></script>
@@ -76,8 +63,9 @@
     <script src="{{ asset('js/function.js') }}"></script>
     <script src="{{ asset('js/layout.js') }}"></script>
     <script src="{{ asset('js/location.js') }}"></script>
-    <script src="{{ asset('js/manage/map.js') }}"></script>
-    <script src="{{ asset('js/manage/location.js') }}"></script>
+    <script src="{{ asset('js/manage/module/map.js') }}"></script>
+    <script src="{{ asset('js/manage/module/location.js') }}"></script>
+  <script src="{{ asset('js/manage/module/image.js') }}"></script>
   @show
 </body>
 </html>

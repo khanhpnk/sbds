@@ -28,6 +28,10 @@ Route::get('nha-dat-cho-thue/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}
 /* Company */
 Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'company.show']);
 Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
+
+/* Project */
+Route::get('du-an/{project}', ['uses' => 'ProjectController@show', 'as' => 'project.show']);
+
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/

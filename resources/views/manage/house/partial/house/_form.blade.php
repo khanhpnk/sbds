@@ -3,7 +3,8 @@
   <script>
     $(function() {
       @if (isset($house->images))
-        houseModule.setImagesDbJSON({!! json_encode($house->images) !!});
+        imageModule.setImagesDbJSON({!! json_encode($house->images) !!});
+        imageModule.setImageUrl(publicUrl + "/upload/house/{{ $house->user_id }}/");
       @endif
       houseModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
 			houseModule.setMoneyUnitSale({!! MoneyUnitSaleOption::getJsonOptions() !!});
@@ -20,7 +21,7 @@
         district: "{{ $house->district or '' }}",
         city: "{{ $house->city or '' }}"
       });
-      delay(function(){locationModule.init()}, 1000);
+      delay(function(){locationModule.init()}, 2000);
     });
   </script>
   <script src="{{ asset('js/manage/house.js') }}"></script>
@@ -33,14 +34,14 @@
     <div class="col-md-1">
       @include('partial.form._radio', ['name' => 'is_sale',
                                        'label' => 'Bán',
-                                       'checked' => is_null($house) || (!is_null($house) && 1 == $house->is_sale) ? true : false,
-                                       'value' => 1])
+                                       'checked' => is_null($house) || (!is_null($house) && IsSaleOption::BAN == $house->is_sale) ? true : false,
+                                       'value' => IsSaleOption::BAN])
     </div>
     <div class="col-md-3">
       @include('partial.form._radio', ['name' => 'is_sale',
                                        'label' => 'Cho thuê',
-                                       'checked' => (!is_null($house) && 2 == $house->is_sale) ? true : false,
-                                       'value' => 2])
+                                       'checked' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? true : false,
+                                       'value' => IsSaleOption::CHO_THUE])
     </div>
     <div class="col-md-4">
       @include('partial.form._text', ['model' => $house, 'name' => 'price', 'label' => 'Giá tiền'])
@@ -48,7 +49,7 @@
     <div class="col-md-4">
       @include('partial.form._select', ['name' => 'money_unit',
                                         'label' => 'Đơn vị',
-                                        'options' => (!is_null($house) && 2 == $house->is_sale) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
+                                        'options' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
                                         'value' => !is_null($house) ? $house->money_unit : null])
     </div>
   </div>
@@ -57,7 +58,7 @@
     <div class="col-md-4">
       @include('partial.form._select', ['name' => 'category',
                                         'label' => 'Loại BĐS',
-                                        'options' => (!is_null($house) && 2 == $house->is_sale) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
+                                        'options' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
                                         'value' => !is_null($house) ? $house->category : null])
     </div>
     <div class="col-md-4">
@@ -97,7 +98,7 @@
   @include('partial.form._hidden', ['model' => $house, 'name' => 'lat'])
   @include('partial.form._hidden', ['model' => $house, 'name' => 'lng'])
 
-  <a class="btn btn-main" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
+  <a class="btn btn-form-upload" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
   <input type="hidden" id="files_deleted" name="files_deleted">
   @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube'])
   <span id="helpBlock" class="help-block">

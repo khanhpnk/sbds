@@ -20,8 +20,7 @@ return array(
 
 	'paths' => [
 		'avatar' => 'images/uploads/avatar/',
-		'house' => 'images/uploads/house/',
-        'project' => 'images/uploads/project/',
+		'house' => 'house',
 	],
 
 	'sizes' => [

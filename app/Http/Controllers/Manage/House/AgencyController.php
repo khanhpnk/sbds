@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Manage\House;
 
 use App\Http\Requests\HouseRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\House;
@@ -72,5 +73,16 @@ class AgencyController extends BaseController
 		$house->fill($data)->save();
 
 		return redirect('m/management')->with('flash_message', Lang::get('system.update'));
+	}
+
+	/**
+	 * Check Unique Url
+	 *
+	 * @param Request $request
+	 * @return string Jquery Validation plugin only expect returns value string true or false
+	 */
+	public function unique(Request $request, $id = null)
+	{
+		return $this->checkUniqueUrl($request, 'house', $id);
 	}
 }

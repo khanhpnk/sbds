@@ -6,9 +6,26 @@ use App\User;
 use App\Company;
 use App\House;
 use IsOwnerOption;
+use IsSoldOption;
 
 class CompanyController extends Controller
 {
+    private function _houselist(Company $company)
+    {
+        return House::where('user_id', $company->user_id)
+            ->isOwner(IsOwnerOption::MOI_GIOI)
+            ->expired(false)
+            ->orderBy('id', 'desc');
+    }
+
+    private function _soldHouselist(Company $company)
+    {
+        return House::where('user_id', $company->user_id)
+            ->isOwner(IsOwnerOption::MOI_GIOI)
+            ->isSold(IsSoldOption::DA_BAN)
+            ->orderBy('id', 'desc');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -17,15 +34,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        $houses = House::where('user_id', $company->user_id)
-            ->isOwner(IsOwnerOption::MOI_GIOI)
-            ->expired(false)
-            ->orderBy('id', 'desc')->simplePaginate(3);
-
-        $housesSold = House::where('user_id', $company->user_id)
-            ->isOwner(IsOwnerOption::MOI_GIOI)
-            ->expired(true)
-            ->orderBy('id', 'desc')->simplePaginate(3);
+        $houses = $this->_houselist($company)->simplePaginate(3);
+        $housesSold = $this->_soldHouselist($company)->simplePaginate(3);
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $company->user_id)->first();
@@ -38,8 +48,17 @@ class CompanyController extends Controller
      *
      * @return Response
      */
-    public function houseList($houseList)
+    public function houseList(Company $company, $filter)
     {
-        // dang-giao-dich, da-ban
+        switch ($filter) {
+            case IsSoldOption::CHUA_BAN:
+                $houses = $this->_houselist($company)->simplePaginate(6);
+                break;
+            case IsSoldOption::DA_BAN:
+                $houses = $this->_soldHouselist($company)->simplePaginate(6);
+                break;
+        }
+
+        return view('companies.list', compact('company', 'houses'));
     }
 }

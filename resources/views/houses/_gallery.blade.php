@@ -1,4 +1,4 @@
-@if (0 < count($house->images) || !empty($house->youtube))
+@if (0 < count($model->images) || !empty($model->youtube))
 	@section('style')
 		@parent
 		<link rel='stylesheet' href='{{ asset('css/jssor.slider.css') }}'/>
@@ -20,15 +20,15 @@
 			</div>
 
 			<div u="slides" class="slider-container">
-				@if (!empty($house->youtube))
+				@if (!empty($model->youtube))
 					<div>
 						<div u="player" class="slider-player">
-							<iframe pHandler="ytiframe" pHideControls="0" width="675" height="402" style="z-index: 0;" url="{{ $house->youtube }}" frameborder="0" scrolling="no"></iframe>
+							<iframe pHandler="ytiframe" pHideControls="0" width="675" height="402" style="z-index: 0;" url="{{ $model->youtube }}" frameborder="0" scrolling="no"></iframe>
 							<div u="cover" class="videoCover"></div><!-- play cover begin (optional, can remove play cover) -->
 						</div>
 					</div>
 				@endif
-				@foreach ($house->images as $image)
+				@foreach ($model->images as $image)
 					<div>
 						<img u="image" src="{{ ImageHelper::image($image, 'house', 'large') }}" />
 						<img u="thumb" src="{{ ImageHelper::image($image, 'house', 'small') }}" />

@@ -8,6 +8,7 @@
 				<div class="col-md-9">
 					{{-- */ $location = LocationHelper::full($house->city, $house->district, $house->ward) /* --}}
 					<address class="article-head-address">
+						Địa chỉ:
 						{{ $house->address }},
 						<a href="{{ UrlHelper::all($house->is_sale, ['city' 				=> str_slug($location['city']),
 																													'cityId' 			=> $house->city,
@@ -48,7 +49,7 @@
 		</section>
 
 		{{-- gallery section --}}
-		@include('houses._gallery')
+		@include('houses._gallery', ['model' => $house])
 
 		<section class="article-description">
 			{!! nl2br($house->description) !!}

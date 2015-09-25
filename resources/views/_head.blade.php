@@ -8,3 +8,19 @@
 
 <title>@yield('meta_title', 'Sàn bất động sản')</title>
 <link rel="icon" href="/images/favicon.ico">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Jquery -->
+<script src="{{ asset('vendor/jquery-2.1.3.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script>
+  // CSRF protection for your AJAX based applications
+  $.ajaxSetup({
+    headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+  });
+  var publicUrl = "{{ url() }}";
+</script>

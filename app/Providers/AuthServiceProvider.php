@@ -6,7 +6,9 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 use App\House;
+use App\Project;
 use App\Policies\HousePolicy;
+use App\Policies\ProjectPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         House::class => HousePolicy::class,
-        'App\Project' => 'App\Policies\ProjectPolicy',
+        Project::class => ProjectPolicy::class,
     ];
 
     /**

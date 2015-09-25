@@ -5,16 +5,9 @@ var houseModule = (function() {
   var houseForm = $('#houseForm');
   var moneyUnitSelect = $('#money_unit');
   var categorySelect = $('#category');
-  var fileImageInput = $('#fileImage');
   var latInput = $('#lat');
   var lngInput = $('#lng');
   var filesDeletedHiddenInput = $('#files_deleted');
-  var filesDeleted = [];
-  var imagesDbJSON = "";
-  var imageUrl = baseUrl + "/images/uploads/house/";
-  var UPLOAD_FILE_LIMIT = 20;
-  var UPLOAD_FILE_MAX_SIZE = 2; // MB
-  var imageType = "medium";
   var checkUniqueUrl = "";
   var moneyUnitSale = [];
   var moneyUnitRent = [];
@@ -23,7 +16,7 @@ var houseModule = (function() {
 
   var init = function() {
     radioEventListener();
-    imageUploadEventListener();
+    imageModule.init();
     formEventListener();
   };
 
@@ -45,31 +38,6 @@ var houseModule = (function() {
 
   var setMoneyCategoryRent = function(val) {
     houseCategoryRent = val;
-  };
-
-  var setImagesDbJSON = function(val) {
-    imagesDbJSON = val;
-  };
-
-  // Note: Core library file had edit
-  var imageUploadEventListener = function() {
-    if ('' == imagesDbJSON) {
-      fileImageInput.filer({limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE, addMore: true});
-    } else {
-      var files = [];
-      for(var key in imagesDbJSON) {
-        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl+imageType+"."+imagesDbJSON[key]});
-      }
-
-      fileImageInput.filer({
-        limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE,
-        addMore: true, files: files,
-        excludeName: null,
-        onRemove: function(itemEl, file, id, listEl, boxEl, newInputEl, inputEl) {
-          filesDeleted.push(file.name);
-        }
-      });
-    }
   };
 
   var radioEventListener = function() {
@@ -137,7 +105,7 @@ var houseModule = (function() {
 
       latInput.val(latlng.lat());
       lngInput.val(latlng.lng());
-      filesDeletedHiddenInput.val(JSON.stringify(filesDeleted));
+      filesDeletedHiddenInput.val(JSON.stringify(imageModule.getFilesDeleted()));
     });
   };
 
@@ -147,7 +115,6 @@ var houseModule = (function() {
     setMoneyUnitSale: setMoneyUnitSale,
     setMoneyUnitRent: setMoneyUnitRent,
     setMoneyCategorySale: setMoneyCategorySale,
-    setMoneyCategoryRent: setMoneyCategoryRent,
-    setImagesDbJSON: setImagesDbJSON
+    setMoneyCategoryRent: setMoneyCategoryRent
   };
 })();

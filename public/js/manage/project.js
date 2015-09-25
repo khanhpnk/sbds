@@ -3,49 +3,18 @@
  */
 var projectModule = (function() {
   var projectForm = $('#projectForm');
-  var fileImageInput = $('#fileImage');
   var latInput = $('#lat');
   var lngInput = $('#lng');
   var filesDeletedHiddenInput = $('#files_deleted');
-  var filesDeleted = [];
-  var imagesDbJSON = "";
-  var imageUrl = baseUrl + "/images/uploads/project/";
-  var UPLOAD_FILE_LIMIT = 20;
-  var UPLOAD_FILE_MAX_SIZE = 2; // MB
   var checkUniqueUrl = "";
 
   var init = function() {
-    imageUploadEventListener();
+    imageModule.init();
     formEventListener();
   };
 
   var setCheckUniqueUrl = function(url) {
     checkUniqueUrl = url;
-  };
-
-  var setImagesDbJSON = function(val) {
-    imagesDbJSON = val;
-  };
-
-  // Note: Core library file had edit
-  var imageUploadEventListener = function() {
-    if ('' == imagesDbJSON) {
-      fileImageInput.filer({limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE, addMore: true});
-    } else {
-      var files = [];
-      for(var key in imagesDbJSON) {
-        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl + imagesDbJSON[key]});
-      }
-
-      fileImageInput.filer({
-        limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE,
-        addMore: true, files: files,
-        excludeName: null,
-        onRemove: function(itemEl, file, id, listEl, boxEl, newInputEl, inputEl) {
-          filesDeleted.push(file.name);
-        }
-      });
-    }
   };
 
   var formEventListener = function() {
@@ -85,13 +54,12 @@ var projectModule = (function() {
 
       latInput.val(latlng.lat());
       lngInput.val(latlng.lng());
-      filesDeletedHiddenInput.val(JSON.stringify(filesDeleted));
+      filesDeletedHiddenInput.val(JSON.stringify(imageModule.getFilesDeleted()));
     });
   };
 
   return {
     init: init,
     setCheckUniqueUrl: setCheckUniqueUrl,
-    setImagesDbJSON: setImagesDbJSON
   };
 })();
