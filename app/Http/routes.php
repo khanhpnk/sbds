@@ -31,6 +31,9 @@ Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList
 
 /* Project */
 Route::get('du-an/{project}', ['uses' => 'ProjectController@show', 'as' => 'project.show']);
+Route::get('du-an/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
+    'uses' => 'ProjectController@index', 'as' => 'project.index'
+]);
 
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');

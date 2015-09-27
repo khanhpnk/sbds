@@ -38,8 +38,8 @@ var companyModule = (function() {
     companyForm.validate({
       rules: {
         title: {rangelength: [8, 50], required: true, remote: checkUniqueUrl},
-        short_description: {rangelength: [8, 1000], required: true},
-        description: {rangelength: [8, 2000], required: true},
+        short_description: {rangelength: [8, 2000], required: true},
+        description: {rangelength: [8, 6000], required: true},
       },
       highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');

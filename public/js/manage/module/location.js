@@ -121,7 +121,6 @@ var locationModule = (function() {
                 fullAddress += value + ", ";
             }
         });
-        console.log("ADDRESS: " + fullAddress);
         mapModule.searchAddress(fullAddress.substring(0, fullAddress.length-2));
     };
 

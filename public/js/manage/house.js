@@ -45,9 +45,9 @@ var houseModule = (function() {
       var moneyUnit; var category;
 
       switch(this.value) {
-        case '1':
+        case '0':
           moneyUnit = moneyUnitSale; category = houseCategorySale; break;
-        case '2':
+        case '1':
           moneyUnit = moneyUnitRent; category = houseCategoryRent; break;
       }
 
@@ -75,7 +75,7 @@ var houseModule = (function() {
         ward: {required: true},
         address: {maxlength: 32, required: true},
         youtube: {url: true},
-        description: {rangelength: [8, 2000], required: true},
+        description: {rangelength: [8, 6000], required: true},
         m2: {digits: true, maxlength: 8},
         road: {digits: true, maxlength: 8},
         "feature[]": {required: true},

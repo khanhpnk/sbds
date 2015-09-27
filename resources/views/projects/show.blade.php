@@ -18,18 +18,18 @@
         <address class="article-head-address">
           Địa chỉ:
           {{ $project->address }},
-          <a href="{{ UrlHelper::all($project->is_sale, ['city' 				=> str_slug($location['city']),
-																													'cityId' 			=> $project->city,
-																													'district' 		=> str_slug($location['district']),
-																													'districtId' 	=> $project->district,
-																													'ward' 				=> str_slug($location['ward']),
-																													'wardId' 			=> $project->ward]) }}">
+          <a href="{{ UrlHelper::all($project->is_sale, ['city' => str_slug($location['city']),
+                                                        'cityId' 			=> $project->city,
+                                                        'district' 		=> str_slug($location['district']),
+                                                        'districtId' 	=> $project->district,
+                                                        'ward' 				=> str_slug($location['ward']),
+                                                        'wardId' 			=> $project->ward]) }}">
             {{ $location['ward'] }}
           </a>
-          <a href="{{ UrlHelper::all($project->is_sale, ['city' 				=> str_slug($location['city']),
-																													'cityId' 			=> $project->city,
-																													'district' 		=> str_slug($location['district']),
-																													'districtId' 	=> $project->district]) }}">
+          <a href="{{ UrlHelper::all($project->is_sale, ['city' => str_slug($location['city']),
+                                                        'cityId' 			=> $project->city,
+                                                        'district' 		=> str_slug($location['district']),
+                                                        'districtId' 	=> $project->district]) }}">
             {{ $location['district'] }}
           </a>
           <a href="{{ UrlHelper::all($project->is_sale, ['city' => str_slug($location['city']), 'cityId' => $project->city]) }}">

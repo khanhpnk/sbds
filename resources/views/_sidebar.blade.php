@@ -8,7 +8,7 @@
     <div class="row">
       @if (!is_null($houseSaleRecommend))
         @include('partial._article', ['model' => $houseSaleRecommend,
-                                      'isSale' => IsSaleOption::BAN,
+                                      'resource' => ResourceOption::BAN,
                                       'col' => 12, 'iw' => 195, 'ih' => 150])
       @endif
     </div>
@@ -19,7 +19,7 @@
     <div class="row">
       @if (!is_null($houseRentRecommend))
         @include('partial._article', ['model' => $houseRentRecommend,
-                                      'isSale' => IsSaleOption::CHO_THUE,
+                                      'resource' => ResourceOption::CHO_THUE,
                                       'col' => 12, 'iw' => 195, 'ih' => 150])
       @endif
     </div>

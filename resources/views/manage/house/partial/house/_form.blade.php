@@ -29,15 +29,25 @@
 
 {!! csrf_field() !!}
 <section>
-  @include('partial.form._text', ['model' => $house, 'name' => 'title', 'label' => 'Tiêu đề'])
   <div class="row">
-    <div class="col-md-1">
+      <div class="col-md-8">
+          @include('partial.form._text', ['model' => $house, 'name' => 'title', 'label' => 'Tiêu đề'])
+      </div>
+    <div class="col-md-4">
+      <label for="primary" class="btn btn-primary btn-badgebox">
+          Đã bán thành công <input type="checkbox" id="primary" name="sold" class="badgebox" value="1"><span class="badge">&check;</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
       @include('partial.form._radio', ['name' => 'is_sale',
-                                       'label' => 'Bán',
+                                       'label' => 'Bán nhà',
                                        'checked' => is_null($house) || (!is_null($house) && IsSaleOption::BAN == $house->is_sale) ? true : false,
                                        'value' => IsSaleOption::BAN])
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       @include('partial.form._radio', ['name' => 'is_sale',
                                        'label' => 'Cho thuê',
                                        'checked' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? true : false,

@@ -55,7 +55,6 @@ i {
   border-top: none;
   display: block;
   margin-bottom: 30px;
-  text-transform: lowercase;
 }
 .thumb-img:hover {
   opacity: 0.8;

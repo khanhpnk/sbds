@@ -10,18 +10,18 @@
 					<address class="article-head-address">
 						Địa chỉ:
 						{{ $house->address }},
-						<a href="{{ UrlHelper::all($house->is_sale, ['city' 				=> str_slug($location['city']),
-																													'cityId' 			=> $house->city,
-																													'district' 		=> str_slug($location['district']),
-																													'districtId' 	=> $house->district,
-																													'ward' 				=> str_slug($location['ward']),
-																													'wardId' 			=> $house->ward]) }}">
+						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']),
+																	'cityId' 			=> $house->city,
+																	'district' 		=> str_slug($location['district']),
+																	'districtId' 	=> $house->district,
+																	'ward' 				=> str_slug($location['ward']),
+																	'wardId' 			=> $house->ward]) }}">
 							{{ $location['ward'] }}
 						</a>
-						<a href="{{ UrlHelper::all($house->is_sale, ['city' 				=> str_slug($location['city']),
-																													'cityId' 			=> $house->city,
-																													'district' 		=> str_slug($location['district']),
-																													'districtId' 	=> $house->district]) }}">
+						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']),
+																	'cityId' 			=> $house->city,
+																	'district' 		=> str_slug($location['district']),
+																	'districtId' 	=> $house->district]) }}">
 							{{ $location['district'] }}
 						</a>
 						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']), 'cityId' => $house->city]) }}">
@@ -114,8 +114,8 @@
 				<div class="row">
 					@foreach ($housesRelation as $relation)
 						@include('partial._article', ['model' => $relation,
-													  'isSale' => $relation->is_sale,
-													  'col' => 4, 'iw' => 200, 'ih' => 150])
+													'resource' => $relation->is_sale,
+													'col' => 4, 'iw' => 200, 'ih' => 150])
 					@endforeach
 				</div>
 			</div>
@@ -124,7 +124,7 @@
 @stop
 
 @section('breadcrumb')
-	<li><a href="{{ UrlHelper::all($house->is_sale) }}">{{ TextHelper::isSale($house->is_sale) }}</a></li>
+	<li><a href="{{ UrlHelper::all($house->is_sale) }}">{{ TextHelper::resource($house->is_sale) }}</a></li>
 	<li class="active">{{ $house->title }}</li>
 @stop
 

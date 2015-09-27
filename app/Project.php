@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -51,5 +52,20 @@ class Project extends Model
         $this->attributes['meta_title'] = $value;
         $this->attributes['meta_description'] = $value;
         $this->attributes['slug'] = str_slug($value);
+    }
+
+    /**
+     * Scope a query to show house is expired or not
+     *
+     * @param boolean $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeExpired($query, $value)
+    {
+        if (true == $value) { // Expired
+            return $query->where('end_date', '<', Carbon::now());
+        } else if (false == $value) { // UnExpired
+            return $query->where('end_date', '>=', Carbon::now());
+        }
     }
 }

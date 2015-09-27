@@ -2,14 +2,17 @@
 
 class TextHelper
 {
-    public static function isSale($isSale)
+    public static function resource($isSale)
     {
         switch ($isSale) {
-            case IsSaleOption::BAN:
-                return 'Nhà đất bán';
+            case ResourceOption::BAN:
+                return 'Bán';
                 break;
-            case IsSaleOption::CHO_THUE:
-                return 'Nhà đất cho thuê';
+            case ResourceOption::CHO_THUE:
+                return 'Cho thuê';
+                break;
+            case ResourceOption::DU_AN:
+                return 'Dự án';
                 break;
         }
     }

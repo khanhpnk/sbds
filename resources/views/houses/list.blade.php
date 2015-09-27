@@ -7,7 +7,7 @@
 				<div class="row">
 					@foreach ($houses as $house)
 						@include('partial._article', ['model' => $house,
-													  'isSale' => $house->is_sale,
+													  'resource' => $house->is_sale,
 													  'col' => 4, 'iw' => 200, 'ih' => 150])
 					@endforeach
 				</div>
@@ -20,7 +20,7 @@
 @stop
 
 @section('breadcrumb')
-  <li class="active">{{ TextHelper::isSale($isSale) }}</li>
+  <li class="active">{{ TextHelper::resource($isSale) }}</li>
 @stop
-@section('meta_title'){{ TextHelper::isSale($isSale) }}@stop
-@section('meta_description'){{ TextHelper::isSale($isSale) }}@stop
+@section('meta_title'){{ TextHelper::resource($isSale) }}@stop
+@section('meta_description'){{ TextHelper::resource($isSale) }}@stop

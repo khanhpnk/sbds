@@ -16,6 +16,7 @@ class House extends Model
         'is_owner',
         'title',
         'is_sale',
+        'sold',
         'price',
         'money_unit',
         'category',
@@ -88,13 +89,14 @@ class House extends Model
     /**
      * Scope a query to show house is expired or not
      *
+     * @param boolean $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeExpired($query, $value)
     {
-        if ($value) { // Expired
+        if (true == $value) { // Expired
             return $query->where('end_date', '<', Carbon::now());
-        } else { // UnExpired
+        } else if (false == $value) { // UnExpired
             return $query->where('end_date', '>=', Carbon::now());
         }
     }
