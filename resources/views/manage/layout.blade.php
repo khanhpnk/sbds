@@ -65,7 +65,8 @@
     <script src="{{ asset('js/location.js') }}"></script>
     <script src="{{ asset('js/manage/module/map.js') }}"></script>
     <script src="{{ asset('js/manage/module/location.js') }}"></script>
-  <script src="{{ asset('js/manage/module/image.js') }}"></script>
+    <script src="{{ asset('js/manage/module/images.js') }}"></script>
+    <script src="{{ asset('js/manage/module/image.js') }}"></script>
   @show
 </body>
 </html>

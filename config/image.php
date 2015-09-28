@@ -19,7 +19,8 @@ return array(
 
 
 	'paths' => [
-		'avatar' => 'images/uploads/avatar/',
+		'avatar' => 'upload/user',
+        'company' => 'upload/company',
 		'house' => 'house',
 	],
 

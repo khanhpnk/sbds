@@ -16,7 +16,7 @@ var houseModule = (function() {
 
   var init = function() {
     radioEventListener();
-    imageModule.init();
+    imagesModule.init();
     formEventListener();
   };
 
@@ -105,7 +105,7 @@ var houseModule = (function() {
 
       latInput.val(latlng.lat());
       lngInput.val(latlng.lng());
-      filesDeletedHiddenInput.val(JSON.stringify(imageModule.getFilesDeleted()));
+      filesDeletedHiddenInput.val(JSON.stringify(imagesModule.getFilesDeleted()));
     });
   };
 

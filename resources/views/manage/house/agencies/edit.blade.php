@@ -18,9 +18,7 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <form accept-charset="UTF-8" action="{{ route('company.save') }}" role="form" id="companyForm">
-            @include('manage.house.partial.company._form')
-          </form>
+          @include('manage.house.partial.company._form')
         </div>
       </div>
     </div>

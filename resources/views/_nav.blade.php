@@ -15,10 +15,10 @@
 <div class="collapse navbar-collapse" id="navbar-collapse01">
   <ul class="nav navbar-nav">{{-- Leave blank --}}</ul>
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="{{ route('house.saleList') }}">NHÀ ĐẤT BÁN</a></li>
-    <li><a href="{{ route('house.rentList') }}">CHO THUÊ</a></li>
+    <li><a href="{{ route('house.index', ['type' => 'ban']) }}">NHÀ ĐẤT BÁN</a></li>
+    <li><a href="{{ route('house.index', ['type' => 'cho-thue']) }}">CHO THUÊ</a></li>
     <li><a href="{{ route('project.index') }}">DỰ ÁN</a></li>
-    <li><a href="/">VẬT LIỆU</a></li>
+    <li><a href="{{ route('company.index') }}">CÔNG TY</a></li>
     <li><a href="/">DỊCH VỤ</a></li>
     <li style="position: relative">
       @if (Auth::guest())

@@ -12,6 +12,8 @@ use App\Company;
 
 class CompanyController extends Controller
 {
+	const QUANLITY = 100;
+
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -20,11 +22,15 @@ class CompanyController extends Controller
 	 */
 	public function store(CompanyRequest $request)
 	{
-		if ($request->ajax()) {
-			Auth::user()->company()->create($request->all());
+		$data = $request->only('title', 'short_description', 'description');
 
-			return new JsonResponse(['message' => Lang::get('system.store')], 201);
+		if (!empty($_FILES['avatar']['tmp_name'])) {
+			$data['avatar'] = $this->uploadImage($_FILES['avatar']['tmp_name']);
 		}
+
+		Auth::user()->company()->create($data);
+
+		return redirect('m/agency/create')->with('flash_message', Lang::get('system.store'));
 	}
 
 	/**
@@ -35,11 +41,18 @@ class CompanyController extends Controller
 	 */
 	public function update(CompanyRequest $request)
 	{
-		if ($request->ajax()) {
-			Auth::user()->company->update($request->all());
+		$data = $request->only('title', 'short_description', 'description');
 
-			return new JsonResponse(['message' => Lang::get('system.update')], 200);
+		if (!empty($_FILES['avatar']['tmp_name'])) {
+			$data['avatar'] = $this->uploadImage($_FILES['avatar']['tmp_name']);
+
+			$path = config('image.paths.company');
+			\File::delete($path.DIRECTORY_SEPARATOR.Auth::user()->company->avatar);
 		}
+
+		Auth::user()->company->update($data);
+
+		return redirect('m/agency/create')->with('flash_message', Lang::get('system.update'));
 	}
 
 	/**
@@ -59,5 +72,24 @@ class CompanyController extends Controller
 				return (0 == Company::where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
 			}
 		}
+	}
+
+	/**
+	 * @param array $data
+	 */
+	protected function uploadImage($tmpPath)
+	{
+		$path = public_path(config('image.paths.company'));
+
+		$avatar = config('image.sizes.medium');
+		$userId = Auth::user()->id;
+		$now = date('His.dmY');
+
+		$image = \Image::make($tmpPath);
+		$fileName = $userId.'.'.$now.'.jpg';
+		$image->fit($avatar['w'], $avatar['h'])
+			->save($path.DIRECTORY_SEPARATOR.$fileName, self::QUANLITY);
+
+		return $fileName;
 	}
 }

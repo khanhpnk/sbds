@@ -18,9 +18,7 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <form accept-charset="UTF-8" action="{{ route('company.save') }}" role="form" id="companyForm">
-            @include('manage.house.partial.company._form')
-          </form>
+          @include('manage.house.partial.company._form')
         </div>
       </div>
     </div>
@@ -33,7 +31,7 @@
       <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body">
           <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('m.agency.store') }}" method="POST" role="form" id="houseForm">
-            <input type="hidden" id="is_owner" name="is_owner" value="2">
+            <input type="hidden" id="is_owner" name="is_owner" value="{{ IsOwnerOption::MOI_GIOI  }}">
             @include('manage.house.partial.house._form', [
               'submitBtnText' => 'Đăng tin ngay',
               'checkUniqueUrl' => route('agency.unique')

@@ -21,6 +21,20 @@ i {
 .container {
   width: 940px;
 }
+/* BUTTON */
+.btn-main {
+  text-transform: uppercase;
+  color: #337ab7;
+  border: 1px solid #337ab7;
+  font-weight: 600;
+  margin: 10px 0;
+  border-radius: 0;
+}
+.btn-main:hover,
+.btn-main:active {
+  background: #337ab7;
+  color: #fff;
+}
 /* SCROLL TO TOP */
 .scrollToTop {
   position: fixed;
@@ -98,19 +112,6 @@ i {
   float: right;
 }
 /* THUMB EXTEND */
-.thumb-btn-viewmore {
-  text-transform: uppercase;
-  color: #337ab7;
-  border: 1px solid #337ab7;
-  font-weight: 600;
-  margin: 10px 0;
-  border-radius: 0;
-}
-.thumb-btn-viewmore:hover,
-.thumb-btn-viewmore:active {
-  background: #337ab7;
-  color: #fff;
-}
 .thumb-title {
   text-transform: uppercase;
   color: #fff;

@@ -8,19 +8,16 @@ use IsSaleOption;
 
 class HouseController extends Controller
 {
-    private function _show($house, $isSale)
+    private function _list($type, $cityId, $districtId, $wardId)
     {
-        $housesRelation = House::orderBy('id', 'desc')->isSale($isSale)->limit(3)->get();
-
-        $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->where('user_id', $house->user_id)->first();
-
-        return view('houses.show', compact('house', 'housesRelation', 'contactInfo'));
-    }
-
-    private function _list($cityId, $districtId, $wardId, $isSale)
-    {
-        $houses = House::orderBy('id', 'desc')->isSale($isSale)->expired(false);
+        switch ($type) {
+            case 'ban':
+                $houses = House::orderBy('id', 'desc')->isSale($isSale = IsSaleOption::BAN)->expired(false);
+                break;
+            case 'cho-thue':
+                $houses = House::orderBy('id', 'desc')->isSale($isSale = IsSaleOption::CHO_THUE)->expired(false);
+                break;
+        }
 
         if (!is_null($cityId)) {
             $houses = $houses->where('city', $cityId);
@@ -34,27 +31,24 @@ class HouseController extends Controller
 
         $houses = $houses->simplePaginate(6);
 
-        return view('houses.list', compact('houses', 'isSale'));
+        return view('houses.index', compact('houses', 'isSale'));
     }
 
     /**
      * Display a listing of the resource.
      *
+     * @param string $isSale    "ban" or "cho-thue"
+     * @param string $city      only for SEO
+     * @param int $cityId
+     * @param string $district  only for SEO
+     * @param int $districtId
+     * @param string $ward      only for SEO
+     * @param int $wardId
      * @return Response
      */
-    public function saleList($city = null, $cityId = null, $district = null, $districtId = null, $ward = null, $wardId = null)
+    public function index($type, $city = null, $cityId = null, $district = null, $districtId = null, $ward = null, $wardId = null)
     {
-        return $this->_list($cityId, $districtId, $wardId, IsSaleOption::BAN);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function rentList($city = null, $cityId = null, $district = null, $districtId = null, $ward = null, $wardId = null)
-    {
-        return $this->_list($cityId, $districtId, $wardId, IsSaleOption::CHO_THUE);
+        return $this->_list($type, $cityId, $districtId, $wardId);
     }
 
     /**
@@ -63,19 +57,13 @@ class HouseController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function saleShow(House $house)
+    public function show(House $house)
     {
-        return $this->_show($house, IsSaleOption::BAN);
-    }
+        $housesRelation = House::orderBy('id', 'desc')->expired(false)->limit(3)->get();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function rentShow(House $house)
-    {
-        return $this->_show($house, IsSaleOption::CHO_THUE);
+        $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
+            ->where('user_id', $house->user_id)->first();
+
+        return view('houses.show', compact('house', 'housesRelation', 'contactInfo'));
     }
 }

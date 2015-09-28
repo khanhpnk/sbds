@@ -2,55 +2,29 @@
  * Module imageModule implement Revealing Module Pattern
  */
 var imageModule = (function() {
-  var fileImageInput = $('#fileImage');
-  var imageUrl = '';
-  var imageType = "medium";
-  var UPLOAD_FILE_LIMIT = 20;
+  var fileImageInput = $('#avatar');
   var UPLOAD_FILE_MAX_SIZE = 2; // MB
-  var imagesDbJSON = "";
-  var filesDeleted = [];
+  var avatarUrl = "";
 
   var init = function() {
     imageUploadEventListener();
   };
 
-  var setImagesDbJSON = function(val) {
-    imagesDbJSON = val;
-  };
-
-  var setImageUrl = function(val) {
-    imageUrl = val;
-  };
-
-  var getFilesDeleted = function() {
-    return filesDeleted;
+  var setAvatarUrl = function(url) {
+    avatarUrl = url;
+    //console.log(avatarUrl);
   };
 
   // Note: Core library file had edit
   var imageUploadEventListener = function() {
-    if ('' == imagesDbJSON) {
-      fileImageInput.filer({limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE, addMore: true});
-    } else {
-      var files = [];
-      for(var key in imagesDbJSON) {
-        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl+imageType+imagesDbJSON[key]});
-      }
-
-      fileImageInput.filer({
-        limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE,
-        addMore: true, files: files,
-        excludeName: null,
-        onRemove: function(itemEl, file, id, listEl, boxEl, newInputEl, inputEl) {
-          filesDeleted.push(file.name);
-        }
-      });
-    }
+    fileImageInput.filer({
+      limit: 1, maxSize: UPLOAD_FILE_MAX_SIZE, addMore: false, excludeName: null,
+      files: [{name: "Avatar", type: "image/jpg", file: avatarUrl }],
+    });
   };
 
   return {
     init: init,
-    setImagesDbJSON: setImagesDbJSON,
-    setImageUrl: setImageUrl,
-    getFilesDeleted: getFilesDeleted
+    setAvatarUrl: setAvatarUrl
   };
 })();

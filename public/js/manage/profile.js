@@ -3,10 +3,10 @@
  */
 var profileModule = (function() {
   var profileForm = $('#profileForm');
-  var fileImageInput = $('#fileImage');
   var latInput = $('#lat');
   var lngInput = $('#lng');
-  var UPLOAD_FILE_LIMIT = 1;
+
+  var fileImageInput = $('#fileImage');
   var UPLOAD_FILE_MAX_SIZE = 2; // MB
   var avatarPath = "";
 
@@ -22,7 +22,7 @@ var profileModule = (function() {
   // Note: Core library file had edit
   var imageUploadEventListener = function() {
       fileImageInput.filer({
-        limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE,
+        limit: 1, maxSize: UPLOAD_FILE_MAX_SIZE,
         addMore: false,
         files: [{
           name: "Ảnh đại diện",
@@ -36,10 +36,8 @@ var profileModule = (function() {
   var formEventListener = function() {
     profileForm.validate({
       rules: {
-        city: {required: true},
-        district: {required: true},
-        ward: {required: true},
-        address: {required: true},
+        name: {required: true},
+        email: {required: true},
       },
       highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');

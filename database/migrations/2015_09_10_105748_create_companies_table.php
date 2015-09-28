@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('meta_description');
 
             $table->string('title');
+            $table->string('avatar');
             $table->text('short_description');
             $table->text('description');
             $table->timestamps();

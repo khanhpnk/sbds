@@ -10,7 +10,7 @@ use IsSoldOption;
 
 class CompanyController extends Controller
 {
-    private function _houselist(Company $company)
+    private function _houseList(Company $company)
     {
         return House::where('user_id', $company->user_id)
             ->isOwner(IsOwnerOption::MOI_GIOI)
@@ -18,12 +18,24 @@ class CompanyController extends Controller
             ->orderBy('id', 'desc');
     }
 
-    private function _soldHouselist(Company $company)
+    private function _soldHouseList(Company $company)
     {
         return House::where('user_id', $company->user_id)
             ->isOwner(IsOwnerOption::MOI_GIOI)
             ->isSold(IsSoldOption::DA_BAN)
             ->orderBy('id', 'desc');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $companies = Company::orderBy('id', 'desc')->simplePaginate(6);
+
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -34,8 +46,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        $houses = $this->_houselist($company)->simplePaginate(3);
-        $housesSold = $this->_soldHouselist($company)->simplePaginate(3);
+        $houses = $this->_houseList($company)->simplePaginate(3);
+        $housesSold = $this->_soldHouseList($company)->simplePaginate(3);
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $company->user_id)->first();
@@ -52,10 +64,10 @@ class CompanyController extends Controller
     {
         switch ($filter) {
             case IsSoldOption::CHUA_BAN:
-                $houses = $this->_houselist($company)->simplePaginate(6);
+                $houses = $this->_houseList($company)->simplePaginate(6);
                 break;
             case IsSoldOption::DA_BAN:
-                $houses = $this->_soldHouselist($company)->simplePaginate(6);
+                $houses = $this->_soldHouseList($company)->simplePaginate(6);
                 break;
         }
 

@@ -16,16 +16,13 @@ Route::get('/', 'HomeController@index');
 Route::resource('test', 'TestController');
 
 /* House */
-Route::get('nha-dat-ban/{house}', ['uses' => 'HouseController@saleShow', 'as' => 'house.saleShow']);
-Route::get('nha-dat-cho-thue/{house}', ['uses' => 'HouseController@rentShow', 'as' => 'house.rentShow']);
-Route::get('nha-dat-ban/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
-    'uses' => 'HouseController@saleList', 'as' => 'house.saleList'
-]);
-Route::get('nha-dat-cho-thue/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
-    'uses' => 'HouseController@rentList', 'as' => 'house.rentList'
+Route::get('nha-dat/{house}', ['uses' => 'HouseController@saleShow', 'as' => 'house.show']);
+Route::get('danh-sach-nha-dat/{type}/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
+    'uses' => 'HouseController@index', 'as' => 'house.index'
 ]);
 
 /* Company */
+Route::get('cong-ty', ['uses' => 'CompanyController@index', 'as' => 'company.index']);
 Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'company.show']);
 Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
 
@@ -53,7 +50,12 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
         Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::get('project/unique/{id?}', ['uses' => 'ProjectController@unique', 'as' => 'project.unique']);
 
-        Route::resource('management', 'ManagementController', ['only' => ['index']]);
+        Route::resource('management/{filter?}', 'ManagementController', [
+            'only' => ['index'],
+            'names' => [
+                'index' => 'm.management.index',
+            ]
+        ]);
     });
     // Change password
     Route::get('user/password', ['uses' => 'UserController@edit', 'as' => 'password.edit']);

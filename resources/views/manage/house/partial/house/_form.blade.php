@@ -3,8 +3,8 @@
   <script>
     $(function() {
       @if (isset($house->images))
-        imageModule.setImagesDbJSON({!! json_encode($house->images) !!});
-        imageModule.setImageUrl(publicUrl + "/upload/house/{{ $house->user_id }}/");
+        imagesModule.setImagesDbJSON({!! json_encode($house->images) !!});
+        imagesModule.setImageUrl(publicUrl + "/upload/house/{{ $house->user_id }}/");
       @endif
       houseModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
 			houseModule.setMoneyUnitSale({!! MoneyUnitSaleOption::getJsonOptions() !!});
@@ -21,7 +21,7 @@
         district: "{{ $house->district or '' }}",
         city: "{{ $house->city or '' }}"
       });
-      delay(function(){locationModule.init()}, 2000);
+      delay(function(){locationModule.init()}, 4000);
     });
   </script>
   <script src="{{ asset('js/manage/house.js') }}"></script>

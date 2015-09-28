@@ -36,11 +36,14 @@
 				<div class="row">
 					@foreach ($houses as $house)
 						@include('partial._article', ['model' => $house,
-														'isSale' => $house->is_sale,
+														'resource' => $house->is_sale,
 														'col' => 4, 'iw' => 200, 'ih' => 150])
 					@endforeach
 				</div>
-				<a class="btn thumb-btn-viewmore" href="{{ route('company.houseList', ['company' => $company->slug, 'filter' => IsSoldOption::CHUA_BAN]) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+
+				<a class="btn btn-main" href="{{ route('company.houseList', ['company' => $company->slug, 'filter' => IsSoldOption::CHUA_BAN]) }}" role="button">
+					<i class="fa fa-plus-square-o"></i> Xem thêm
+				</a>
 			</div>
 		</section>
 	@endif
@@ -59,7 +62,7 @@
 														'col' => 4, 'iw' => 200, 'ih' => 150])
 					@endforeach
 				</div>
-				<a class="btn thumb-btn-viewmore" href="{{ route('company.houseList', ['company' => $company->slug, 'filter' => IsSoldOption::DA_BAN]) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="{{ route('company.houseList', ['company' => $company->slug, 'filter' => IsSoldOption::DA_BAN]) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -71,6 +74,7 @@
 @stop
 
 @section('breadcrumb')
+	<li><a href="{{ UrlHelper::all(ResourceOption::CONG_TY) }}">{{ TextHelper::resource(ResourceOption::CONG_TY) }}</a></li>
 	<li class="active">{{ $company->title }}</li>
 @stop
 

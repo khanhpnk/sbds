@@ -105,22 +105,26 @@
 				@endforeach
 			</ul>
 		</section>
-
-		{{--<div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="2"></div>--}}
-
-		<section class="relation">
-			<header><h3 class="article-section-title">Nhà đất tương tự</h3></header>
-			<div class="thumb thumb-br-default clearfix">
-				<div class="row">
-					@foreach ($housesRelation as $relation)
-						@include('partial._article', ['model' => $relation,
-													'resource' => $relation->is_sale,
-													'col' => 4, 'iw' => 200, 'ih' => 150])
-					@endforeach
-				</div>
-			</div>
-		</section>
+		<hr>
+		<div class="fb-comments" data-href="{{ UrlHelper::show($house->is_sale, ['slug' => $house->slug]) }}" data-width="675" data-numposts="2"></div>
 	</article>
+
+	<section class="relation">
+		<header><h3 class="article-section-title">Nhà đất tương tự</h3></header>
+		<div class="thumb thumb-br-default clearfix">
+			<div class="row">
+				@foreach ($housesRelation as $relation)
+					@include('partial._article', ['model' => $relation,
+                        'resource' => $relation->is_sale,
+                        'col' => 4, 'iw' => 200, 'ih' => 150])
+				@endforeach
+			</div>
+
+			<a class="btn btn-main" href="{{ UrlHelper::all($house->is_sale) }}" role="button">
+				<i class="fa fa-plus-square-o"></i> Xem thêm
+			</a>
+		</div>
+	</section>
 @stop
 
 @section('breadcrumb')

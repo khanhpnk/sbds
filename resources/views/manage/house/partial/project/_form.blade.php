@@ -3,8 +3,8 @@
   <script>
     $(function() {
       @if (isset($project->images))
-        imageModule.setImagesDbJSON({!! json_encode($project->images) !!});
-        imageModule.setImageUrl(publicUrl + "/upload/house/{{ $project->user_id }}/");
+        imagesModule.setImagesDbJSON({!! json_encode($project->images) !!});
+        imagesModule.setImageUrl(publicUrl + "/upload/house/{{ $project->user_id }}/");
       @endif
       projectModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
       projectModule.init();

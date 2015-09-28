@@ -15,6 +15,7 @@ class Company extends Model
         'title',
         'short_description',
         'description',
+        'avatar'
     ];
 
     /**

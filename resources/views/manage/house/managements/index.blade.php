@@ -5,28 +5,27 @@
 @stop
 
 @section('content')
-  @if (count($houses) > 0)
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr class="bg-info">
-          <th>Tên</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($houses as $house)
-          <tr>
-            <td>{{ $house->title }}</td>
-            <td>{{ $house->price }}</td>
-          </tr>
-        @endforeach
-        </tbody>
-      </table>
+  @if (0 < count($houses))
+
+    <div class="message-toolbar">
+      <a class="btn btn-primary" href="{{ route('m.management.index', ['filter' => ResourceOption::CHINH_CHU]) }}" role="button">Chính chủ</a>
+      <a class="btn btn-primary" href="{{ route('m.management.index', ['filter' => ResourceOption::MOI_GIOI]) }}" role="button">Môi giới</a>
+      <a class="btn btn-primary" href="{{ route('m.management.index', ['filter' => ResourceOption::DU_AN]) }}" role="button">Dự án</a>
     </div>
 
-    <div class="text-center">{!! $houses->render() !!}</div>
+    <section class="list">
+      <div class="thumb thumb-br-default clearfix">
+        <div class="row">
+          @foreach ($houses as $house)
+            @include('manage.partial._article', ['model' => $house,
+                                                      'resource' => $resource,
+                                                      'col' => 4, 'iw' => 200, 'ih' => 150])
+          @endforeach
+        </div>
+      </div>
+    </section>
+    <nav class="simple-pagination">{!! $houses->render() !!}</nav>
   @else
-    Chua co ban ghi nao
+    Không có dữ liệu!
   @endif
 @stop

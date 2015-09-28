@@ -20,4 +20,15 @@ class ImageHelper
             return asset($path.'/'.$sizes.$image);
         }
     }
+
+    public static function avatar($avatar = '')
+    {
+        $directory = config('image.paths.company');
+
+        if (!$avatar) {
+            return asset($directory . '/default/avatar.jpg');
+        } else {
+            return asset($directory.'/'.$avatar);
+        }
+    }
 }

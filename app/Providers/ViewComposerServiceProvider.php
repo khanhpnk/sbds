@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\House;
+use App\Project;
 use IsSaleOption;
 
 class ViewComposerServiceProvider extends ServiceProvider
@@ -37,9 +38,12 @@ class ViewComposerServiceProvider extends ServiceProvider
     {
         view()->composer('_sidebar', function($view) {
             // recommend
-        	$view->with('houseSaleRecommend', House::orderBy('id', 'desc')->isSale(IsSaleOption::BAN)->first());
-            $view->with('houseRentRecommend', House::orderBy('id', 'desc')->isSale(IsSaleOption::CHO_THUE)->first());
-            $view->with('houseProjectRecommend', House::orderBy('id', 'desc')->first());
+        	$view->with('houseSaleRecommend', House::orderBy('id', 'desc')
+                ->expired(false)->isSale(IsSaleOption::BAN)->first());
+            $view->with('houseRentRecommend', House::orderBy('id', 'desc')
+                ->expired(false)->isSale(IsSaleOption::CHO_THUE)->first());
+            $view->with('houseProjectRecommend', Project::orderBy('id', 'desc')
+                ->expired(false)->first());
         });
     }
 }
