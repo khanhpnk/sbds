@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@index');
 Route::resource('test', 'TestController');
 
 /* House */
-Route::get('nha-dat/{house}', ['uses' => 'HouseController@saleShow', 'as' => 'house.show']);
+Route::get('nha-dat/{house}', ['uses' => 'HouseController@show', 'as' => 'house.show']);
 Route::get('danh-sach-nha-dat/{type}/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
     'uses' => 'HouseController@index', 'as' => 'house.index'
 ]);

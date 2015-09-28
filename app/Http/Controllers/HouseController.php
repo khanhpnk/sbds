@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\House;
 use App\User;
 use IsSaleOption;
+use IsSaleUriOption;
 
 class HouseController extends Controller
 {
     private function _list($type, $cityId, $districtId, $wardId)
     {
         switch ($type) {
-            case 'ban':
+            case IsSaleUriOption::getLabel(IsSaleUriOption::BAN):
                 $houses = House::orderBy('id', 'desc')->isSale($isSale = IsSaleOption::BAN)->expired(false);
                 break;
-            case 'cho-thue':
+            case IsSaleUriOption::getLabel(IsSaleUriOption::CHO_THUE):
                 $houses = House::orderBy('id', 'desc')->isSale($isSale = IsSaleOption::CHO_THUE)->expired(false);
                 break;
         }
@@ -59,7 +60,7 @@ class HouseController extends Controller
      */
     public function show(House $house)
     {
-        $housesRelation = House::orderBy('id', 'desc')->expired(false)->limit(3)->get();
+        $housesRelation = House::orderBy('id', 'desc')->expired(false)->isSale($house->is_sale)->limit(3)->get();
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $house->user_id)->first();

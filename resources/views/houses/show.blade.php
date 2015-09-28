@@ -10,21 +10,25 @@
 					<address class="article-head-address">
 						Địa chỉ:
 						{{ $house->address }},
-						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']),
-																	'cityId' 			=> $house->city,
-																	'district' 		=> str_slug($location['district']),
-																	'districtId' 	=> $house->district,
-																	'ward' 				=> str_slug($location['ward']),
-																	'wardId' 			=> $house->ward]) }}">
+						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
+                          'city' => str_slug($location['city']),
+                          'cityId' 			=> $house->city,
+                          'district' 		=> str_slug($location['district']),
+                          'districtId' 	=> $house->district,
+                          'ward' 				=> str_slug($location['ward']),
+                          'wardId' 			=> $house->ward]) }}">
 							{{ $location['ward'] }}
 						</a>
-						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']),
-																	'cityId' 			=> $house->city,
-																	'district' 		=> str_slug($location['district']),
-																	'districtId' 	=> $house->district]) }}">
+						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
+						              'city' => str_slug($location['city']),
+                          'cityId' 			=> $house->city,
+                          'district' 		=> str_slug($location['district']),
+                          'districtId' 	=> $house->district]) }}">
 							{{ $location['district'] }}
 						</a>
-						<a href="{{ UrlHelper::all($house->is_sale, ['city' => str_slug($location['city']), 'cityId' => $house->city]) }}">
+						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
+						              'city' => str_slug($location['city']),
+						              'cityId' => $house->city]) }}">
 							{{ $location['city'] }}
 						</a>
 					</address>
@@ -106,7 +110,7 @@
 			</ul>
 		</section>
 		<hr>
-		<div class="fb-comments" data-href="{{ UrlHelper::show($house->is_sale, ['slug' => $house->slug]) }}" data-width="675" data-numposts="2"></div>
+		<div class="fb-comments" data-href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $house->slug]) }}" data-width="675" data-numposts="2"></div>
 	</article>
 
 	<section class="relation">
@@ -114,13 +118,11 @@
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
 				@foreach ($housesRelation as $relation)
-					@include('partial._article', ['model' => $relation,
-                        'resource' => $relation->is_sale,
-                        'col' => 4, 'iw' => 200, 'ih' => 150])
+          @include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
 				@endforeach
 			</div>
 
-			<a class="btn btn-main" href="{{ UrlHelper::all($house->is_sale) }}" role="button">
+			<a class="btn btn-main" href="{{ UrlHelper::index(ResourceOption::NHA_DAT) }}" role="button">
 				<i class="fa fa-plus-square-o"></i> Xem thêm
 			</a>
 		</div>
@@ -128,7 +130,7 @@
 @stop
 
 @section('breadcrumb')
-	<li><a href="{{ UrlHelper::all($house->is_sale) }}">{{ TextHelper::resource($house->is_sale) }}</a></li>
+	<li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT) }}">aaaaa</a></li>
 	<li class="active">{{ $house->title }}</li>
 @stop
 

@@ -6,9 +6,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($houses as $house)
-						@include('partial._article', ['model' => $house,
-													  'resource' => ResourceOption::NHA_DAT,
-													  'col' => 4, 'iw' => 200, 'ih' => 150])
+						@include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 			</div>

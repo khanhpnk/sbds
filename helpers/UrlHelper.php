@@ -2,13 +2,10 @@
 
 class UrlHelper
 {
-    public static function all($resource, $options = [])
+    public static function index($resource, $options = [])
     {
         switch ($resource) {
-            case ResourceOption::BAN:
-                return route('house.index', $options);
-                break;
-            case ResourceOption::CHO_THUE:
+            case ResourceOption::NHA_DAT:
                 return route('house.index', $options);
                 break;
             case ResourceOption::DU_AN:
@@ -20,17 +17,17 @@ class UrlHelper
         }
     }
 
-    public static function show($resource, $slug)
+    public static function show($resource, $options = [])
     {
         switch ($resource) {
             case ResourceOption::NHA_DAT:
-                return route('house.show', ['slug' => $slug]);
+                return route('house.show', $options);
                 break;
             case ResourceOption::DU_AN:
-                return route('project.show', ['slug' => $slug]);
+                return route('project.show', $options);
                 break;
             case ResourceOption::CONG_TY:
-                return route('company.show', ['slug' => $slug]);
+                return route('company.show', $options);
                 break;
         }
     }
