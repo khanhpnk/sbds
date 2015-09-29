@@ -33,7 +33,7 @@ class OwnerController extends BaseController
         $this->uploadImage($data);
         Auth::user()->houses()->create($data);
 
-        return redirect('m/management')->with('flash_message', Lang::get('system.store'));
+        return redirect('m/danh-sach-nha-dat/chinh-chu')->with('flash_message', Lang::get('system.store'));
     }
 
     /**
@@ -70,7 +70,7 @@ class OwnerController extends BaseController
         $this->uploadImage($data);
         $house->fill($data)->save();
 
-        return redirect('m/management')->with('flash_message', Lang::get('system.update'));
+        return redirect('m/danh-sach-nha-dat/chinh-chu')->with('flash_message', Lang::get('system.update'));
     }
 
     /**

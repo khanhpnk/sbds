@@ -23,10 +23,10 @@
       @include('_nav')
     </div>
   </nav>
-  
-  <div>
-    <img style="width:100%;height:500px;border: 1px solid #ccc;" src="{{ UserHelper::avatar() }}">
-  </div>
+
+  <section class="map-container">
+    @include('_map')
+  </section>
 
   <section class="breadcrumb-container">
     <div class="container">
@@ -55,10 +55,7 @@
   </footer>
 
   @section('javascript')
-    <!-- Custom -->
-    <script src="{{ asset('js/function.js') }}"></script>
-    <script src="{{ asset('js/layout.js') }}"></script>
-    <script src="{{ asset('js/location.js') }}"></script>
+    @include('_jsfooter')
   @show
 </body>
 </html>

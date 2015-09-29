@@ -2,46 +2,41 @@
 
 class UrlHelper
 {
-    public static function index($resource, $options = [])
+    public static function all($action, $resource, $options = [])
     {
         switch ($resource) {
             case ResourceOption::NHA_DAT:
-                return route('house.index', $options);
+                return route("house.$action", $options);
                 break;
             case ResourceOption::DU_AN:
-                return route('project.index', $options);
+                return route("project.$action", $options);
                 break;
             case ResourceOption::CONG_TY:
-                return route('company.index', $options);
+                return route("company.$action", $options);
                 break;
         }
     }
 
+    public static function index($resource, $options = [])
+    {
+        return self::all('index', $resource, $options);
+    }
+
     public static function show($resource, $options = [])
     {
-        switch ($resource) {
-            case ResourceOption::NHA_DAT:
-                return route('house.show', $options);
-                break;
-            case ResourceOption::DU_AN:
-                return route('project.show', $options);
-                break;
-            case ResourceOption::CONG_TY:
-                return route('company.show', $options);
-                break;
-        }
+        return self::all('show', $resource, $options);
     }
 
     public static function edit($resource, $options = [])
     {
         switch ($resource) {
-            case ResourceOption::CHINH_CHU:
+            case AdminResourceUriOption::CHINH_CHU:
                 return route('m.owner.edit', $options);
                 break;
-            case ResourceOption::MOI_GIOI:
+            case AdminResourceUriOption::MOI_GIOI:
                 return route('m.agency.edit', $options);
                 break;
-            case ResourceOption::DU_AN:
+            case AdminResourceUriOption::DU_AN:
                 return route('m.project.edit', $options);
                 break;
         }

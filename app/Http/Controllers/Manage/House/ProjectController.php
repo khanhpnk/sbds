@@ -33,7 +33,7 @@ class ProjectController extends BaseController
 		$this->uploadImage($data);
 		Auth::user()->projects()->create($data);
 
-		return redirect('m/management')->with('flash_message', Lang::get('system.store'));
+		return redirect('m/danh-sach-nha-dat/du-an')->with('flash_message', Lang::get('system.store'));
 	}
 
 	/**
@@ -70,7 +70,7 @@ class ProjectController extends BaseController
 		$this->uploadImage($data);
 		$project->fill($data)->save();
 
-		return redirect('m/management')->with('flash_message', Lang::get('system.update'));
+		return redirect('m/danh-sach-nha-dat/du-an')->with('flash_message', Lang::get('system.update'));
 	}
 
 	/**

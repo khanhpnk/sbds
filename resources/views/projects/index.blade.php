@@ -6,9 +6,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projects as $project)
-						@include('partial._article', ['model' => $project,
-													  'resource' => ResourceOption::DU_AN,
-													  'col' => 4, 'iw' => 200, 'ih' => 150])
+						@include('projects._article', ['model' => $project, 'resource' => ResourceOption::DU_AN])
 					@endforeach
 				</div>
 			</div>
@@ -20,7 +18,7 @@
 @stop
 
 @section('breadcrumb')
-  <li class="active">{{ TextHelper::resource(ResourceOption::DU_AN) }}</li>
+  <li class="active">Dự án</li>
 @stop
-@section('meta_title'){{ TextHelper::resource(ResourceOption::DU_AN) }}@stop
-@section('meta_description'){{ TextHelper::resource(ResourceOption::DU_AN) }}@stop
+@section('meta_title'){{ 'Dự án' }}@stop
+@section('meta_description'){{ 'Dự án' }}@stop

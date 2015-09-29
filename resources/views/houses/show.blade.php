@@ -122,7 +122,7 @@
 				@endforeach
 			</div>
 
-			<a class="btn btn-main" href="{{ UrlHelper::index(ResourceOption::NHA_DAT) }}" role="button">
+			<a class="btn btn-main" href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => IsSaleUriOption::getLabel($house->is_sale)]) }}" role="button">
 				<i class="fa fa-plus-square-o"></i> Xem thêm
 			</a>
 		</div>
@@ -130,7 +130,7 @@
 @stop
 
 @section('breadcrumb')
-	<li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT) }}">aaaaa</a></li>
+	<li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => IsSaleUriOption::getLabel($house->is_sale)]) }}">{{ IsSaleOption::getLabel($house->is_sale) }}</a></li>
 	<li class="active">{{ $house->title }}</li>
 @stop
 

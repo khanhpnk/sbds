@@ -9,7 +9,7 @@
 @stop
 
 @section('content')
-  <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('m.project.update', ['id' => $project->id]) }}" method="POST" role="form" id="projectForm">
+  <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('m.project.update', ['slug' => $project->slug]) }}" method="POST" role="form" id="projectForm">
     <input type="hidden" name="_method" value="PUT">
     @include('manage.house.partial.project._form', [
       'submitBtnText' => 'Cập nhật thay đổi',

@@ -15,6 +15,12 @@
 Route::get('/', 'HomeController@index');
 Route::resource('test', 'TestController');
 
+/* Project */
+Route::get('du-an/{project}', ['uses' => 'ProjectController@show', 'as' => 'project.show']);
+Route::get('du-an/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
+    'uses' => 'ProjectController@index', 'as' => 'project.index'
+]);
+
 /* House */
 Route::get('nha-dat/{house}', ['uses' => 'HouseController@show', 'as' => 'house.show']);
 Route::get('danh-sach-nha-dat/{type}/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
@@ -24,13 +30,7 @@ Route::get('danh-sach-nha-dat/{type}/{city?}/{cityId?}/{district?}/{districtId?}
 /* Company */
 Route::get('cong-ty', ['uses' => 'CompanyController@index', 'as' => 'company.index']);
 Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'company.show']);
-Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
-
-/* Project */
-Route::get('du-an/{project}', ['uses' => 'ProjectController@show', 'as' => 'project.show']);
-Route::get('du-an/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
-    'uses' => 'ProjectController@index', 'as' => 'project.index'
-]);
+//Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
 
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
@@ -50,11 +50,8 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
         Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::get('project/unique/{id?}', ['uses' => 'ProjectController@unique', 'as' => 'project.unique']);
 
-        Route::resource('management/{filter?}', 'ManagementController', [
-            'only' => ['index'],
-            'names' => [
-                'index' => 'm.management.index',
-            ]
+        Route::get('danh-sach-nha-dat/{filter?}', [
+            'uses' => 'ManagementController@index', 'as' => 'manage.house.index'
         ]);
     });
     // Change password

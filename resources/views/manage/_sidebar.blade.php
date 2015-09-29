@@ -20,7 +20,7 @@
     <li><a href="{{ route('m.owner.create') }}"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
     <li><a href="{{ route('m.agency.create') }}"><i class="fa fa-balance-scale"></i>Môi giới đăng tin</a> </li>
     <li><a href="{{ route('m.project.create') }}"><i class="fa fa-bank"></i>Dự án đăng tin</a></li>
-    <li><a href="{{ route('m.management.index') }}"><i class="fa fa-inbox"></i>Quản lý đăng tin</a></li>
+    <li><a href="{{ route('manage.house.index') }}"><i class="fa fa-inbox"></i>Quản lý đăng tin</a></li>
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Quản lý tài khoản</li>
     <li><a href="{{ route('profile.edit') }}"><i class="fa fa-user-plus"></i>Thông tin cá nhân</a></li>

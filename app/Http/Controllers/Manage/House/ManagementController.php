@@ -6,7 +6,7 @@ use App\House;
 use App\Http\Controllers\Controller;
 use App\Project;
 use IsOwnerOption;
-use ResourceOption;
+use AdminResourceUriOption;
 
 class ManagementController extends Controller
 {
@@ -15,22 +15,20 @@ class ManagementController extends Controller
      *
      * @return Response
      */
-    public function index($filter = ResourceOption::CHINH_CHU)
+    public function index($filter = 'chinh-chu')
     {
         switch ($filter) {
-            case ResourceOption::CHINH_CHU:
-                $houses = House::orderBy('id', 'desc')->isOwner(IsOwnerOption::CHINH_CHU)->paginate(6);
+            case AdminResourceUriOption::getLabel(AdminResourceUriOption::CHINH_CHU):
+                $resources = House::orderBy('id', 'desc')->isOwner(IsOwnerOption::CHINH_CHU)->paginate(6);
                 break;
-            case ResourceOption::MOI_GIOI:
-                $houses = House::orderBy('id', 'desc')->isSale(IsOwnerOption::MOI_GIOI)->paginate(6);
+            case AdminResourceUriOption::getLabel(AdminResourceUriOption::MOI_GIOI):
+                $resources = House::orderBy('id', 'desc')->isOwner(IsOwnerOption::MOI_GIOI)->paginate(6);
                 break;
-            case ResourceOption::DU_AN:
-                $houses = Project::orderBy('id', 'desc')->paginate(6);
+            case AdminResourceUriOption::getLabel(AdminResourceUriOption::DU_AN):
+                $resources = Project::orderBy('id', 'desc')->paginate(6);
                 break;
         }
 
-        $resource = $filter;
-
-        return view('manage.house.managements.index', compact('houses', 'resource'));
+        return view('manage.house.managements.index', compact('resources', 'filter'));
     }
 }

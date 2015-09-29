@@ -15,10 +15,10 @@
 <div class="collapse navbar-collapse" id="navbar-collapse01">
   <ul class="nav navbar-nav">{{-- Leave blank --}}</ul>
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="{{ route('house.index', ['type' => 'ban']) }}">NHÀ ĐẤT BÁN</a></li>
-    <li><a href="{{ route('house.index', ['type' => 'cho-thue']) }}">CHO THUÊ</a></li>
-    <li><a href="{{ route('project.index') }}">DỰ ÁN</a></li>
-    <li><a href="{{ route('company.index') }}">CÔNG TY</a></li>
+    <li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => 'ban']) }}">NHÀ ĐẤT BÁN</a></li>
+    <li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => 'cho-thue']) }}">CHO THUÊ</a></li>
+    <li><a href="{{ UrlHelper::index(ResourceOption::DU_AN) }}">DỰ ÁN</a></li>
+    <li><a href="{{ UrlHelper::index(ResourceOption::CONG_TY) }}">CÔNG TY</a></li>
     <li><a href="/">DỊCH VỤ</a></li>
     <li style="position: relative">
       @if (Auth::guest())
@@ -55,7 +55,7 @@
             <li><a href="{{ route('m.owner.create') }}" class="navbar-link"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>
             <li><a href="{{ route('m.agency.create') }}" class="navbar-link"><i class="fa fa-balance-scale"></i>Môi giới đăng tin</a></li>
             <li><a href="{{ route('m.project.create') }}" class="navbar-link"><i class="fa fa-bank"></i>Dự án đăng tin</a></li>
-            <li><a href="{{ route('m.management.index') }}" class="navbar-link"><i class="fa fa-inbox"></i>Quản lý tin đã đăng</a></li>
+            <li><a href="{{ route('manage.house.index') }}" class="navbar-link"><i class="fa fa-inbox"></i>Quản lý tin đã đăng</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="{{ route('profile.edit') }}" class="navbar-link"><i class="fa fa-user-plus"></i>Thông tin cá nhân</a></li>
             <li><a href="{{ route('password.edit') }}" class="navbar-link"><i class="fa fa-cog"></i>Đổi mật khẩu</a></li>

@@ -242,6 +242,47 @@ i {
   color: #777;
 }
 /*********** *********** *********** LAYOUT *********** *********** ***********/
+/*********** *********** MAP MODULE *********** ***********/
+.map-container {
+  position: relative;
+}
+/* map */
+/*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
+/*.gm-style-iw { max-height: 600px; }*/
+/*.iw-container  .iw-name {*/
+  /*font-size: 20px;*/
+  /*font-weight: 400;*/
+  /*padding: 10px;*/
+  /*margin: 0;*/
+  /*background-color: #48b5e9;*/
+  /*color: white;*/
+  /*border-radius: 2px 2px 0 0;*/
+/*}*/
+
+/* search */
+.form-search {
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  background: #fff;
+  padding: 8px;
+  z-index: 10000;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.select2-container {
+  min-width: 150px;
+  z-index: 99999;
+}
+.select2-container .select2-selection--single {
+  height: 34px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 34px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 32px;
+}
 /*********** *********** SOCIAL MODULE *********** ***********/
 .navbar-social {
   padding: 15px 15px 10px;

@@ -34,7 +34,7 @@ class AgencyController extends BaseController
 		$this->uploadImage($data);
 		Auth::user()->houses()->create($data);
 
-		return redirect('m/management')->with('flash_message', Lang::get('system.store'));
+		return redirect('m/danh-sach-nha-dat/moi-gioi')->with('flash_message', Lang::get('system.store'));
 	}
 
 	/**
@@ -72,7 +72,7 @@ class AgencyController extends BaseController
 		$this->uploadImage($data);
 		$house->fill($data)->save();
 
-		return redirect('m/management')->with('flash_message', Lang::get('system.update'));
+		return redirect('m/danh-sach-nha-dat/moi-gioi')->with('flash_message', Lang::get('system.update'));
 	}
 
 	/**

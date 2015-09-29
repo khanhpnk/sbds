@@ -18,21 +18,25 @@
         <address class="article-head-address">
           Địa chỉ:
           {{ $project->address }},
-          <a href="{{ UrlHelper::all($project->is_sale, ['city' => str_slug($location['city']),
-                                                        'cityId' 			=> $project->city,
-                                                        'district' 		=> str_slug($location['district']),
-                                                        'districtId' 	=> $project->district,
-                                                        'ward' 				=> str_slug($location['ward']),
-                                                        'wardId' 			=> $project->ward]) }}">
+          <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
+                          'city' => str_slug($location['city']),
+                          'cityId' 			=> $project->city,
+                          'district' 		=> str_slug($location['district']),
+                          'districtId' 	=> $project->district,
+                          'ward' 				=> str_slug($location['ward']),
+                          'wardId' 			=> $project->ward]) }}">
             {{ $location['ward'] }}
           </a>
-          <a href="{{ UrlHelper::all($project->is_sale, ['city' => str_slug($location['city']),
-                                                        'cityId' 			=> $project->city,
-                                                        'district' 		=> str_slug($location['district']),
-                                                        'districtId' 	=> $project->district]) }}">
+          <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
+                          'city' => str_slug($location['city']),
+                          'cityId' 			=> $project->city,
+                          'district' 		=> str_slug($location['district']),
+                          'districtId' 	=> $project->district]) }}">
             {{ $location['district'] }}
           </a>
-          <a href="{{ UrlHelper::all($project->is_sale, ['city' => str_slug($location['city']), 'cityId' => $project->city]) }}">
+          <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
+                          'city' => str_slug($location['city']),
+                          'cityId' => $project->city]) }}">
             {{ $location['city'] }}
           </a>
         </address>
@@ -84,13 +88,11 @@
     <div class="thumb thumb-br-default clearfix">
       <div class="row">
         @foreach ($projectsRelation as $relation)
-          @include('partial._article', ['model' => $relation,
-                        'resource' => ResourceOption::DU_AN,
-                        'col' => 4, 'iw' => 200, 'ih' => 150])
+          @include('projects._article', ['model' => $relation, 'resource' => ResourceOption::DU_AN])
         @endforeach
       </div>
 
-      <a class="btn btn-main" href="{{ route('project.index') }}" role="button">
+      <a class="btn btn-main" href="{{ UrlHelper::index(ResourceOption::DU_AN) }}" role="button">
         <i class="fa fa-plus-square-o"></i> Xem thêm
       </a>
     </div>
@@ -98,7 +100,7 @@
 @stop
 
 @section('breadcrumb')
-  <li><a href="{{ route('project.index') }}">{{ TextHelper::resource(ResourceOption::DU_AN) }}</a></li>
+  <li><a href="{{ UrlHelper::index(ResourceOption::DU_AN) }}">Dự án</a></li>
   <li class="active">{{ $project->title }}</li>
 @stop
 

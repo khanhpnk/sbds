@@ -55,22 +55,22 @@ class CompanyController extends Controller
         return view('companies.show', compact('company', 'housesSold', 'houses', 'contactInfo'));
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function houseList(Company $company, $filter)
-    {
-        switch ($filter) {
-            case IsSoldOption::CHUA_BAN:
-                $houses = $this->_houseList($company)->simplePaginate(6);
-                break;
-            case IsSoldOption::DA_BAN:
-                $houses = $this->_soldHouseList($company)->simplePaginate(6);
-                break;
-        }
-
-        return view('companies.list', compact('company', 'houses'));
-    }
+//    /**
+//     * Display a listing of the resource.
+//     *
+//     * @return Response
+//     */
+//    public function houseList(Company $company, $filter)
+//    {
+//        switch ($filter) {
+//            case IsSoldOption::CHUA_BAN:
+//                $houses = $this->_houseList($company)->simplePaginate(6);
+//                break;
+//            case IsSoldOption::DA_BAN:
+//                $houses = $this->_soldHouseList($company)->simplePaginate(6);
+//                break;
+//        }
+//
+//        return view('companies.house_list', compact('company', 'houses'));
+//    }
 }
