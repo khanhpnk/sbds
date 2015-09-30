@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Http\JsonResponse;
 use App\Company;
+use Storage;
 
 class CompanyController extends Controller
 {
@@ -79,16 +80,14 @@ class CompanyController extends Controller
 	 */
 	protected function uploadImage($tmpPath)
 	{
-		$path = public_path(config('image.paths.company'));
-
 		$avatar = config('image.sizes.medium');
 		$userId = Auth::user()->id;
 		$now = date('His.dmY');
 
 		$image = \Image::make($tmpPath);
 		$fileName = $userId.'.'.$now.'.jpg';
-		$image->fit($avatar['w'], $avatar['h'])
-			->save($path.DIRECTORY_SEPARATOR.$fileName, self::QUANLITY);
+		$img = $image->fit($avatar['w'], $avatar['h'])->encode('jpg', self::QUANLITY);
+		Storage::disk('s3')->put('company/'.$fileName, (string) $img);
 
 		return $fileName;
 	}

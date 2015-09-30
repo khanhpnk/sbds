@@ -36,10 +36,12 @@ class CreateDesignsTable extends Migration
             $table->text('images');             // JSON
             $table->text('description');
             $table->timestamps();
+			/*
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+			*/
         });
     }
 

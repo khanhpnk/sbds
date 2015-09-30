@@ -55,7 +55,7 @@
 
     @include('_jsfooter')
     <!-- Custom -->
-    <script src="{{ asset('js/manage/module/front.location.js') }}"></script>
+    <script src="{{ asset('js/manage/module/location.js') }}"></script>
     <script src="{{ asset('js/manage/module/images.js') }}"></script>
     <script src="{{ asset('js/manage/module/image.js') }}"></script>
   @show

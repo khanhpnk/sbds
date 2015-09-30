@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Storage;
 
 class TestController extends Controller
 {
@@ -16,6 +17,10 @@ class TestController extends Controller
      */
     public function index()
     {
+        //Storage::disk('s3')->put('house/file.txt', 'Contents');
+
+
+
 //        $value = \Cache::get('location');
 //        dd($value);
         return view('tests.index');

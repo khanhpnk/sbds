@@ -54,10 +54,12 @@ class CreateHousesTable extends Migration
             $table->text('images');             // JSON
 
             $table->timestamps();
+			/*
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+			*/
         });
     }
 

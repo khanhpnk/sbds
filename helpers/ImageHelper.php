@@ -23,12 +23,12 @@ class ImageHelper
 
     public static function avatar($avatar = '')
     {
-        $directory = config('image.paths.company');
+        $directory = config('filesystems.disks.s3.endpoint');
 
         if (!$avatar) {
-            return asset($directory . '/default/avatar.jpg');
+            return $directory . '/company/default/avatar.jpg';
         } else {
-            return asset($directory.'/'.$avatar);
+            return $directory.'/company/'.$avatar;
         }
     }
 }

@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->text('message');
             $table->boolean('read')->default(0);
             $table->timestamps();
+			/*
             $table->foreign('from')
                 ->references('id')
                 ->on('users')
@@ -28,6 +29,7 @@ class CreateMessagesTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+			*/
         });
     }
 

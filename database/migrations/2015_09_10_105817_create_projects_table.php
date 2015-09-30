@@ -36,10 +36,12 @@ class CreateProjectsTable extends Migration
             $table->string('youtube');
             $table->text('images');             // JSON
             $table->timestamps();
+			/*
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+			*/
         });
     }
 

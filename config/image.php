@@ -20,7 +20,7 @@ return array(
 
 	'paths' => [
 		'avatar' => 'upload/user',
-        'company' => 'upload/company',
+        'company' => 'company',
 		'house' => 'house',
 	],
 

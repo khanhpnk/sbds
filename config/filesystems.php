@@ -64,10 +64,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key'    => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
+            'key'    => 'AKIAIPZQHRLVZZTQ7VEA',
+            'secret' => 'UH/tffm+dG2hWwjUAF/Qhc0yBYKHKpcSMSamxTI5',
+            'region' => 'ap-southeast-1', //Singapore
+            'bucket' => 'house360',
+            'endpoint'  => 'https://s3-ap-southeast-1.amazonaws.com/house360',
         ],
 
         'rackspace' => [
