@@ -12,7 +12,7 @@
 				companyModule.setCheckUniqueUrl("{{ route('company.unique', ['id' => $company->id]) }}");
 			@endif
 
-			imageModule.setAvatarUrl("{{ ImageHelper::avatar(isset($company->avatar) ? $company->avatar : '')  }}");
+			imageModule.setAvatarUrl("{{ CompanyHelper::avatar(isset($company->avatar) ? $company->avatar : '')  }}");
 			companyModule.init();
 
 			$('#accordion').on('show.bs.collapse', function () {

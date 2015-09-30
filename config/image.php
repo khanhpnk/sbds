@@ -17,11 +17,10 @@ return array(
 
     'driver' => 'gd',
 
-
 	'paths' => [
-		'avatar' => 'upload/user',
-        'company' => 'company',
-		'house' => 'house',
+		'user' => 'user/',
+        'company' => 'company/',
+		'house' => 'house/',
 	],
 
 	'sizes' => [

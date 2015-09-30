@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -64,11 +64,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key'    => 'AKIAIPZQHRLVZZTQ7VEA',
-            'secret' => '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',
-            'region' => 'ap-southeast-1', //Singapore
+            'key'    => env('S3_KEY'),
+            'secret' => env('S3_SECRET'),
+            'region' => 'ap-southeast-1',
             'bucket' => 'house360',
-            'endpoint'  => 'https://s3-ap-southeast-1.amazonaws.com/house360',
+            'endpoint' => 'https://s3-ap-southeast-1.amazonaws.com/house360'
         ],
 
         'rackspace' => [

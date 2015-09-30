@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Http\JsonResponse;
 use App\Company;
+use ImageHelper;
 use Storage;
 
 class CompanyController extends Controller
 {
-	const QUANLITY = 100;
-
 	/**
 	 * Store a newly created resource in storage.
 	 *
@@ -24,10 +23,7 @@ class CompanyController extends Controller
 	public function store(CompanyRequest $request)
 	{
 		$data = $request->only('title', 'short_description', 'description');
-
-		if (!empty($_FILES['avatar']['tmp_name'])) {
-			$data['avatar'] = $this->uploadImage($_FILES['avatar']['tmp_name']);
-		}
+        $data['avatar'] = (new ImageHelper)->upload('company', $_FILES['avatar']['tmp_name']);
 
 		Auth::user()->company()->create($data);
 
@@ -43,13 +39,7 @@ class CompanyController extends Controller
 	public function update(CompanyRequest $request)
 	{
 		$data = $request->only('title', 'short_description', 'description');
-
-		if (!empty($_FILES['avatar']['tmp_name'])) {
-			$data['avatar'] = $this->uploadImage($_FILES['avatar']['tmp_name']);
-
-			$path = config('image.paths.company');
-			\File::delete($path.DIRECTORY_SEPARATOR.Auth::user()->company->avatar);
-		}
+        $data['avatar'] = (new ImageHelper)->upload('company', $_FILES['avatar']['tmp_name']);
 
 		Auth::user()->company->update($data);
 
@@ -73,22 +63,5 @@ class CompanyController extends Controller
 				return (0 == Company::where('title', $title)->where('id', '<>', $id)->count()) ? 'true' : 'false';
 			}
 		}
-	}
-
-	/**
-	 * @param array $data
-	 */
-	protected function uploadImage($tmpPath)
-	{
-		$avatar = config('image.sizes.medium');
-		$userId = Auth::user()->id;
-		$now = date('His.dmY');
-
-		$image = \Image::make($tmpPath);
-		$fileName = $userId.'.'.$now.'.jpg';
-		$img = $image->fit($avatar['w'], $avatar['h'])->encode('jpg', self::QUANLITY);
-		Storage::disk('s3')->put('company/'.$fileName, (string) $img);
-
-		return $fileName;
 	}
 }
