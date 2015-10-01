@@ -7,6 +7,7 @@ var mapModule = (function() {
   var HANOI = new google.maps.LatLng(21.0277644, 105.83415979999995);
 
   var init = function(id) {
+
     google.maps.event.addDomListener(window, "load", function() {
       map = new google.maps.Map(document.getElementById(id), {
         zoom: 15,
@@ -18,21 +19,22 @@ var mapModule = (function() {
         map.set("scrollwheel", true);
       });
 
-      // Responsive map
-      google.maps.event.addDomListener(window, "resize", function() {
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
-      });
+      locationModule.init();
+      //// Responsive map
+      //google.maps.event.addDomListener(window, "resize", function() {
+      //  var center = map.getCenter();
+      //  google.maps.event.trigger(map, "resize");
+      //  map.setCenter(center);
+      //});
     });
   };
 
   /**
    * Solve problem with google map inside of a hidden div
    */
-  var resize = function() {
-    google.maps.event.trigger(map, 'resize');
-  };
+  //var resize = function() {
+  //  google.maps.event.trigger(map, 'resize');
+  //};
 
   /**
    * Add one markers for map
@@ -84,7 +86,7 @@ var mapModule = (function() {
     init: init,
     searchAddress: searchAddress,
     getMapMarker: getMapMarker,
-    resize: resize,
+    //resize: resize,
     addMapMarker: addMapMarker
   };
 })();
