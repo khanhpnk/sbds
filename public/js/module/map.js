@@ -14,8 +14,6 @@ var mapModule = (function() {
         scrollwheel: false
       });
 
-      console.log('aaaaaaa');
-
       map.addListener("click", function() {
         map.set("scrollwheel", true);
       });

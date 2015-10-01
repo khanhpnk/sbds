@@ -30,7 +30,13 @@ class ProjectController extends BaseController
 	{
 		$data = $request->all();
 		$data['images'] = [];
-		$this->uploadImage($data);
+
+		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+			if (!empty($tmpPath)) {
+				$fileUpload = $this->upload($data);
+				array_push($data['images'], $fileUpload);
+			}
+		}
 		Auth::user()->projects()->create($data);
 
 		return redirect('m/danh-sach-nha-dat/du-an')->with('flash_message', Lang::get('system.store'));
@@ -63,14 +69,35 @@ class ProjectController extends BaseController
 		foreach ($files as $file) {
 			if (($key = array_search($file, $data['images'])) !== false) {
 				unset($data['images'][$key]);
-				$this->deleteImage($file);
+				$this->delete($file);
 			}
 		}
 
-		$this->uploadImage($data);
+		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+			if (!empty($tmpPath)) {
+				$fileUpload = $this->upload($tmpPath);
+				array_push($data['images'], $fileUpload);
+			}
+		}
 		$project->fill($data)->save();
 
 		return redirect('m/danh-sach-nha-dat/du-an')->with('flash_message', Lang::get('system.update'));
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy(Project $project)
+	{
+		foreach ($project->images as $image) {
+			$this->delete($image);
+		}
+		$project->delete();
+
+		return redirect('m/danh-sach-nha-dat/du-an')->with('flash_message', Lang::get('system.destroy'));
 	}
 
 	/**

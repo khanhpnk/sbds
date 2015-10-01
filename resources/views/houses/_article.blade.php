@@ -2,7 +2,7 @@
   <div class="thumb-item">
     <figure>
       <a href="{{ UrlHelper::show($resource, ['slug' => $model->slug]) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::image($model->images, $model->user_id, 'house', 'medium') }}" alt="{{ $model->title }}">
+        <img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-cap">

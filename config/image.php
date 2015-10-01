@@ -18,9 +18,10 @@ return array(
     'driver' => 'gd',
 
 	'paths' => [
-		'user' => 'user/',
-        'company' => 'company/',
-		'house' => 'house/',
+		'user' => 'user',
+        'company' => 'company',
+		'house' => 'house',
+        'project' => 'project',
 	],
 
 	'sizes' => [

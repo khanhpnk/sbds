@@ -30,14 +30,23 @@ class UrlHelper
     public static function edit($resource, $options = [])
     {
         switch ($resource) {
-            case AdminResourceUriOption::CHINH_CHU:
+            case ConstHelper::URI_CHINH_CHU:
                 return route('m.owner.edit', $options);
                 break;
-            case AdminResourceUriOption::MOI_GIOI:
+            case ConstHelper::URI_MOI_GIOI:
                 return route('m.agency.edit', $options);
                 break;
-            case AdminResourceUriOption::DU_AN:
+            case ConstHelper::URI_DU_AN:
                 return route('m.project.edit', $options);
+                break;
+        }
+    }
+
+    public static function destroy($resource, $options = [])
+    {
+        switch ($resource) {
+            case ResourceOption::DU_AN:
+                return route('m.project.destroy', $options);
                 break;
         }
     }

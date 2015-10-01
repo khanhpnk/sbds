@@ -33,7 +33,7 @@ var imagesModule = (function() {
     } else {
       var files = [];
       for(var key in imagesDbJSON) {
-        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl+imageType+imagesDbJSON[key]});
+        files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl+'/'+imageType+imagesDbJSON[key]});
       }
 
       fileImageInput.filer({

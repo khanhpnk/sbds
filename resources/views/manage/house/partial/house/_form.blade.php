@@ -4,7 +4,7 @@
     $(function() {
       @if (isset($house->images))
         imagesModule.setImagesDbJSON({!! json_encode($house->images) !!});
-        imagesModule.setImageUrl(publicUrl + "/upload/house/{{ $house->user_id }}/");
+        imagesModule.setImageUrl("{{ ImageHelper::link(config('image.paths.house').'/'.$house->user_id) }}");
       @endif
       houseModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
 			houseModule.setMoneyUnitSale({!! MoneyUnitSaleOption::getJsonOptions() !!});

@@ -6,7 +6,7 @@ use App\House;
 use App\Http\Controllers\Controller;
 use App\Project;
 use IsOwnerOption;
-use AdminResourceUriOption;
+use ConstHelper;
 
 class ManagementController extends Controller
 {
@@ -18,13 +18,13 @@ class ManagementController extends Controller
     public function index($filter = 'chinh-chu')
     {
         switch ($filter) {
-            case AdminResourceUriOption::getLabel(AdminResourceUriOption::CHINH_CHU):
+            case ConstHelper::URI_CHINH_CHU:
                 $resources = House::orderBy('id', 'desc')->isOwner(IsOwnerOption::CHINH_CHU)->paginate(6);
                 break;
-            case AdminResourceUriOption::getLabel(AdminResourceUriOption::MOI_GIOI):
+            case ConstHelper::URI_MOI_GIOI:
                 $resources = House::orderBy('id', 'desc')->isOwner(IsOwnerOption::MOI_GIOI)->paginate(6);
                 break;
-            case AdminResourceUriOption::getLabel(AdminResourceUriOption::DU_AN):
+            case ConstHelper::URI_DU_AN:
                 $resources = Project::orderBy('id', 'desc')->paginate(6);
                 break;
         }

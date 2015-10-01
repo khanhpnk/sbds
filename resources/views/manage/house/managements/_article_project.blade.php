@@ -2,7 +2,7 @@
   <div class="thumb-item">
     <figure>
       <a href="{{ UrlHelper::show($resource, ['slug' => $model->slug]) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::image($model->images, $model->user_id, 'house', 'medium') }}" alt="{{ $model->title }}">
+        <img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-cap">
@@ -37,27 +37,20 @@
           {{ $location['city'] }}
         </a>
       </address>
-      {{--<div class="clearfix">--}}
-      {{--<div class="pull-left">--}}
-      {{--<i class="fa fa-building-o"></i>{{ $model->floors }}--}}
-      {{--<i class="fa fa-bed "></i>{{ $model->bedroom }}--}}
-      {{--</div>--}}
-      {{--<div class="thumb-m2">{{ $model->m2 }}m2</div>--}}
-      {{--</div>--}}
     </div>
     <footer class="thumb-footer clearfix">
-      {{--<span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->is_sale) }}</span>--}}
       <span class="thumb-date"><time>{{ $model->start_date }}</time></span>
     </footer>
 
     <a class="btn btn-view btn-primary" href="{{ UrlHelper::show($resource, ['slug' => $model->slug]) }}" target="_blank" role="button">
       Xem
     </a>
-    <a class="btn btn-edit btn-primary" href="{{ UrlHelper::edit(AdminResourceUriOption::DU_AN, ['slug' => $model->slug]) }}" role="button">
+    <a class="btn btn-edit btn-primary" href="{{ UrlHelper::edit(ConstHelper::URI_DU_AN, ['slug' => $model->slug]) }}" role="button">
       Sửa
     </a>
-    <button class="btn btn-delete btn-primary" type="submit" role="button">
-      Xóa
-    </button>
+      <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ UrlHelper::destroy(ResourceOption::DU_AN, ['slug' => $model->slug]) }}" method="DELETE" role="form">
+
+      <button class="btn btn-delete btn-primary" type="submit" role="button">Xóa</button>
+      </form>
   </div>
 </article>

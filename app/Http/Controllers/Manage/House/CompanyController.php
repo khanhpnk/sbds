@@ -23,7 +23,7 @@ class CompanyController extends Controller
 	public function store(CompanyRequest $request)
 	{
 		$data = $request->only('title', 'short_description', 'description');
-        $data['avatar'] = (new ImageHelper)->upload('company', $_FILES['avatar']['tmp_name']);
+        $data['avatar'] = (new ImageHelper)->uploads('company', $_FILES['avatar']['tmp_name']);
 
 		Auth::user()->company()->create($data);
 
@@ -39,7 +39,7 @@ class CompanyController extends Controller
 	public function update(CompanyRequest $request)
 	{
 		$data = $request->only('title', 'short_description', 'description');
-        $data['avatar'] = (new ImageHelper)->upload('company', $_FILES['avatar']['tmp_name']);
+        $data['avatar'] = (new ImageHelper)->uploads('company', $_FILES['avatar']['tmp_name']);
 
 		Auth::user()->company->update($data);
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\House;
+use ImageHelper;
 
 class OwnerController extends BaseController
 {
@@ -56,6 +57,7 @@ class OwnerController extends BaseController
      */
     public function update(HouseRequest $request, House $house)
     {
+        $path = config('image.paths.house').'/'.Auth::user()->id;
         $data = $request->all();
         $data['images'] = $house->images;
 
@@ -63,7 +65,11 @@ class OwnerController extends BaseController
         foreach ($files as $file) {
             if (($key = array_search($file, $data['images'])) !== false) {
                 unset($data['images'][$key]);
-                $this->deleteImage($file);
+                (new ImageHelper)->delete([
+                    "{$path}/large{$file}",
+                    "{$path}/medium{$file}",
+                    "{$path}/small{$file}",
+                ]);
             }
         }
 

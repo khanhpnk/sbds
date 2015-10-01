@@ -11,3 +11,10 @@ function searchJsonById(json, id) {
     function(json){ return json.id == id }
   )[0];
 }
+
+function async(fn, callback) {
+  setTimeout(function() {
+    fn();
+    callback();
+  }, 0);
+}

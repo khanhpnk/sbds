@@ -38,17 +38,18 @@ Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'co
 Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'], function() {
     // House Catalog Management
     Route::group(['namespace' => 'House'], function() {
-        Route::resource('owner', 'OwnerController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::get('owner/unique/{id?}', ['uses' => 'OwnerController@unique', 'as' => 'owner.unique']);
+        Route::resource('owner', 'OwnerController');
 
-        Route::resource('agency', 'AgencyController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::get('agency/unique/{id?}', ['uses' => 'AgencyController@unique', 'as' => 'agency.unique']);
+        Route::resource('agency', 'AgencyController');
+
+        Route::get('company/unique/{id?}', ['uses' => 'CompanyController@unique', 'as' => 'company.unique']);
         Route::post('company/save', ['uses' => 'CompanyController@store', 'as' => 'company.save']);
         Route::put('company/save', ['uses' => 'CompanyController@update', 'as' => 'company.save']);
-        Route::get('company/unique/{id?}', ['uses' => 'CompanyController@unique', 'as' => 'company.unique']);
 
-        Route::resource('project', 'ProjectController', ['only' => ['create', 'store', 'update', 'edit']]);
         Route::get('project/unique/{id?}', ['uses' => 'ProjectController@unique', 'as' => 'project.unique']);
+        Route::resource('project', 'ProjectController');
 
         Route::get('danh-sach-nha-dat/{filter?}', [
             'uses' => 'ManagementController@index', 'as' => 'manage.house.index'

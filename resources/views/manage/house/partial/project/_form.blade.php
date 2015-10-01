@@ -4,19 +4,22 @@
     $(function() {
       @if (isset($project->images))
         imagesModule.setImagesDbJSON({!! json_encode($project->images) !!});
-        imagesModule.setImageUrl(publicUrl + "/upload/house/{{ $project->user_id }}/");
+        imagesModule.setImageUrl("{{ ImageHelper::link(config('image.paths.project').'/'.$project->user_id) }}");
       @endif
       projectModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
       projectModule.init();
-      mapModule.init("form-map-canvas");
-
       locationModule.setLocationDbJSON({
         address: "{{ $project->address or '' }}",
         ward: "{{ $project->ward or '' }}",
         district: "{{ $project->district or '' }}",
         city: "{{ $project->city or '' }}"
       });
-      delay(function(){locationModule.init()}, 2000);
+
+      async(function() {
+        mapModule.init("form-map-canvas")
+      }, function() {
+        locationModule.init()
+      });
     });
   </script>
   <script src="{{ asset('js/manage/project.js') }}"></script>

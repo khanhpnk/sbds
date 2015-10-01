@@ -1,26 +1,45 @@
 <?php
 
+use Library\Image as Image;
+
 class ImageHelper
 {
-    const QUANLITY = 100;
-
-    public static function image($image, $userId, $type, $sizes)
+    public static function avatar($resource, $userId, $images)
     {
-        switch ($type) {
-            case 'house':
-                $path = url('upload/'.config('image.paths.house').'/'.$userId);
+        $endpoint = config('filesystems.disks.s3.endpoint');
+
+        switch ($resource) {
+            case ResourceOption::DU_AN:
+                $path = config('image.paths.project');
                 break;
         }
 
-        if (is_array($image)) { // get first image for list
-            if (0 < count($image)) {
-                return asset($path.'/'.$sizes.$image[0]);
-            } else {
-                return asset("upload/$type/default/$sizes.jpg");
-            }
-        } else { // indicate a image
-            return asset($path.'/'.$sizes.$image);
+        if (0 < count($images)) {
+            // used first image as avatar
+            return "{$endpoint}/{$path}/{$userId}/".Image::MEDIUM.$images[0];
+        } else {
+            return "{$endpoint}/{$path}/default/".Image::MEDIUM.'.'.Image::FORMAT;
         }
+    }
+
+    public static function url($resource, $userId, $image, $size)
+    {
+        $endpoint = config('filesystems.disks.s3.endpoint');
+
+        switch ($resource) {
+            case ResourceOption::DU_AN:
+                $path = config('image.paths.project');
+                break;
+        }
+
+        return "{$endpoint}/{$path}/{$userId}/{$size}{$image}";
+    }
+
+    public static function link($path)
+    {
+        $endpoint = config('filesystems.disks.s3.endpoint');
+
+        return $endpoint.'/'.$path;
     }
 
     /**
@@ -28,7 +47,7 @@ class ImageHelper
      * @param string $tmpPath
      * @return string filename image uploaded
      */
-    public function upload($resource, $tmpPath)
+    public function uploads($resource, $tmpPath)
     {
         $fileName = '';
         if (!empty($_FILES['avatar']['tmp_name'])) {
@@ -51,24 +70,12 @@ class ImageHelper
             }
 
             $img = (string) $image->fit($avatarSize['w'], $avatarSize['h'])->encode('jpg', self::QUANLITY);
-            Storage::put($path . $fileName, $img);
+            Storage::put($path.'/'.$fileName, $img);
 
             // delete old file avatar if exist
-            $this->delete($path.$avatar);
+            $this->delete($path.'/'.$avatar);
         }
 
         return $fileName;
-    }
-
-    /**
-     * Delete one file by path
-     *
-     * @param string $file
-     */
-    public function delete($file)
-    {
-        if (Storage::exists($file)) {
-            Storage::delete($file);
-        }
     }
 }

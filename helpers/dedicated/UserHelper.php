@@ -4,17 +4,17 @@ class UserHelper
 {
     public static function avatar()
     {
-        $directory = config('filesystems.disks.s3.endpoint');
+        $endpoint = config('filesystems.disks.s3.endpoint');
         $path = config('image.paths.user');
         $user = Auth::user();
 
         if (empty($user->avatar)) {
-            return "{$directory}/{$path}default/avatar.jpg";
+            return "{$endpoint}/{$path}/default/avatar.jpg";
         } else {
             if ($user->provider) {
                 return $user->avatar;
             } else {
-                return "{$directory}/{$path}{$user->avatar}";
+                return "{$endpoint}/{$path}/{$user->avatar}";
             }
         }
     }

@@ -31,7 +31,7 @@ class ProfileController extends Controller
     {
         $data = $request->all();
 
-        $fileName = (new ImageHelper)->upload('user', $_FILES['avatar']['tmp_name']);
+        $fileName = (new ImageHelper)->uploads('user', $_FILES['avatar']['tmp_name']);
 
         $profile = Auth::user()->profile()->first();
         $profile->fill($data)->save();
