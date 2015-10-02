@@ -1,41 +1,26 @@
 /**
  * Module mapModule implement Revealing Module Pattern
  */
-var mapModule = (function() {
-  var map;
+
+var frontGooglemapModule = (function() {
+  var googlemap;
   var markerManage = []; // Manage all makers
   var HANOI = new google.maps.LatLng(21.0277644, 105.83415979999995);
 
   var init = function(id) {
 
     google.maps.event.addDomListener(window, "load", function() {
-      map = new google.maps.Map(document.getElementById(id), {
+      googlemap = new google.maps.Map(document.getElementById(id), {
         zoom: 15,
         center: HANOI,
         scrollwheel: false
       });
 
-      map.addListener("click", function() {
-        map.set("scrollwheel", true);
+      googlemap.addListener("click", function() {
+        googlemap.set("scrollwheel", true);
       });
-
-      locationModule.init();
-      //// Responsive map
-      //google.maps.event.addDomListener(window, "resize", function() {
-      //  var center = map.getCenter();
-      //  google.maps.event.trigger(map, "resize");
-      //  map.setCenter(center);
-      //});
     });
   };
-
-  /**
-   * Solve problem with google map inside of a hidden div
-   */
-  //var resize = function() {
-  //  google.maps.event.trigger(map, 'resize');
-  //};
-
   /**
    * Add one markers for map
    */
@@ -44,12 +29,12 @@ var mapModule = (function() {
 
     var latlng = new google.maps.LatLng(lat, lng);
     var marker = new google.maps.Marker({
-      map: map,
+      map: googlemap,
       position: latlng,
       draggable: true,
       animation: google.maps.Animation.DROP,
     });
-    map.setCenter(latlng);
+    googlemap.setCenter(latlng);
 
     markerManage.push(marker);
   };
@@ -86,7 +71,6 @@ var mapModule = (function() {
     init: init,
     searchAddress: searchAddress,
     getMapMarker: getMapMarker,
-    //resize: resize,
     addMapMarker: addMapMarker
   };
 })();

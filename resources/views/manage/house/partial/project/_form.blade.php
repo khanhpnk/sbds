@@ -15,11 +15,8 @@
         city: "{{ $project->city or '' }}"
       });
 
-      async(function() {
-        mapModule.init("form-map-canvas")
-      }, function() {
-        locationModule.init()
-      });
+      mapModule.init("form-map-canvas");
+
     });
   </script>
   <script src="{{ asset('js/manage/project.js') }}"></script>

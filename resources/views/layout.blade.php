@@ -3,8 +3,8 @@
 <head>
   @include('_head')
   @section('style')
-    <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
-    <link href="{{ asset('partial') }}" rel="stylesheet">
+  @show
+  @section('jshead')
   @show
 </head>
 <body>
@@ -54,8 +54,11 @@
     </div>
   </footer>
 
+  @include('_jsfooter')
+  <!-- Custom -->
+  <script src="{{ asset('js/module/map.js') }}"></script>
+  <script src="{{ asset('js/module/location.js') }}"></script>
   @section('javascript')
-    @include('_jsfooter')
   @show
 </body>
 </html>

@@ -71,6 +71,11 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
             'show' => 'message.show'
         ]
     ]);
-    // Design Management
-    Route::resource('design', 'DesignController', ['only' => ['create', 'store', 'update', 'edit']]);
+
+});
+
+/*********** *********** ADMIN *********** ***********/
+Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
+    Route::resource('bai-viet', 'ArticleController', ['except' => 'show']);
+    Route::resource('design', 'DesignController');
 });

@@ -30,8 +30,8 @@
 				@endif
 				@foreach ($model->images as $image)
 					<div>
-						<img u="image" src="{{ ImageHelper::url(ResourceOption::DU_AN, $model->user_id, $image, \Library\Image::LARGE) }}" />
-						<img u="thumb" src="{{ ImageHelper::url(ResourceOption::DU_AN, $model->user_id, $image, \Library\Image::LARGE) }}" />
+						<img u="image" src="{{ ImageHelper::url($resource, $model->user_id, $image, \Library\Image::LARGE) }}" />
+						<img u="thumb" src="{{ ImageHelper::url($resource, $model->user_id, $image, \Library\Image::SMALL) }}" />
 					</div>
 				@endforeach
 			</div>

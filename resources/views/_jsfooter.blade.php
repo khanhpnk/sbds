@@ -4,8 +4,4 @@
 <!-- Custom -->
 <script src="{{ asset('js/function.js') }}"></script>
 <script src="{{ asset('js/layout.js') }}"></script>
-<script src="{{ asset('js/location.js') }}"></script>
-
-<!-- For map function -->
-<script src="{{ asset('js/module/map.js') }}"></script>
-<script src="{{ asset('js/module/front.location.js') }}"></script>
+<script src="{{ asset('js/location.json.js') }}"></script>

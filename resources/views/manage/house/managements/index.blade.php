@@ -12,15 +12,14 @@
       <a class="btn btn-primary" href="{{ route('manage.house.index', ['filter' => ConstHelper::URI_MOI_GIOI]) }}" role="button">Môi giới</a>
       <a class="btn btn-primary" href="{{ route('manage.house.index', ['filter' => ConstHelper::URI_DU_AN]) }}" role="button">Dự án</a>
     </div>
-
     <section class="list">
       <div class="thumb thumb-br-default clearfix">
         <div class="row">
           @foreach ($resources as $resource)
             @if (ConstHelper::URI_DU_AN == $filter)
-              @include('manage.house.managements._article_project', ['model' => $resource, 'resource' => ResourceOption::DU_AN])
+              @include('manage.house.managements._article_project', ['model' => $resource])
             @else
-              @include('manage.house.managements._article', ['model' => $resource, 'resource' => ResourceOption::NHA_DAT])
+              @include('manage.house.managements._article', ['model' => $resource])
             @endif
           @endforeach
         </div>

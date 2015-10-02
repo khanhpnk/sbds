@@ -10,6 +10,8 @@ use Library\Image as Image;
 
 class BaseController extends Controller
 {
+	protected $path='';
+
 	protected function upload($file)
 	{
 		$i = 0;
@@ -17,7 +19,7 @@ class BaseController extends Controller
 		$image = new Image();
 
 		$image->setFile($file);
-		$image->setPath(config('image.paths.project').'/'.Auth::user()->id);
+		$image->setPath($this->path);
 
 		$image->fit(Image::LARGE)->upload(Image::LARGE."{$fileName}");
 		$image->fit(Image::MEDIUM)->upload(Image::MEDIUM."{$fileName}");
@@ -30,7 +32,7 @@ class BaseController extends Controller
 	{
 		$image = new Image();
 
-		$image->setPath(config('image.paths.project').'/'.Auth::user()->id);
+		$image->setPath($this->path);
 
 		$image->delete(Image::LARGE."{$file}");
 		$image->delete(Image::MEDIUM."{$file}");

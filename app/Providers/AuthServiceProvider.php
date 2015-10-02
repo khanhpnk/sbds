@@ -18,8 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        House::class => HousePolicy::class,
-        Project::class => ProjectPolicy::class,
+//        House::class => HousePolicy::class,
+//        Project::class => ProjectPolicy::class,
     ];
 
     /**
@@ -33,5 +33,14 @@ class AuthServiceProvider extends ServiceProvider
         parent::registerPolicies($gate);
 
         //
+        $gate->define('update-post', function ($user, $house) {
+            return false;
+        });
+
+//        $gate->before(function ($user, $ability) {
+////            if ($user->isSuperAdmin()) {
+//                return true;
+////            }
+//        });
     }
 }

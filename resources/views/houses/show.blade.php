@@ -53,7 +53,7 @@
 		</section>
 
 		{{-- gallery section --}}
-		@include('houses._gallery', ['model' => $house])
+		@include('houses._gallery', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
 
 		<section class="article-description">
 			{!! nl2br($house->description) !!}

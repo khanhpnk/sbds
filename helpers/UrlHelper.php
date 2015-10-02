@@ -45,7 +45,13 @@ class UrlHelper
     public static function destroy($resource, $options = [])
     {
         switch ($resource) {
-            case ResourceOption::DU_AN:
+            case ConstHelper::URI_CHINH_CHU:
+                return route('m.owner.destroy', $options);
+                break;
+            case ConstHelper::URI_MOI_GIOI:
+                return route('m.agency.destroy', $options);
+                break;
+            case ConstHelper::URI_DU_AN:
                 return route('m.project.destroy', $options);
                 break;
         }

@@ -9,6 +9,11 @@ use App\Project;
 
 class ProjectController extends BaseController
 {
+	public function __construct()
+	{
+		$this->path = config('image.paths.project').'/'.Auth::user()->id;
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -33,7 +38,7 @@ class ProjectController extends BaseController
 
 		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
 			if (!empty($tmpPath)) {
-				$fileUpload = $this->upload($data);
+				$fileUpload = $this->upload($tmpPath);
 				array_push($data['images'], $fileUpload);
 			}
 		}

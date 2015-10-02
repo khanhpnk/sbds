@@ -12,6 +12,9 @@ class ImageHelper
             case ResourceOption::DU_AN:
                 $path = config('image.paths.project');
                 break;
+            case ResourceOption::NHA_DAT:
+                $path = config('image.paths.house');
+                break;
         }
 
         if (0 < count($images)) {
@@ -29,6 +32,9 @@ class ImageHelper
         switch ($resource) {
             case ResourceOption::DU_AN:
                 $path = config('image.paths.project');
+                break;
+            case ResourceOption::NHA_DAT:
+                $path = config('image.paths.house');
                 break;
         }
 

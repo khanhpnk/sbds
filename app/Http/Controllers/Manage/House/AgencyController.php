@@ -10,6 +10,11 @@ use ImageHelper;
 
 class AgencyController extends BaseController
 {
+	public function __construct()
+	{
+		$this->path = config('image.paths.house').'/'.Auth::user()->id;
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -32,7 +37,13 @@ class AgencyController extends BaseController
 	{
 		$data = $request->all();
 		$data['images'] = [];
-		$this->uploadImage($data);
+
+		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+			if (!empty($tmpPath)) {
+				$fileUpload = $this->upload($tmpPath);
+				array_push($data['images'], $fileUpload);
+			}
+		}
 		Auth::user()->houses()->create($data);
 
 		return redirect('m/danh-sach-nha-dat/moi-gioi')->with('flash_message', Lang::get('system.store'));
@@ -59,7 +70,6 @@ class AgencyController extends BaseController
 	 */
 	public function update(HouseRequest $request, House $house)
 	{
-		$path = config('image.paths.house').'/'.Auth::user()->id;
 		$data = $request->all();
 		$data['images'] = $house->images;
 
@@ -67,18 +77,35 @@ class AgencyController extends BaseController
 		foreach ($files as $file) {
 			if (($key = array_search($file, $data['images'])) !== false) {
 				unset($data['images'][$key]);
-				(new ImageHelper)->delete([
-					"{$path}/large{$file}",
-					"{$path}/medium{$file}",
-					"{$path}/small{$file}",
-				]);
+				$this->delete($file);
 			}
 		}
 
-		$this->uploadImage($data);
+		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+			if (!empty($tmpPath)) {
+				$fileUpload = $this->upload($tmpPath);
+				array_push($data['images'], $fileUpload);
+			}
+		}
 		$house->fill($data)->save();
 
 		return redirect('m/danh-sach-nha-dat/moi-gioi')->with('flash_message', Lang::get('system.update'));
+	}
+
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function destroy(House $house)
+	{
+		foreach ($house->images as $image) {
+			$this->delete($image);
+		}
+		$house->delete();
+
+		return redirect('m/danh-sach-nha-dat/moi-gioi')->with('flash_message', Lang::get('system.destroy'));
 	}
 
 	/**

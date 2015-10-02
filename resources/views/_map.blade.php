@@ -2,7 +2,7 @@
   @parent
   <script>
     $(function() {
-      mapModule.init("map-canvas");
+      frontGooglemapModule.init("map-canvas");
       frontLocationModule.init();
     });
   </script>

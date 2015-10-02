@@ -64,3 +64,6 @@
 .btn-delete {
   width: 63px;
 }
+form.form-delete {
+  display: inline-block;
+}

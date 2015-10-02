@@ -11,9 +11,7 @@
       houseModule.setMoneyUnitRent({!! MoneyUnitRentOption::getJsonOptions() !!});
       houseModule.setMoneyCategorySale({!! HouseCategorySaleOption::getJsonOptions() !!});
       houseModule.setMoneyCategoryRent({!! HouseCategoryRentOption::getJsonOptions() !!});
-
       houseModule.init();
-      mapModule.init("form-map-canvas");
 
       locationModule.setLocationDbJSON({
         address: "{{ $house->address or '' }}",
@@ -21,7 +19,8 @@
         district: "{{ $house->district or '' }}",
         city: "{{ $house->city or '' }}"
       });
-      delay(function(){locationModule.init()}, 4000);
+
+      mapModule.init("form-map-canvas");
     });
   </script>
   <script src="{{ asset('js/manage/house.js') }}"></script>

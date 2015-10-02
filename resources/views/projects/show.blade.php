@@ -71,7 +71,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="gallery">
       {{-- gallery section --}}
-      @include('houses._gallery', ['model' => $project])
+      @include('houses._gallery', ['model' => $project, 'resource' => ResourceOption::DU_AN])
     </div>
     <div role="tabpanel" class="tab-pane" id="schedule">
       <section class="article-description">
