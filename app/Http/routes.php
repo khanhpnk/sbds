@@ -76,6 +76,19 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
 
 /*********** *********** ADMIN *********** ***********/
 Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
-    Route::resource('bai-viet', 'ArticleController', ['except' => 'show']);
+    Route::resource('bai-viet', 'ArticleController', [
+        'except' => 'show', 'destroy',
+        'names' => [
+            'index' => 'admin.article.index',
+            'create' => 'admin.article.create',
+            'store' => 'admin.article.store',
+            'update' => 'admin.article.update',
+            'edit' => 'admin.article.edit',
+        ]
+    ]);
     Route::resource('design', 'DesignController');
+});
+/*********** *********** FRONT *********** ***********/
+Route::group(['namespace' => 'Front'], function() {
+    Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
 });

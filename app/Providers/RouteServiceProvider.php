@@ -24,6 +24,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
+        $router->bind('bai_viet', function($value) {
+            return \App\Article::where('slug', $value)->firstOrFail();
+        });
         $router->bind('house', function($value) {
             return \App\House::where('slug', $value)->firstOrFail();
         });

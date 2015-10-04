@@ -11,7 +11,9 @@ class OwnerController extends BaseController
 {
     public function __construct()
     {
-        $this->path = config('image.paths.house').'/'.Auth::user()->id;
+        if (isset(Auth::user()->id)) {
+            $this->path = config('image.paths.house') . '/' . Auth::user()->id;
+        }
     }
 
     /**

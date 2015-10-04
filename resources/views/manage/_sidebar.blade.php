@@ -15,6 +15,11 @@
 
 <nav class="collapse in" id="collapseUserNav" role="navigation">
   <ul class="nav user-nav">
+    @can('admin')
+      <li class="user-nav-divider" role="separator"></li>
+      <li class="user-nav-header">Quản trị</li>
+      <li><a href="{{ route('admin.article.index') }}"><i class="fa fa-building-o"></i>Bài viết</a></li>
+    @endcan
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Đăng tin</li>
     <li><a href="{{ route('m.owner.create') }}"><i class="fa fa-building-o"></i>Chính chủ đăng tin</a></li>

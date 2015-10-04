@@ -39,14 +39,11 @@
   <li class="col-lg-3">
     <ul>
       <li class="footer-header">Danh sách hữu ích</li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà đất bán</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà đất cho thuê</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Dự án</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Thiết kế thi công</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Báo giá thiết kế thi công</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Tuyển dụng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
+      <li><a href="{{ route('front.article.show', ['slug' => 'noi-quy-dang-tin']) }}"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
+      <li><a href="{{ route('front.article.show', ['slug' => 'huong-dan-dang-tin']) }}"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
+      <li><a href="{{ route('front.article.show', ['slug' => 'thiet-ke-thi-cong']) }}"><i class="fa fa-link"></i>Thiết kế thi công</a></li>
+      <li><a href="{{ route('front.article.show', ['slug' => 'bao-gia-thiet-ke-thi-cong']) }}"><i class="fa fa-link"></i>Báo giá thiết kế thi công</a></li>
+      <li><a href="{{ route('front.article.show', ['slug' => 'tuyen-dung']) }}"><i class="fa fa-link"></i>Tuyển dụng</a></li>
     </ul>
   </li>
 </ul>

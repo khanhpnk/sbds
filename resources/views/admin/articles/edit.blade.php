@@ -1,9 +1,10 @@
-@extends('admin.app')
+@extends('manage.layout')
 
 @section('content')
-	<h1>Chỉnh sửa bài viết: {{ $article->title }}</h1>
-
-	{!! Form::model($article, ['method' => 'PATCH', 'action' => ['Admin\ArticleController@update', $article->slug], 'role' => 'form', 'files' => true]) !!}
-		@include ('admin.articles._form', ['submitButtonText' => 'Cập nhật'])
-	{!! Form::close() !!}
+  <form accept-charset="UTF-8" action="{{ route('admin.article.update', ['slug' => $article->slug]) }}" method="POST" role="form">
+    <input type="hidden" name="_method" value="PUT">
+    @include('admin.articles._form', [
+      'submitBtnText' => 'Cập nhật',
+    ])
+  </form>
 @stop

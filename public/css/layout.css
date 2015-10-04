@@ -367,11 +367,16 @@ i {
 .help-block a:hover {
   color: #22be73;
 }
+/*********** *********** MAIN *********** ***********/
+.main {
+  overflow: hidden;
+}
 /*********** *********** FOOTER *********** ***********/
 .footer {
   padding-top: 80px;
   background-color: #82A28B;
   border-top: 6px solid mediumseagreen;
+  font-size: 13px;
 }
 .footer ul {
   list-style: none;
