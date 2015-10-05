@@ -1,4 +1,4 @@
 <div class="form-group">
-  <label class="sr-only" for="{{ $name }}">{{ $label }}</label>
-  <input type="text" name="{{ $name }}" id="{{ $name }}" value="{{ $model->$name or '' }}" class="form-control" placeholder="{{ $label }}">
+  <label for="{{ $id or $name }}">{{ $label }}</label>
+  <input  type="text" class="form-control" name="{{ $name }}" id="{{ $id or $name }}" value="{{ $model->$name or '' }}" placeholder="{{ $placeholder or $label }}">
 </div>

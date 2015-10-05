@@ -24,6 +24,7 @@ class CreateCompaniesTable extends Migration
             $table->string('avatar');
             $table->text('short_description');
             $table->text('description');
+            $table->tinyInteger('type');
             $table->timestamps();
 			/*
             $table->foreign('user_id')

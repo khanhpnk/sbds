@@ -27,6 +27,13 @@ class RouteServiceProvider extends ServiceProvider
         $router->bind('bai_viet', function($value) {
             return \App\Article::where('slug', $value)->firstOrFail();
         });
+        $router->bind('cong-ty', function($value) {
+            return \App\Company::where('slug', $value)->firstOrFail();
+        });
+        $router->bind('thiet-ke-thi-cong', function($value) {
+            return \App\Design::where('slug', $value)->firstOrFail();
+        });
+
         $router->bind('house', function($value) {
             return \App\House::where('slug', $value)->firstOrFail();
         });

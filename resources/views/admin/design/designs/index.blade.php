@@ -1,13 +1,13 @@
 @extends('manage.layout')
 
-@section('meta_title'){{ 'Danh sách bài viết' }}@stop
-@section('meta_description'){{ 'Danh sách bài viết' }}@stop
+@section('meta_title'){{ 'Danh sách thiết kế thi công' }}@stop
+@section('meta_description'){{ 'Danh sách thiết kế thi công' }}@stop
 
 @section('content')
-  <a href="{{ route('admin.article.create') }}" class="btn btn-primary">Tạo bài viết mới</a>
+  <a href="{{ route('admin.design.create') }}" class="btn btn-primary">Tạo thiết kế thi công mới</a>
   <hr>
 
-  @if (count($articles) > 0)
+  @if (count($designs) > 0)
     <p class="text-right">Trang {{ $articles->currentPage() }}/{{ $articles->lastPage() }} (Tổng {{ $articles->total() }})</p>
 
     <div class="table-responsive">
@@ -19,10 +19,10 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($articles as $article)
+        @foreach ($designs as $design)
         <tr>
-          <td>{{ $article->title }}</td>
-          <td><a href="{{ route('admin.article.edit', $article->slug) }}" class="btn btn-info">Chỉnh sửa</a></td>
+          <td>{{ $design->title }}</td>
+          <td><a href="{{ route('admin.design.edit', $design->slug) }}" class="btn btn-info">Chỉnh sửa</a></td>
       </tr>
         @endforeach
       </tbody>
@@ -31,6 +31,6 @@
     
     <div class="text-center">{!! $articles->render() !!}</div>
   @else
-    Chưa có bài viết nào!
+    Chưa có thiết kế thi công nào!
   @endif
 @stop

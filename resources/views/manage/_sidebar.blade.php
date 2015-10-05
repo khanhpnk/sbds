@@ -19,6 +19,8 @@
       <li class="user-nav-divider" role="separator"></li>
       <li class="user-nav-header">Quản trị</li>
       <li><a href="{{ route('admin.article.index') }}"><i class="fa fa-building-o"></i>Bài viết</a></li>
+      <li><a href="{{ route('admin.company.index') }}"><i class="fa fa-building-o"></i>Công ty</a></li>
+      <li><a href="{{ route('admin.design.index') }}"><i class="fa fa-building-o"></i>Thiết kế thi công</a></li>
     @endcan
     <li class="user-nav-divider" role="separator"></li>
     <li class="user-nav-header">Đăng tin</li>

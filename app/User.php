@@ -46,6 +46,18 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     }
 
     /**
+     * User 1-n Companies
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function companies()
+    {
+        return $this->hasMany('App\Company');
+    }
+
+
+
+    /**
      * User 1-1 Company
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasOne
@@ -54,6 +66,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $this->hasOne('App\Company');
     }
+
 
     /**
      * User 1-n Houses

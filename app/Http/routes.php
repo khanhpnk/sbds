@@ -86,7 +86,27 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
             'edit' => 'admin.article.edit',
         ]
     ]);
-    Route::resource('design', 'DesignController');
+    Route::group(['namespace' => 'Design'], function() {
+        Route::resource('cong-ty', 'CompanyController', [
+            'except' => 'show', 'destroy', 'create', 'store',
+            'names' => [
+                'index' => 'admin.company.index',
+                'update' => 'admin.company.update',
+                'edit' => 'admin.company.edit',
+            ]
+        ]);
+        Route::resource('thiet-ke-thi-cong', 'DesignController', [
+            'except' => 'show', 'destroy',
+            'names' => [
+                'index' => 'admin.design.index',
+                'create' => 'admin.design.create',
+                'store' => 'admin.design.store',
+                'update' => 'admin.design.update',
+                'edit' => 'admin.design.edit',
+            ]
+        ]);
+    });
+
 });
 /*********** *********** FRONT *********** ***********/
 Route::group(['namespace' => 'Front'], function() {

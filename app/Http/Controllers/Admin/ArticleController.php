@@ -2,22 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use App\Article;
-use Gate;
 
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
-    public function __construct()
-    {
-        if (Gate::denies('admin')) {
-            abort(403);
-        }
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +40,7 @@ class ArticleController extends Controller
      */
     public function store(ArticleRequest $request)
     {
-        $article = Auth::user()->articles()->create($request->all());
+        Auth::user()->articles()->create($request->all());
 
         return redirect('quan-tri/bai-viet')->with('flash_message', Lang::get('system.store'));
     }
