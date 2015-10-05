@@ -16,7 +16,7 @@ class CompanyController extends BaseController
      */
     public function index()
     {
-        $companies = Auth::user()->company()->orderBy('id', 'desc')->paginate(20);
+        $companies = Auth::user()->company()->isServiceCompany()->orderBy('id', 'desc')->paginate(20);
 
         return view('admin.design.companies.index', compact('companies'));
     }

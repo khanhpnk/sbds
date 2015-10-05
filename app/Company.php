@@ -32,4 +32,14 @@ class Company extends Model
         $this->attributes['meta_description'] = $value;
         $this->attributes['slug'] = str_slug($value);
     }
+
+    /**
+     * Scope a query to show company is Service or popular
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsServiceCompany($query)
+    {
+        return $query->where('type', 1);
+    }
 }

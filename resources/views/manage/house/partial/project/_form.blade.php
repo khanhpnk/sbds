@@ -30,7 +30,7 @@
   @include('partial.form._textarea', ['model' => $project, 'name' => 'location', 'label' => 'Vị trí dự án', 'rows' => 8])
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'category',
+      @include('partial.form._select2', ['name' => 'category',
                                         'label' => 'Loại BĐS',
                                         'options' => ProjectCategoryOption::getOptions(),
                                         'value' => !is_null($project) ? $project->category : null])
@@ -45,25 +45,25 @@
 
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'city',
+      @include('partial.form._select2', ['name' => 'city',
                                              'label' => 'Tỉnh thành',
                                              'options' => [],
                                              'value' => !is_null($project) ? $project->city : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'district',
+      @include('partial.form._select2', ['name' => 'district',
                                              'label' => 'Quận / huyện',
                                              'options' => [],
                                              'value' => !is_null($project) ? $project->district : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'ward',
+      @include('partial.form._select2', ['name' => 'ward',
                                              'label' => 'Xã / phường',
                                              'options' => [],
                                              'value' => !is_null($project) ? $project->ward : null])
     </div>
   </div>
-  @include('partial.form._text', ['model' => $project, 'name' => 'address', 'label' => 'Địa chỉ cụ thể'])
+  @include('partial.form._text', ['model' => $project, 'name' => 'address', 'label' => 'Địa chỉ cụ thể', 'hideLable' => true])
 
   <div id="form-map-canvas" style="height: 400px; width: 100%;"></div>
   <span id="helpBlock" class="help-block">
@@ -74,7 +74,7 @@
 
   <a class="btn btn-form-upload" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
   <input type="hidden" id="files_deleted" name="files_deleted">
-  @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube'])
+  @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube', 'hideLable' => true])
   <span id="helpBlock" class="help-block">
     *Xem thêm hướng dẫn cách đưa video lên youtube
   </span>

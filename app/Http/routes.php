@@ -105,6 +105,7 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
                 'edit' => 'admin.design.edit',
             ]
         ]);
+        Route::get('thiet-ke-thi-cong/unique/{id?}', ['uses' => 'DesignController@unique', 'as' => 'design.unique']);
     });
 
 });

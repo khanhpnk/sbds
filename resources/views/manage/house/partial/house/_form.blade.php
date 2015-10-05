@@ -30,7 +30,7 @@
 <section>
   <div class="row">
       <div class="col-md-8">
-          @include('partial.form._text', ['model' => $house, 'name' => 'title', 'label' => 'Tiêu đề'])
+          @include('partial.form._text', ['model' => $house, 'name' => 'title', 'label' => 'Tiêu đề', 'hideLable' => true])
       </div>
     <div class="col-md-4">
       <label for="primary" class="btn btn-primary btn-badgebox">
@@ -53,10 +53,10 @@
                                        'value' => IsSaleOption::CHO_THUE])
     </div>
     <div class="col-md-4">
-      @include('partial.form._text', ['model' => $house, 'name' => 'price', 'label' => 'Giá tiền'])
+      @include('partial.form._text', ['model' => $house, 'name' => 'price', 'label' => 'Giá tiền', 'hideLable' => true])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'money_unit',
+      @include('partial.form._select2', ['name' => 'money_unit',
                                         'label' => 'Đơn vị',
                                         'options' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
                                         'value' => !is_null($house) ? $house->money_unit : null])
@@ -65,7 +65,7 @@
 
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'category',
+      @include('partial.form._select2', ['name' => 'category',
                                         'label' => 'Loại BĐS',
                                         'options' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
                                         'value' => !is_null($house) ? $house->category : null])
@@ -80,25 +80,25 @@
 
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'city',
+      @include('partial.form._select2', ['name' => 'city',
                                              'label' => 'Tỉnh thành',
                                              'options' => [],
                                              'value' => !is_null($house) ? $house->city : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'district',
+      @include('partial.form._select2', ['name' => 'district',
                                              'label' => 'Quận / huyện',
                                              'options' => [],
                                              'value' => !is_null($house) ? $house->district : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'ward',
+      @include('partial.form._select2', ['name' => 'ward',
                                              'label' => 'Xã / phường',
                                              'options' => [],
                                              'value' => !is_null($house) ? $house->ward : null])
     </div>
   </div>
-  @include('partial.form._text', ['model' => $house, 'name' => 'address', 'label' => 'Địa chỉ cụ thể'])
+  @include('partial.form._text', ['model' => $house, 'name' => 'address', 'label' => 'Địa chỉ cụ thể', 'hideLable' => true])
 
   <div id="form-map-canvas" style="height: 400px; width: 100%;"></div>
   <span id="helpBlock" class="help-block">
@@ -109,7 +109,7 @@
 
   <a class="btn btn-form-upload" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
   <input type="hidden" id="files_deleted" name="files_deleted">
-  @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube'])
+  @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube', 'hideLable' => true])
   <span id="helpBlock" class="help-block">
     *Xem thêm hướng dẫn cách đưa video lên youtube
   </span>
@@ -120,49 +120,49 @@
   <header><h2 class="form-title">Chi tiết</h2></header>
   <div class="row">
     <div class="col-md-4">
-      @include('partial.form._text',   ['model' => $house, 'name' => 'm2', 'label' => 'Diện tích sử dụng (m2)'])
-      @include('partial.form._select', ['name' => 'toilet',
+      @include('partial.form._text',   ['model' => $house, 'name' => 'm2', 'label' => 'Diện tích sử dụng (m2)', 'hideLable' => true])
+      @include('partial.form._select2', ['name' => 'toilet',
                                              'label' => 'Số phòng vệ sinh',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->toilet : null])
-      @include('partial.form._select', ['name' => 'floors',
+      @include('partial.form._select2', ['name' => 'floors',
                                              'label' => 'Số tầng',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->floors : null])
-      @include('partial.form._select', ['name' => 'direction',
+      @include('partial.form._select2', ['name' => 'direction',
                                              'label' => 'Hướng nhà',
                                              'options' => HouseDirectionOption::getOptions(),
                                              'value' => !is_null($house) ? $house->direction : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._text',   ['model' => $house, 'name' => 'road', 'label' => 'Đường trước nhà (m2)'])
-      @include('partial.form._select', ['name' => 'bedroom',
+      @include('partial.form._text',   ['model' => $house, 'name' => 'road', 'label' => 'Đường trước nhà (m2)', 'hideLable' => true])
+      @include('partial.form._select2', ['name' => 'bedroom',
                                              'label' => 'Số phòng ngủ',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->bedroom : null])
-      @include('partial.form._select', ['name' => 'kitchen',
+      @include('partial.form._select2', ['name' => 'kitchen',
                                              'label' => 'Bếp',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->kitchen : null])
-      @include('partial.form._select', ['name' => 'living_room',
+      @include('partial.form._select2', ['name' => 'living_room',
                                              'label' => 'Phòng khách',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->living_room : null])
     </div>
     <div class="col-md-4">
-      @include('partial.form._select', ['name' => 'common_room',
+      @include('partial.form._select2', ['name' => 'common_room',
                                              'label' => 'Phòng sinh hoạt chung',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->common_room : null])
-      @include('partial.form._select', ['name' => 'balcony',
+      @include('partial.form._select2', ['name' => 'balcony',
                                              'label' => 'Ban công',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->balcony : null])
-      @include('partial.form._select', ['name' => 'logia',
+      @include('partial.form._select2', ['name' => 'logia',
                                              'label' => 'Logia',
                                              'options' => [1 => 1,2,3,4,5,6,7,8,9,10],
                                              'value' => !is_null($house) ? $house->logia : null])
-      @include('partial.form._select', ['name' => 'license',
+      @include('partial.form._select2', ['name' => 'license',
                                              'label' => 'Tình trạng pháp lý',
                                              'options' => HouseLicenseOption::getOptions(),
                                              'value' => !is_null($house) ? $house->license : null])
@@ -176,9 +176,9 @@
     @foreach(HouseFeatureOption::getOptions() as $feature => $label)
       <li class="col-md-3">
         @include('partial.form._checbox', ['name' => 'feature[]',
-																				'label' => $label,
-																				'checked' => !is_null($house) && !is_null($house->feature) && in_array($feature, $house->feature) ? true : false,
-																				'value' => $feature])
+                    'label' => $label,
+                    'checked' => !is_null($house) && !is_null($house->feature) && in_array($feature, $house->feature) ? true : false,
+                    'value' => $feature])
       </li>
     @endforeach
   </ul>

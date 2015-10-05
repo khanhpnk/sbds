@@ -2,10 +2,6 @@
  * Module projectModule implement Revealing Module Pattern
  */
 var projectModule = (function() {
-  var projectForm = $('#projectForm');
-  var latInput = $('#lat');
-  var lngInput = $('#lng');
-  var filesDeletedHiddenInput = $('#files_deleted');
   var checkUniqueUrl = "";
 
   var init = function() {
@@ -18,7 +14,7 @@ var projectModule = (function() {
   };
 
   var formEventListener = function() {
-    projectForm.validate({
+    $('#projectForm').validate({
       rules: {
         title: {rangelength: [8, 64], required: true, remote: checkUniqueUrl},
         description: {rangelength: [8, 6000], required: true},
@@ -30,7 +26,6 @@ var projectModule = (function() {
         ward: {required: true},
         address: {required: true},
         youtube: {url: true},
-
       },
       highlight: function(element) {
         $(element).closest('.form-group').addClass('has-error');
@@ -41,20 +36,16 @@ var projectModule = (function() {
       errorElement: 'span',
       errorClass: 'help-block',
       errorPlacement: function(error, element) {
-        if (element.is("select") || element.is(":checkbox")) {
-          error.appendTo(element.closest('.form-group'));
-        } else {
-          error.insertAfter(element);
-        }
+        error.insertAfter(element);
       }
     });
 
     $(document).on('submit', '#projectForm', function (event) {
       var latlng = mapModule.getMapMarker();
 
-      latInput.val(latlng.lat());
-      lngInput.val(latlng.lng());
-      filesDeletedHiddenInput.val(JSON.stringify(imagesModule.getFilesDeleted()));
+      $('#lat').val(latlng.lat());
+      $('#lng').val(latlng.lng());
+      $('#files_deleted').val(JSON.stringify(imagesModule.getFilesDeleted()));
     });
   };
 
