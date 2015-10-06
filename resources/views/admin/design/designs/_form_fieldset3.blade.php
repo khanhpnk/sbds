@@ -35,13 +35,13 @@
     <div class="row">
       <div class="col-md-6">
         @include('partial.form._text', [
-          'name' => 'size1',
+          'name' => 'land_m2',
           'label' => 'Diện tích lô đất'
          ])
       </div>
       <div class="col-md-6">
         @include('partial.form._text', [
-          'name' => 'size2',
+          'name' => 'build_m2',
           'label' => 'Diện tích xây dựng'
         ])
       </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="col-md-6">
         @include('partial.form._text', [
-          'name' => 'size3',
+          'name' => 'frontage_m2',
           'label' => 'Bề rộng mặt tiền'
         ])
       </div>

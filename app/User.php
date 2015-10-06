@@ -55,7 +55,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->hasMany('App\Company');
     }
 
-
+    /**
+     * Get all of the designs for the user.
+     */
+    public function designs()
+    {
+        return $this->hasManyThrough('App\Design', 'App\Company');
+    }
 
     /**
      * User 1-1 Company

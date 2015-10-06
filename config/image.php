@@ -22,6 +22,7 @@ return array(
         'company' => 'company',
 		'house' => 'house',
         'project' => 'project',
+        'design' => 'design',
 	],
 
 	'sizes' => [

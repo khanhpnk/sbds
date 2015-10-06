@@ -14,18 +14,19 @@ class CreateDesignsTable extends Migration
     {
         Schema::create('designs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('title');
-            $table->tinyInteger('type');
+            $table->integer('company_id')->unsigned();
             $table->tinyInteger('category');
-            $table->string('designer');
-            $table->string('interior_designer');
+            $table->tinyInteger('sub_category');
+            $table->string('title');
+
+            $table->string('designers');
+            $table->string('designers_furniture');
             $table->string('supervisor');
             $table->string('year');
-            $table->string('m2');
+            $table->string('land_m2');
             $table->string('build_m2');
-            $table->string('floors');
-            $table->string('frontage');
+            $table->string('number_of_floors');
+            $table->string('frontage_m2');
             $table->tinyInteger('city');
             $table->tinyInteger('district');
             $table->tinyInteger('ward');

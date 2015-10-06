@@ -14,7 +14,6 @@ class ProjectController extends BaseController
         if (isset(Auth::user()->id)) {
             $this->path = config('image.paths.project').'/'.Auth::user()->id;
         }
-
 	}
 
 	/**
