@@ -32,4 +32,28 @@ class Design extends Model
         'youtube',
         'description',
     ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'images' => 'array',
+    ];
+
+    /**
+     * Mutator: Slug, meta_title, meta_description should auto set
+     *
+     * @param string $value
+     */
+    public function setTitleAttribute($value)
+    {
+        $value = mb_strtolower($value, 'UTF-8');
+        $this->attributes['title'] = $value;
+
+        $this->attributes['meta_title'] = $value;
+        $this->attributes['meta_description'] = $value;
+        $this->attributes['slug'] = str_slug($value);
+    }
 }

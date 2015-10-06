@@ -1,8 +1,8 @@
 /**
  * Module mapModule implement Revealing Module Pattern
  */
-var googlemap;
 var mapModule = (function() {
+  var googlemap;
   var markerManage = []; // Manage all makers
   var HANOI = new google.maps.LatLng(21.0277644, 105.83415979999995);
 
@@ -33,9 +33,9 @@ var mapModule = (function() {
   /**
    * Solve problem with google map inside of a hidden div
    */
-  //var resize = function() {
-  //  google.maps.event.trigger(map, 'resize');
-  //};
+  var resize = function() {
+    google.maps.event.trigger(googlemap, 'resize');
+  };
 
   /**
    * Add one markers for map
@@ -87,7 +87,7 @@ var mapModule = (function() {
     init: init,
     searchAddress: searchAddress,
     getMapMarker: getMapMarker,
-    //resize: resize,
+    resize: resize,
     addMapMarker: addMapMarker
   };
 })();

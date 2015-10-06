@@ -58,7 +58,7 @@ var designModule = (function() {
         category: {required: true, digits: true},
         sub_category: {required: true, digits: true},
 
-        title: {rangelength: [8, 64], required: true, remote: checkUniqueUrl},
+        //title: {rangelength: [8, 64], required: true, remote: checkUniqueUrl},
         description: {rangelength: [8, 6000], required: true},
         city: {required: true},
         district: {required: true},
@@ -91,7 +91,8 @@ var designModule = (function() {
     $(".form-open2").click(function() {
       if (validateFrom.form()) {
         hiddenAllFormFieldset();
-        $("#form-fieldset3").show("slow");
+        $("#form-fieldset3").show();
+        mapModule.resize();
       }
     });
 

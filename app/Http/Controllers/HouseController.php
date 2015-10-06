@@ -38,7 +38,6 @@ class HouseController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param string $isSale    "ban" or "cho-thue"
      * @param string $city      only for SEO
      * @param int $cityId
      * @param string $district  only for SEO

@@ -8,7 +8,7 @@
   <hr>
 
   @if (count($designs) > 0)
-    <p class="text-right">Trang {{ $articles->currentPage() }}/{{ $articles->lastPage() }} (Tổng {{ $articles->total() }})</p>
+    <p class="text-right">Trang {{ $designs->currentPage() }}/{{ $designs->lastPage() }} (Tổng {{ $designs->total() }})</p>
 
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover">
@@ -22,14 +22,14 @@
         @foreach ($designs as $design)
         <tr>
           <td>{{ $design->title }}</td>
-          <td><a href="{{ route('admin.design.edit', $design->slug) }}" class="btn btn-info">Chỉnh sửa</a></td>
+          <td><a href="{{ route('admin.design.edit', ['slug' => $design->slug]) }}" class="btn btn-info">Chỉnh sửa</a></td>
       </tr>
         @endforeach
       </tbody>
       </table>
     </div>
     
-    <div class="text-center">{!! $articles->render() !!}</div>
+    <div class="text-center">{!! $designs->render() !!}</div>
   @else
     Chưa có thiết kế thi công nào!
   @endif

@@ -1,16 +1,46 @@
+@section('javascript')
+  @parent
+  <script>
+    $(function() {
+      @if (isset($project->images))
+        imagesModule.setImagesDbJSON({!! json_encode($design->images) !!});
+      imagesModule.setImageUrl("{{ ImageHelper::link(config('image.paths.design').'/'.$design->user_id) }}");
+      @endif
+      designModule.setCheckUniqueUrl("{{ route('design.unique') }}");
+      designModule.init();
+      locationModule.setLocationDbJSON({
+        address: "{{ $design->address or '' }}",
+        ward: "{{ $design->ward or '' }}",
+        district: "{{ $design->district or '' }}",
+        city: "{{ $design->city or '' }}"
+      });
+
+      mapModule.init("form-map-canvas");
+
+    });
+  </script>
+  <script src="{{ asset('js/admin/design.js') }}"></script>
+@endsection
+
 <div id="form-fieldset3" class="form-fieldset" style="display: none;">
   <fieldset>
     <legend>Step 3 of 3</legend>
 
+    @include('partial.form._text', [
+      'name' => 'title',
+      'label' => 'Tiêu đề'
+     ])
     <div class="row">
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'designers',
           'label' => 'Tên người thiết kế'
          ])
       </div>
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'designers_furniture',
           'label' => 'Tên người thiết kế nội thất'
         ])
@@ -20,12 +50,14 @@
     <div class="row">
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'supervisor',
           'label' => 'Tên người giám sát'
         ])
       </div>
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'year',
           'label' => 'Năm thiết kế'
         ])
@@ -35,12 +67,14 @@
     <div class="row">
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'land_m2',
           'label' => 'Diện tích lô đất'
          ])
       </div>
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'build_m2',
           'label' => 'Diện tích xây dựng'
         ])
@@ -50,12 +84,14 @@
     <div class="row">
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'number_of_floors',
           'label' => 'Số tầng'
         ])
       </div>
       <div class="col-md-6">
         @include('partial.form._text', [
+          'model' => $design,
           'name' => 'frontage_m2',
           'label' => 'Bề rộng mặt tiền'
         ])
@@ -93,7 +129,12 @@
 
       <a class="btn btn-form-upload" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
       <input type="hidden" id="files_deleted" name="files_deleted">
-      @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube', 'hideLable' => true])
+      @include('partial.form._text', [
+        'model' => $design,
+        'name' => 'youtube',
+        'label' => 'Đường dẫn video youtube',
+        'hideLable' => true
+      ])
       <span id="helpBlock" class="help-block">
       *Xem thêm hướng dẫn cách đưa video lên youtube
     </span>

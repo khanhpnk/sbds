@@ -17,8 +17,12 @@ class CreateDesignsTable extends Migration
             $table->integer('company_id')->unsigned();
             $table->tinyInteger('category');
             $table->tinyInteger('sub_category');
-            $table->string('title');
 
+            $table->string('slug')->unique();
+            $table->string('meta_title');
+            $table->string('meta_description');
+
+            $table->string('title');
             $table->string('designers');
             $table->string('designers_furniture');
             $table->string('supervisor');

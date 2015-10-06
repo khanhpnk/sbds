@@ -94,7 +94,7 @@ class ProjectController extends BaseController
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  Project 	$project
 	 * @return Response
 	 */
 	public function destroy(Project $project)
