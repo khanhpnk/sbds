@@ -7,7 +7,7 @@ class LocationHelper
         $locations = \Cache::get('location');
         $response = [];
 
-        if (!$locations) {
+        if (!is_array($locations)) {
             return '';
         }
 
