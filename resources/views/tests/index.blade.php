@@ -6,7 +6,7 @@
 		$(function() {
 			$('#testBtn').click(function() {
 				$.ajax({
-					url: "http://localhost:8000/test",
+					url: "http://ec2-52-74-174-89.ap-southeast-1.compute.amazonaws.com/sbds/public/test",
 					type: "POST",
 					dataType: 'json',
 					data: {mydata : locationStorageJSON}
