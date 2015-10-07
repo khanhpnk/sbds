@@ -7,6 +7,10 @@ class LocationHelper
         $locations = \Cache::get('location');
         $response = [];
 
+        if (!$locations) {
+            return '';
+        }
+
         foreach ($locations as $city) {
             if ($city['id'] == $cityId) {
                 $response['city'] = $city['text'];
