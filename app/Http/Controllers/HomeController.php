@@ -14,7 +14,7 @@ class HomeController extends Controller
         $housesFeatured = House::orderBy('id', 'desc')->expired(false)->simplePaginate(3);
         $housesSale = House::orderBy('id', 'desc')->isSale(HouseSaleOption::BAN)->expired(false)->simplePaginate(3);
         $housesRent = House::orderBy('id', 'desc')->isSale(HouseSaleOption::CHO_THUE)->expired(false)->simplePaginate(3);
-        
+
         return view('home.index', compact('housesFeatured', 'projects', 'housesSale', 'housesRent'));
     }
 }
