@@ -68,9 +68,9 @@
     </li>
     <li>
       <div class="social-container navbar-social">
-        <a class="social-facebook" target="_blank" href="https://www.facebook.com"></a>
-        <a class="social-tweet" target="_blank" href="https://twitter.com"></a>
-        <a class="social-google" target="_blank" href="https://plus.google.com"></a>
+        <a class="social-facebook" target="_blank" href="https://www.facebook.com/House360-402698543267613/timeline"></a>
+        <a class="social-tweet" target="_blank" href="https://twitter.com/House360Vn"></a>
+        <a class="social-google" target="_blank" href="https://plus.google.com/u/0/107148407005407875948/posts"></a>
       </div>
     </li>
   </ul>
