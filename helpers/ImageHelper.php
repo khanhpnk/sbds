@@ -15,6 +15,9 @@ class ImageHelper
             case ResourceOption::NHA_DAT:
                 $path = config('image.paths.house');
                 break;
+            case ResourceOption::CONG_TY:
+                $path = config('image.paths.company');
+                break;
         }
 
         if (0 < count($images)) {

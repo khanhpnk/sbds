@@ -113,3 +113,6 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
 Route::group(['namespace' => 'Front'], function() {
     Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
 });
+Route::group(['namespace' => 'Front'], function() {
+    Route::get('thiet-ke-thi-cong', ['uses' => 'DesignController@index', 'as' => 'front.design.index']);
+});

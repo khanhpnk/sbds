@@ -16,10 +16,10 @@
   <ul class="nav navbar-nav">{{-- Leave blank --}}</ul>
   <ul class="nav navbar-nav navbar-right">
     <li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => 'ban']) }}">NHÀ ĐẤT BÁN</a></li>
-    <li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => 'cho-thue']) }}">CHO THUÊ</a></li>
-    <li><a href="{{ UrlHelper::index(ResourceOption::DU_AN) }}">DỰ ÁN</a></li>
-    <li><a href="{{ UrlHelper::index(ResourceOption::CONG_TY) }}">CÔNG TY</a></li>
-    <li><a href="/">DỊCH VỤ</a></li>
+    <li><a href="{{ route('project.index', ['type' => 'cho-thue']) }}">CHO THUÊ</a></li>
+    <li><a href="{{ route('project.index') }}">DỰ ÁN</a></li>
+    <li><a href="{{ route('company.index') }}">CÔNG TY</a></li>
+    <li><a href="{{ route('front.design.index') }}">DỊCH VỤ</a></li>
     <li style="position: relative">
       @if (Auth::guest())
         <button class="btn btn-info navbar-btn" type="button" data-toggle="collapse" data-target="#collapsePosting" aria-expanded="false" aria-controls="collapsePosting">ĐĂNG TIN</button>
