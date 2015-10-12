@@ -20,10 +20,10 @@
       </thead>
       <tbody>
         @foreach ($articles as $article)
-        <tr>
-          <td>{{ $article->title }}</td>
-          <td><a href="{{ route('admin.article.edit', $article->slug) }}" class="btn btn-info">Chỉnh sửa</a></td>
-      </tr>
+          <tr>
+            <td>{{ $article->title }}</td>
+            <td><a href="{{ route('admin.article.edit', $article->slug) }}" class="btn btn-info">Chỉnh sửa</a></td>
+          </tr>
         @endforeach
       </tbody>
       </table>
