@@ -43,7 +43,7 @@
         @yield('content')
       </main>
       <aside class="col-md-3 sidebar">
-        @include('_sidebar')
+        {{--@include('_sidebar')--}}
       </aside>
     </div>
   </div>
