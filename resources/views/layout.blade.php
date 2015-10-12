@@ -55,9 +55,6 @@
   </footer>
 
   @include('_jsfooter')
-  <!-- Custom -->
-  <script src="{{ asset('js/module/map.js') }}"></script>
-  <script src="{{ asset('js/module/location.js') }}"></script>
   @section('javascript')
   @show
 </body>

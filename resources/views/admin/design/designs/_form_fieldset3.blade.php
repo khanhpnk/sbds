@@ -2,9 +2,9 @@
   @parent
   <script>
     $(function() {
-      @if (isset($project->images))
+      @if (isset($design->images))
         imagesModule.setImagesDbJSON({!! json_encode($design->images) !!});
-      imagesModule.setImageUrl("{{ ImageHelper::link(config('image.paths.design').'/'.$design->user_id) }}");
+        imagesModule.setImageUrl("{{ ImageHelper::link(config('image.paths.design').'/1') }}"); // fixed code
       @endif
       designModule.setCheckUniqueUrl("{{ route('design.unique') }}");
       designModule.init();
@@ -27,6 +27,7 @@
     <legend>Step 3 of 3</legend>
 
     @include('partial.form._text', [
+      'model' => $design,
       'name' => 'title',
       'label' => 'Tiêu đề'
      ])

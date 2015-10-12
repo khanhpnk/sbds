@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Admin\Design;
+namespace App\Http\Controllers\Admin\Service;
 
 use App\Company;
 use App\Design;
@@ -90,7 +90,7 @@ class DesignController extends BaseController
     public function update(DesignRequest $request, Design $design)
     {
         $data = $request->all();
-        $data['images'] = $design->images;
+        $data['images'] = $design->images ? $design->images : [];
 
         $files = json_decode($data['files_deleted']);
         foreach ($files as $file) {
@@ -106,6 +106,7 @@ class DesignController extends BaseController
                 array_push($data['images'], $fileUpload);
             }
         }
+
         $design->fill($data)->save();
 
         return redirect('quan-tri/thiet-ke-thi-cong')->with('flash_message', Lang::get('system.update'));

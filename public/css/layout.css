@@ -274,7 +274,7 @@ i {
 .form-search {
   position: absolute;
   top: 40%;
-  left: 20%;
+  right: 20%;
   background: #fff;
   padding: 8px;
   z-index: 999;
@@ -329,6 +329,22 @@ i {
 }
 .social-google:hover {
   background-position: -122px 0;
+}
+/*********** *********** MAP *********** ***********/
+/*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
+/*.gm-style-iw { max-height: 600px; }*/
+.iw-container  .iw-name {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px;
+  margin: 0;
+  background-color: #48b5e9;
+  color: white;
+  border-radius: 2px 2px 0 0;
+}
+.collapse-search-in {top: 0}
+.form-search-block {
+  display: inline-block;
 }
 /*********** *********** BREADCRUMB *********** ***********/
 .breadcrumb-container {

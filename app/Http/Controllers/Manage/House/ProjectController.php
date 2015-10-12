@@ -70,7 +70,7 @@ class ProjectController extends BaseController
 	public function update(ProjectRequest $request, Project $project)
 	{
 		$data = $request->all();
-		$data['images'] = $project->images;
+		$data['images'] = $project->images ? $project->images : [];
 
 		$files = json_decode($data['files_deleted']);
 		foreach ($files as $file) {

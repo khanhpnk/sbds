@@ -1,16 +1,50 @@
-/**
- * Module mapModule implement Revealing Module Pattern
- */
-
 var frontGooglemapModule = (function() {
   var googlemap;
-  var markerManage = []; // Manage all makers
   var HANOI = new google.maps.LatLng(21.0277644, 105.83415979999995);
+  var markerManage = []; // Manage all makers
+  var infoWindow = new google.maps.InfoWindow; //  Only one infoWindow track for all makers
+  var iconHouseBasePath = '/images/map/house/';
+  var iconProjectBasePath = '/images/map/project/';
+  var icons = {
+    'sale': {
+      1: {name: '', path: iconHouseBasePath + 'nha-rieng.png'},
+      2: {name: '', path: iconHouseBasePath + 'can-ho.png'},
+      3: {name: '', path: iconHouseBasePath + 'biet-thu.png'},
+      4: {name: '', path: iconHouseBasePath + 'mat-pho.png'},
+      5: {name: '', path: iconHouseBasePath + 'dat-nen-du-an.png'},
+      6: {name: '', path: iconHouseBasePath + 'dat.png'},
+      7: {name: '', path: iconHouseBasePath + 'kho.png'},
+      8: {name: '', path: iconHouseBasePath + 'trang-trai.png'},
+      9: {name: '', path: iconHouseBasePath + 'khac.png'},
+    },
+    'rent': {
+      1: {name: '', path: iconHouseBasePath + 'nha-rieng.png'},
+      2: {name: '', path: iconHouseBasePath + 'can-ho.png'},
+      3: {name: '', path: iconHouseBasePath + 'biet-thu.png'},
+      4: {name: '', path: iconHouseBasePath + 'mat-pho.png'},
+      5: {name: '', path: iconHouseBasePath + 'dat-nen-du-an.png'},
+      6: {name: '', path: iconHouseBasePath + 'dat.png'},
+      7: {name: '', path: iconHouseBasePath + 'kho.png'},
+      8: {name: '', path: iconHouseBasePath + 'nha-tro.png'},
+      9: {name: '', path: iconHouseBasePath + 'van-phong.png'},
+      10: {name: '', path: iconHouseBasePath + 'cua-hang.png'},
+      11: {name: '', path: iconHouseBasePath + 'khac.png'},
+    },
+    'project': {
+      1: {name: '', path: iconProjectBasePath + 'thuong-mai-dich-vu.png'},
+      2: {name: '', path: iconProjectBasePath + 'du-lich-nghi-duong.png'},
+      3: {name: '', path: iconProjectBasePath + 'can-ho-chung-cu.png'},
+      4: {name: '', path: iconProjectBasePath + 'van-phong-cao-oc.png'},
+      5: {name: '', path: iconProjectBasePath + 'khu-cong-nghiep.png'},
+      6: {name: '', path: iconProjectBasePath + 'khu-do-thi-moi.png'},
+      7: {name: '', path: iconProjectBasePath + 'khu-phuc-hop.png'},
+      8: {name: '', path: iconProjectBasePath + 'khu-dan-cu.png'},
+    }
+  };
 
-  var init = function(id) {
-
+  var init = function() {
     google.maps.event.addDomListener(window, "load", function() {
-      googlemap = new google.maps.Map(document.getElementById(id), {
+      googlemap = new google.maps.Map(document.getElementById("map-canvas"), {
         zoom: 15,
         center: HANOI,
         scrollwheel: false
@@ -20,30 +54,84 @@ var frontGooglemapModule = (function() {
         googlemap.set("scrollwheel", true);
       });
     });
+
+    formEventListener();
   };
+
+  var formEventListener = function() {
+    $(document).on('submit', 'form', function (event) {
+      event.preventDefault();
+
+      $.ajax({
+        url: $(this).attr('action'),
+        type: $(this).attr('method'),
+        dataType: 'json',
+        data: $(this).serialize()
+      }).done(function(data) {
+        clearAllMapMarkers();
+        dropMapMarkers(data);
+      });
+    });
+  };
+
   /**
-   * Add one markers for map
+   * Drop markers for map
    */
-  var addMapMarker = function(lat, lng) {
+  var dropMapMarkers = function(markers) {
     clearAllMapMarkers();
 
-    var latlng = new google.maps.LatLng(lat, lng);
-    var marker = new google.maps.Marker({
-      map: googlemap,
-      position: latlng,
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-    });
-    googlemap.setCenter(latlng);
-
-    markerManage.push(marker);
+    // Figure out the optimal viewport
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < markers.length; i++) {
+      dropMapMarkerWithTimeout(markers[i], i * 200);
+      bounds.extend(new google.maps.LatLng(markers[i].lat, markers[i].lng));
+    }
+    googlemap.fitBounds(bounds);
   };
 
-  /**
-   * Get one markers for map
-   */
-  var getMapMarker = function() {
-    return markerManage[0].getPosition();
+  var dropMapMarkerWithTimeout = function(marker, timeout) {
+    var data = marker;
+
+    var type = $('#type').val();
+    var iconImage = "";
+    var srcImage = "";
+
+    switch (type) {
+      case "1":
+        iconImage = icons["sale"][data.category]["path"];
+        srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
+        break;
+      case "2":
+        iconImage = icons["rent"][data.category]["path"];
+        srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
+        break;
+      case "3":
+        iconImage = icons["project"][data.category]["path"];
+        srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/project/"+data.user_id+"/large";
+        break;
+    }
+
+    window.setTimeout(function() {
+      var marker = new google.maps.Marker({
+        map: googlemap,
+        position: new google.maps.LatLng(data.lat, data.lng),
+        icon: iconImage || {},
+        animation: google.maps.Animation.DROP
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        $('.iw-name').text(data.title);
+        $('.iw-image').attr("src", srcImage + data.images[0])
+        infoWindow.setContent($('.infowindow-placeholder').html());
+        infoWindow.open(googlemap, marker);
+      });
+
+      google.maps.event.addListener(googlemap, 'click', function() {
+        infoWindow.close();
+      });
+
+      markerManage.push(marker);
+    }, timeout);
   };
 
   var clearAllMapMarkers = function() {
@@ -53,24 +141,7 @@ var frontGooglemapModule = (function() {
     markerManage = [];
   };
 
-  var searchAddress = function(value) {
-    if (value) {
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode({address: value}, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var pos = results[0].geometry.location;
-          addMapMarker(pos.lat(), pos.lng());
-        } else {
-          return false; // not found
-        }
-      });
-    }
-  };
-
   return {
     init: init,
-    searchAddress: searchAddress,
-    getMapMarker: getMapMarker,
-    addMapMarker: addMapMarker
   };
 })();

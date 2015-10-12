@@ -70,7 +70,7 @@ class OwnerController extends BaseController
     public function update(HouseRequest $request, House $house)
     {
         $data = $request->all();
-        $data['images'] = $house->images;
+        $data['images'] = $house->images ? $house->images : [];
 
         $files = json_decode($data['files_deleted']);
         foreach ($files as $file) {

@@ -1,9 +1,16 @@
 @section('javascript')
   @parent
+  <script src="{{ asset('js/module/map.js') }}"></script>
+  <script src="{{ asset('js/module/location.js') }}"></script>
   <script>
     $(function() {
-      frontGooglemapModule.init("map-canvas");
+      frontGooglemapModule.init();
       frontLocationModule.init();
+
+      $(".collapse-search").on('click', function () {
+        $(".form-search").toggleClass("collapse-search-in");
+        $(".form-search-block").toggle();
+      });
     });
   </script>
 @stop
@@ -11,14 +18,15 @@
 <div id="map-canvas" style="height: 500px; width: 100%;"></div>
 
 <div class="form-search">
-  <form class="form-inline">
-    @include('partial.form._select', ['name' => 'city', 'label' => 'Tỉnh thành'])
-    @include('partial.form._select', ['name' => 'district', 'label' => 'Quận / huyện'])
-    @include('partial.form._select', ['name' => 'ward', 'label' => 'Xã / phường'])
-    @include('partial.form._select', ['name' => 'type', 'label' => '-- -- -- -- -- --',
-                      'options' => ['DỰ ÁN', 'NHÀ ĐẤT BÁN', 'NHÀ ĐẤT CHO THUÊ', 'THIẾT KẾ THI CÔNG']])
-    <button type="submit" class="btn btn-default">SEARCH</button>
-    <button type="button" class="btn btn-info"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
+  <form class="form-inline" method="POST" action="{{ route('front.map.search') }}">
+    <div class="form-search-block">
+      @include('partial.form._select2', ['name' => 'city', 'label' => 'Tỉnh thành'])
+      @include('partial.form._select2', ['name' => 'district', 'label' => 'Quận / huyện'])
+      @include('partial.form._select2', ['name' => 'ward', 'label' => 'Xã / phường'])
+      @include('partial.form._select2', ['name' => 'type', 'options' => [1 => 'NHÀ ĐẤT BÁN', 2 => 'NHÀ ĐẤT CHO THUÊ', 3 => 'DỰ ÁN']])
+      <button type="submit" class="btn btn-default">SEARCH</button>
+    </div>
+    <button type="button" class="btn btn-info collapse-search"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
   </form>
 </div>
 
@@ -26,17 +34,7 @@
   <div class="iw-container">
     <h1 class="iw-name">::NAME</h1>
     <div class="iw-content">
-      {{--<img src="/images/vendor/map/temp/banner.jpg" alt="..." height="" width="610" class="img-responsive">--}}
-      <p class="iw-description">
-        Founded in 1824, the Porcelain Factory of Vista Alegre was the first industrial
-      </p>
-      <b>Contact</b>
-      <address class="iw-contact">
-        ::ADDRESS<br>
-        Phone: +351 234 320 600<br>
-        E-mail: example@gmail.com<br>
-        Website: www.hoc.vet
-      </address>
+      <img class="iw-image" src="" alt="..." height="" width="510" class="img-responsive">
     </div>
   </div>
 </div>

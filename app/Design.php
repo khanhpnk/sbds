@@ -12,9 +12,11 @@ class Design extends Model
      * @var array
      */
     protected $fillable = [
+        'company_id', // fix code
         'category',
         'sub_category',
         'title',
+        'images',
         'designers',
         'designers_furniture',
         'supervisor',

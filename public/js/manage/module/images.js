@@ -36,6 +36,8 @@ var imagesModule = (function() {
         files.push({"name": imagesDbJSON[key], "type": "image/jpg", "file": imageUrl+'/'+imageType+imagesDbJSON[key]});
       }
 
+      console.log(files);
+
       fileImageInput.filer({
         limit: UPLOAD_FILE_LIMIT, maxSize: UPLOAD_FILE_MAX_SIZE,
         addMore: true, files: files,

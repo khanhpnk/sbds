@@ -86,7 +86,7 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
             'edit' => 'admin.article.edit',
         ]
     ]);
-    Route::group(['namespace' => 'Design'], function() {
+    Route::group(['namespace' => 'Service'], function() {
         Route::resource('cong-ty', 'CompanyController', [
             'except' => 'show', 'destroy', 'create', 'store',
             'names' => [
@@ -112,7 +112,11 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
 /*********** *********** FRONT *********** ***********/
 Route::group(['namespace' => 'Front'], function() {
     Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
-});
-Route::group(['namespace' => 'Front'], function() {
-    Route::get('thiet-ke-thi-cong', ['uses' => 'DesignController@index', 'as' => 'front.design.index']);
+    Route::resource('thiet-ke-thi-cong', 'DesignController', [
+        'names' => [
+            'index' => 'front.design.index',
+            'show' => 'front.design.show',
+        ]
+    ]);
+    Route::post('map/search-markers', ['uses' => 'MapController@searchMarkers', 'as' => 'front.map.search']);
 });

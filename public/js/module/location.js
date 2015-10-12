@@ -13,7 +13,7 @@ var frontLocationModule = (function() {
     var districtJSON     = {};
 
     var init = function() {
-        cityElement.select2({placeholder: "Tỉnh thành", allowClear: true, data: locationStorageJSON});
+        cityElement.select2({placeholder: "Tỉnh thành", data: locationStorageJSON});
         locationEventListener();
     };
 
@@ -26,9 +26,12 @@ var frontLocationModule = (function() {
     var cityEventListener = function() {
         cityElement.on("change", function (e) {
             var citySelected = searchJsonById(locationStorageJSON, $(this).val());
-            locationSelectedJSON = {ward: "", district: "", city: citySelected.text};
+            locationSelectedJSON.city = citySelected.text;
+            locationSelectedJSON.district = '';
+            locationSelectedJSON.ward = '';
 
-            districtElement.select2({placeholder: "Quận / huyện", allowClear: true, data: districtJSON = citySelected.district});
+            districtElement.find("option:not(:first)").remove();
+            districtElement.select2({placeholder: "Quận / huyện", data: districtJSON = citySelected.district});
         });
     };
 
@@ -38,7 +41,8 @@ var frontLocationModule = (function() {
             locationSelectedJSON.district = districtSelected.text;
             locationSelectedJSON.ward = '';
 
-            wardElement.select2({placeholder: "Xã / phường", allowClear: true, data: districtSelected.ward});
+            wardElement.find("option:not(:first)").remove();
+            wardElement.select2({placeholder: "Xã / phường", data: districtSelected.ward});
         });
     };
 
