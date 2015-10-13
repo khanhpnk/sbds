@@ -22,8 +22,9 @@ class ArticleRequest extends Request
      */
     public function rules()
     {
-        $rules = [];
-
-        return $rules;
+        return [
+            'title' => 'required|between:8,64',
+            'description' => 'required|between:8,6000',
+        ];
     }
 }
