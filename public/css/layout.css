@@ -73,7 +73,7 @@ i {
   text-transform: uppercase;
 }
 /*********** *********** *********** SIDEBAR: END USER NAV MODULE *********** *********** ***********/
-/*********** *********** *********** MAIN:RELATION SECTION MODULE *********** *********** ***********/
+/*********** *********** *********** MAIN: BEGIN RELATION SECTION MODULE *********** *********** ***********/
 .relation {}
 .relation-title {
   text-transform: capitalize;
@@ -83,6 +83,16 @@ i {
   margin: 10px 0;
   padding: 4px 0;
 }
+.relation-list {}
+.relation-time {
+  display: inline-block;
+  text-align: right;
+}
+.relation-link {
+  display: inline-block;
+  text-align: left;
+}
+/*********** *********** *********** MAIN: END RELATION SECTION MODULE *********** *********** ***********/
 /*********** *********** *********** MAIN:HOUSE THUMB MODULE *********** *********** ***********/
 .thumb {
   border-bottom: 1px dashed #777;
@@ -166,6 +176,10 @@ i {
 }
 /*********** *********** *********** MAIN:ARTICLE MODULE *********** *********** ***********/
 .article {}
+.article-time {
+  text-align: right;
+  font-size: 11px;
+}
 .article li {
   padding-top: 4px;
   padding-bottom: 4px;
