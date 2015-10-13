@@ -1,14 +1,20 @@
 <!-- Footer Javascript -->
 @section('javascript')
-    <!-- Editor -->
-<script src="{{ asset('/vendor/tinymce/tinymce.min.js') }}"></script>
-<script>
-  tinymce.init({
-    selector : "textarea",
-    plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste jbimages"],
-    toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
-  });
-</script>
+  @parent
+  <!-- Editor -->
+  <script src="{{ asset('/vendor/tinymce/tinymce.min.js') }}"></script>
+  <script src="{{ asset('js/admin/article.js') }}"></script>
+  <script>
+    $(function() {
+      tinymce.init({
+        selector : "textarea",
+        plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste jbimages"],
+        toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image jbimages",
+      });
+
+      articleModule.init("#articleForm");
+    });
+  </script>
 @endsection
 
 {!! csrf_field() !!}

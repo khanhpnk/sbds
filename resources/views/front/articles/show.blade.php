@@ -33,7 +33,7 @@
       @foreach ($relations as $relation)
         <li>
           <a href="{{ route('front.article.show', $relation->slug) }}">
-            <div class="relation-link"><i class="fa fa-link"></i>{{ $relation->title }}</div>
+            <i class="fa fa-link"></i>{{ $relation->title }}
             <div class="relation-time"><time>{{ $relation->created_at }}</time></div>
           </a>
         </li>

@@ -38,6 +38,18 @@ class Article extends Model
      * @param  string  $value
      * @return string
      */
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    /**
+     * Accessor: Get the date create
+     * Exxample: 5h04 | 02/09/2015
+     *
+     * @param  string  $value
+     * @return string
+     */
     public function getCreatedAtAttribute($value)
     {
         return (new \DateTime($value))->format('G\hi | d/m/Y');
