@@ -1,6 +1,5 @@
 /*********** *********** *********** LAYOUT *********** *********** ***********/
 .sidebar {
-  background-color: #e5e8ef;
   padding: 0;
 }
 .main {
@@ -104,6 +103,10 @@
   float: right;
 }
 /* USER NAV */
+.user-nav {
+  border: 1px solid #d5d8df;
+  padding: 6px 2px;
+}
 .user-nav li.active a,
 .user-nav li a:hover,
 .user-nav li a:focus {
@@ -117,7 +120,7 @@
 }
 .user-nav-header {
   font-size: 16px;
-  padding: 0 8px;
+  padding: 2px 8px;
   color: #337AB7;
   text-transform: uppercase;
 }

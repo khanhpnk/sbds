@@ -15,8 +15,8 @@
 <div class="collapse navbar-collapse" id="navbar-collapse01">
   <ul class="nav navbar-nav">{{-- Leave blank --}}</ul>
   <ul class="nav navbar-nav navbar-right">
-    <li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => 'ban']) }}">NHÀ ĐẤT BÁN</a></li>
-    <li><a href="{{ route('project.index', ['type' => 'cho-thue']) }}">CHO THUÊ</a></li>
+    <li><a href="{{ route('house.index', 'ban') }}">NHÀ ĐẤT BÁN</a></li>
+    <li><a href="{{ route('house.index', 'cho-thue') }}">CHO THUÊ</a></li>
     <li><a href="{{ route('project.index') }}">DỰ ÁN</a></li>
     <li><a href="{{ route('company.index') }}">CÔNG TY</a></li>
     <li><a href="{{ route('front.design.index') }}">DỊCH VỤ</a></li>
