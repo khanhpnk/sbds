@@ -1,5 +1,7 @@
 @yield('contactInfo')
 
+@yield('sidebarHook')
+
 <section class="recommend">
   {{--<div class="thumb-caption">Thiết kế thi công</div>--}}
 

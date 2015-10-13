@@ -7,6 +7,12 @@
   <li class="active">{{ $article->title }}</li>
 @stop
 
+@if (!Auth::guest())
+  @section('sidebarHook')
+    @include('partial._user_nav')
+  @stop
+@endif
+
 @section('content')
   <article class="article">
     <header><h1 class="article-title">{{ $article->title }}</h1></header>
