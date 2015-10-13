@@ -120,3 +120,6 @@ Route::group(['namespace' => 'Front'], function() {
     ]);
     Route::post('map/search-markers', ['uses' => 'MapController@searchMarkers', 'as' => 'front.map.search']);
 });
+
+// Authentication with social
+Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
