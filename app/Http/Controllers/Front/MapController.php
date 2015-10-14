@@ -35,6 +35,9 @@ class MapController extends Controller
             if ($request->has('ward')) {
                 $markers = $markers->where('ward', $request->input('ward'));
             }
+            if ($request->has('category')) {
+                $markers = $markers->where('category', $request->input('category'));
+            }
 
             return response()->json($markers->get());
         }
