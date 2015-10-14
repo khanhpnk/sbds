@@ -4,11 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 use App\Article;
 
 class ArticleController extends BaseController
 {
+    const INBOX     = 'inbox';
+    const SENT      = 'sent';
+    const READ      = 'read';
+    const UNREAD    = 'unread';
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,14 @@ class ArticleController extends BaseController
      */
     public function index()
     {
-        $articles = Article::orderBy('id', 'desc')->paginate(20);
+        $catId = Input::get('id');
+        $articles = Article::orderBy('id', 'desc');
+
+        if ($catId) {
+            $articles->where('category_id', $catId);
+        }
+
+        $articles = $articles->paginate(20);
 
         return view('admin.articles.index', compact('articles'));
     }

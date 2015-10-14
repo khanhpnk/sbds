@@ -19,6 +19,14 @@
 
 {!! csrf_field() !!}
 
+<div class="btn-group btn-group-justified" data-toggle="buttons">
+  @include('partial.form.group._radio', ['model' => $article, 'name' => 'category_id', 'label' => 'Về chúng tôi', 'value' => 1, 'default' => true])
+  @include('partial.form.group._radio', ['model' => $article, 'name' => 'category_id', 'label' => 'Tuyển dụng', 'value' => 2])
+  @include('partial.form.group._radio', ['model' => $article, 'name' => 'category_id', 'label' => 'Nội quy', 'value' => 3])
+  @include('partial.form.group._radio', ['model' => $article, 'name' => 'category_id', 'label' => 'Hướng dẫn', 'value' => 4])
+  @include('partial.form.group._radio', ['model' => $article, 'name' => 'category_id', 'label' => 'Báo giá', 'value' => 5])
+</div>
+
 @include('partial.form._text', ['model' => $article, 'name' => 'title', 'label' => 'Tiêu đề'])
 @include('partial.form._textarea', ['model' => $article, 'name' => 'description', 'label' => 'Nội dung'])
 

@@ -23,6 +23,7 @@ class ArticleRequest extends Request
     public function rules()
     {
         return [
+            'category_id' => 'required|integer',
             'title' => 'required|between:8,64',
             'description' => 'required|between:8,6000',
         ];
