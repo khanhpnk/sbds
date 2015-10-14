@@ -27,8 +27,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIEN_SECRET'),
+        'client_id' => '36604547403-e8iqn0au472lihv1pfb6hlf3ls5uchlr.apps.googleusercontent.com', //env('GOOGLE_CLIENT_ID'),
+        'client_secret' => 'eYgisuOXSPY3byWAWfzcnycG', //env('GOOGLE_CLIEN_SECRET'),
         'redirect' => $app->runningInConsole() ? config('app.url') : url('social-login/google'),
     ],
 
