@@ -10,11 +10,6 @@ use App\Article;
 
 class ArticleController extends BaseController
 {
-    const INBOX     = 'inbox';
-    const SENT      = 'sent';
-    const READ      = 'read';
-    const UNREAD    = 'unread';
-
     /**
      * Display a listing of the resource.
      *
@@ -81,5 +76,18 @@ class ArticleController extends BaseController
         $article->update($request->all());
 
         return redirect('quan-tri/bai-viet')->with('flash_message', Lang::get('system.update'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  ArticleRequest   $request
+     * @return Response
+     */
+    public function destroy( Article $article)
+    {
+        $article->delete();
+
+        return redirect('quan-tri/bai-viet')->with('flash_message', Lang::get('system.destroy'));
     }
 }

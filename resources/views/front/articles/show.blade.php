@@ -27,11 +27,15 @@
   <div class="fb-comments" data-href="{{ route('front.article.show', $article->slug) }}" data-width="675" data-numposts="2"></div>
   <hr>
 
+  @if (0 < count($relations))
   <section class="relation">
     <header><h1 class="relation-title">Các tin khác</h1></header>
     <ul class="relation-list">
       @foreach ($relations as $relation)
         <li>
+          @can('admin')
+            <a href="{{ route('admin.article.edit', $article->slug) }}" class="relation-admin-edit">Chỉnh sửa</a>
+          @endcan
           <a href="{{ route('front.article.show', $relation->slug) }}">
             <i class="fa fa-link"></i>{{ $relation->title }}
             <div class="relation-time"><time>{{ $relation->created_at }}</time></div>
@@ -40,4 +44,5 @@
       @endforeach
     </ul>
   </section>
+  @endif
 @stop

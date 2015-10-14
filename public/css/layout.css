@@ -91,6 +91,12 @@ i {
   font-style: italic;
   font-size: 11px;
 }
+.relation-admin-edit {
+  float: right;
+  font-style: italic;
+  font-size: 11px;
+  margin-left: 20px;
+}
 /*********** *********** *********** MAIN: END RELATION SECTION MODULE *********** *********** ***********/
 /*********** *********** *********** MAIN:HOUSE THUMB MODULE *********** *********** ***********/
 .thumb {

@@ -32,7 +32,15 @@
         @foreach ($articles as $article)
           <tr>
             <td>{{ $article->title }}</td>
-            <td><a href="{{ route('admin.article.edit', $article->slug) }}" class="btn btn-info">Chỉnh sửa</a></td>
+            <td>
+              <a href="{{ route('front.article.show', $article->slug) }}" target="_blank" class="btn btn-primary">Chi tiết</a>
+              <a href="{{ route('admin.article.edit', $article->slug) }}" class="btn btn-primary">Chỉnh sửa</a>
+              <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('admin.article.destroy',  $article->slug) }}" class="form-delete" method="POST" role="form">
+                <input type="hidden" name="_method" value="DELETE">
+                {!! csrf_field() !!}
+                <button class="btn btn-delete btn-primary" type="submit" role="button">Xóa</button>
+              </form>
+            </td>
           </tr>
         @endforeach
       </tbody>
