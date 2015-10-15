@@ -26,7 +26,7 @@ class ArticleController extends BaseController
 
         $articles = $articles->paginate(20);
 
-        return view('admin.articles.index', compact('articles'));
+        return view('admin.articles.index', compact('articles', 'catId'));
     }
 
     /**
@@ -37,7 +37,12 @@ class ArticleController extends BaseController
     public function create()
     {
         $article = null;
-        return view('admin.articles.create', compact('article'));
+        $catId = Input::get('id');
+        $relations = Article::orderBy('id', 'desc')
+            ->where('category_id', $catId)
+            ->get();
+
+        return view('admin.articles.create', compact('article', 'relations'));
     }
 
     /**
@@ -61,7 +66,12 @@ class ArticleController extends BaseController
      */
     public function edit(Article $article)
     {
-        return view('admin.articles.edit', compact('article'));
+        $relations = Article::orderBy('id', 'desc')
+            ->where('id', '<>', $article->id)
+            ->where('category_id', $article->category_id)
+            ->get();
+
+        return view('admin.articles.edit', compact('article', 'relations'));
     }
 
     /**

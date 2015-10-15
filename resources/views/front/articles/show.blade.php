@@ -34,7 +34,7 @@
       @foreach ($relations as $relation)
         <li>
           @can('admin')
-            <a href="{{ route('admin.article.edit', $article->slug) }}" class="relation-admin-edit">Chỉnh sửa</a>
+            <a href="{{ route('admin.article.edit', $relation->slug) }}" class="relation-admin-edit">Chỉnh sửa</a>
           @endcan
           <a href="{{ route('front.article.show', $relation->slug) }}">
             <i class="fa fa-link"></i>{{ $relation->title }}

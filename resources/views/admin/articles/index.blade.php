@@ -4,7 +4,7 @@
 @section('meta_description'){{ 'Danh sách bài viết' }}@stop
 
 @section('content')
-  <a href="{{ route('admin.article.create') }}" class="btn btn-primary">Tạo bài viết mới</a>
+  <a href="{{ route('admin.article.create', 'id=' . Input::get('id', 1) ) }}" class="btn btn-primary">Tạo bài viết mới</a>
   <hr>
 
   <div aria-label="Justified button group" role="group" class="btn-group btn-group-justified">
