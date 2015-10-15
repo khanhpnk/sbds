@@ -1,27 +1,32 @@
-@include ('errors.list')
+@extends('layout')
 
-<form method="POST" action="/password/reset">
-  {!! csrf_field() !!}
-  <input type="hidden" name="token" value="{{ $token }}">
+@section('meta_title'){{ 'Thiết lập lại mật khẩu' }}@stop
+@section('meta_description'){{ 'Thiết lập lại mật khẩu' }}@stop
 
-  <div>
-    Email
-    <input type="email" name="email" value="{{ old('email') }}">
-  </div>
+@section('breadcrumb')
+  <li class="active">Thiết lập lại mật khẩu</li>
+@stop
 
-  <div>
-    Password
-    <input type="password" name="password">
-  </div>
+@section('content')
+  @include ('errors._list')
 
-  <div>
-    Confirm Password
-    <input type="password" name="password_confirmation">
-  </div>
+  <form accept-charset="UTF-8" method="POST" action="/password/reset" role="form">
+    {!! csrf_field() !!}
+    <input type="hidden" name="token" value="{{ $token }}">
 
-  <div>
-    <button type="submit">
-      Reset Password
-    </button>
-  </div>
-</form>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input  type="text" class="form-control" name="email" id="email" value="{{ old('email') }}">
+    </div>
+    <div class="form-group">
+      <label for="email">Mật khẩu mới</label>
+      <input  type="password" class="form-control" name="password" id="password">
+    </div>
+    <div class="form-group">
+      <label for="email">Nhập lại mật khẩu mới</label>
+      <input  type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Gửi</button>
+  </form>
+@stop

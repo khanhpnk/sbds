@@ -1,5 +1,10 @@
-Nhấn vào link sau để thiết lập lại mật khẩu: {{ url('password/reset/'.$token) }}
+Nhấn vào link sau để thiết lập lại mật khẩu:
 <br>
-Link chỉ có hiệu lực trong vòng 1h.
+{{ url('password/reset/'.$token) }}
 <br>
-Bạn nhận được email này vì bạn đã đăng ký thiết lập lại mật khẩu. Nếu bạn không thực hiện hành động đó, vui lòng bỏ qua email này.
+CHú ý: Link chỉ có hiệu lực trong vòng 1h.
+<br>
+----------------------------------------
+<br>
+Bạn nhận được email này vì bạn đã đăng ký thiết lập lại mật khẩu trên house360.vn. <br>
+Nếu bạn không thực hiện hành động đó, xin vui lòng bỏ qua email này.

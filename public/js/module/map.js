@@ -59,9 +59,7 @@ var frontGooglemapModule = (function() {
   };
 
   var formEventListener = function() {
-    $(document).on('submit', 'form', function (event) {
-      event.preventDefault();
-
+    $('#searchForm').submit(function (event) {
       $.ajax({
         url: $(this).attr('action'),
         type: $(this).attr('method'),
@@ -71,6 +69,8 @@ var frontGooglemapModule = (function() {
         clearAllMapMarkers();
         dropMapMarkers(data);
       });
+
+      event.preventDefault();
     });
   };
 

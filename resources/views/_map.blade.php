@@ -36,7 +36,7 @@
 <div id="map-canvas" style="height: 500px; width: 100%;"></div>
 
 <div class="form-search">
-  <form class="form-inline" method="POST" action="{{ route('front.map.search') }}">
+  <form class="form-inline" method="POST" action="{{ route('front.map.search') }}" id="searchForm">
     <div class="form-search-block">
       @include('partial.form._select2', ['name' => 'city', 'label' => 'Tỉnh thành'])
       @include('partial.form._select2', ['name' => 'district', 'label' => 'Quận / huyện'])
