@@ -4,17 +4,7 @@
 @section('meta_description'){{ 'Danh sách bài viết' }}@stop
 
 @section('content')
-  <a href="{{ route('admin.article.create', 'id=' . Input::get('id', 1) ) }}" class="btn btn-primary">Tạo bài viết mới</a>
-  <hr>
-
-  <div aria-label="Justified button group" role="group" class="btn-group btn-group-justified">
-    <a role="button" class="btn btn-primary @if (1 == Input::get('id')) active @endif" href="{{ route('admin.article.index', 'id=1') }}">Về chúng tôi</a>
-    <a role="button" class="btn btn-primary @if (2 == Input::get('id')) active @endif" href="{{ route('admin.article.index', 'id=2') }}">Tuyển dụng</a>
-    <a role="button" class="btn btn-primary @if (3 == Input::get('id')) active @endif" href="{{ route('admin.article.index', 'id=3') }}">Nội quy</a>
-    <a role="button" class="btn btn-primary @if (4 == Input::get('id')) active @endif" href="{{ route('admin.article.index', 'id=4') }}">Hướng dẫn</a>
-    <a role="button" class="btn btn-primary @if (5 == Input::get('id')) active @endif" href="{{ route('admin.article.index', 'id=5') }}">Báo giá</a>
-  </div>
-  <hr>
+  @include('admin.articles._nav')
 
   @if (count($articles) > 0)
     <p class="text-right">Trang {{ $articles->currentPage() }}/{{ $articles->lastPage() }} (Tổng {{ $articles->total() }})</p>
@@ -31,7 +21,7 @@
       <tbody>
         @foreach ($articles as $article)
           <tr>
-            <td>{{ $article->title }}</td>
+            <td>{{ str_limit($article->title, 56) }}</td>
             <td>
               <a href="{{ route('front.article.show', $article->slug) }}" target="_blank" class="btn btn-primary">Chi tiết</a>
               <a href="{{ route('admin.article.edit', $article->slug) }}" class="btn btn-primary">Chỉnh sửa</a>
