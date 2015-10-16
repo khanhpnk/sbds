@@ -14,7 +14,7 @@
   <li class="col-md-3">
     <ul>
       <li class="footer-header">Tìm kiếm nhanh</li>
-      <li><a href="#"><i class="fa fa-link"></i>Giới thiệu về house360</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Giới thiệu về house</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Danh sách công ty môi giới</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Tin nổi bật</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Dự án nổi bật</a></li>
@@ -30,10 +30,11 @@
       <li><a href="#"><i class="fa fa-link"></i>Nhà đất cho thuê</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Dự án</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Thiết kế thi công</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Báo giá</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Tuyển dụng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Báo giá</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Tuyển dụng</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Hướng dẫn sử dụng</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Hướng dẫn thanh toán</a></li>
     </ul>
   </li>
   <li class="col-lg-3">

@@ -8,4 +8,5 @@
     <input type="hidden" name="_method" value="PUT">
     @include('admin.articles._form', ['submitBtnText' => 'Cập nhật'])
   </form>
+  @include('admin.articles._list')
 @stop

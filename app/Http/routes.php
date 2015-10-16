@@ -79,7 +79,6 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
     Route::resource('bai-viet', 'ArticleController', [
         'except' => 'show',
         'names' => [
-            'index' => 'admin.article.index',
             'create' => 'admin.article.create',
             'store' => 'admin.article.store',
             'update' => 'admin.article.update',

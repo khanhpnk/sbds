@@ -33,9 +33,6 @@
     <ul class="relation-list">
       @foreach ($relations as $relation)
         <li>
-          @can('admin')
-            <a href="{{ route('admin.article.edit', $relation->slug) }}" class="relation-admin-edit">Chỉnh sửa</a>
-          @endcan
           <a href="{{ route('front.article.show', $relation->slug) }}">
             <i class="fa fa-link"></i>{{ $relation->title }}
             <div class="relation-time"><time>{{ $relation->created_at }}</time></div>
