@@ -3,24 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 use App\Article;
+use Illuminate\Support\Facades\Redirect;
 
 class ArticleController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        $articles = Article::orderBy('id', 'desc')->paginate(20);
-
-        return view('admin.articles.index', compact('articles'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +20,12 @@ class ArticleController extends BaseController
     public function create()
     {
         $article = null;
-        return view('admin.articles.create', compact('article'));
+        $catId = Input::get('id');
+        $relations = Article::orderBy('id', 'desc')
+            ->where('category_id', $catId)
+            ->get();
+
+        return view('admin.articles.create', compact('article', 'relations', 'catId'));
     }
 
     /**
@@ -42,7 +38,7 @@ class ArticleController extends BaseController
     {
         Auth::user()->articles()->create($request->all());
 
-        return redirect('quan-tri/bai-viet')->with('flash_message', Lang::get('system.store'));
+        return Redirect::back()->with('flash_message', Lang::get('system.store'));
     }
 
     /**
@@ -53,7 +49,13 @@ class ArticleController extends BaseController
      */
     public function edit(Article $article)
     {
-        return view('admin.articles.edit', compact('article'));
+        $catId = $article->category_id;
+        $relations = Article::orderBy('id', 'desc')
+            ->where('id', '<>', $article->id)
+            ->where('category_id', $catId)
+            ->get();
+
+        return view('admin.articles.edit', compact('article', 'relations', 'catId'));
     }
 
     /**
@@ -67,6 +69,19 @@ class ArticleController extends BaseController
     {
         $article->update($request->all());
 
-        return redirect('quan-tri/bai-viet')->with('flash_message', Lang::get('system.update'));
+        return Redirect::back()->with('flash_message', Lang::get('system.update'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  ArticleRequest   $request
+     * @return Response
+     */
+    public function destroy( Article $article)
+    {
+        $article->delete();
+
+        return Redirect::back()->with('flash_message', Lang::get('system.destroy'));
     }
 }

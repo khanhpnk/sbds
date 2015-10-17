@@ -39,12 +39,19 @@ class EasySocialiteManager implements Contracts\Factory
         // Obtain the user information
         $user = Socialite::driver($provider)->user();
 
+        $name = '';
+        if ($user->getName()) {
+            $name = $user->getName();
+        } else if ($user->getName()) {
+            $name = $user->getNickname();
+        }
+
         // Retrieve all values useful
         return $socialUser = [
             'provider' => $provider,
             'provider_id' => $user->getId(),
             'email_provider' => $user->getEmail(),
-            'name' => $user->getName() ? $user->getName() : $user->getNickname(),
+            'name' => $name,
             'avatar' => $user->getAvatar(),
         ];
     }

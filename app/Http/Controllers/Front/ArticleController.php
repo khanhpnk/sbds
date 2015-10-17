@@ -16,7 +16,9 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $relations = Article::orderBy('id', 'desc')
-            ->where('id', '<>', $article->id)->get();
+            ->where('id', '<>', $article->id)
+            ->where('category_id', $article->category_id)
+            ->get();
 
         return view('front.articles.show', compact('article', 'relations'));
     }

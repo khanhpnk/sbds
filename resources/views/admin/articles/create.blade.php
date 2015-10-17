@@ -7,4 +7,5 @@
   <form accept-charset="UTF-8" action="{{ route('admin.article.store') }}" method="POST" role="form" id="articleForm">
     @include('admin.articles._form', ['submitBtnText' => 'Tạo mới'])
   </form>
+  @include('admin.articles._list')
 @stop

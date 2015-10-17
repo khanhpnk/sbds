@@ -17,7 +17,7 @@ trait ResetsPasswords
      *
      * @var string
      */
-    protected $redirectAfterReset = 'home';
+    protected $redirectAfterReset = 'm/user/profile';
 
     /**
      * Display the form to request a password reset link.

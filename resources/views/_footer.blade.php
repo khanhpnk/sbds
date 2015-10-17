@@ -14,11 +14,11 @@
   <li class="col-md-3">
     <ul>
       <li class="footer-header">Tìm kiếm nhanh</li>
+      <li><a href=""><i class="fa fa-link"></i>Giới thiệu về house</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Danh sách công ty môi giới</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Tin nổi bật</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Dự án nổi bật</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Nhà riêng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Căn hộ</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Nhà biệt thự, liền kề</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Nhà mặt phố</a></li>
     </ul>
@@ -30,21 +30,22 @@
       <li><a href="#"><i class="fa fa-link"></i>Nhà đất cho thuê</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Dự án</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Thiết kế thi công</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Báo giá thiết kế thi công</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Tuyển dụng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Báo giá</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Tuyển dụng</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Hướng dẫn sử dụng</a></li>
+      <li><a href=""><i class="fa fa-link"></i>Hướng dẫn thanh toán</a></li>
     </ul>
   </li>
   <li class="col-lg-3">
-    <ul>
-      <li class="footer-header">Danh sách hữu ích</li>
-      <li><a href="{{ route('front.article.show', ['slug' => 'noi-quy-dang-tin']) }}"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
-      <li><a href="{{ route('front.article.show', ['slug' => 'huong-dan-dang-tin']) }}"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
-      <li><a href="{{ route('front.article.show', ['slug' => 'thiet-ke-thi-cong']) }}"><i class="fa fa-link"></i>Thiết kế thi công</a></li>
-      <li><a href="{{ route('front.article.show', ['slug' => 'bao-gia-thiet-ke-thi-cong']) }}"><i class="fa fa-link"></i>Báo giá thiết kế thi công</a></li>
-      <li><a href="{{ route('front.article.show', ['slug' => 'tuyen-dung']) }}"><i class="fa fa-link"></i>Tuyển dụng</a></li>
-    </ul>
+    {{--<ul>--}}
+      {{--<li class="footer-header">Danh sách hữu ích</li>--}}
+      {{--<li><a href="{{ route('front.article.show', ['slug' => 'noi-quy-dang-tin']) }}"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>--}}
+      {{--<li><a href="{{ route('front.article.show', ['slug' => 'huong-dan-dang-tin']) }}"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>--}}
+      {{--<li><a href="{{ route('front.article.show', ['slug' => 'thiet-ke-thi-cong']) }}"><i class="fa fa-link"></i>Thiết kế thi công</a></li>--}}
+      {{--<li><a href="{{ route('front.article.show', ['slug' => 'bao-gia-thiet-ke-thi-cong']) }}"><i class="fa fa-link"></i>Báo giá thiết kế thi công</a></li>--}}
+      {{--<li><a href="{{ route('front.article.show', ['slug' => 'tuyen-dung']) }}"><i class="fa fa-link"></i>Tuyển dụng</a></li>--}}
+    {{--</ul>--}}
   </li>
 </ul>
 

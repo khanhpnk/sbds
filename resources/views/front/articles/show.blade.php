@@ -27,6 +27,7 @@
   <div class="fb-comments" data-href="{{ route('front.article.show', $article->slug) }}" data-width="675" data-numposts="2"></div>
   <hr>
 
+  @if (0 < count($relations))
   <section class="relation">
     <header><h1 class="relation-title">Các tin khác</h1></header>
     <ul class="relation-list">
@@ -40,4 +41,5 @@
       @endforeach
     </ul>
   </section>
+  @endif
 @stop

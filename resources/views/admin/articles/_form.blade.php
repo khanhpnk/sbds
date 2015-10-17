@@ -18,12 +18,11 @@
 @endsection
 
 {!! csrf_field() !!}
-
+<input type="hidden" name="category_id" value="{{ $catId }}">
 @include('partial.form._text', ['model' => $article, 'name' => 'title', 'label' => 'Tiêu đề'])
 @include('partial.form._textarea', ['model' => $article, 'name' => 'description', 'label' => 'Nội dung'])
 
 <button type="submit" class="btn btn-primary btn-block">{{ $submitBtnText }}</button>
-<button type="button" class="btn btn-default" onclick="history.go(-1)">« Back</button>
 
 
 

@@ -23,7 +23,7 @@
 <!-- Bootstrap -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <!-- Google map -->
-<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyC7c5FBgCWSzNkmZ6y5fXnkjfM1eRsz3Uc"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyC0zFJ-aO5zV3JbpWA39423cwHBS28n9ws"></script>
 <script>
   // CSRF protection for your AJAX based applications
   $.ajaxSetup({

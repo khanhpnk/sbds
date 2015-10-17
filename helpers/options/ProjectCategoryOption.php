@@ -2,6 +2,8 @@
 
 class ProjectCategoryOption
 {
+    use TraitJsonOption;
+
     const THUONG_MAI_DICH_VU     = 1;
     const DU_LICH_NGHI_DUONG        = 2;
     const CAN_HO_CHUNG_CU  = 3;

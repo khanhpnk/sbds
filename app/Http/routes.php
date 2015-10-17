@@ -77,13 +77,13 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
 /*********** *********** ADMIN *********** ***********/
 Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
     Route::resource('bai-viet', 'ArticleController', [
-        'except' => 'show', 'destroy',
+        'except' => 'show',
         'names' => [
-            'index' => 'admin.article.index',
             'create' => 'admin.article.create',
             'store' => 'admin.article.store',
             'update' => 'admin.article.update',
             'edit' => 'admin.article.edit',
+            'destroy' => 'admin.article.destroy',
         ]
     ]);
     Route::group(['namespace' => 'Service'], function() {
