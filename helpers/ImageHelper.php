@@ -4,6 +4,8 @@ use Library\Image as Image;
 
 class ImageHelper
 {
+    const QUANLITY = 100;
+
     public static function avatar($resource, $userId, $images)
     {
         $endpoint = config('filesystems.disks.s3.endpoint');
