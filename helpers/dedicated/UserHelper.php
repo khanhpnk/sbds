@@ -14,7 +14,7 @@ class UserHelper
             if ($user->provider) {
                 return $user->avatar;
             } else {
-                return "{$endpoint}/{$path}/{$user->avatar}";
+                return "{$endpoint}/{$path}/{$user->id}/{$user->avatar}";
             }
         }
     }

@@ -7,6 +7,7 @@ use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use ImageHelper;
+use Library\Image;
 
 class ProfileController extends Controller
 {
@@ -31,15 +32,34 @@ class ProfileController extends Controller
     {
         $data = $request->all();
 
-        $fileName = (new ImageHelper)->uploads('user', $_FILES['avatar']['tmp_name']);
+        if (!empty($_FILES['avatar']['tmp_name'])) {
+            $path = config('image.paths.user') . '/' . Auth::user()->id;
+            $fileName = date('His.dmY') . '.jpg';
+            $image = new Image();
+
+            $image->setFile($_FILES['avatar']['tmp_name']);
+            $image->setPath($path);
+            $image->fit(Image::AVATAR)->upload($fileName);
+
+            if (!empty(Auth::user()->avatar)) {
+                $image->delete(Auth::user()->avatar);
+            }
+
+            Auth::user()->update([
+                'name'      => $data['name'],
+                'email'     => $data['email'],
+                'avatar'    => $fileName
+            ]);
+        } else {
+            Auth::user()->update([
+                'name'      => $data['name'],
+                'email'     => $data['email'],
+            ]);
+        }
+
 
         $profile = Auth::user()->profile()->first();
         $profile->fill($data)->save();
-        Auth::user()->update([
-            'name'      => $data['name'],
-            'email'     => $data['email'],
-            'avatar'    => $fileName
-        ]);
 
         return redirect('m/user/profile/')->with('flash_message', Lang::get('system.update'));
     }

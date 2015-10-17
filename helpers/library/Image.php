@@ -11,10 +11,12 @@ class Image
     const LARGE = 'large';
     const MEDIUM = 'medium';
     const SMALL = 'small';
+    const AVATAR = 'avatar';
 
     public $large = [];
     public $medium = [];
     public $small = [];
+    public $avatar = [];
 
     /**
      * @var \Intervention\Image\Image a Image instance
@@ -28,6 +30,7 @@ class Image
         $this->large = config('image.sizes.large');
         $this->medium = config('image.sizes.medium');
         $this->small = config('image.sizes.small');
+        $this->avatar = config('image.sizes.avatar');
     }
 
     public function setFile($file = '')
@@ -51,6 +54,9 @@ class Image
                 break;
             case self::SMALL:
                 $this->image->fit($this->small['w'], $this->small['h']);
+                break;
+            case self::AVATAR:
+                $this->image->fit($this->avatar['w'], $this->avatar['h']);
                 break;
         }
 
