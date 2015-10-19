@@ -5,7 +5,7 @@ class MoneyHelper
     public static function price($price, $moneyUnit, $isSale)
     {
         if (MoneyUnitSaleOption::THOA_THUAN == $moneyUnit) {
-            return MoneyUnitSaleOption::THOA_THUAN;
+            return MoneyUnitSaleOption::getLabel($moneyUnit);
         }
 
         if (IsSaleOption::BAN == $isSale) {

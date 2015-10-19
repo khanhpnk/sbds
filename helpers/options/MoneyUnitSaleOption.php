@@ -5,7 +5,7 @@ class MoneyUnitSaleOption
     use TraitJsonOption;
     use TraitLabelOption;
 
-    const THOA_THUAN           = 1;
+    const THOA_THUAN   = 1;
     const TRIEU        = 2;
     const TY    = 3;
     const NGHIN_M2    = 4;
