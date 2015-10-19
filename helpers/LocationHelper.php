@@ -5,6 +5,7 @@ class LocationHelper
     public static function full($cityId, $districtId, $wardId)
     {
         $locations = \Cache::get('location');
+        dd($locations);
         $response = [];
 
         foreach ($locations as $city) {
