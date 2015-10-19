@@ -5,6 +5,9 @@
 .main {
   padding: 0;
 }
+.picker {
+  z-index: 999988;
+}
 /*********** *********** Simple card alerts *********** ***********/
 .notice {
   padding: 15px;
