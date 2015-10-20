@@ -49,15 +49,15 @@
 			</div>
 
 			<!-- Cover Begin -->
-			<div class="cover cover-tl"></div>
-			<div class="cover cover-tr"></div>
-			<div class="cover cover-bl"></div>
-			<div class="cover cover-br"></div>
+			{{--<div class="cover cover-tl"></div>--}}
+			{{--<div class="cover cover-tr"></div>--}}
+			{{--<div class="cover cover-bl"></div>--}}
+			{{--<div class="cover cover-br"></div>--}}
 
-			<div class="cover cover-t"></div>
-			<div class="cover cover-b"></div>
-			<div class="cover cover-l"></div>
-			<div class="cover cover-r"></div>
+			{{--<div class="cover cover-t"></div>--}}
+			{{--<div class="cover cover-b"></div>--}}
+			{{--<div class="cover cover-l"></div>--}}
+			{{--<div class="cover cover-r"></div>--}}
 		</div>
 	</section>
 @endif

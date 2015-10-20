@@ -16,7 +16,7 @@ class House extends Model
         'is_owner',
         'title',
         'is_sale',
-        'sold',
+        'is_sold',
         'price',
         'money_unit',
         'category',

@@ -34,7 +34,7 @@
       </div>
     <div class="col-md-4">
       <label for="primary" class="btn btn-primary btn-badgebox">
-          Đã bán thành công <input type="checkbox" id="primary" name="sold" class="badgebox" value="1"><span class="badge">&check;</span>
+          Đã bán thành công <input type="checkbox" id="primary" name="is_sold" class="badgebox" value="1"><span class="badge">&check;</span>
       </label>
     </div>
   </div>
