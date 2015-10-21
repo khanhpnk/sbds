@@ -68,14 +68,21 @@ var houseModule = (function() {
       return this.optional(element) || /^[0-9,]+$/.test(value);
     }, 'Giá tiền chỉ cho phép các ký tự 0-9 và ,');
 
+
+    if ("Thỏa thuận" == moneyUnitSelect.find('option:selected').text()) {
+      $('#price').val(0);
+      $("#price").prop('disabled', true);
+    } else {
+      $("#price").prop('disabled', false);
+    }
     moneyUnitSelect.on("change", function () {
       if ("Thỏa thuận" == $(this).find('option:selected').text()) {
-
+        $('#price').val(0);
+        $("#price").prop('disabled', true);
+      } else {
+        $("#price").prop('disabled', false);
       }
     })
-
-
-
 
     houseForm.validate({
       rules: {
