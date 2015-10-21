@@ -64,10 +64,23 @@ var houseModule = (function() {
   };
 
   var formEventListener = function() {
+    jQuery.validator.addMethod("price", function(value, element) {
+      return this.optional(element) || /^[0-9,]+$/.test(value);
+    }, 'Giá tiền chỉ cho phép các ký tự 0-9 và ,');
+
+    moneyUnitSelect.on("change", function () {
+      if ("Thỏa thuận" == $(this).find('option:selected').text()) {
+
+      }
+    })
+
+
+
+
     houseForm.validate({
       rules: {
         title: {rangelength: [8, 48], required: true, remote: checkUniqueUrl},
-        price: {maxlength: 5, number: true, required: true},
+        price: {maxlength: 8, price: true, required: true},
         money_unit: {required: true},
         category: {required: true},
         city: {required: true},
