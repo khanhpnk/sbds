@@ -23,14 +23,14 @@
                       'ward' => str_slug($location['ward']),
                       'wardId' => $model->ward]) }}">
           {{ $location['ward'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city,
                       'district' => str_slug($location['district']),
                       'districtId' => $model->district]) }}">
           {{ $location['district'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city]) }}">

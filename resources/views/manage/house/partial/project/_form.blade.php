@@ -74,7 +74,7 @@
 
   <a class="btn btn-form-upload" id="fileImage" data-jfiler-name="images" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải hình ảnh cho BĐS</a>
   <input type="hidden" id="files_deleted" name="files_deleted">
-  @include('partial.form._text', ['name' => 'youtube', 'label' => 'Đường dẫn video youtube', 'hideLable' => true])
+  @include('partial.form._text', ['model' => $project, 'name' => 'youtube', 'label' => 'Đường dẫn video youtube', 'hideLable' => true])
   <span id="helpBlock" class="help-block">
     *Xem thêm hướng dẫn cách đưa video lên youtube
   </span>

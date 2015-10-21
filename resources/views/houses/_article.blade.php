@@ -24,7 +24,7 @@
                       'ward' => str_slug($location['ward']),
                       'wardId' => $model->ward]) }}">
           {{ $location['ward'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index($resource, [
                       'type' => IsSaleUriOption::getLabel($model->is_sale),
                       'city' => str_slug($location['city']),
@@ -32,7 +32,7 @@
                       'district' => str_slug($location['district']),
                       'districtId' => $model->district]) }}">
           {{ $location['district'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index($resource, [
                       'type' => IsSaleUriOption::getLabel($model->is_sale),
                       'city' => str_slug($location['city']),

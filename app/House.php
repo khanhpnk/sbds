@@ -127,4 +127,24 @@ class House extends Model
     {
         return (new \DateTime($value))->format('d/m/Y');
     }
+
+    /**
+     * Mutators: convert Youtube link
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getYoutubeAttribute($value)
+    {
+        if (!empty($value)) {
+            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $value, $matches);
+            if (0 < count($matches)) {
+                $value = 'https://www.youtube.com/embed/' . $matches[1];
+            }
+        }
+
+        return $value;
+    }
+
+
 }
