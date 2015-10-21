@@ -6,8 +6,6 @@
 <meta name="keywords" content="@yield('meta_keywords', 'bất động sản, bán nhà, cho thuê, môi giới nhà đất')">
 <meta name="author" content="Phạm Ngọc Khánh" >
 
-<meta http-equiv="X-Frame-Options" content="ALLOW-FROM https://www.youtube.com" />
-
 <title>@yield('meta_title', 'Sàn bất động sản')</title>
 <link rel="icon" href="/images/favicon.ico">
 
