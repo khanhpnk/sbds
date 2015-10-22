@@ -37,10 +37,11 @@ class OwnerController extends BaseController
     {
         $data = $request->all();
         $data['images'] = [];
-
+		$i = 0;
+		
         foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
             if (!empty($tmpPath)) {
-                $fileUpload = $this->upload($tmpPath);
+                $fileUpload = $this->upload($tmpPath, $i++);
                 array_push($data['images'], $fileUpload);
             }
         }

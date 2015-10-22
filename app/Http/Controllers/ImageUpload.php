@@ -8,10 +8,9 @@ trait ImageUpload
 {
     protected $path = '';
 
-    protected function upload($file)
+    protected function upload($file, $i)
     {
-        $i = 0;
-        $fileName = date('His.dmY') . '.' . $i++ . '.jpg';
+        $fileName = date('His.dmY') . '.' . $i . '.jpg';
         $image = new Image();
 
         $image->setFile($file);
