@@ -18,14 +18,14 @@
                           'ward' 				=> str_slug($location['ward']),
                           'wardId' 			=> $house->ward]) }}">
 							{{ $location['ward'] }}
-						</a>
+						</a>,
 						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
 						              'city' => str_slug($location['city']),
                           'cityId' 			=> $house->city,
                           'district' 		=> str_slug($location['district']),
                           'districtId' 	=> $house->district]) }}">
 							{{ $location['district'] }}
-						</a>
+						</a>,
 						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
 						              'city' => str_slug($location['city']),
 						              'cityId' => $house->city]) }}">
@@ -45,7 +45,7 @@
 					<div class="article-head-price">Giá: {{ MoneyHelper::price($house->price, $house->money_unit, $house->is_sale) }}</div>
 				</div>
 				<div class="col-md-2">
-					<div class="article-head-code">N{{ $house->id }}</div>
+					<div class="article-head-code">MS{{ $house->id }}</div>
 				</div>
 				<div class="col-md-2">
 					<div class="article-head-date"><time>{{ $house->start_date }}</time></div>
@@ -143,10 +143,10 @@
 			{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
 			<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
 			<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
-			<li><i class="fa fa-envelope"></i>{{ str_limit($contactInfo->email, 24) }}</li>
+			<li><i class="fa fa-envelope"></i><a href="mailto:{{ $contactInfo->email }}" target="_top">{{ str_limit($contactInfo->email, 24) }}</a></li>
 			<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
 			<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
-			<li><i class="fa fa-skype"></i>{{ str_limit($contactInfo->skype, 24) }}</li>
+			<li><i class="fa fa-skype"></i><a href="skype:{{ $contactInfo->skype }}?call">{{ str_limit($contactInfo->skype, 24) }}</a></li>
 			<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
 		</ul>
 	</section>

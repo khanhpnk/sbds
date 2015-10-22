@@ -47,8 +47,8 @@
 .main-head {
   background-color: #5bc0de;
   color: #fff;
-  min-height: 80px;
-  padding: 20px;
+  min-height: 72px;
+  padding: 18px;
 }
 .main-head > h3 {
   display: inline-block;
@@ -78,15 +78,15 @@
 /* USER HEAD */
 .user-head {
   background-color: #337ab7;
-  height: 80px;
-  padding: 10px;
+  height: 72px;
+  padding: 6px;
 }
 .user-head-avatar,
 .user-head-body {
   float: left;
 }
 .user-head-body {
-  margin-left: 10px;
+  margin-left: 6px;
 }
 .user-head-username {
   margin-bottom: 0;

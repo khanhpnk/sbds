@@ -37,10 +37,11 @@ class ProjectController extends BaseController
 	{
 		$data = $request->all();
 		$data['images'] = [];
+		$i = 0;
 
 		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
 			if (!empty($tmpPath)) {
-				$fileUpload = $this->upload($tmpPath);
+				$fileUpload = $this->upload($tmpPath, $i++);
 				array_push($data['images'], $fileUpload);
 			}
 		}
@@ -71,6 +72,7 @@ class ProjectController extends BaseController
 	{
 		$data = $request->all();
 		$data['images'] = $project->images ? $project->images : [];
+		$i = 0;
 
 		$files = json_decode($data['files_deleted']);
 		foreach ($files as $file) {
@@ -82,7 +84,7 @@ class ProjectController extends BaseController
 
 		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
 			if (!empty($tmpPath)) {
-				$fileUpload = $this->upload($tmpPath);
+				$fileUpload = $this->upload($tmpPath, $i++);
 				array_push($data['images'], $fileUpload);
 			}
 		}

@@ -113,7 +113,7 @@ i {
 }
 .thumb-cap {
   padding: 4px;
-  height: 106px;
+  height: 130px;
 }
 .thumb-header {
   font-size: 14px;
@@ -134,7 +134,6 @@ i {
   background-color: #f5f5f5;
   padding: 4px;
   font-style: italic;
-  margin-top: 10px;
 }
 .thumb-price {
   float: left;
@@ -250,7 +249,7 @@ i {
   margin-left: -9px;
 }
 .article-feature li  {
-  color: #777;
+  color: #a5a5a5;
   padding-left: 24px;
   padding-right: 8px;
 }

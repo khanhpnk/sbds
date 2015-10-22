@@ -49,7 +49,7 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-        <div class="article-head-code">N{{ $project->id }}</div>
+        <div class="article-head-code">MS{{ $project->id }}</div>
       </div>
       <div class="col-md-2">
         <div class="article-head-date"><time>{{ $project->start_date }}</time></div>
