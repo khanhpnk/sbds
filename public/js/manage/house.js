@@ -86,7 +86,7 @@ var houseModule = (function() {
 
     houseForm.validate({
       rules: {
-        title: {rangelength: [8, 48], required: true, remote: checkUniqueUrl},
+        title: {rangelength: [8, 60], required: true, remote: checkUniqueUrl},
         price: {maxlength: 8, price: true, required: true},
         money_unit: {required: true},
         category: {required: true},

@@ -16,7 +16,7 @@ var projectModule = (function() {
   var formEventListener = function() {
     $('#projectForm').validate({
       rules: {
-        title: {rangelength: [8, 64], required: true, remote: checkUniqueUrl},
+        title: {rangelength: [8, 60], required: true, remote: checkUniqueUrl},
         description: {rangelength: [8, 6000], required: true},
         schedule: {rangelength: [8, 6000], required: true},
         location: {rangelength: [8, 6000], required: true},
