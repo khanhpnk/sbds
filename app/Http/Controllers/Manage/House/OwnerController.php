@@ -88,6 +88,7 @@ class OwnerController extends BaseController
                 array_push($data['images'], $fileUpload);
             }
         }
+
         $house->fill($data)->save();
 
         return redirect('m/danh-sach-nha-dat/chinh-chu')->with('flash_message', Lang::get('system.update'));

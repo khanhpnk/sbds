@@ -42,7 +42,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8">
-					<div class="article-head-price">{{ MoneyHelper::price($house->price, $house->money_unit, $house->is_sale) }}</div>
+					<div class="article-head-price">Giá: {{ MoneyHelper::price($house->price, $house->money_unit, $house->is_sale) }}</div>
 				</div>
 				<div class="col-md-2">
 					<div class="article-head-code">N{{ $house->id }}</div>
