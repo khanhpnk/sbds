@@ -304,11 +304,11 @@ i {
 /* search */
 .form-search {
   position: absolute;
-  top: 40%;
+  top: 0;
   right: 20%;
   background: #fff;
   padding: 8px;
-  z-index: 999;
+  z-index: 1;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -362,8 +362,12 @@ i {
   background-position: -122px 0;
 }
 /*********** *********** MAP *********** ***********/
-/*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
-/*.gm-style-iw { max-height: 600px; }*/
+.tab-map-image360 {
+  bottom: -35px;
+  position: absolute;
+  right: 196px;
+  z-index: 999;
+}
 .iw-container  .iw-name {
   font-size: 20px;
   font-weight: 400;
