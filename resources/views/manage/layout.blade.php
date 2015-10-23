@@ -24,12 +24,13 @@
 
   <div class="container">
     <div class="row">
-      <aside class="col-md-3 sidebar">
-        @include('manage._sidebar')
-      </aside>
       <main class="col-md-9 main">
         @include('manage._main')
       </main>
+
+      <aside class="col-md-3 sidebar">
+        @include('manage._sidebar')
+      </aside>
     </div>
   </div>
 
