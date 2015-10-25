@@ -119,7 +119,7 @@
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
 				@foreach ($housesRelation as $relation)
-          @include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+          @include('houses._article', ['model' => $relation, 'resource' => ResourceOption::NHA_DAT])
 				@endforeach
 			</div>
 

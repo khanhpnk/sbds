@@ -32,7 +32,13 @@
     <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('profile.update') }}" method="POST" role="form" id="profileForm" class="form-horizontal">
       {!! csrf_field() !!}
       <input type="hidden" name="_method" value="PUT">
-      <a class="btn btn-main" id="fileImage" data-jfiler-name="avatar" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải ảnh đại diện</a>
+      <style>
+        .jFiler {margin: 0 auto; width: 182px}
+        .btn-main {width: 182px}
+      </style>
+      <div style="width: 100%;">
+        <a class="btn btn-main" id="fileImage" data-jfiler-name="avatar" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải ảnh đại diện</a>
+      </div>
 
       <div class="form-group">
         <label class="col-sm-3 control-label" for="name">Họ và tên</label>
