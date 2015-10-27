@@ -45,12 +45,14 @@
           <i class="fa fa-building-o"></i>{{ $model->floors }}
           <i class="fa fa-bed "></i>{{ $model->bedroom }}
         </div>
-        <div class="thumb-m2">{{ $model->m2 }}m2</div>
+        <div class="pull-right">
+          <div class="thumb-m2">{{ $model->m2 }}m2</div>
+          <div class="thumb-date"><time>{{ $model->start_date }}</time></div>
+        </div>
       </div>
     </div>
     <footer class="thumb-footer clearfix">
       <span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->is_sale) }}</span>
-      <span class="thumb-date"><time>{{ $model->start_date }}</time></span>
     </footer>
 
     <a class="btn btn-view btn-primary" href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}" target="_blank" role="button">Xem</a>
