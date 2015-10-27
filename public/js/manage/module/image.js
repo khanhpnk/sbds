@@ -12,7 +12,6 @@ var imageModule = (function() {
 
   var setAvatarUrl = function(url) {
     avatarUrl = url;
-    //console.log(avatarUrl);
   };
 
   // Note: Core library file had edit
