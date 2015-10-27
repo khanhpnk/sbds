@@ -109,6 +109,10 @@ class DesignController extends BaseController
             }
         }
 
+        // Hàm unset() khiến key của array ko còn là dãy số liên tiếp
+        // Lúc này Laravel sẽ ko đối xử và lưu 'images' như kiểu array mà là kiểu Json, cần sửa chữa vấn đề này
+        $data['images'] = array_values($data['images']);
+
         $design->fill($data)->save();
 
         return redirect('quan-tri/thiet-ke-thi-cong')->with('flash_message', Lang::get('system.update'));

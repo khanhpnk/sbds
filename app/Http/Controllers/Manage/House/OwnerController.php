@@ -88,6 +88,11 @@ class OwnerController extends BaseController
                 array_push($data['images'], $fileUpload);
             }
         }
+
+        // Hàm unset() khiến key của array ko còn là dãy số liên tiếp
+        // Lúc này Laravel sẽ ko đối xử và lưu 'images' như kiểu array mà là kiểu Json, cần sửa chữa vấn đề này
+        $data['images'] = array_values($data['images']);
+
         $house->fill($data)->save();
 
         return redirect('m/danh-sach-nha-dat/chinh-chu')->with('flash_message', Lang::get('system.update'));
