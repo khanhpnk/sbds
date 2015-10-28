@@ -64,9 +64,9 @@ var houseModule = (function() {
   };
 
   var formEventListener = function() {
-    jQuery.validator.addMethod("price", function(value, element) {
+    jQuery.validator.addMethod("numberComma", function(value, element) {
       return this.optional(element) || /^[0-9,]+$/.test(value);
-    }, 'Giá tiền chỉ cho phép các ký tự 0-9 và ,');
+    }, 'Chỉ cho phép các ký tự 0-9 và ,');
 
 
     if ("Thỏa thuận" == moneyUnitSelect.find('option:selected').text()) {
@@ -87,7 +87,7 @@ var houseModule = (function() {
     houseForm.validate({
       rules: {
         title: {rangelength: [8, 60], required: true, remote: checkUniqueUrl},
-        price: {maxlength: 8, price: true, required: true},
+        price: {maxlength: 12, numberComma: true, required: true},
         money_unit: {required: true},
         category: {required: true},
         city: {required: true},
@@ -96,8 +96,8 @@ var houseModule = (function() {
         address: {maxlength: 32, required: true},
         youtube: {url: true},
         description: {rangelength: [8, 6000], required: true},
-        m2: {digits: true, maxlength: 8},
-        road: {digits: true, maxlength: 8},
+        m2: {numberComma: true, maxlength: 12},
+        road: {numberComma: true, maxlength: 12},
         "feature[]": {required: true},
       },
       messages: {

@@ -22,7 +22,7 @@ var companyModule = (function() {
   var formEventListener = function() {
     companyForm.validate({
       rules: {
-        title: {rangelength: [8, 50], required: true, remote: checkUniqueUrl},
+        title: {rangelength: [8, 60], required: true, remote: checkUniqueUrl},
         short_description: {rangelength: [8, 2000], required: true},
         description: {rangelength: [8, 6000], required: true},
       },

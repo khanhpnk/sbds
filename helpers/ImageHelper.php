@@ -33,6 +33,19 @@ class ImageHelper
         }
     }
 
+    public static function getCompanyAvatar($avatar)
+    {
+        $endpoint = config('filesystems.disks.s3.endpoint');
+        $path = config('image.paths.company');
+
+        if (!empty($avatar)) {
+            return "$endpoint/$path/$avatar";
+        } else {
+            return "$endpoint/$path/default/avatar.jpg";
+        }
+    }
+
+
     public static function url($resource, $userId, $image, $size)
     {
         $endpoint = config('filesystems.disks.s3.endpoint');
