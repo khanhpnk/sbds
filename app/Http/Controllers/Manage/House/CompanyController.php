@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Http\JsonResponse;
 use App\Company;
-use ImageHelper;
 use Storage;
+use Library\Image;
 
 class CompanyController extends Controller
 {
@@ -23,7 +23,18 @@ class CompanyController extends Controller
 	public function store(CompanyRequest $request)
 	{
 		$data = $request->only('title', 'short_description', 'description');
-        $data['avatar'] = (new ImageHelper)->uploads('company', $_FILES['avatar']['tmp_name']);
+
+		if (!empty($_FILES['avatar']['tmp_name'])) {
+			$path = config('image.paths.company');
+			$fileName = Auth::user()->id . '.' . date('His.dmY') . '.jpg';
+			$image = new Image();
+
+			$image->setFile($_FILES['avatar']['tmp_name']);
+			$image->setPath($path);
+			$image->fit(Image::AVATAR)->upload($fileName);
+
+			$data['avatar'] = $fileName;
+		}
 
 		Auth::user()->company()->create($data);
 
@@ -39,7 +50,21 @@ class CompanyController extends Controller
 	public function update(CompanyRequest $request)
 	{
 		$data = $request->only('title', 'short_description', 'description');
-        $data['avatar'] = (new ImageHelper)->uploads('company', $_FILES['avatar']['tmp_name']);
+
+		if (!empty($_FILES['avatar']['tmp_name'])) {
+			$path = config('image.paths.company');
+			$fileName = Auth::user()->id . '.' . date('His.dmY') . '.jpg';
+			$image = new Image();
+
+			$image->setFile($_FILES['avatar']['tmp_name']);
+			$image->setPath($path);
+			$image->fit(Image::AVATAR)->upload($fileName);
+
+			if (!empty(Auth::user()->company->avatar)) {
+				$image->delete(Auth::user()->company->avatar);
+			}
+			$data['avatar'] = $fileName;
+		}
 
 		Auth::user()->company->update($data);
 
