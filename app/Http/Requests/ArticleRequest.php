@@ -24,7 +24,7 @@ class ArticleRequest extends Request
     {
         return [
             'category_id' => 'required|integer',
-            'title' => 'required|between:8,62',
+            'title' => 'required|between:8,60',
             'description' => 'required|between:8,6000',
         ];
     }

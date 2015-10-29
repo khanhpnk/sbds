@@ -24,9 +24,9 @@ class CompanyRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|between:8,50',
-            'short_description' => 'required|between:8,1000',
-            'description' => 'required|between:8,2000',
+            'title' => 'required|between:8,60',
+            'short_description' => 'required|between:8,600',
+            'description' => 'required|between:8,6000',
         ];
     }
 }

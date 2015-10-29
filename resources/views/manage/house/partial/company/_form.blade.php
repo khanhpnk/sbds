@@ -31,8 +31,8 @@
 
 	<a class="btn btn-main" id="avatar" data-jfiler-name="avatar" data-jfiler-extensions="jpg, jpeg, png, gif" autocomplete="off"><i class="icon-jfi-paperclip"></i> Tải ảnh đại diện</a>
 
-	@include('partial.form._text', ['model' => $company, 'name' => 'title', 'label' => 'Tên công ty'])
-	@include('partial.form._textarea', ['model' => $company, 'name' => 'short_description', 'label' => 'Giới thiệu ngắn gọn', 'rows' => 4])
-	@include('partial.form._textarea', ['model' => $company, 'name' => 'description', 'label' => 'Giới thiệu chi tiết', 'rows' => 8])
+	@include('partial.form._text', ['model' => $company, 'name' => 'title', 'label' => 'Tên công ty (Nhập từ 8 đến 60 ký tự)'])
+	@include('partial.form._textarea', ['model' => $company, 'name' => 'short_description', 'label' => 'Giới thiệu ngắn gọn (Nhập từ 8 đến 600 ký tự)', 'rows' => 4])
+	@include('partial.form._textarea', ['model' => $company, 'name' => 'description', 'label' => 'Giới thiệu chi tiết (Nhập từ 8 đến 6000 ký tự)', 'rows' => 8])
 	<button type="submit" class="btn btn-primary btn-block" autocomplete="off">Xác nhận</button>
 </form>

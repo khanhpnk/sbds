@@ -7,7 +7,7 @@ var articleModule = (function() {
     validateFrom = $(elm).validate({
       rules: {
         category_id: {required: true, digits: true},
-        title: {rangelength: [8, 62], required: true},
+        title: {rangelength: [8, 60], required: true},
         description: {rangelength: [8, 6000], required: true},
       },
       highlight: function (element) {

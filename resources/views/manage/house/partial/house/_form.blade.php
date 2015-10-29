@@ -30,7 +30,7 @@
 <section>
   <div class="row">
       <div class="col-md-8">
-          @include('partial.form._text', ['model' => $house, 'name' => 'title', 'label' => 'Tiêu đề', 'hideLable' => true])
+          @include('partial.form._text', ['model' => $house, 'name' => 'title', 'label' => 'Tiêu đề (Nhập từ 8 đến 60 ký tự)', 'hideLable' => true])
       </div>
     <div class="col-md-4">
       <label for="primary" class="btn btn-primary btn-badgebox">
@@ -113,7 +113,7 @@
   <span id="helpBlock" class="help-block">
     *Xem thêm hướng dẫn cách đưa video lên youtube
   </span>
-  @include('partial.form._textarea', ['model' => $house, 'name' => 'description', 'label' => 'Mô tả ngắn ngọn BĐS', 'rows' => 8])
+  @include('partial.form._textarea', ['model' => $house, 'name' => 'description', 'label' => 'Mô tả ngắn ngọn BĐS (Nhập từ 8 đến 6000 ký tự)', 'rows' => 8])
 </section>
 
 <section>
