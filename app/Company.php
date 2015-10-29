@@ -34,6 +34,17 @@ class Company extends Model
     }
 
     /**
+     * Accessor: Get a string's first character uppercase.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    /**
      * Scope a query to show company is Service or popular
      *
      * @return \Illuminate\Database\Eloquent\Builder

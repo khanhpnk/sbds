@@ -55,6 +55,17 @@ class Project extends Model
     }
 
     /**
+     * Accessor: Get a string's first character uppercase.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    /**
      * Scope a query to show house is expired or not
      *
      * @param boolean $value
@@ -70,7 +81,7 @@ class Project extends Model
     }
 
     /**
-     * Mutators: convert Youtube link
+     * Accessor: convert Youtube link
      *
      * @param  string  $value
      * @return string

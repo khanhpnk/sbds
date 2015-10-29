@@ -58,4 +58,15 @@ class Design extends Model
         $this->attributes['meta_description'] = $value;
         $this->attributes['slug'] = str_slug($value);
     }
+
+    /**
+     * Accessor: Get a string's first character uppercase.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
 }

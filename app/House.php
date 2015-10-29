@@ -118,7 +118,18 @@ class House extends Model
     }
 
     /**
-     * Mutators: Get the user's first name.
+     * Accessor: Get a string's first character uppercase.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getTitleAttribute($value)
+    {
+        return ucfirst($value);
+    }
+
+    /**
+     * Accessor: Get the user's first name.
      *
      * @param  string  $value
      * @return string
@@ -129,7 +140,7 @@ class House extends Model
     }
 
     /**
-     * Mutators: convert Youtube link
+     * Accessor: convert Youtube link
      *
      * @param  string  $value
      * @return string
