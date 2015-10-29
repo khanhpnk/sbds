@@ -24,10 +24,10 @@
 
 {!! csrf_field() !!}
 <section>
-  @include('partial.form._text', ['model' => $project, 'name' => 'title', 'label' => 'Tiêu đề'])
-  @include('partial.form._textarea', ['model' => $project, 'name' => 'description', 'label' => 'Giới thiệu dự án', 'rows' => 8])
-  @include('partial.form._textarea', ['model' => $project, 'name' => 'schedule', 'label' => 'Tiến độ thanh toán dự án', 'rows' => 8])
-  @include('partial.form._textarea', ['model' => $project, 'name' => 'location', 'label' => 'Vị trí dự án', 'rows' => 8])
+  @include('partial.form._text', ['model' => $project, 'name' => 'title', 'label' => 'Tiêu đề (Nhập từ 8 đến 60 ký tự)'])
+  @include('partial.form._textarea', ['model' => $project, 'name' => 'description', 'label' => 'Giới thiệu dự án (Nhập từ 8 đến 6000 ký tự)', 'rows' => 8])
+  @include('partial.form._textarea', ['model' => $project, 'name' => 'schedule', 'label' => 'Tiến độ thanh toán dự án (Nhập từ 8 đến 6000 ký tự)', 'rows' => 8])
+  @include('partial.form._textarea', ['model' => $project, 'name' => 'location', 'label' => 'Vị trí dự án (Nhập từ 8 đến 6000 ký tự)', 'rows' => 8])
   <div class="row">
     <div class="col-md-4">
       @include('partial.form._select2', ['name' => 'category',
