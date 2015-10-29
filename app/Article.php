@@ -24,7 +24,7 @@ class Article extends Model
      */
     public function setTitleAttribute($value)
     {
-        $value = mb_strtolower($value, 'UTF-8');
+        $value = trim(mb_strtolower($value, 'UTF-8'));
         $this->attributes['title'] = $value;
 
         $this->attributes['meta_title'] = $value;
