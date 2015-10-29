@@ -14,6 +14,7 @@ class CompanyController extends Controller
     {
         return House::where('user_id', $company->user_id)
             ->isOwner(IsOwnerOption::MOI_GIOI)
+            ->isSold(IsSoldOption::CHUA_BAN)
             ->expired(false)
             ->orderBy('id', 'desc');
     }
