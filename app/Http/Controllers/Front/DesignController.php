@@ -45,6 +45,32 @@ class DesignController extends Controller
         return view('front.designs.index', compact('company', 'architectures', 'furnitures', 'constructions', 'contactInfo'));
     }
 
+    public function category($sub_category_uri)
+    {
+        switch ($sub_category_uri) {
+            case 'biet-thu-pho':
+                $sub_category = SubCategory::BIET_THU_PHO;
+                break;
+            case 'biet-thu-vuon':
+                $sub_category = SubCategory::BIET_THU_VUON;
+                break;
+            case 'nha-pho':
+                $sub_category = SubCategory::NHA_PHO;
+                break;
+            case 'khac':
+                $sub_category = SubCategory::KHAC;
+                break;
+        }
+
+        $design = Design::where('sub_category', $sub_category)->first();
+
+        $others = Design::where('sub_category', $sub_category)->limit(3)->get();
+
+        $contactInfo = Design::where('company_id', 1)->first();
+
+        return view('front.designs.show', compact('design', 'others', 'contactInfo'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -53,30 +79,10 @@ class DesignController extends Controller
      */
     public function show(Design $design)
     {
-        $userId = 1; // fixed code
-        $companyId = 1; // fixed code
-        $design1 = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.sub_category', SubCategory::BIET_THU_PHO)->get();
+        $others = Design::where('sub_category', $design->sub_category)->limit(3)->get();
 
-        $design2 = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.sub_category', SubCategory::BIET_THU_VUON)->get();
+        $contactInfo = Design::where('company_id', 1)->first();
 
-        $design3 = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.sub_category', SubCategory::NHA_PHO)->get();
-
-        $design4 = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.sub_category', SubCategory::KHAC)->get();
-
-        $contactInfo = Design::where('company_id', $companyId)->first();
-
-        return view('front.designs.show', compact('design', 'design1', 'design2', 'design3', 'design4','contactInfo'));
+        return view('front.designs.show', compact('design', 'others', 'contactInfo'));
     }
 }

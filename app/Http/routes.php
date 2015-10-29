@@ -112,12 +112,16 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
 /*********** *********** FRONT *********** ***********/
 Route::group(['namespace' => 'Front'], function() {
     Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
+
+    // Design
     Route::resource('thiet-ke-thi-cong', 'DesignController', [
         'names' => [
             'index' => 'front.design.index',
             'show' => 'front.design.show',
         ]
     ]);
+    Route::get('thiet-ke-{sub_category_uri}', ['uses' => 'DesignController@category', 'as' => 'front.design.category']);
+
     Route::post('map/search-markers', ['uses' => 'MapController@searchMarkers', 'as' => 'front.map.search']);
 });
 
