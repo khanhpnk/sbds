@@ -8,20 +8,27 @@
 				{!! nl2br($company->short_description) !!}
 			</div>
 			<div class="col-md-4">
-				<section class="contact-info">
-					<header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
-					<ul>
-						<li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
-						{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
-						<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
-						<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
-						<li><i class="fa fa-envelope"></i>{{ str_limit($contactInfo->email, 24) }}</li>
-						<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
-						<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
-						<li><i class="fa fa-skype"></i>{{ str_limit($contactInfo->skype, 24) }}</li>
-						<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
-					</ul>
-				</section>
+				<div class="row">
+					<div class="col-md-6">
+						<img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $houses[0]->user_id, $houses[0]->images) }}" alt="{{ $houses[0]->title }}">
+					</div>
+					<div class="col-md-6">
+						<section class="contact-info">
+							<header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
+							<ul>
+								<li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
+								{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
+								<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
+								<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
+								<li><i class="fa fa-envelope"></i>{{ str_limit($contactInfo->email, 24) }}</li>
+								<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
+								<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
+								<li><i class="fa fa-skype"></i>{{ str_limit($contactInfo->skype, 24) }}</li>
+								<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
+							</ul>
+						</section>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>

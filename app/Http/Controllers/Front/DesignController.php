@@ -27,6 +27,12 @@ class DesignController extends Controller
         return view('front.designs.index', compact('company', 'architectures', 'furnitures', 'constructions', 'contactInfo'));
     }
 
+    /**
+     * Display the specified resource by sub category
+     *
+     * @param  int  $id
+     * @return Response
+     */
     public function category($sub_category_uri)
     {
         switch ($sub_category_uri) {
@@ -50,9 +56,7 @@ class DesignController extends Controller
                     ->where('id', '<>', $design->id)
                     ->limit(3)->get();
 
-        $contactInfo = Design::where('company_id', 1)->first();
-
-        return view('front.designs.show', compact('design', 'others', 'contactInfo'));
+        return view('front.designs.show', compact('design', 'others'));
     }
 
     /**
@@ -67,8 +71,6 @@ class DesignController extends Controller
             ->where('id', '<>', $design->id)
             ->limit(3)->get();
 
-        $contactInfo = Design::where('company_id', 1)->first();
-
-        return view('front.designs.show', compact('design', 'others', 'contactInfo'));
+        return view('front.designs.show', compact('design', 'others'));
     }
 }

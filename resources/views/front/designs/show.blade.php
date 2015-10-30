@@ -7,17 +7,17 @@
 
 @section('contactInfo')
   <section class="contact-info">
-    <header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
+    <header><h3 class="contact-info-header">Thông tin</h3></header>
     <ul>
-      <li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
-      {{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
-      <li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
-      <li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
-      <li><i class="fa fa-envelope"></i>{{ str_limit($contactInfo->email, 24) }}</li>
-      <li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
-      <li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
-      <li><i class="fa fa-skype"></i>{{ str_limit($contactInfo->skype, 24) }}</li>
-      <li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
+      <li>Mã: MS{{ $design->id }}</li>
+      <li>Thiết kế: {{ $design->designers }}</li>
+      <li>Thiết kế nội thất: {{ $design->designers_furniture }}</li>
+      <li>Thi công: {{ $design->supervisor }}</li>
+      <li>Diện tích lô đất: {{ $design->land_m2 }}m2</li>
+      <li>Diện tích xây dựng: {{ $design->build_m2 }}m2</li>
+      <li>Số tầng cao: {{ $design->number_of_floors }}</li>
+      <li>Bề rộng mặt tiền: {{ $design->frontage_m2 }}m2</li>
+      <li>Năm thiết kế: {{ $design->year }}</li>
     </ul>
   </section>
 @stop
