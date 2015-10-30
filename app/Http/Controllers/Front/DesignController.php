@@ -18,29 +18,11 @@ class DesignController extends Controller
      */
     public function index()
     {
-        $userId = 1; // fixed code
-        $architectures = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.category', Category::KIEN_TRUC)
-            ->simplePaginate(3);
-
-        $furnitures = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.category', Category::NOI_THAT)
-            ->simplePaginate(3);
-
-        $constructions = Design::select('designs.*')
-            ->join('companies', 'designs.company_id', '=', 'companies.id')
-            ->where('companies.user_id', $userId)
-            ->where('designs.category', Category::THI_CONG)
-            ->simplePaginate(3);
-
-        $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->where('user_id', $userId)->first();
-
-        $company = Company::where('companies.user_id', $userId)->first();
+        $architectures = Design::where('designs.category', Category::KIEN_TRUC)->simplePaginate(3);
+        $furnitures = Design::where('designs.category', Category::NOI_THAT)->simplePaginate(3);
+        $constructions = Design::where('designs.category', Category::THI_CONG)->simplePaginate(3);
+        $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')->where('user_id', 1)->first();
+        $company = Company::where('companies.user_id', '1')->first();
 
         return view('front.designs.index', compact('company', 'architectures', 'furnitures', 'constructions', 'contactInfo'));
     }
@@ -64,7 +46,9 @@ class DesignController extends Controller
 
         $design = Design::where('sub_category', $sub_category)->first();
 
-        $others = Design::where('sub_category', $sub_category)->limit(3)->get();
+        $others = Design::where('sub_category', $sub_category)
+                    ->where('id', '<>', $design->id)
+                    ->limit(3)->get();
 
         $contactInfo = Design::where('company_id', 1)->first();
 
@@ -79,7 +63,9 @@ class DesignController extends Controller
      */
     public function show(Design $design)
     {
-        $others = Design::where('sub_category', $design->sub_category)->limit(3)->get();
+        $others = Design::where('sub_category', $design->sub_category)
+            ->where('id', '<>', $design->id)
+            ->limit(3)->get();
 
         $contactInfo = Design::where('company_id', 1)->first();
 
