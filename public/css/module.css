@@ -1,0 +1,30 @@
+.br-info {
+  border-right: 9px solid #68CFD8;
+}
+/*********** MAIN: COMPANY ***********/
+.company-info {
+  border-bottom: 1px dashed #777;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+.company-info-title {
+  color: #68CFD8;
+  margin-bottom: 20px;
+}
+.company-info .media-heading {
+  text-transform: uppercase;
+  color: #4b4b4b;
+}
+.company-info .media {
+  background-color: #F7F7F7;
+  padding: 25px 30px;
+}
+.company-info .media-left {
+  padding-right: 30px;
+}
+.company-info .media-body > ul,
+.company-info .media-body > ul a {
+  color: #A3A3A3;
+  font-size: 11px;
+}
+/*********** MAIN: COMPANY ***********/

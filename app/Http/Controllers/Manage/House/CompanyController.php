@@ -31,7 +31,7 @@ class CompanyController extends Controller
 
 			$image->setFile($_FILES['avatar']['tmp_name']);
 			$image->setPath($path);
-			$image->fit(Image::AVATAR)->upload($fileName);
+			$image->fit(Image::MEDIUM)->upload($fileName);
 
 			$data['avatar'] = $fileName;
 		}
@@ -58,7 +58,7 @@ class CompanyController extends Controller
 
 			$image->setFile($_FILES['avatar']['tmp_name']);
 			$image->setPath($path);
-			$image->fit(Image::AVATAR)->upload($fileName);
+			$image->fit(Image::MEDIUM)->upload($fileName);
 
 			if (!empty(Auth::user()->company->avatar)) {
 				$image->delete(Auth::user()->company->avatar);

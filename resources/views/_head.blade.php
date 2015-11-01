@@ -17,6 +17,7 @@
 <link href="{{ asset('vendor/select2-4.0.0/css/select2.min.css') }}" rel="stylesheet" />
 <!-- Custom -->
 <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+<link href="{{ asset('css/module.css') }}" rel="stylesheet">
 
 <!-- Jquery -->
 <script src="{{ asset('vendor/jquery-2.1.3.min.js') }}"></script>
