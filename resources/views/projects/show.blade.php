@@ -41,7 +41,8 @@
         </address>
       </div>
       <div class="col-md-3">
-        <div class="article-head-fb-like">
+        <div style="float: left"><i class="fa fa-print" onclick="window.print();"></i></div>
+        <div class="article-head-fb-like" style="float: left">
           <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
       </div>

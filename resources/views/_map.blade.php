@@ -33,8 +33,6 @@
   </script>
 @stop
 
-
-
 <!-- Nav tabs -->
 <ul role="tablist" class="nav nav-tabs tab-map-image360">
   <li class="active" role="presentation"><a aria-controls="tab-map" data-toggle="tab" role="tab" aria-expanded="true" href="#tab-map">Bản đồ</a></li>
@@ -69,6 +67,34 @@
     </div>
   </div>
   <div id="tab-image360" class="tab-pane" role="tabpanel">
-    aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>aaaaaaaaaaaaa<br>
+
+    <div id="panoDIV" style="height: 500px;">
+      <noscript>
+        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="500px" id="/image360/imagedata/image">
+          <param name="movie" value="/image360/imagedata/image.swf"/>
+          <param name="allowFullScreen" value="true"/>
+          <!--[if !IE]>-->
+          <object type="application/x-shockwave-flash" data="/image360/imagedata/image.swf" width="100%" height="500px">
+            <param name="movie" value="imagedata/image.swf"/>
+            <param name="allowFullScreen" value="true"/>
+            <!--<![endif]-->
+            <a href="http://www.adobe.com/go/getflash">
+              <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player"/>
+            </a>
+            <!--[if !IE]>-->
+          </object>
+          <!--<![endif]-->
+        </object>
+      </noscript>
+    </div>
+    <script type="text/javascript" src="/image360/imagedata/image.js"></script>
+    <script type="text/javascript">
+      embedpano({
+        swf:"/image360/imagedata/image.swf"
+        ,target:"panoDIV"
+        ,passQueryParameters:true
+      });
+    </script>
+
   </div>
 </div>

@@ -14,8 +14,6 @@ class MessageController extends Controller
 {
     const INBOX     = 'inbox';
     const SENT      = 'sent';
-    const READ      = 'read';
-    const UNREAD    = 'unread';
 
     /**
      * Display a listing of the resource.

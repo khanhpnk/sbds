@@ -19,7 +19,6 @@
   <li><a href="{{ route('profile.edit') }}"><i class="fa fa-user-plus"></i>Thông tin cá nhân</a></li>
   <li><a href="{{ route('password.edit') }}"><i class="fa fa-cog"></i>Đổi mật khẩu</a> </li>
   <li class="user-nav-header">Hộp tin</li>
-  <li><a  href="#" data-toggle="modal" data-target="#createMessageModal"><i class="fa fa-pencil-square-o"></i>Soạn tin</a></li>
-  <li><a href="{{ route('message.index', ['inbox' => 'inbox']) }}"><i class="fa fa-envelope"></i>Hộp tin đến</a></li>
-  <li><a href="{{ route('message.index', ['inbox' => 'sent']) }}"><i class="fa fa-envelope-o"></i>Hộp tin đi</a></li>
+  <li><a href="{{ route('message.index', 'inbox') }}"><i class="fa fa-envelope"></i>Hộp tin nhận</a></li>
+  <li><a href="{{ route('message.index', 'sent') }}"><i class="fa fa-envelope-o"></i>Hộp tin gửi</a></li>
 </ul>
