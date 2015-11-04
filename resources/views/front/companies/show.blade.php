@@ -1,5 +1,13 @@
 @extends('one_col_layout')
 
+@section('meta_title'){{ $company->meta_title }}@stop
+@section('meta_description'){{ $company->meta_description }}@stop
+
+@section('breadcrumb')
+	<li><a href="{{ route('front.company.index') }}">Công ty}</a></li>
+	<li class="active">{{ $company->title }}</li>
+@stop
+
 @section('content')
 	<section class="company-info">
 		<header><h2 class="company-info-title">{{ $company->title }}</h2></header>
@@ -73,11 +81,3 @@
 		{!! nl2br($company->description) !!}
 	</section>
 @stop
-
-@section('breadcrumb')
-	<li><a href="{{ UrlHelper::index(ResourceOption::CONG_TY) }}">Công ty}</a></li>
-	<li class="active">{{ $company->title }}</li>
-@stop
-
-@section('meta_title'){{ $company->meta_title }}@stop
-@section('meta_description'){{ $company->meta_description }}@stop

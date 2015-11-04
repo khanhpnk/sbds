@@ -28,18 +28,18 @@
   <hr>
 
   @if (0 < count($relations))
-  <section class="relation">
-    <header><h1 class="relation-title">Các tin khác</h1></header>
-    <ul class="relation-list">
-      @foreach ($relations as $relation)
-        <li>
-          <a href="{{ route('front.article.show', $relation->slug) }}">
-            <i class="fa fa-link"></i>{{ $relation->title }}
-            <div class="relation-time"><time>{{ $relation->created_at }}</time></div>
-          </a>
-        </li>
-      @endforeach
-    </ul>
-  </section>
+    <section class="relation">
+      <header><h1 class="relation-title">Các tin khác</h1></header>
+      <ul class="relation-list">
+        @foreach ($relations as $relation)
+          <li>
+            <a href="{{ route('front.article.show', $relation->slug) }}">
+              <i class="fa fa-link"></i>{{ $relation->title }}
+              <div class="relation-time"><time>{{ $relation->created_at }}</time></div>
+            </a>
+          </li>
+        @endforeach
+      </ul>
+    </section>
   @endif
 @stop

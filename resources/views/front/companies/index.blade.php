@@ -6,7 +6,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($companies as $company)
-						@include('companies._article', ['model' => $company, 'resource' => ResourceOption::CONG_TY])
+						@include('front.companies._article', ['model' => $company])
 					@endforeach
 				</div>
 			</div>

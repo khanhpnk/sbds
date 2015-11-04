@@ -11,9 +11,6 @@ class UrlHelper
             case ResourceOption::DU_AN:
                 return route("project.$action", $options);
                 break;
-            case ResourceOption::CONG_TY:
-                return route("company.$action", $options);
-                break;
             case ResourceOption::THIET_KE:
                 return route("front.design.$action", $options);
                 break;

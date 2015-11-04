@@ -27,9 +27,6 @@ Route::get('danh-sach-nha-dat/{type}/{city?}/{cityId?}/{district?}/{districtId?}
     'uses' => 'HouseController@index', 'as' => 'house.index'
 ]);
 
-/* Company */
-Route::get('cong-ty', ['uses' => 'CompanyController@index', 'as' => 'company.index']);
-Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'company.show']);
 //Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
 
 //// Authentication with social
@@ -76,6 +73,9 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
 
 /*********** *********** ADMIN *********** ***********/
 Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
+    Route::get('banner', ['uses' => 'BannerController@edit', 'as' => 'admin.banner.edit']);
+    Route::put('banner/update', ['uses' => 'BannerController@update', 'as' => 'admin.banner.update']);
+
     Route::resource('bai-viet', 'ArticleController', [
         'except' => 'show',
         'names' => [
@@ -112,6 +112,10 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
 /*********** *********** FRONT *********** ***********/
 Route::group(['namespace' => 'Front'], function() {
     Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
+
+    /* Company */
+    Route::get('cong-ty', ['uses' => 'CompanyController@index', 'as' => 'front.company.index']);
+    Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'front.company.show']);
 
     // Design
     Route::resource('thiet-ke-thi-cong', 'DesignController', [

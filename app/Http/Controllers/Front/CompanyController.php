@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use App\Company;
 use App\House;
@@ -36,7 +37,7 @@ class CompanyController extends Controller
     {
         $companies = Company::orderBy('id', 'desc')->simplePaginate(6);
 
-        return view('companies.index', compact('companies'));
+        return view('front.companies.index', compact('companies'));
     }
 
     /**
@@ -53,25 +54,6 @@ class CompanyController extends Controller
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $company->user_id)->first();
 
-        return view('companies.show', compact('company', 'housesSold', 'houses', 'contactInfo'));
+        return view('front.companies.show', compact('company', 'housesSold', 'houses', 'contactInfo'));
     }
-
-//    /**
-//     * Display a listing of the resource.
-//     *
-//     * @return Response
-//     */
-//    public function houseList(Company $company, $filter)
-//    {
-//        switch ($filter) {
-//            case IsSoldOption::CHUA_BAN:
-//                $houses = $this->_houseList($company)->simplePaginate(6);
-//                break;
-//            case IsSoldOption::DA_BAN:
-//                $houses = $this->_soldHouseList($company)->simplePaginate(6);
-//                break;
-//        }
-//
-//        return view('companies.house_list', compact('company', 'houses'));
-//    }
 }

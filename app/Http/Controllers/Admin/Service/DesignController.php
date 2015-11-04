@@ -64,7 +64,7 @@ class DesignController extends BaseController
             }
         }
 
-        $data['company_id'] = Company::find(Auth::user()->id)->id;
+        $data['company_id'] = 1;
         Design::create($data);
 
         return redirect('quan-tri/thiet-ke-thi-cong')->with('flash_message', Lang::get('system.store'));

@@ -1,32 +1,36 @@
-@extends('layout')
+@extends('one_col_layout')
 
 @section('breadcrumb')
-	<li><a href="{{ route('front.design.index') }}">Thiết kế thi công</a></li>
 	<li class="active">Thiết kế thi công</li>
 @stop
 
 @section('content')
-	<section class="company-intro">
+	<section class="company-info">
+		<header><h2 class="company-info-title">{{ $company->title }}</h2></header>
 		<div class="row">
-			<div class="col-md-8">
-				<header><h3>{{ $company->title }}</h3></header>
+			<div class="col-md-5">
 				{!! nl2br($company->short_description) !!}
 			</div>
-			<div class="col-md-4">
-				<section class="contact-info">
-					<header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
-					<ul>
-						<li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
-						{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
-						<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
-						<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
-						<li><i class="fa fa-envelope"></i>{{ str_limit($contactInfo->email, 22) }}</li>
-						<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
-						<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 22) }}</li>
-						<li><i class="fa fa-skype"></i>{{ str_limit($contactInfo->skype, 22) }}</li>
-						<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 22) }}</li>
-					</ul>
-				</section>
+			<div class="col-md-7">
+				<div class="media br-info">
+					<div class="media-left">
+						<img class="media-object" width="200" height="150" src="{{ ImageHelper::getCompanyAvatar($company->avatar) }}" alt="{{ $company->title }}">
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">Thông tin liên hệ</h4>
+						<ul>
+							<li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
+							{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
+							<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
+							<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
+							<li><i class="fa fa-envelope"></i><a href="mailto:{{ $contactInfo->email }}" target="_top">{{ str_limit($contactInfo->email, 24) }}</a></li>
+							<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
+							<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
+							<li><i class="fa fa-skype"></i><a href="skype:{{ $contactInfo->skype }}?call">{{ str_limit($contactInfo->skype, 24) }}</a></li>
+							<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -78,4 +82,9 @@
 			</div>
 		</section>
 	@endif
+
+	<section class="company-info">
+		<header><h2 class="company-info-title">Liên hệ với chúng tôi để được tư vấn</h2></header>
+		{!! nl2br($company->description) !!}
+	</section>
 @stop
