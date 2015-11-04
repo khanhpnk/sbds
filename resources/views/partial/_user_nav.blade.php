@@ -8,6 +8,7 @@
     <li><a href="{{ route('admin.article.create', 'id=5') }}">+ Báo giá</a></li>
     <li><a href="{{ route('admin.article.create', 'id=6') }}">+ Hướng dẫn thanh toán</a></li>
     <li><a href="{{ route('admin.company.index') }}">+ Công ty</a></li>
+    <li><a href="{{ route('admin.banner.edit') }}">+ Banner</a></li>
     <li><a href="{{ route('admin.design.index') }}">+ Thiết kế thi công</a></li>
   @endcan
   <li class="user-nav-header">Đăng tin</li>
