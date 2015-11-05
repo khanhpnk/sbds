@@ -5,7 +5,7 @@
   <li class="active">{{ $design->title or '' }}</li>
 @stop
 
-@section('contactInfo')
+@section('sidebarHook')
   <section class="contact-info">
     <header><h3 class="contact-info-header">Thông tin</h3></header>
     <ul>
@@ -18,6 +18,21 @@
       <li>Số tầng cao: {{ $design->number_of_floors }}</li>
       <li>Bề rộng mặt tiền: {{ $design->frontage_m2 }}m2</li>
       <li>Năm thiết kế: {{ $design->year }}</li>
+    </ul>
+  </section>
+
+  <section class="contact-info">
+    <header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
+    <ul>
+      <li><i class="fa fa-user"></i>{{ $contact->name }}</li>
+      {{-- */ $location = LocationHelper::full($contact->city, $contact->district, $contact->ward) /* --}}
+      <li><i class="fa fa-home"></i>{{$contact->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
+      <li><i class="fa fa-phone-square"></i>{{ $contact->phone }}</li>
+      <li><i class="fa fa-envelope"></i><a href="mailto:{{ $contact->email }}" target="_top">{{ str_limit($contact->email, 24) }}</a></li>
+      <li><i class="fa fa-fax"></i>{{ $contact->mobile }}</li>
+      <li><i class="fa fa-facebook-official"></i>{{ str_limit($contact->facebook, 24) }}</li>
+      <li><i class="fa fa-skype"></i><a href="skype:{{ $contact->skype }}?call">{{ str_limit($contact->skype, 24) }}</a></li>
+      <li><i class="fa fa-globe"></i>{{ str_limit($contact->website, 24) }}</li>
     </ul>
   </section>
 @stop

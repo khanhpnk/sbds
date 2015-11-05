@@ -62,10 +62,10 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="description">
       <section class="article-description">
-        {!! nl2br($project->description) !!}
-        <hr>
         {{-- gallery section --}}
         @include('houses._gallery', ['model' => $project, 'resource' => ResourceOption::DU_AN])
+        <hr>
+        {!! nl2br($project->description) !!}
       </section>
     </div>
     <div role="tabpanel" class="tab-pane" id="location">
