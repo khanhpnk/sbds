@@ -39,12 +39,12 @@
 		<section class="list">
 			<header>
 				<h2 class="thumb-title">Kiến trúc</h2>
-				<nav class="simple-pagination">{!! $architectures->render() !!}</nav>
+				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
 			</header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($architectures as $house)
-						@include('front.designs._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.designs._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 			</div>
@@ -60,7 +60,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($furnitures as $house)
-						@include('front.designs._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.designs._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 			</div>
@@ -76,7 +76,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($constructions as $house)
-						@include('front.designs._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.designs._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 			</div>
