@@ -69,4 +69,22 @@ class Design extends Model
     {
         return ucfirst($value);
     }
+
+    /**
+     * Accessor: convert Youtube link
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getYoutubeAttribute($value)
+    {
+        if (!empty($value)) {
+            preg_match('/[\\?\\&]v=([^\\?\\&]+)/', $value, $matches);
+            if (0 < count($matches)) {
+                $value = 'https://www.youtube.com/embed/' . $matches[1];
+            }
+        }
+
+        return $value;
+    }
 }
