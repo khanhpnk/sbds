@@ -24,9 +24,13 @@
     </div>
   </nav>
 
-  <section class="map-container">
-    @include('_map')
-  </section>
+  @if(Request::is('thiet-ke-thi-cong'))
+    <img style="width:100%;" src=" {{ ImageHelper::link('banner/' . $banner->image) }}">
+  @else
+    <section class="map-container">
+      @include('_map')
+    </section>
+  @endif
 
   <section class="breadcrumb-container">
     <div class="container">

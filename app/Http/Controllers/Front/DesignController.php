@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Banner;
 use App\Company;
 use App\Design;
 use App\Http\Controllers\Controller;
@@ -23,8 +24,9 @@ class DesignController extends Controller
         $constructions = Design::where('designs.category', Category::THI_CONG)->simplePaginate(3);
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')->where('user_id', 1)->first();
         $company = Company::where('companies.user_id', '1')->first();
+        $banner = Banner::find(1);
 
-        return view('front.designs.index', compact('company', 'architectures', 'furnitures', 'constructions', 'contactInfo'));
+        return view('front.designs.index', compact('company', 'architectures', 'furnitures', 'constructions', 'contactInfo', 'banner'));
     }
 
     /**
