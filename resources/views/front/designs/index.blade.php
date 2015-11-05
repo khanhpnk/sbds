@@ -83,8 +83,14 @@
 		</section>
 	@endif
 
-	<section class="company-info">
-		<header><h2 class="company-info-title">Liên hệ với chúng tôi để được tư vấn</h2></header>
-		{!! nl2br($company->description) !!}
+	<section class="list">
+		<div class="thumb thumb-br-default clearfix">
+			<div class="row">
+				@include('front.designs._static', ['title' => 'Dịch vụ thiết kế nhà', 'img' => 'thiet-ke-nha.jpg'])
+				@include('front.designs._static', ['title' => 'Dịch vụ thiết nội thất', 'img' => 'thiet-ke-noi-that.jpg'])
+				@include('front.designs._static', ['title' => 'Dịch vụ xây và sửa nhà', 'img' => 'xay-sua-nha.jpg'])
+				@include('front.designs._static', ['title' => 'Báo giá', 'img' => 'bao-gia.jpg'])
+			</div>
+		</div>
 	</section>
 @stop
