@@ -6,7 +6,7 @@ var imagesModule = (function() {
   var imageUrl = '';
   var imageType = "medium";
   var UPLOAD_FILE_LIMIT = 20;
-  var UPLOAD_FILE_MAX_SIZE = 2; // MB
+  var UPLOAD_FILE_MAX_SIZE = 3; // MB
   var imagesDbJSON = "";
   var filesDeleted = [];
 

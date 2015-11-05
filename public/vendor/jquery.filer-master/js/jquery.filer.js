@@ -895,7 +895,7 @@
                 filesLimit: "Bạn chỉ được tải lên tối đa {{fi-limit}} ảnh.",
                 filesType: "File bạn tải lên không phải là kiểu ảnh.",
                 filesSize: "{{fi-name}} là quá nặng! Bạn nên tải ảnh dưới {{fi-maxSize}} MB.",
-                filesSizeAll: "Có một ảnh bạn tải lên là quá nặng! Bạn nên tải ảnh dưới {{fi-maxSize}} MB."
+                filesSizeAll: "Tổng dung lượng ảnh bạn tải lên là quá nặng! Bạn nên tải ảnh dưới {{fi-maxSize}} MB."
             }
         }
     }
