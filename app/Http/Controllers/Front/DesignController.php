@@ -19,9 +19,9 @@ class DesignController extends Controller
      */
     public function index()
     {
-        $architectures = Design::where('designs.category', Category::KIEN_TRUC)->simplePaginate(3);
-        $furnitures = Design::where('designs.category', Category::NOI_THAT)->simplePaginate(3);
-        $constructions = Design::where('designs.category', Category::THI_CONG)->simplePaginate(3);
+        $architectures = Design::where('designs.category', Category::KIEN_TRUC)->simplePaginate(20);
+        $furnitures = Design::where('designs.category', Category::NOI_THAT)->simplePaginate(20);
+        $constructions = Design::where('designs.category', Category::THI_CONG)->simplePaginate(20);
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')->where('user_id', 1)->first();
         $company = Company::where('companies.user_id', '1')->first();
         $banner = Banner::find(1);
