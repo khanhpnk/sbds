@@ -27,4 +27,57 @@
   color: #A3A3A3;
   font-size: 11px;
 }
-/*********** MAIN: COMPANY ***********/
+/*********** END MAIN: COMPANY ***********/
+/*********** MAIN: THUMB DS ***********/
+.thumb-item-ds {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 30px;
+  border: 1px dashed #777;
+}
+.thumb-img-ds {
+  display: block;
+}
+.thumb-img-ds > img:hover {
+  opacity: 0.8;
+}
+.thumb-content-ds {
+  padding: 4px;
+}
+.thumb-title-ds {
+  font-weight: normal;
+  height: 36px;
+  line-height: 18px;
+  margin-bottom: 4px;
+  margin-top: 0;
+  font-size: 14px;
+}
+.thumb-footer-ds {
+  background-color: #f5f5f5;
+  font-style: italic;
+  padding: 4px;
+  color: #3195af;
+}
+/*********** END MAIN: THUMB DS ***********/
+/*********** MAIN: THUMB QC ***********/
+.thumb-item-s {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 30px;
+  border: 1px dashed #777;
+  background-color: #F5F5F5;
+}
+.thumb-img-s {
+  display: block;
+}
+.thumb-img-s > img:hover {
+  opacity: 0.8;
+}
+.thumb-title-s {
+  font-weight: normal;
+  margin: 0;
+  padding: 8px;
+  font-size: 17px;
+  text-align: center;
+}
+/*********** END MAIN: THUMB QC ***********/

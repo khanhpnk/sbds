@@ -1,14 +1,14 @@
 <article class="col-md-{{ $col or 4 }}">
-  <div class="thumb-item">
+  <div class="thumb-item-ds">
     <figure>
-      <a class="thumb-img" href="{{ route('front.design.show', ['slug' => $model->slug]) }}" title="{{ $model->title }}">
+      <a class="thumb-img-ds" href="{{ route('front.design.show', $model->slug) }}" title="{{ $model->title }}">
         <img width="{{ $iw or 200 }}" height="{{ $iw or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::THIET_KE, 1, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
-    <div class="thumb-cap">
+    <div class="thumb-content-ds">
       <header>
-        <h3 class="thumb-header">
-          <a href="{{ route('front.design.show', ['slug' => $model->slug]) }}">{{ $model->title }}</a>
+        <h3 class="thumb-title-ds">
+          <a href="{{ route('front.design.show', $model->slug) }}" title="{{ $model->title }}">{{ $model->title }}</a>
         </h3>
       </header>
 
@@ -37,11 +37,10 @@
           {{ $location['city'] }}
         </a>
       </address>
-
-      <footer class="thumb-footer clearfix">
-        <div class="thumb-m2">{{ $model->land_m2 }}m2</div>
-        <div class="thumb-m2">{{ $model->land_m2 }}m2</div>
-      </footer>
     </div>
+    <footer class="thumb-footer-ds clearfix">
+      <div class="pull-left">{{ $model->land_m2 }}m2</div>
+      <div class="pull-right">Mã số:0{{ $model->id }}</div>
+    </footer>
   </div>
 </article>

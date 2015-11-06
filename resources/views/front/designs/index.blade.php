@@ -4,15 +4,6 @@
 	<li class="active">Thiết kế thi công</li>
 @stop
 
-@section('style')
-  <style>
-	@parent
-	.thumb-img {
-	  display: block;
-	}
-  </style>
-@endsection
-
 @section('content')
 	<section class="company-info">
 		<header><h2 class="company-info-title">{{ $company->title }}</h2></header>
@@ -45,10 +36,10 @@
 	</section>
 
 	@if (0 < count($architectures))
-		<section class="list">
+		<section>
 			<header>
 				<h2 class="thumb-title">Kiến trúc</h2>
-				<nav class="simple-pagination">{!! $architectures->render() !!}</nav>
+				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
 			</header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -77,7 +68,7 @@
 	@endif
 
 	@if (0 < count($constructions))
-		<section class="list">
+		<section>
 			<header>
 				<h2 class="thumb-title">Thi công</h2>
 				<nav class="simple-pagination">{!! $constructions->render() !!}</nav>
