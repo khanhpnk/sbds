@@ -53,4 +53,15 @@ class Company extends Model
     {
         return $query->where('type', 1);
     }
+
+    /**
+     * Accessor: Get the user's first name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        return (new \DateTime($value))->format('d/m/Y');
+    }
 }

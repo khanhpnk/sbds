@@ -24,7 +24,7 @@
     </div>
   </nav>
 
-  @if(Request::is('thiet-ke-thi-cong'))
+  @if(Request::is('thiet-ke-*'))
     <img style="width:100%;" src=" {{ ImageHelper::link('banner/' . $banner->image) }}">
   @else
     <section class="map-container">

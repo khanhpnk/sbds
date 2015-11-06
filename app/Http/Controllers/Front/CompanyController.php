@@ -56,4 +56,15 @@ class CompanyController extends Controller
 
         return view('front.companies.show', compact('company', 'housesSold', 'houses', 'contactInfo'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Article  $article
+     * @return Response
+     */
+    public function description(Company $company)
+    {
+        return view('front.designs.description', compact('company'));
+    }
 }

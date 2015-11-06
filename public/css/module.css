@@ -1,6 +1,3 @@
-.br-info {
-  border-right: 9px solid #68CFD8;
-}
 /*********** MAIN: COMPANY ***********/
 .company-info {
   border-bottom: 1px dashed #777;
@@ -11,16 +8,20 @@
   color: #68CFD8;
   margin-bottom: 20px;
 }
+.company-media {
+  border-right: 9px solid #68CFD8;
+}
 .company-info .media-heading {
   text-transform: uppercase;
   color: #4b4b4b;
 }
 .company-info .media {
   background-color: #F7F7F7;
-  padding: 25px 30px;
+  padding: 20px 25px 15px;
 }
 .company-info .media-left {
-  padding-right: 30px;
+  padding-right: 25px;
+  text-align: center;
 }
 .company-info .media-body > ul,
 .company-info .media-body > ul a {
@@ -28,7 +29,7 @@
   font-size: 11px;
 }
 /*********** END MAIN: COMPANY ***********/
-/*********** MAIN: THUMB DS ***********/
+/*********** MAIN: THUMB DeSign ***********/
 .thumb-item-ds {
   display: block;
   font-size: 13px;
@@ -58,8 +59,8 @@
   padding: 4px;
   color: #3195af;
 }
-/*********** END MAIN: THUMB DS ***********/
-/*********** MAIN: THUMB QC ***********/
+/*********** END MAIN: THUMB DeSign ***********/
+/*********** MAIN: THUMB Static ***********/
 .thumb-item-s {
   display: block;
   font-size: 13px;
@@ -80,4 +81,4 @@
   font-size: 17px;
   text-align: center;
 }
-/*********** END MAIN: THUMB QC ***********/
+/*********** END MAIN: THUMB Static ***********/

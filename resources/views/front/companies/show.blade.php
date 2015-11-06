@@ -12,13 +12,14 @@
 	<section class="company-info">
 		<header><h2 class="company-info-title">{{ $company->title }}</h2></header>
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-6">
 				{!! nl2br($company->short_description) !!}
 			</div>
-			<div class="col-md-7">
-				<div class="media br-info">
+			<div class="col-md-6">
+				<div class="media company-media">
 					<div class="media-left">
-						<img class="media-object" width="200" height="150" src="{{ ImageHelper::getCompanyAvatar($company->avatar) }}" alt="{{ $company->title }}">
+						<img class="media-object" width="140" height="105" src="{{ ImageHelper::getCompanyAvatar($company->avatar) }}" alt="{{ $company->title }}">
+						<a role="button" href="{{ route('front.company.description', $company->slug) }}" class="btn btn-main"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 					</div>
 					<div class="media-body">
 						<h4 class="media-heading">Liên hệ với chúng tôi</h4>

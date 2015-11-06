@@ -81,4 +81,18 @@ class DesignController extends Controller
 
         return view('front.designs.show', compact('design', 'others', 'contact'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Article  $article
+     * @return Response
+     */
+    public function description()
+    {
+        $company = Company::where('companies.user_id', '1')->first();
+        $banner = Banner::find(1);
+
+        return view('front.designs.description', compact('company', 'banner'));
+    }
 }

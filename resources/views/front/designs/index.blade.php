@@ -8,13 +8,14 @@
 	<section class="company-info">
 		<header><h2 class="company-info-title">{{ $company->title }}</h2></header>
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-6">
 				{!! nl2br($company->short_description) !!}
 			</div>
-			<div class="col-md-7">
-				<div class="media br-info">
+			<div class="col-md-6">
+				<div class="media company-media">
 					<div class="media-left">
-						<img class="media-object" width="200" height="150" src="{{ ImageHelper::getCompanyAvatar($company->avatar) }}" alt="{{ $company->title }}">
+						<img class="media-object" width="140" height="105" src="{{ ImageHelper::getCompanyAvatar($company->avatar) }}" alt="{{ $company->title }}">
+						<a role="button" href="{{ route('front.design.description') }}" class="btn btn-main"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 					</div>
 					<div class="media-body">
 						<h4 class="media-heading">Thông tin liên hệ</h4>
@@ -36,54 +37,16 @@
 	</section>
 
 	@if (0 < count($architectures))
-		<section>
-			<header>
-				<h2 class="thumb-title">Kiến trúc</h2>
-				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
-			</header>
-			<div class="thumb thumb-br-default clearfix">
-				<div class="row">
-					@foreach ($architectures as $house)
-						@include('front.designs._article', ['model' => $house, 'col' => 3])
-					@endforeach
-				</div>
-			</div>
-		</section>
+		@include('front.designs._section', ['houses' => $architectures, 'title' => 'Kiến trúc'])
 	@endif
-
 	@if (0 < count($furnitures))
-		<section>
-			<header>
-				<h2 class="thumb-title">Nội thất</h2>
-				<nav class="simple-pagination">{!! $furnitures->render() !!}</nav>
-			</header>
-			<div class="thumb thumb-br-default clearfix">
-				<div class="row">
-					@foreach ($furnitures as $house)
-						@include('front.designs._article', ['model' => $house, 'col' => 3])
-					@endforeach
-				</div>
-			</div>
-		</section>
+		@include('front.designs._section', ['houses' => $architectures, 'title' => 'Nội thất'])
 	@endif
-
 	@if (0 < count($constructions))
-		<section>
-			<header>
-				<h2 class="thumb-title">Thi công</h2>
-				<nav class="simple-pagination">{!! $constructions->render() !!}</nav>
-			</header>
-			<div class="thumb thumb-br-default clearfix">
-				<div class="row">
-					@foreach ($constructions as $house)
-						@include('front.designs._article', ['model' => $house, 'col' => 3])
-					@endforeach
-				</div>
-			</div>
-		</section>
+		@include('front.designs._section', ['houses' => $architectures, 'title' => 'Thi công'])
 	@endif
 
-	<section class="list">
+	<section>
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
 				@include('front.designs._static', ['title' => 'Dịch vụ thiết kế nhà', 'img' => 'thiet-ke-nha.jpg'])

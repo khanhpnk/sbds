@@ -115,17 +115,17 @@ Route::group(['namespace' => 'Front'], function() {
 
     /* Company */
     Route::get('cong-ty', ['uses' => 'CompanyController@index', 'as' => 'front.company.index']);
+    Route::get('cong-ty-gioi-thieu/{company}', ['uses' => 'CompanyController@description', 'as' => 'front.company.description']);
     Route::get('cong-ty/{company}', ['uses' => 'CompanyController@show', 'as' => 'front.company.show']);
 
     // Design
-    Route::resource('thiet-ke-thi-cong', 'DesignController', [
-        'names' => [
-            'index' => 'front.design.index',
-            'show' => 'front.design.show',
-        ]
-    ]);
+    Route::get('thiet-ke-thi-cong', ['uses' => 'DesignController@index', 'as' => 'front.design.index']);
+    Route::get('thiet-ke-thi-cong/{thiet_ke_thi_cong}', ['uses' => 'DesignController@show', 'as' => 'front.design.show']);
+    Route::get('thiet-ke-cong-ty', ['uses' => 'DesignController@description', 'as' => 'front.design.description']);
     Route::get('thiet-ke-{sub_category_uri}', ['uses' => 'DesignController@category', 'as' => 'front.design.category']);
 
+
+    // map
     Route::post('map/search-markers', ['uses' => 'MapController@searchMarkers', 'as' => 'front.map.search']);
 });
 
