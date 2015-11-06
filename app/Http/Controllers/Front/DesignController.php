@@ -56,7 +56,7 @@ class DesignController extends Controller
 
         $others = Design::where('sub_category', $sub_category)
                     ->where('id', '<>', $design->id)
-                    ->limit(3)->get();
+                    ->get();
 
         $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', 1)->first();

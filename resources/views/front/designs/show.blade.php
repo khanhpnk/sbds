@@ -47,7 +47,7 @@
   </div>
 
   <article class="article">
-    @if($design)
+  @if (0 < count($design))
     <header><h1 class="article-title">{{ $design->title }}</h1></header>
     <section class="article-head">
       <div class="row">
@@ -116,8 +116,8 @@
         </div>
       </div>
     </section>
-    @else
-      Không có dữ liệu
-    @endif
+  @else
+    Không có dữ liệu
+  @endif
   </article>
 @stop
