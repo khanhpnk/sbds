@@ -58,7 +58,10 @@ class DesignController extends Controller
                     ->where('id', '<>', $design->id)
                     ->limit(3)->get();
 
-        return view('front.designs.show', compact('design', 'others'));
+        $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
+            ->where('user_id', 1)->first();
+
+        return view('front.designs.show', compact('design', 'others', 'contact'));
     }
 
     /**
