@@ -111,7 +111,7 @@
       <div class="thumb thumb-br-default clearfix">
         <div class="row">
           @foreach ($others as $other)
-            @include('front.designs._article', ['model' => $other, 'resource' => ResourceOption::NHA_DAT])
+            @include('front.designs._article', ['model' => $other])
           @endforeach
         </div>
       </div>

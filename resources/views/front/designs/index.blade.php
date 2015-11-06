@@ -4,6 +4,15 @@
 	<li class="active">Thiết kế thi công</li>
 @stop
 
+@section('style')
+  <style>
+	@parent
+	.thumb-img {
+	  display: block;
+	}
+  </style>
+@endsection
+
 @section('content')
 	<section class="company-info">
 		<header><h2 class="company-info-title">{{ $company->title }}</h2></header>
@@ -39,12 +48,12 @@
 		<section class="list">
 			<header>
 				<h2 class="thumb-title">Kiến trúc</h2>
-				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
+				<nav class="simple-pagination">{!! $architectures->render() !!}</nav>
 			</header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($architectures as $house)
-						@include('front.designs._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.designs._article', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 			</div>
@@ -52,7 +61,7 @@
 	@endif
 
 	@if (0 < count($furnitures))
-		<section class="list">
+		<section>
 			<header>
 				<h2 class="thumb-title">Nội thất</h2>
 				<nav class="simple-pagination">{!! $furnitures->render() !!}</nav>
@@ -60,7 +69,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($furnitures as $house)
-						@include('front.designs._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.designs._article', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 			</div>
@@ -76,7 +85,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($constructions as $house)
-						@include('front.designs._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.designs._article', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 			</div>
