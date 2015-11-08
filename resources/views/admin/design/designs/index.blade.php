@@ -7,29 +7,23 @@
   <a href="{{ route('admin.design.create') }}" class="btn btn-primary">Tạo thiết kế thi công mới</a>
   <hr>
 
+  <div class="message-toolbar">
+    <a class="btn btn-primary" href="{{ route('admin.design.index', 1) }}" role="button">Biệt thự phố</a>
+    <a class="btn btn-primary" href="{{ route('admin.design.index', 2) }}" role="button">Biệt thự vườn</a>
+    <a class="btn btn-primary" href="{{ route('admin.design.index', 3) }}" role="button">Nhà phố</a>
+    <a class="btn btn-primary" href="{{ route('admin.design.index', 4) }}" role="button">Thể loại khác</a>
+  </div>
   @if (count($designs) > 0)
-    <p class="text-right">Trang {{ $designs->currentPage() }}/{{ $designs->lastPage() }} (Tổng {{ $designs->total() }})</p>
-
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr class="bg-info">
-          <th>Tiêu đề</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($designs as $design)
-        <tr>
-          <td>{{ $design->title }}</td>
-          <td><a href="{{ route('admin.design.edit', ['slug' => $design->slug]) }}" class="btn btn-info">Chỉnh sửa</a></td>
-      </tr>
-        @endforeach
-      </tbody>
-      </table>
-    </div>
-    
-    <div class="text-center">{!! $designs->render() !!}</div>
+    <section class="list">
+      <div class="thumb thumb-br-default clearfix">
+        <div class="row">
+          @foreach ($designs as $design)
+            @include('admin.design.designs._article', ['model' => $design])
+          @endforeach
+        </div>
+      </div>
+    </section>
+    <nav class="simple-pagination">{!! $designs->render() !!}</nav>
   @else
     Chưa có thiết kế thi công nào!
   @endif

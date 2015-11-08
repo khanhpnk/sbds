@@ -10,6 +10,7 @@ use App\Http\Requests\DesignRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use Model\Service\Design\SubCategory;
 
 class DesignController extends BaseController
 {
@@ -27,9 +28,22 @@ class DesignController extends BaseController
      *
      * @return Response
      */
-    public function index()
+    public function index($filter = 1)
     {
-        $designs = Design::orderBy('id', 'desc')->paginate(20);
+        switch ($filter) {
+            case '1':
+                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::BIET_THU_PHO)->paginate(20);
+                break;
+            case '2':
+                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::BIET_THU_VUON)->paginate(20);
+                break;
+            case '3':
+                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::NHA_PHO)->paginate(20);
+                break;
+            case '4':
+                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::KHAC)->paginate(20);
+                break;
+        }
 
         return view('admin.design.designs.index', compact('designs'));
     }
