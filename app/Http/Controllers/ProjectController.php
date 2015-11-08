@@ -21,7 +21,7 @@ class ProjectController extends Controller
             $projects = $projects->where('ward', $wardId);
         }
 
-        $projects = $projects->simplePaginate(6);
+        $projects = $projects->simplePaginate(12);
 
         return view('projects.index', compact('projects'));
     }

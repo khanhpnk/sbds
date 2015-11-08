@@ -30,7 +30,7 @@ class HouseController extends Controller
             $houses = $houses->where('ward', $wardId);
         }
 
-        $houses = $houses->simplePaginate(6);
+        $houses = $houses->simplePaginate(12);
 
         return view('houses.index', compact('houses', 'isSale'));
     }

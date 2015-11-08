@@ -29,6 +29,31 @@
   font-size: 11px;
 }
 /*********** END MAIN: COMPANY ***********/
+/*********** MAIN: THUMB Big ***********/
+.thumb-content-big {
+  font-size: 15px;
+  padding: 8px;
+  background-color: #F5F5F5;
+}
+.thumb-header-big {
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 18px;
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+.thumb-address-big {
+  font-size: 13px;
+  font-style: italic;
+  margin-bottom: 2px;
+  opacity: 0.7;
+}
+.thumb-more-content-big {
+  padding: 8px;
+  height: 125px;
+  overflow: hidden;
+}
+/*********** END MAIN: THUMB Big ***********/
 /*********** MAIN: THUMB DeSign ***********/
 .thumb-item-ds {
   display: block;

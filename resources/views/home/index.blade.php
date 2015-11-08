@@ -1,33 +1,47 @@
-@extends('layout')
+@extends('one_col_layout')
 
 @section('content')
-
 	@if (0 < count($housesFeatured))
 		<section class="list">
 			<header><h1 class="thumb-title">Tin nổi bật</h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesFeatured as $house)
-						@include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+						@include('home._house', ['model' => $house])
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", ['type' => 'ban']) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="{{ route("house.index", 'ban') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
 
-	@if (0 < count($projects))
+	@if (0 < count($housesNew))
+		<section class="list">
+			<header><h1 class="thumb-title">Tin mới</h1></header>
+			<div class="thumb thumb-br-default clearfix">
+				<div class="row">
+					@foreach ($housesNew as $house)
+						@include('houses._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+					@endforeach
+				</div>
+
+				<a class="btn btn-main" href="{{ route("house.index", 'ban') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+			</div>
+		</section>
+	@endif
+
+	@if (0 < count($projectsFeatured))
 		<section class="list">
 			<header><h1 class="thumb-title">Dự án nổi bật</h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
-					@foreach ($projects as $project)
-						@include('projects._article', ['model' => $project, 'resource' => ResourceOption::DU_AN])
+					@foreach ($projectsFeatured as $project)
+						@include('home._project', ['model' => $project])
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", ['type' => 'cho-thue']) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="{{ route("project.index") }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -38,11 +52,11 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesSale as $house)
-						@include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+						@include('houses._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", ['type' => 'ban']) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="{{ route("house.index", 'ban') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -53,11 +67,11 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesRent as $house)
-						@include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+						@include('houses._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", ['type' => 'cho-thue']) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="{{ route("house.index", 'cho-thue') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -68,14 +82,23 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projects as $project)
-						@include('projects._article', ['model' => $project, 'resource' => ResourceOption::DU_AN])
+						@include('projects._article', ['model' => $project, 'col' => 3, 'resource' => ResourceOption::DU_AN])
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", ['type' => 'cho-thue']) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="{{ route("project.index") }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
 
-	{{--@include('home._construction_design')--}}
+	<section>
+		<div class="thumb thumb-br-default clearfix">
+			<div class="row">
+				@include('front.designs._static', ['title' => 'Dịch vụ thiết kế nhà', 'img' => 'thiet-ke-nha.jpg'])
+				@include('front.designs._static', ['title' => 'Dịch vụ thiết nội thất', 'img' => 'thiet-ke-noi-that.jpg'])
+				@include('front.designs._static', ['title' => 'Dịch vụ xây và sửa nhà', 'img' => 'xay-sua-nha.jpg'])
+				@include('front.designs._static', ['title' => 'Báo giá', 'img' => 'bao-gia.jpg'])
+			</div>
+		</div>
+	</section>
 @stop
