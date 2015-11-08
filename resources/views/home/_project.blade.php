@@ -39,7 +39,7 @@
         <img width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
-    <div class="thumb-more-content-big">
+    <div class="thumb-description">
       {!! nl2br(str_limit($model->description, 200)) !!}
     </div>
     <footer class="thumb-footer-ds clearfix">

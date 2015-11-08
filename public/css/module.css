@@ -50,6 +50,9 @@
 }
 .thumb-more-content-big {
   padding: 8px;
+}
+.thumb-thumb-description {
+  padding: 8px;
   height: 125px;
   overflow: hidden;
 }
