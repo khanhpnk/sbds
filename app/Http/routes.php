@@ -96,11 +96,8 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
             ]
         ]);
 
-        Route::get('thiet-ke-thi-cong/{filter?}', [
-            'uses' => 'DesignController@index', 'as' => 'admin.design.index'
-        ]);
         Route::resource('thiet-ke-thi-cong', 'DesignController', [
-            'except' => 'show',
+            'except' => 'index', 'show',
             'names' => [
                 'create' => 'admin.design.create',
                 'store' => 'admin.design.store',
@@ -109,6 +106,10 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
                 'destroy' => 'admin.design.destroy',
             ]
         ]);
+        Route::get('thiet-ke/{filter?}', [
+            'uses' => 'DesignController@index', 'as' => 'admin.design.index'
+        ]);
+
         Route::get('thiet-ke-thi-cong/unique/{id?}', ['uses' => 'DesignController@unique', 'as' => 'design.unique']);
     });
 
