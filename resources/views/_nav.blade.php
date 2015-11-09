@@ -1,3 +1,4 @@
+
 <!-- Brand and toggle get grouped for better mobile display -->
 <div class="navbar-header">
   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse01" aria-expanded="false">
@@ -7,7 +8,7 @@
     <span class="icon-bar"></span>
   </button>
   <a href="/" class="navbar-brand">
-    <img width="20" height="20" src="/images/favicon.ico" alt="Brand">
+    <img width="40" height="40" src="{{ url('images/logo.png') }}" alt="House360.vn">
   </a>
 </div>
 

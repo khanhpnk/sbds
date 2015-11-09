@@ -54,6 +54,9 @@ i {
 .simple-pagination > .pager li > span {
   border-radius: 0;
 }
+.navbar-brand {
+  padding: 5px;
+}
 /*********** *********** *********** SIDEBAR: BEGIN USER NAV MODULE *********** *********** ***********/
 .user-nav {
   border: 1px solid #d5d8df;

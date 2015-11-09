@@ -7,11 +7,19 @@
   <li class="active">{{ $article->title }}</li>
 @stop
 
-@if (!Auth::guest())
-  @section('sidebarHook')
-    @include('partial._user_nav')
-  @stop
-@endif
+@section('sidebarHook')
+  <nav role="navigation">
+    <ul class="nav user-nav">
+      <li class="user-nav-header">Bài viết</li>
+      <li><a href="{{ route('front.article.index', '1') }}">+ Giới thiệu về house</a></li>
+      <li><a href="{{ route('front.article.index', '2') }}">+ Tuyển dụng</a></li>
+      <li><a href="{{ route('front.article.index', '3') }}">+ Nội quy đăng tin</a></li>
+      <li><a href="{{ route('front.article.index', '4') }}">+ Hướng dẫn sử dụng</a></li>
+      <li><a href="{{ route('front.article.index', '5') }}">+ Báo giá</a></li>
+      <li><a href="{{ route('front.article.index', '6') }}">+ Hướng dẫn thanh toán</a></li>
+    </ul>
+  </nav>
+@stop
 
 @section('content')
   <article class="article">

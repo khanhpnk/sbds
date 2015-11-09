@@ -1,7 +1,11 @@
 <ul class="row">
   <li class="col-md-3">
     <ul>
-      <li class="footer-header">Logo</li>
+      <li class="footer-header">
+        <a href="/" style="padding: 0">
+          <img width="40" height="40" src="{{ url('images/logo.png') }}" alt="House360.vn">
+        </a>
+      </li>
       <li><a href="javascript:void(0)"><i class="fa fa-home"></i>Ngõ 105 Láng Hạ, Đống Đa, Hà Nội</a></li>
       <li><a href="javascript:void(0)"><i class="fa fa-phone-square"></i>04 66 836 456 - 0983 097 911</a></li>
       <li><a href="javascript:void(0)"><i class="fa fa-envelope"></i>luongduy.hung@hoalanjsc.com</a></li>

@@ -7,7 +7,7 @@
 <meta name="author" content="Phạm Ngọc Khánh" >
 
 <title>@yield('meta_title', 'Sàn bất động sản')</title>
-<link rel="icon" href="/images/favicon.ico">
+<link rel="shortcut icon" type="image/png" href="{{ url('favicon.png') }}" />
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

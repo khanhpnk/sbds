@@ -117,6 +117,7 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
 /*********** *********** FRONT *********** ***********/
 Route::group(['namespace' => 'Front'], function() {
     Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
+    Route::get('danh-sach-bai-viet/{filter}', ['uses' => 'ArticleController@index', 'as' => 'front.article.index']);
 
     /* Company */
     Route::get('cong-ty', ['uses' => 'CompanyController@index', 'as' => 'front.company.index']);
