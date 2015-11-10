@@ -1,3 +1,32 @@
+/*********** SIDEBAR: PAGINATION ***********/
+.sidebar-pagination {
+  font-size: 38px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.sidebar-pagination > li {
+  display: inline;
+}
+.sidebar-pagination > li > a {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  color: #337ab7;
+  float: left;
+  line-height: 1.42857;
+  margin-left: -1px;
+  padding: 0 40px;
+  position: relative;
+  text-decoration: none;
+}
+.sidebar-pagination > li > a:hover {
+  background-color: #fff;
+}
+.sidebar-pagination > .disabled > a,
+.sidebar-pagination > .disabled > a:hover {
+  color: #777;
+  cursor: not-allowed;
+}
+/*********** END SIDEBAR: PAGINATION ***********/
 /*********** MAIN: COMPANY ***********/
 .company-info {
   border-bottom: 1px dashed #777;

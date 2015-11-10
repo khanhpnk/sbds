@@ -135,7 +135,22 @@
 	<li class="active">{{ $house->title }}</li>
 @stop
 
-@section('contactInfo')
+@section('sidebarHook')
+	<nav>
+		<ul class="sidebar-pagination">
+			@if (is_null($preview))
+				<li class="disabled"><a rel="preview" href="#" title="disabled"><span aria-hidden="true">«</span></a></li>
+			@else
+				<li><a rel="preview" href="{{ route('house.show', $preview->slug) }}" title="{{ $preview->title }}">«</a></li>
+			@endif
+			@if (is_null($next))
+				<li class="disabled"><a rel="preview" href="#" title="disabled"><span aria-hidden="true">»</span></a></li>
+			@else
+				<li><a rel="next" href="{{ route('house.show', $next->slug) }}" title="{{ $next->title }}">»</a></li>
+			@endif
+		</ul>
+	</nav>
+
 	<section class="contact-info">
 		<header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
 		<ul>

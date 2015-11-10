@@ -42,7 +42,10 @@ i {
   right: 0;
   display: none;
 }
-/* PAGINATION */
+.navbar-brand {
+  padding: 5px;
+}
+/* pagination */
 .simple-pagination {
   float: right;
   font-size: 17px;
@@ -53,9 +56,6 @@ i {
 .simple-pagination > .pager li > a,
 .simple-pagination > .pager li > span {
   border-radius: 0;
-}
-.navbar-brand {
-  padding: 5px;
 }
 /*********** *********** *********** SIDEBAR: BEGIN USER NAV MODULE *********** *********** ***********/
 .user-nav {

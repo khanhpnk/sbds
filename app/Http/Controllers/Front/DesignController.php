@@ -58,10 +58,20 @@ class DesignController extends Controller
                     ->where('id', '<>', $design->id)
                     ->get();
 
+        $preview = Design::where('sub_category', $sub_category)
+            ->where('id', '<', $design->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $next = Design::where('sub_category', $sub_category)
+            ->where('id', '>', $design->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
         $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', 1)->first();
 
-        return view('front.designs.show', compact('design', 'others', 'contact'));
+        return view('front.designs.show', compact('design', 'others', 'contact', 'preview', 'next'));
     }
 
     /**
@@ -76,10 +86,22 @@ class DesignController extends Controller
             ->where('id', '<>', $design->id)
             ->get();
 
+        $preview = Design::where('sub_category', $design->sub_category)
+            ->where('id', '<', $design->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $next = Design::where('sub_category', $design->sub_category)
+            ->where('id', '>', $design->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        //dd($preview, $next);
+
         $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', 1)->first();
 
-        return view('front.designs.show', compact('design', 'others', 'contact'));
+        return view('front.designs.show', compact('design', 'others', 'contact', 'preview', 'next'));
     }
 
     /**

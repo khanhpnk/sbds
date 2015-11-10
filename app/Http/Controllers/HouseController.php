@@ -64,6 +64,16 @@ class HouseController extends Controller
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $house->user_id)->first();
 
-        return view('houses.show', compact('house', 'housesRelation', 'contactInfo'));
+        $preview = House::expired(false)->isSale($house->is_sale)
+            ->where('id', '<', $house->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $next = House::expired(false)->isSale($house->is_sale)
+            ->where('id', '>', $house->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('houses.show', compact('house', 'housesRelation', 'contactInfo', 'preview', 'next'));
     }
 }

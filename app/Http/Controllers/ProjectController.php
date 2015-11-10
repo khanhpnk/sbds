@@ -50,6 +50,16 @@ class ProjectController extends Controller
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $project->user_id)->first();
 
-        return view('projects.show', compact('project', 'projectsRelation', 'contactInfo'));
+        $preview = Project::expired(false)
+            ->where('id', '<', $project->id)
+            ->orderBy('id', 'desc')
+            ->first();
+
+        $next = Project::expired(false)
+            ->where('id', '>', $project->id)
+            ->orderBy('id', 'asc')
+            ->first();
+
+        return view('projects.show', compact('project', 'projectsRelation', 'contactInfo', 'preview', 'next'));
     }
 }
