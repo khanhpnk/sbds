@@ -38,9 +38,10 @@
 .thumb-header-big {
   font-size: 18px;
   font-weight: normal;
-  line-height: 18px;
+  line-height: 20px;
   margin-bottom: 6px;
   margin-top: 0;
+  height: 36px;
 }
 .thumb-address-big {
   font-size: 13px;
@@ -51,7 +52,7 @@
 .thumb-more-content-big {
   padding: 8px;
 }
-.thumb-thumb-description {
+.thumb-description {
   padding: 8px;
   height: 125px;
   overflow: hidden;
