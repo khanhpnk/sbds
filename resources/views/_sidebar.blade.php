@@ -11,7 +11,7 @@
       @if (!is_null($houseSaleRecommend))
         @include('houses._article', ['model' => $houseSaleRecommend,
                                      'resource' => ResourceOption::NHA_DAT,
-                                     'col' => 12, 'iw' => 195])
+                                     'col' => 12, 'iw' => 184, 'ih' => 125])
       @endif
     </div>
   </div>
@@ -22,7 +22,7 @@
       @if (!is_null($houseRentRecommend))
         @include('houses._article', ['model' => $houseRentRecommend,
                                      'resource' => ResourceOption::NHA_DAT,
-                                     'col' => 12, 'iw' => 195])
+                                     'col' => 12, 'iw' => 184, 'ih' => 125])
       @endif
     </div>
   </div>
@@ -33,7 +33,7 @@
       @if (!is_null($houseProjectRecommend))
         @include('projects._article', ['model' => $houseProjectRecommend,
                                       'resource' => ResourceOption::DU_AN,
-                                      'col' => 12, 'iw' => 195])
+                                      'col' => 12, 'iw' => 184, 'ih' => 125])
       @endif
     </div>
   </div>

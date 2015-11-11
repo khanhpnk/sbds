@@ -1,5 +1,10 @@
 <article class="col-md-6">
   <div class="thumb-item">
+    <figure>
+      <a href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}" title="{{ $model->title }}">
+        <img class="thumb-img" width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+      </a>
+    </figure>
     <div class="thumb-content-big">
       <header>
         <h3 class="thumb-header-big">
@@ -35,18 +40,13 @@
           {{ $location['city'] }}
         </a>
       </address>
-    </div>
-    <figure>
-      <a href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
-      </a>
-    </figure>
-    <div class="thumb-more-content-big clearfix">
-      <div class="pull-left">
-        <i class="fa fa-building-o"></i>{{ $model->floors }}
-        <i class="fa fa-bed "></i>{{ $model->bedroom }}
+      <div class="thumb-icon-big clearfix">
+        <div class="pull-left">
+          <i class="fa fa-building-o"></i>{{ $model->floors }}
+          <i class="fa fa-bed "></i>{{ $model->bedroom }}
+        </div>
+        <div class="thumb-m2 pull-right">{{ $model->m2 }}m2</div>
       </div>
-      <div class="thumb-m2 pull-right">{{ $model->m2 }}m2</div>
     </div>
     <footer class="thumb-footer clearfix">
       <span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->is_sale) }}</span>

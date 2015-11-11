@@ -2,7 +2,7 @@
   <div class="thumb-item-ds">
     <figure>
       <a class="thumb-img-ds" href="{{ route('front.design.show', $model->slug) }}" title="{{ $model->title }}">
-        <img width="{{ $iw or 200 }}" height="{{ $iw or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::THIET_KE, 1, $model->images) }}" alt="{{ $model->title }}">
+        <img width="{{ $iw or 208 }}" height="{{ $ih or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::THIET_KE, 1, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-ds">

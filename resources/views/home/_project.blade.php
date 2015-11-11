@@ -1,5 +1,10 @@
 <article class="col-md-6">
   <div class="thumb-item-ds">
+    <figure>
+      <a class="thumb-img-ds" href="{{ UrlHelper::show(ResourceOption::DU_AN, $model->slug) }}" title="{{ $model->title }}">
+        <img width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+      </a>
+    </figure>
     <div class="thumb-content-big">
       <header>
         <h3 class="thumb-header-big">
@@ -34,11 +39,6 @@
         </a>
       </address>
     </div>
-    <figure>
-      <a class="thumb-img-ds" href="{{ UrlHelper::show(ResourceOption::DU_AN, $model->slug) }}" title="{{ $model->title }}">
-        <img width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
-      </a>
-    </figure>
     <div class="thumb-description">
       {!! nl2br(str_limit($model->description, 200)) !!}
     </div>

@@ -2,7 +2,7 @@
   <div class="thumb-item">
     <figure>
       <a href="{{ route('house.show', $model->slug) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img class="thumb-img" width="{{ $iw or 208 }}" height="{{ $ih or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-cap">
@@ -40,7 +40,7 @@
           {{ $location['city'] }}
         </a>
       </address>
-      <div class="clearfix">
+      <div class="thumb-icon clearfix">
         <div class="pull-left">
           <i class="fa fa-building-o"></i>{{ $model->floors }}
           <i class="fa fa-bed "></i>{{ $model->bedroom }}

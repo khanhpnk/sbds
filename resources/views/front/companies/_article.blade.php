@@ -2,7 +2,7 @@
   <div class="thumb-item-ds">
     <figure>
       <a class="thumb-img-ds" href="{{ route('front.company.show', $model->slug) }}" title="{{ $model->title }}">
-        <img width="{{ $iw or 200 }}" height="{{ $iw or 150 }}" src="{{ ImageHelper::getCompanyAvatar($model->avatar) }}" alt="{{ $model->title }}">
+        <img width="{{ $iw or 207 }}" height="{{ $iw or 150 }}" src="{{ ImageHelper::getCompanyAvatar($model->avatar) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-ds">

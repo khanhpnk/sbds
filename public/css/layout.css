@@ -101,6 +101,15 @@ i {
   margin: 20px 0;
   padding-bottom: 20px;
 }
+.thumb  > .row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.thumb  > .row > .col-md-3,
+.thumb  > .row > .col-md-4 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .thumb-br-default {
   border-right: 9px solid #3CB371;
 }
@@ -117,11 +126,11 @@ i {
 }
 .thumb-cap {
   padding: 4px;
-  height: 136px;
+  height: 128px;
   font-size: 13px;
 }
 .thumb-header {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: normal;
   line-height: 18px;
   margin-top: 0;
@@ -130,6 +139,10 @@ i {
 }
 .thumb-type {
   color: #337ab7;
+}
+.thumb-icon {
+  font-size: 11px;
+  opacity: 0.7;
 }
 .thumb-address {
   margin-bottom: 2px;
@@ -439,6 +452,7 @@ i {
 }
 /*********** *********** FOOTER *********** ***********/
 .footer {
+  margin-top: 10px;
   padding-top: 80px;
   background-color: #82A28B;
   border-top: 6px solid mediumseagreen;

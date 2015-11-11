@@ -2,7 +2,7 @@
   <div class="thumb-item-s">
     <figure>
       <a class="thumb-img-s" href="#" title="{{ $title }}">
-        <img width="200" height="150" src="{{ url('images/' . $img) }}" alt="{{ $title }}">
+        <img width="208" height="150" src="{{ url('images/' . $img) }}" alt="{{ $title }}">
       </a>
     </figure>
     <header>
