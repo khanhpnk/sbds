@@ -15,7 +15,7 @@
 
       {{-- */ $location = LocationHelper::full($model->city, $model->district, $model->ward) /* --}}
       <address class="thumb-address">
-        {{ $model->address }},
+        {{ $model->address }}
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city,
@@ -24,14 +24,14 @@
                       'ward' => str_slug($location['ward']),
                       'wardId' => $model->ward]) }}">
           {{ $location['ward'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city,
                       'district' => str_slug($location['district']),
                       'districtId' => $model->district]) }}">
           {{ $location['district'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city]) }}">

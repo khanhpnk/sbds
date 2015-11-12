@@ -2,7 +2,7 @@
   <div class="thumb-item-ds">
     <figure>
       <a class="thumb-img-ds" href="{{ UrlHelper::show(ResourceOption::DU_AN, $model->slug) }}" title="{{ $model->title }}">
-        <img width="{{ $iw or 200 }}" height="{{ $iw or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img width="{{ $iw or 206 }}" height="{{ $iw or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-ds">
@@ -15,7 +15,7 @@
 
       {{-- */ $location = LocationHelper::full($model->city, $model->district, $model->ward) /* --}}
       <address class="thumb-address">
-        {{ $model->address }},
+        {{ $model->address }}
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city,
@@ -24,14 +24,14 @@
                       'ward' => str_slug($location['ward']),
                       'wardId' => $model->ward]) }}">
           {{ $location['ward'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city,
                       'district' => str_slug($location['district']),
                       'districtId' => $model->district]) }}">
           {{ $location['district'] }}
-        </a>
+        </a>,
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'city' => str_slug($location['city']),
                       'cityId' => $model->city]) }}">

@@ -2,7 +2,7 @@
   <div class="thumb-item">
     <figure>
       <a href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="{{ $iw or 200 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img class="thumb-img" width="{{ $iw or 206 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-cap">
@@ -14,7 +14,7 @@
       </header>
       {{-- */ $location = LocationHelper::full($model->city, $model->district, $model->ward) /* --}}
       <address class="thumb-address">
-        {{ $model->address }},
+        {{ $model->address }}
         <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
                       'type' => IsSaleUriOption::getLabel($model->is_sale),
                       'city' => str_slug($location['city']),

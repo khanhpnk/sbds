@@ -93,7 +93,7 @@ var houseModule = (function() {
         city: {required: true},
         district: {required: true},
         ward: {required: true},
-        address: {maxlength: 32, required: true},
+        address: {maxlength: 32},
         youtube: {url: true},
         description: {rangelength: [8, 6000], required: true},
         m2: {numberComma: true, maxlength: 12},

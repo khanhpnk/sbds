@@ -14,7 +14,7 @@
       </header>
       {{-- */ $location = LocationHelper::full($model->city, $model->district, $model->ward) /* --}}
       <address class="thumb-address">
-        {{ $model->address }},
+        {{ $model->address }}
         <a href="{{ UrlHelper::index($resource, [
                       'type' => IsSaleUriOption::getLabel($model->is_sale),
                       'city' => str_slug($location['city']),
