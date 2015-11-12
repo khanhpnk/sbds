@@ -346,7 +346,9 @@ i {
   padding: 15px 15px 10px;
 }
 .footer-social {
-  float: right;
+  position: absolute;
+  right: 4px;
+  top: 20px;
 }
 .social-facebook,
 .social-tweet,
@@ -482,6 +484,47 @@ i {
 .footer-site-generator {
   border-top: 1px solid #6e8875;
   color: #f2f2f2;
-  margin-top: 60px;
-  padding: 20px 0;
+  margin-top: 10px;
+  padding: 15px 0;
+  text-align: center;
+  position: relative;;
+}
+.footer-site-generator p {
+  margin: 0 0 2px;
+}
+.footer-site-generator-title {
+  font-size: 18px;
+  padding: 0 0 10px;
+}
+/* 5 col layout */
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+.col-xs-15 {
+  width: 20%;
+  float: left;
+}
+@media (min-width: 768px) {
+  .col-sm-15 {
+    width: 20%;
+    float: left;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-15 {
+    width: 20%;
+    float: left;
+  }
+}
+@media (min-width: 1200px) {
+  .col-lg-15 {
+    width: 20%;
+    float: left;
+  }
 }
