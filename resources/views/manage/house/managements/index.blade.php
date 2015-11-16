@@ -5,13 +5,13 @@
 @stop
 
 @section('content')
+  <div class="message-toolbar">
+    <a class="btn btn-primary" href="{{ route('manage.house.index', ConstHelper::URI_CHINH_CHU) }}" role="button">Chính chủ</a>
+    <a class="btn btn-primary" href="{{ route('manage.house.index', ConstHelper::URI_MOI_GIOI) }}" role="button">Môi giới</a>
+    <a class="btn btn-primary" href="{{ route('manage.house.index', ConstHelper::URI_DU_AN) }}" role="button">Dự án</a>
+  </div>
+  <hr>
   @if (0 < count($resources))
-
-    <div class="message-toolbar">
-      <a class="btn btn-primary" href="{{ route('manage.house.index', ConstHelper::URI_CHINH_CHU) }}" role="button">Chính chủ</a>
-      <a class="btn btn-primary" href="{{ route('manage.house.index', ConstHelper::URI_MOI_GIOI) }}" role="button">Môi giới</a>
-      <a class="btn btn-primary" href="{{ route('manage.house.index', ConstHelper::URI_DU_AN) }}" role="button">Dự án</a>
-    </div>
     <section class="list">
       <div class="thumb thumb-br-default clearfix">
         <div class="row">

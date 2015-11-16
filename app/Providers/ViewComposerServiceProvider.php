@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Design;
 use Illuminate\Support\ServiceProvider;
 use App\House;
 use App\Project;
@@ -44,6 +45,8 @@ class ViewComposerServiceProvider extends ServiceProvider
                 ->expired(false)->isSale(IsSaleOption::CHO_THUE)->first());
             $view->with('houseProjectRecommend', Project::orderBy('id', 'desc')
                 ->expired(false)->first());
+            $view->with('designRecommend', Design::orderBy('id', 'desc')
+                ->first());
         });
     }
 }

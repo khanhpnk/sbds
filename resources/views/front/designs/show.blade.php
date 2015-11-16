@@ -43,11 +43,11 @@
       {{-- */ $location = LocationHelper::full($contact->city, $contact->district, $contact->ward) /* --}}
       <li><i class="fa fa-home"></i>{{$contact->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
       <li><i class="fa fa-phone-square"></i>{{ $contact->phone }}</li>
-      <li><i class="fa fa-envelope"></i><a href="mailto:{{ $contact->email }}" target="_top">{{ str_limit($contact->email, 24) }}</a></li>
+      <li><i class="fa fa-envelope"></i><a href="mailto:{{ $contact->email }}" target="_top">{{ str_limit($contact->email, 22) }}</a></li>
       <li><i class="fa fa-fax"></i>{{ $contact->mobile }}</li>
-      <li><i class="fa fa-facebook-official"></i>{{ str_limit($contact->facebook, 24) }}</li>
-      <li><i class="fa fa-skype"></i><a href="skype:{{ $contact->skype }}?call">{{ str_limit($contact->skype, 24) }}</a></li>
-      <li><i class="fa fa-globe"></i>{{ str_limit($contact->website, 24) }}</li>
+      <li><i class="fa fa-facebook-official"></i>{{ str_limit($contact->facebook, 22) }}</li>
+      <li><i class="fa fa-skype"></i><a href="skype:{{ $contact->skype }}?call">{{ str_limit($contact->skype, 22) }}</a></li>
+      <li><i class="fa fa-globe"></i>{{ str_limit($contact->website, 22) }}</li>
     </ul>
   </section>
 @stop
@@ -55,10 +55,10 @@
 @section('content')
   <div aria-label="Justified button group" role="group" class="btn-group btn-group-justified">
     {{--@if (\Model\Service\Design\SubCategory::BIET_THU_PHO == $design->sub_category) active @endif--}}
-    <a role="button" class="btn btn-default" href="{{ route('front.design.category', 'biet-thu-pho') }}">Biệt thự phố</a>
-    <a role="button" class="btn btn-default" href="{{ route('front.design.category', 'biet-thu-vuon') }}">Biệt thự vườn</a>
-    <a role="button" class="btn btn-default" href="{{ route('front.design.category', 'nha-pho') }}">Nhà phố</a>
-    <a role="button" class="btn btn-default" href="{{ route('front.design.category', 'khac') }}">Thể loại khác</a>
+    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'biet-thu-pho') }}">Biệt thự phố</a>
+    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'biet-thu-vuon') }}">Biệt thự vườn</a>
+    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'nha-pho') }}">Nhà phố</a>
+    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'khac') }}">Thể loại khác</a>
   </div>
 
   <article class="article">
@@ -97,14 +97,6 @@
           <div class="article-head-fb-like">
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="article-head-code">N{{ $design->id }}</div>
-        </div>
-        <div class="col-md-2">
-          <div class="article-head-date"><time>{{ $design->start_date }}</time></div>
         </div>
       </div>
     </section>

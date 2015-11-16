@@ -33,7 +33,7 @@
 
 	@if (0 < count($projectsFeatured))
 		<section class="list">
-			<header><h1 class="thumb-title">Dự án nổi bật</h1></header>
+			<header><h1 class="thumb-title"><a href="{{ route('project.index') }}">Dự án nổi bật</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projectsFeatured as $project)
@@ -48,7 +48,7 @@
 
 	@if (0 < count($housesSale))
 		<section class="list">
-			<header><h1 class="thumb-title">Nhà đất bán</h1></header>
+			<header><h1 class="thumb-title"><a href="{{ route('house.index', 'ban') }}">Nhà đất bán</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesSale as $house)
@@ -63,7 +63,7 @@
 
 	@if (0 < count($housesRent))
 		<section class="list">
-			<header><h1 class="thumb-title">Nhà đất cho thuê</h1></header>
+			<header><h1 class="thumb-title"><a href="{{ route('house.index', 'cho-thue') }}">Nhà đất cho thuê</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesRent as $house)
@@ -78,7 +78,7 @@
 
 	@if (0 < count($projects))
 		<section class="list">
-			<header><h1 class="thumb-title">Dự án</h1></header>
+			<header><h1 class="thumb-title"><a href="{{ route('project.index') }}">Dự án</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projects as $project)

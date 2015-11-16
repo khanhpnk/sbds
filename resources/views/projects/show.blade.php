@@ -2,10 +2,10 @@
 
 @section('content')
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Giới thiệu</a></li>
-    <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Vị trí</a></li>
-    <li role="presentation"><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">Tiến độ thanh toán</a></li>
+  <ul class="nav nav-tabs" role="tablist" style="text-align: center;">
+    <li role="presentation" style="width: 155px;" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Giới thiệu</a></li>
+    <li role="presentation" style="width: 155px;"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Vị trí</a></li>
+    <li role="presentation" style="width: 155px;"><a href="#schedule" aria-controls="schedule" role="tab" data-toggle="tab">Tiến độ thanh toán</a></li>
   </ul>
 
 <article class="article">
@@ -127,11 +127,11 @@
       {{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
       <li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
       <li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
-      <li><i class="fa fa-envelope"></i><a href="mailto:{{ $contactInfo->email }}" target="_top">{{ str_limit($contactInfo->email, 24) }}</a></li>
+      <li><i class="fa fa-envelope"></i><a href="mailto:{{ $contactInfo->email }}" target="_top">{{ str_limit($contactInfo->email, 22) }}</a></li>
       <li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
-      <li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 24) }}</li>
-      <li><i class="fa fa-skype"></i><a href="skype:{{ $contactInfo->skype }}?call">{{ str_limit($contactInfo->skype, 24) }}</a></li>
-      <li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 24) }}</li>
+      <li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 22) }}</li>
+      <li><i class="fa fa-skype"></i><a href="skype:{{ $contactInfo->skype }}?call">{{ str_limit($contactInfo->skype, 22) }}</a></li>
+      <li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 22) }}</li>
     </ul>
   </section>
 @stop

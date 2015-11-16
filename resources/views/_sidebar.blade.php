@@ -3,7 +3,15 @@
 @yield('sidebarHook')
 
 <section class="recommend">
-  {{--<div class="thumb-caption">Thiết kế thi công</div>--}}
+  <header><h2 class="thumb-title thumb-title-recomend" style="background-color: red">Thiết kế thi công</h2></header>
+  <div class="thumb thumb-br-default clearfix">
+    <div class="row">
+      @if (!is_null($designRecommend))
+        @include('front.designs._article', ['model' => $designRecommend,
+                                     'col' => 12, 'iw' => 184, 'ih' => 125])
+      @endif
+    </div>
+  </div>
 
   <header><h2 class="thumb-title thumb-title-recomend">Nhà đất bán</h2></header>
   <div class="thumb thumb-br-default clearfix">

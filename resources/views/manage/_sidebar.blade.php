@@ -38,5 +38,14 @@
     <li class="user-nav-header">Hộp tin</li>
     <li><a href="{{ route('message.index', 'inbox') }}"><i class="fa fa-envelope"></i>Hộp tin nhận</a></li>
     <li><a href="{{ route('message.index', 'sent') }}"><i class="fa fa-envelope-o"></i>Hộp tin gửi</a></li>
+    <li><a href="#" class="user-nav-big-link">Hướng dẫn đăng tin</a></li>
+    <li><a href="/ajax-auth/logout" class="user-nav-big-link">Đăng xuất</a></li>
   </ul>
+
+  <section>
+    <header><h2 class="thumb-title thumb-title-recomend">Nội quy đăng tin</h2></header>
+    <div style="border: 1px solid #d5d8df; margin-bottom: 20px; padding: 6px 2px;">
+      Mọi khách hàng đều có thể đăng tin miễn phí và không giới hạn trên house360.vn
+    </div>
+  </section>
 </nav>

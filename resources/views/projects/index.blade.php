@@ -2,6 +2,7 @@
 
 @section('content')
 	@if (0 < count($projects))
+		<header><h1 class="thumb-title">Dự án</h1></header>
 		<section class="list">
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">

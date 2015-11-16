@@ -65,6 +65,9 @@ class CompanyController extends Controller
      */
     public function description(Company $company)
     {
-        return view('front.designs.description', compact('company'));
+        $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
+            ->where('user_id', $company->user_id)->first();
+
+        return view('front.designs.description', compact('company', 'contact'));
     }
 }

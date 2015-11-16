@@ -115,6 +115,9 @@ class DesignController extends Controller
         $company = Company::where('companies.user_id', '1')->first();
         $banner = Banner::find(1);
 
-        return view('front.designs.description', compact('company', 'banner'));
+        $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
+            ->where('user_id', 1)->first();
+
+        return view('front.designs.description', compact('company', 'banner', 'contact'));
     }
 }

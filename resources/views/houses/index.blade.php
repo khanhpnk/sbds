@@ -2,6 +2,13 @@
 
 @section('content')
 	@if (0 < count($houses))
+		<header><h1 class="thumb-title">
+				@if (0 == $isSale)
+					Nhà đất bán
+				@else
+					Nhà đất cho thuê
+			  @endif
+			</h1></header>
 		<section class="list">
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">

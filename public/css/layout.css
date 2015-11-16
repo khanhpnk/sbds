@@ -69,7 +69,8 @@ i {
   background-color: #d5d7de;
   color: #333;
 }
-.user-nav-header {
+.user-nav-header,
+.user-nav-big-link {
   font-size: 16px;
   padding: 2px 8px;
   color: #337AB7;
@@ -182,6 +183,12 @@ i {
   display: inline-block;
   background-color: #337ab7;
   text-align: center;
+}
+.thumb-title a {
+  color: #fff;
+}
+.thumb-title a:hover {
+  color: #000;
 }
 .thumb-title-recomend {
   display: block;
