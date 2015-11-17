@@ -4,7 +4,7 @@
 @section('meta_description'){{ $company->meta_description }}@stop
 
 @section('breadcrumb')
-	<li><a href="{{ route('front.company.index') }}">Công ty}</a></li>
+	<li><a href="{{ route('front.company.index') }}">Công ty</a></li>
 	<li class="active">{{ $company->title }}</li>
 @stop
 
