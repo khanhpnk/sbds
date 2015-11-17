@@ -19,9 +19,7 @@
   }(document, 'script', 'facebook-jssdk'));</script>
 
   <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      @include('_nav')
-    </div>
+    @include('_nav')
   </nav>
 
   @if(Request::is('thiet-ke-*'))

@@ -17,9 +17,7 @@
 </head>
 <body>
   <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      @include('_nav')
-    </div>
+    @include('_nav')
   </nav>
 
   <div class="container">

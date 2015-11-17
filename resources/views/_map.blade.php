@@ -7,9 +7,11 @@
       frontGooglemapModule.init();
       frontLocationModule.init();
 
-      $(".collapse-search").on('click', function () {
-        $(".form-search").toggleClass("collapse-search-in");
-        $(".form-search-block").toggle();
+      $(".btn-collapse-search").on('click', function () {
+        //$(".form-search").toggleClass("collapse-search-in");
+        $(".form-filter").toggle();
+        $(".form-search").toggle();
+        $(".form-search-container").toggleClass('form-search-bottom form-search-top');
       });
 
       $("#type").on("change", function () {
@@ -43,18 +45,31 @@
   <div id="tab-map" class="tab-pane active" role="tabpanel">
     <div id="map-canvas" style="height: 500px; width: 100%;"></div>
 
-    <div class="form-search">
-      <form class="form-inline" method="POST" action="{{ route('front.map.search') }}" id="searchForm">
-        <div class="form-search-block">
+    <div class="form-search-container form-search-bottom">
+      <div class="form-search-inner clearfix">
+
+        <form class="form-search form-inline pull-right" method="GET" action="" style="display: none">
+          <div class="form-group">
+            <label class="sr-only" for="search">Tìm kiếm</label>
+            <input type="text" id="search" class="form-control" placeholder="Tìm kiếm">
+          </div>
+          <button type="submit" class="btn">
+            <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+          </button>
+        </form>
+
+        <button type="button" class="btn btn-info btn-collapse-search pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
+
+        <form class="form-filter form-inline pull-right" method="POST" action="{{ route('front.map.search') }}" id="searchForm">
           @include('partial.form._select2', ['name' => 'city', 'label' => 'Tỉnh thành'])
           @include('partial.form._select2', ['name' => 'district', 'label' => 'Quận / huyện'])
           @include('partial.form._select2', ['name' => 'ward', 'label' => 'Xã / phường'])
           @include('partial.form._select2', ['name' => 'type', 'options' => [1 => 'NHÀ ĐẤT BÁN', 2 => 'NHÀ ĐẤT CHO THUÊ', 3 => 'DỰ ÁN']])
           @include('partial.form._select2', ['name' => 'category', 'label' => ' -- ', 'options' => HouseCategorySaleOption::getOptions()])
           <button type="submit" class="btn btn-default">SEARCH</button>
-        </div>
-        <button type="button" class="btn btn-info collapse-search"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>
-      </form>
+        </form>
+
+      </div>
     </div>
 
     <div class="infowindow-placeholder" style="display: none;">
