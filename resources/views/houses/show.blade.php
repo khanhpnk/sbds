@@ -36,7 +36,7 @@
 				<div class="col-md-3">
 					<div style="float: left"><i class="fa fa-print" onclick="window.print();"></i></div>
 					<div class="article-head-fb-like" style="float: left">
-						<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+						<div class="fb-like" data-href="http://house360.vn/nha-dat/nha-pho-spring-house-pham-van-dong-duc-3-tam" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 					</div>
 				</div>
 			</div>
