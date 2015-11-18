@@ -37,8 +37,14 @@
 
 <!-- Nav tabs -->
 <ul role="tablist" class="nav nav-tabs tab-map-image360">
-  <li class="active" role="presentation"><a aria-controls="tab-map" data-toggle="tab" role="tab" aria-expanded="true" href="#tab-map">Bản đồ</a></li>
-  <li role="presentation" ><a aria-controls="tab-image360" data-toggle="tab" role="tab" aria-expanded="false" href="#tab-image360">Ảnh 360</a></li>
+  <li class="map" role="presentation"><a aria-controls="tab-map" data-toggle="tab" role="tab" aria-expanded="true" href="#tab-map">
+      <img src="/images/map.gif" alt="" height="25" width="37">
+      <div>Bản đồ</div>
+  </a></li>
+  <li class="i360" role="presentation" ><a aria-controls="tab-image360" data-toggle="tab" role="tab" aria-expanded="false" href="#tab-image360">
+      <img src="/images/360.gif" alt="" height="25" width="37">
+      <div>Ảnh 360</div>
+  </a></li>
 </ul>
 <!-- Tab panes -->
 <div class="tab-content">
