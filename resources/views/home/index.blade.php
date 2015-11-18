@@ -3,11 +3,11 @@
 @section('content')
 	@if (0 < count($housesFeatured))
 		<section class="list">
-			<header><h1 class="thumb-title">Tin nổi bật</h1></header>
+			<header><h1 class="thumb-title"><a href="/tin-noi-bat">Tin nổi bật</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesFeatured as $house)
-						@include('home._house', ['model' => $house])
+						@include('front.houses._item_large', ['model' => $house])
 					@endforeach
 				</div>
 
@@ -18,11 +18,11 @@
 
 	@if (0 < count($housesNew))
 		<section class="list">
-			<header><h1 class="thumb-title">Tin mới</h1></header>
+			<header><h1 class="thumb-title"><a href="/tin-moi">Tin mới</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesNew as $house)
-						@include('houses._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('front.houses._item', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
 					@endforeach
 				</div>
 
@@ -33,11 +33,11 @@
 
 	@if (0 < count($projectsFeatured))
 		<section class="list">
-			<header><h1 class="thumb-title"><a href="{{ route('project.index') }}">Dự án nổi bật</a></h1></header>
+			<header><h1 class="thumb-title"><a href="/du-an-noi-bat">Dự án nổi bật</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projectsFeatured as $project)
-						@include('home._project', ['model' => $project])
+						@include('front.projects._item_large', ['model' => $project])
 					@endforeach
 				</div>
 
@@ -82,7 +82,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projects as $project)
-						@include('projects._article', ['model' => $project, 'col' => 3, 'resource' => ResourceOption::DU_AN])
+						@include('front.projects._item', ['model' => $project, 'col' => 3, 'resource' => ResourceOption::DU_AN])
 					@endforeach
 				</div>
 

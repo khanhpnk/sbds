@@ -137,3 +137,10 @@ Route::group(['namespace' => 'Front'], function() {
 
 // Authentication with social
 Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
+
+
+Route::group(['namespace' => 'Front'], function() {
+    Route::get('tin-noi-bat', 'HouseController@featured');
+    Route::get('tin-moi', 'HouseController@lastest');
+    Route::get('du-an-noi-bat', 'ProjectController@featured');
+});

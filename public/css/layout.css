@@ -311,31 +311,37 @@ i {
 .map-container {
   position: relative;
 }
-.map-container .nav-tabs > li {
+.map-container .nav > li {
+  float: left;
+  margin-bottom: -1px;
+}
+.map-container .nav > li {
   text-align: center;
   font-size: 10px;
 }
-.map-container .nav-tabs > li.map {
+.map-container .nav > li.map {
   background-color: #4695c1;
 }
-.map-container .nav-tabs > li.i360 {
+.map-container .nav > li.i360 {
   background-color: #fa0f0f;
 }
-.map-container .nav-tabs > li > a {
+.map-container .nav > li > a {
   border-radius: 0;
   margin-right: 0;
-  padding: 1px 30px;
+  padding: 1px 31px;
   color: #fff;
 }
-.map-container .nav > li.map > a:hover,
-.map-container .nav > li.map > a:active,
-.map-container .nav > li.map > a:focus {
+.map-container .nav li.map a:hover,
+.map-container .nav li.map a:active,
+.map-container .nav li.map a:focus {
   background-color: #4695c1;
+  color: #000;
 }
-.map-container .nav > li.i360 > a:hover,
-.map-container .nav > li.i360 > a:active,
-.map-container .nav > li.i360 > a:focus {
+.map-container .nav li.i360 a:hover,
+.map-container .nav-tabs li.i360 a:active,
+.map-container .nav li.i360 a:focus {
   background-color: #fa0f0f;
+  color: #000;
 }
 /* map */
 /*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
@@ -460,9 +466,9 @@ i {
 }
 /*********** *********** MAP *********** ***********/
 .tab-map-image360 {
-  bottom: -43px;
+  bottom: -41px;
   position: absolute;
-  right: 196px;
+  right: 15px;
   z-index: 999;
 }
 .iw-container  .iw-name {
