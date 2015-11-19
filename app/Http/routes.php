@@ -15,17 +15,6 @@
 Route::get('/', 'HomeController@index');
 Route::resource('test', 'TestController');
 
-/* Project */
-Route::get('du-an/{project}', ['uses' => 'ProjectController@show', 'as' => 'project.show']);
-Route::get('du-an/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
-    'uses' => 'ProjectController@index', 'as' => 'project.index'
-]);
-
-/* House */
-Route::get('nha-dat/{house}', ['uses' => 'HouseController@show', 'as' => 'house.show']);
-
-//Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
-
 //// Authentication with social
 //Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 /*********** *********** MANAGE *********** ***********/
@@ -139,7 +128,10 @@ Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 Route::group(['namespace' => 'Front'], function() {
     Route::get('tin-noi-bat', 'HouseController@featured');
     Route::get('tin-moi', 'HouseController@lastest');
-    Route::get('du-an-noi-bat', 'ProjectController@featured');
-
     Route::get('danh-sach-nha-dat', 'HouseController@index');
+    Route::get('nha-dat/{house}', 'HouseController@show');
+
+    Route::get('du-an-noi-bat', 'ProjectController@featured');
+    Route::get('du-an/{project}', 'ProjectController@show');
+    Route::get('du-an', 'ProjectController@index');
 });

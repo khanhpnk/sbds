@@ -78,7 +78,7 @@
 
 	@if (0 < count($projects))
 		<section class="list">
-			<header><h1 class="thumb-title"><a href="{{ route('project.index') }}">Dự án</a></h1></header>
+			<header><h1 class="thumb-title"><a href="/du-an">Dự án</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projects as $project)
@@ -86,7 +86,7 @@
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("project.index") }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="/du-an" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif

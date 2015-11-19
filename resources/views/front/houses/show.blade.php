@@ -1,6 +1,34 @@
 @extends('layout')
 
+@section('meta_title'){{ $house->meta_title }}@stop
+@section('meta_description'){{ $house->meta_description }}@stop
+
+@section('breadcrumb')
+	<li><a href="/danh-sach-nha-dat?type={{ str_slug(saleLabel($house->is_sale)) }}">{{ saleLabel($house->is_sale) }}</a></li>
+	<li class="active">{{ $house->title }}</li>
+@stop
+
+@section('sidebarHook')
+	<nav>
+		<ul class="sidebar-pagination">
+			@if (is_null($preview))
+				<li class="disabled"><a rel="preview" href="#" title="disabled"><span aria-hidden="true">«</span></a></li>
+			@else
+				<li><a rel="preview" href="{{ houseShowUrl($preview->slug) }}" title="{{ $preview->title }}">«</a></li>
+			@endif
+			@if (is_null($next))
+				<li class="disabled"><a rel="preview" href="#" title="disabled"><span aria-hidden="true">»</span></a></li>
+			@else
+				<li><a rel="next" href="{{ houseShowUrl($next->slug) }}" title="{{ $next->title }}">»</a></li>
+			@endif
+		</ul>
+	</nav>
+
+	@include('partial.resource._contact')
+@stop
+
 @section('content')
+
 	<article class="article">
 		<header><h1 class="article-title">{{ $house->title }}</h1></header>
 		<section class="article-head">
@@ -12,9 +40,8 @@
 					</address>
 				</div>
 				<div class="col-md-3">
-					<div style="float: left"><i class="fa fa-print" onclick="window.print();"></i></div>
 					<div class="article-head-fb-like" style="float: left">
-						<div class="fb-like" data-href="http://house360.vn/nha-dat/nha-pho-spring-house-pham-van-dong-duc-3-tam" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+						<div class="fb-like" data-href="{{ houseShowUrl($house->slug) }}" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
 					</div>
 				</div>
 			</div>
@@ -32,7 +59,7 @@
 		</section>
 
 		{{-- gallery section --}}
-		@include('houses._gallery', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
+		@include('partial.resource._gallery', ['model' => $house, 'resource' => ResourceOption::NHA_DAT])
 
 		<section class="article-description">
 			{!! nl2br($house->description) !!}
@@ -89,7 +116,7 @@
 			</ul>
 		</section>
 		<hr>
-		<div class="fb-comments" data-href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $house->slug]) }}" data-width="675" data-numposts="2"></div>
+		<div class="fb-comments" data-href="{{ houseShowUrl($house->slug) }}" data-width="675" data-numposts="2"></div>
 	</article>
 
 	<section class="relation">
@@ -102,44 +129,5 @@
 			</div>
 		</div>
 	</section>
+
 @stop
-
-@section('breadcrumb')
-	<li><a href="/danh-sach-nha-dat?type={{ IsSaleUriOption::getLabel($house->is_sale) }}">{{ IsSaleOption::getLabel($house->is_sale) }}</a></li>
-	<li class="active">{{ $house->title }}</li>
-@stop
-
-@section('sidebarHook')
-	<nav>
-		<ul class="sidebar-pagination">
-			@if (is_null($preview))
-				<li class="disabled"><a rel="preview" href="#" title="disabled"><span aria-hidden="true">«</span></a></li>
-			@else
-				<li><a rel="preview" href="{{ route('house.show', $preview->slug) }}" title="{{ $preview->title }}">«</a></li>
-			@endif
-			@if (is_null($next))
-				<li class="disabled"><a rel="preview" href="#" title="disabled"><span aria-hidden="true">»</span></a></li>
-			@else
-				<li><a rel="next" href="{{ route('house.show', $next->slug) }}" title="{{ $next->title }}">»</a></li>
-			@endif
-		</ul>
-	</nav>
-
-	<section class="contact-info">
-		<header><h3 class="contact-info-header">Thông tin liên hệ</h3></header>
-		<ul>
-			<li><i class="fa fa-user"></i>{{ $contactInfo->name }}</li>
-			{{-- */ $location = LocationHelper::full($contactInfo->city, $contactInfo->district, $contactInfo->ward) /* --}}
-			<li><i class="fa fa-home"></i>{{$contactInfo->address}} {{ $location['ward'] }}, {{ $location['district'] }}, {{ $location['city'] }}</li>
-			<li><i class="fa fa-phone-square"></i>{{ $contactInfo->phone }}</li>
-			<li><i class="fa fa-envelope"></i><a href="mailto:{{ $contactInfo->email }}" target="_top">{{ str_limit($contactInfo->email, 22) }}</a></li>
-			<li><i class="fa fa-fax"></i>{{ $contactInfo->mobile }}</li>
-			<li><i class="fa fa-facebook-official"></i>{{ str_limit($contactInfo->facebook, 22) }}</li>
-			<li><i class="fa fa-skype"></i><a href="skype:{{ $contactInfo->skype }}?call">{{ str_limit($contactInfo->skype, 22) }}</a></li>
-			<li><i class="fa fa-globe"></i>{{ str_limit($contactInfo->website, 22) }}</li>
-		</ul>
-	</section>
-@stop
-
-@section('meta_title'){{ $house->meta_title }}@stop
-@section('meta_description'){{ $house->meta_description }}@stop

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Design;
+use App\Repositories\Resource\House\IsSaleOptions;
 use Illuminate\Support\ServiceProvider;
 use App\House;
 use App\Project;
@@ -38,13 +39,22 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function composeSidebar()
     {
         view()->composer('_sidebar', function($view) {
+
             // recommend
         	$view->with('houseSaleRecommend', House::orderBy('id', 'desc')
-                ->expired(false)->isSale(IsSaleOption::BAN)->first());
+                ->isExpired(false)
+                ->isSale(IsSaleOptions::BAN)
+                ->first());
+
             $view->with('houseRentRecommend', House::orderBy('id', 'desc')
-                ->expired(false)->isSale(IsSaleOption::CHO_THUE)->first());
+                ->isExpired(false)
+                ->isSale(IsSaleOptions::CHO_THUE)
+                ->first());
+
             $view->with('houseProjectRecommend', Project::orderBy('id', 'desc')
-                ->expired(false)->first());
+                ->isExpired(false)
+                ->first());
+
             $view->with('designRecommend', Design::orderBy('id', 'desc')
                 ->first());
         });

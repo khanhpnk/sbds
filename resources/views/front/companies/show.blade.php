@@ -49,7 +49,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($houses as $house)
-						@include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT, 'col' => 3])
+						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 
@@ -69,7 +69,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesSold as $house)
-						@include('houses._article', ['model' => $house, 'resource' => ResourceOption::NHA_DAT, 'col' => 3])
+						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 				{{--<a class="btn btn-main" href="{{ route('company.houseList', ['company' => $company->slug, 'filter' => IsSoldOption::DA_BAN]) }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>--}}

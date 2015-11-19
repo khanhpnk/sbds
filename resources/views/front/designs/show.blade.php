@@ -66,31 +66,9 @@
     <section class="article-head">
       <div class="row">
         <div class="col-md-9">
-          {{-- */ $location = LocationHelper::full($design->city, $design->district, $design->ward) /* --}}
           <address class="article-head-address">
             Địa chỉ:
-            {{ $design->address }},
-            <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
-                            'city' => str_slug($location['city']),
-                            'cityId' 			=> $design->city,
-                            'district' 		=> str_slug($location['district']),
-                            'districtId' 	=> $design->district,
-                            'ward' 				=> str_slug($location['ward']),
-                            'wardId' 			=> $design->ward]) }}">
-              {{ $location['ward'] }}
-            </a>
-            <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
-                            'city' => str_slug($location['city']),
-                            'cityId' 			=> $design->city,
-                            'district' 		=> str_slug($location['district']),
-                            'districtId' 	=> $design->district]) }}">
-              {{ $location['district'] }}
-            </a>
-            <a href="{{ UrlHelper::index(ResourceOption::DU_AN, [
-                            'city' => str_slug($location['city']),
-                            'cityId' => $design->city]) }}">
-              {{ $location['city'] }}
-            </a>
+            @include('partial.resource._location', ['model' => $design])
           </address>
         </div>
         <div class="col-md-3">
@@ -103,7 +81,7 @@
 
     {{-- gallery section --}}
     {{-- */ $design->user_id = 1 /* --}}
-    @include('houses._gallery', ['model' => $design, 'resource' => ResourceOption::THIET_KE])
+    @include('partial.resource._gallery', ['model' => $design, 'resource' => ResourceOption::THIET_KE])
 
     <section class="article-description">
       {!! nl2br($design->description) !!}

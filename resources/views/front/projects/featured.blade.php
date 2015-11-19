@@ -1,10 +1,11 @@
 @extends('one_col_layout')
 
+@section('meta_title') Dự án nổi bật @stop
+@section('meta_description') Dự án nổi bật @stop
+
 @section('breadcrumb')
 	<li class="active">Dự án nổi bật</li>
 @stop
-@section('meta_title') Dự án nổi bật @stop
-@section('meta_description') Dự án nổi bật @stop
 
 @section('content')
 

@@ -1,10 +1,11 @@
 @extends('layout')
 
+@section('meta_title') {{ $label }} @stop
+@section('meta_description') {{ $label }} @stop
+
 @section('breadcrumb')
   <li class="active">{{ $label }}</li>
 @stop
-@section('meta_title') {{ $label }} @stop
-@section('meta_description') {{ $label }} @stop
 
 @section('content')
 

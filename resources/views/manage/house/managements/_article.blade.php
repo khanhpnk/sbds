@@ -1,15 +1,15 @@
 <article class="col-md-{{ $col or 4 }}">
   <div class="thumb-item">
     <figure>
-      <a href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}" title="{{ $model->title }}">
+      <a href="{{ houseShowUrl($model->slug) }}" title="{{ $model->title }}">
         <img class="thumb-img" width="{{ $iw or 206 }}" height="150" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-cap">
       <header>
         <h3 class="thumb-header">
-          <span class="thumb-type">{{ IsSaleOption::getLabel($model->is_sale) }}</span>
-          <a href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}">{{ $model->title }}</a>
+          <span class="thumb-type">{{ saleLabel($model->is_sale) }}</span>
+          <a href="{{ houseShowUrl($model->slug) }}">{{ $model->title }}</a>
         </h3>
       </header>
 
@@ -32,7 +32,7 @@
       <span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->is_sale) }}</span>
     </footer>
 
-    <a class="btn btn-view btn-primary" href="{{ UrlHelper::show(ResourceOption::NHA_DAT, ['slug' => $model->slug]) }}" target="_blank" role="button">Xem</a>
+    <a class="btn btn-view btn-primary" href="{{ houseShowUrl($model->slug) }}" target="_blank" role="button">Xem</a>
 
     @if (IsOwnerOption::CHINH_CHU == $model->is_owner)
       <a class="btn btn-edit btn-primary" href="{{ UrlHelper::edit(ConstHelper::URI_CHINH_CHU, ['id' => $model->id]) }}" role="button">Sửa</a>

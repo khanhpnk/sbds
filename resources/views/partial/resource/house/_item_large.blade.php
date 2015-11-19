@@ -1,7 +1,7 @@
 <article class="col-md-6">
   <div class="thumb-item">
     <figure>
-      <a href="/nha-dat/{{ $model->slug }}" title="{{ $model->title }}">
+      <a href="{{ houseShowUrl($model->slug) }}" title="{{ $model->title }}">
         <img class="thumb-img" width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
@@ -9,7 +9,7 @@
       <header>
         <h3 class="thumb-header-big">
           <span class="thumb-type">{{ saleLabel($model->is_sale) }}</span>
-          <a href="/nha-dat/{{ $model->slug }}">{{ $model->title }}</a>
+          <a href="{{ houseShowUrl($model->slug) }}">{{ $model->title }}</a>
         </h3>
       </header>
 

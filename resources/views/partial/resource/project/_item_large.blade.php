@@ -1,7 +1,7 @@
 <article class="col-md-6">
   <div class="thumb-item-ds">
     <figure>
-      <a class="thumb-img-ds" href="{{ UrlHelper::show(ResourceOption::DU_AN, $model->slug) }}" title="{{ $model->title }}">
+      <a class="thumb-img-ds" href="{{ projectShowUrl($model->slug) }}" title="{{ $model->title }}">
         <img width="429" height="290" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
@@ -9,7 +9,7 @@
       <header>
         <h3 class="thumb-header-big">
           <span class="thumb-type">Dự án</span>
-          <a href="{{ UrlHelper::show(ResourceOption::DU_AN, $model->slug) }}" title="{{ $model->title }}">{{ $model->title }}</a>
+          <a href="{{ projectShowUrl($model->slug) }}" title="{{ $model->title }}">{{ $model->title }}</a>
         </h3>
       </header>
 

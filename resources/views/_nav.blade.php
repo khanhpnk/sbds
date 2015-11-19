@@ -18,7 +18,7 @@
   <ul class="nav navbar-nav navbar-right">
     <li><a href="/danh-sach-nha-dat?type=ban">NHÀ ĐẤT BÁN</a></li>
     <li><a href="/danh-sach-nha-dat?type=cho-thue">CHO THUÊ</a></li>
-    <li><a href="{{ route('project.index') }}">DỰ ÁN</a></li>
+    <li><a href="/du-an">DỰ ÁN</a></li>
     <li><a href="{{ route('front.company.index') }}">CÔNG TY</a></li>
     <li><a href="{{ route('front.design.index') }}">DỊCH VỤ</a></li>
     <li style="position: relative">

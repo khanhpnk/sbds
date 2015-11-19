@@ -1,10 +1,11 @@
 @extends('one_col_layout')
 
+@section('meta_title') Tin mới @stop
+@section('meta_description') Tin mới @stop
+
 @section('breadcrumb')
   <li class="active">Tin mới</li>
 @stop
-@section('meta_title') Tin mới @stop
-@section('meta_description') Tin mới @stop
 
 @section('content')
 

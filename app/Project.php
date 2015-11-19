@@ -66,17 +66,21 @@ class Project extends Model
     }
 
     /**
-     * Scope a query to show house is expired or not
+     * Xác định dự án là đã hết hạn hiển thị hay chưa
      *
+     * @param $query
      * @param boolean $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeExpired($query, $value)
+    public function scopeIsExpired($query, $value)
     {
+        $now = Carbon::now();
         if (true == $value) { // Expired
-            return $query->where('end_date', '<', Carbon::now());
+            return $query->where('start_date', '>', $now)
+                ->where('end_date', '<', $now);
         } else if (false == $value) { // UnExpired
-            return $query->where('end_date', '>=', Carbon::now());
+            return $query->where('start_date', '<=', $now)
+                ->where('end_date', '>=', $now);
         }
     }
 

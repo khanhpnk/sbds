@@ -108,21 +108,6 @@ class House extends Model
     }
 
     /**
-     * Scope a query to show house is expired or not
-     *
-     * @param boolean $value
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeExpired($query, $value)
-    {
-        if (true == $value) { // Expired
-            return $query->where('end_date', '<', Carbon::now());
-        } else if (false == $value) { // UnExpired
-            return $query->where('end_date', '>=', Carbon::now());
-        }
-    }
-
-    /**
      * Mutator: Slug, meta_title, meta_description should auto set
      *
      * @param string $value
