@@ -6,31 +6,9 @@
 		<section class="article-head">
 			<div class="row">
 				<div class="col-md-9">
-					{{-- */ $location = LocationHelper::full($house->city, $house->district, $house->ward) /* --}}
 					<address class="article-head-address">
 						Địa chỉ:
-						{{ $house->address }},
-						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
-                          'city' => str_slug($location['city']),
-                          'cityId' 			=> $house->city,
-                          'district' 		=> str_slug($location['district']),
-                          'districtId' 	=> $house->district,
-                          'ward' 				=> str_slug($location['ward']),
-                          'wardId' 			=> $house->ward]) }}">
-							{{ $location['ward'] }}
-						</a>,
-						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
-						              'city' => str_slug($location['city']),
-                          'cityId' 			=> $house->city,
-                          'district' 		=> str_slug($location['district']),
-                          'districtId' 	=> $house->district]) }}">
-							{{ $location['district'] }}
-						</a>,
-						<a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
-						              'city' => str_slug($location['city']),
-						              'cityId' => $house->city]) }}">
-							{{ $location['city'] }}
-						</a>
+						@include('partial.resource._location', ['model' => $house])
 					</address>
 				</div>
 				<div class="col-md-3">
@@ -119,19 +97,15 @@
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
 				@foreach ($housesRelation as $relation)
-          @include('houses._article', ['model' => $relation, 'resource' => ResourceOption::NHA_DAT])
+					@include('partial.resource.house._item', ['model' => $relation])
 				@endforeach
 			</div>
-
-			<a class="btn btn-main" href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => IsSaleUriOption::getLabel($house->is_sale)]) }}" role="button">
-				<i class="fa fa-plus-square-o"></i> Xem thêm
-			</a>
 		</div>
 	</section>
 @stop
 
 @section('breadcrumb')
-	<li><a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, ['type' => IsSaleUriOption::getLabel($house->is_sale)]) }}">{{ IsSaleOption::getLabel($house->is_sale) }}</a></li>
+	<li><a href="/danh-sach-nha-dat?type={{ IsSaleUriOption::getLabel($house->is_sale) }}">{{ IsSaleOption::getLabel($house->is_sale) }}</a></li>
 	<li class="active">{{ $house->title }}</li>
 @stop
 

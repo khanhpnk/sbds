@@ -72,7 +72,7 @@
   <p class="footer-site-generator-title">CÔNG TY CP XÂY DỰNG VÀ PHÁT TRIỂN THƯƠNG HIỆU HOA LAN</p>
   <p>Copyright © 2010 - 2015 House360.vn ® Ghi rõ nguồn 'House360.vn' khi phát hành lại thông tin từ website này.<p>
   <p>Ngõ 105 Láng Hạ, Đống Đa, Hà Nội</p>
-  <p>Hotline: 04 66 836 456 | 0983600123 - Email: hoúe360.vn@gmail.com</p>
+  <p>Hotline: 04 66 836 456 | 0983600123 - Email: house360.vn@gmail.com</p>
 
   <div class="social-container footer-social">
     <a class="social-facebook" target="_blank" href="https://www.facebook.com/House360-402698543267613/timeline"></a>
