@@ -27,6 +27,10 @@
 	@include('partial.resource._contact')
 @stop
 
+@section('javascript')
+	@parent
+@stop
+
 @section('content')
 
 	<article class="article">
