@@ -115,7 +115,7 @@ i {
   border-right: 9px solid #3CB371;
 }
 .thumb-item {
-  border: 1px dashed #777;
+  border: 1px solid #ebebeb;
   border-right: none;
   border-top: none;
   display: block;

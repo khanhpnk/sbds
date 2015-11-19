@@ -92,7 +92,7 @@
   display: block;
   font-size: 13px;
   margin-bottom: 30px;
-  border: 1px dashed #777;
+  border: 1px solid #ebebeb;
 }
 .thumb-img-ds {
   display: block;
@@ -123,7 +123,7 @@
   display: block;
   font-size: 13px;
   margin-bottom: 30px;
-  border: 1px dashed #777;
+  border: 1px solid #ebebeb;
   background-color: #F5F5F5;
 }
 .thumb-img-s {
