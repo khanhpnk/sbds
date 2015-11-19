@@ -7,7 +7,6 @@
 @section('meta_description') Tin mới @stop
 
 @section('content')
-
 	<header><h1 class="thumb-title">Tin mới</h1></header>
 	{{-- */ $i = 1; /* --}}
 	@if (0 < count($houses))
@@ -16,9 +15,9 @@
 				<div class="row">
 					@foreach ($houses as $house)
 						@if (in_array($i++, [1, 2, 11, 12]))
-							@include('front.houses._item_large', ['model' => $house])
+							@include('partial.resource.house._item_large', ['model' => $house])
 						@else
-							@include('front.houses._item', ['model' => $house, 'col' => 3])
+							@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 						@endif
 					@endforeach
 				</div>

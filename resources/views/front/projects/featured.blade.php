@@ -16,9 +16,9 @@
 				<div class="row">
 					@foreach ($projects as $project)
 						@if (in_array($i++, [1, 2, 11, 12]))
-							@include('front.projects._item_large', ['model' => $project])
+							@include('partial.resource.project._item_large', ['model' => $project])
 						@else
-							@include('front.projects._item', ['model' => $project, 'col' => 3])
+							@include('partial.resource.project._item', ['model' => $project, 'col' => 3])
 						@endif
 					@endforeach
 				</div>

@@ -7,7 +7,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesFeatured as $house)
-						@include('front.houses._item_large', ['model' => $house])
+						@include('partial.resource.house._item_large', ['model' => $house])
 					@endforeach
 				</div>
 
@@ -22,7 +22,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesNew as $house)
-						@include('front.houses._item', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 
@@ -37,7 +37,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projectsFeatured as $project)
-						@include('front.projects._item_large', ['model' => $project])
+						@include('partial.resource.project._item_large', ['model' => $project])
 					@endforeach
 				</div>
 
@@ -52,7 +52,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesSale as $house)
-						@include('houses._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 
@@ -67,7 +67,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesRent as $house)
-						@include('houses._article', ['model' => $house, 'col' => 3, 'resource' => ResourceOption::NHA_DAT])
+						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
 
@@ -82,7 +82,7 @@
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($projects as $project)
-						@include('front.projects._item', ['model' => $project, 'col' => 3, 'resource' => ResourceOption::DU_AN])
+						@include('partial.resource.project._item', ['model' => $project, 'col' => 3])
 					@endforeach
 				</div>
 
