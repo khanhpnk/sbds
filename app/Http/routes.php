@@ -23,9 +23,6 @@ Route::get('du-an/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}'
 
 /* House */
 Route::get('nha-dat/{house}', ['uses' => 'HouseController@show', 'as' => 'house.show']);
-Route::get('danh-sach-nha-dat/{type}/{city?}/{cityId?}/{district?}/{districtId?}/{ward?}/{wardId?}', [
-    'uses' => 'HouseController@index', 'as' => 'house.index'
-]);
 
 //Route::get('cong-ty/{company}/{filter}', ['uses' => 'CompanyController@houseList', 'as' => 'company.houseList']);
 
@@ -143,4 +140,6 @@ Route::group(['namespace' => 'Front'], function() {
     Route::get('tin-noi-bat', 'HouseController@featured');
     Route::get('tin-moi', 'HouseController@lastest');
     Route::get('du-an-noi-bat', 'ProjectController@featured');
+
+    Route::get('danh-sach-nha-dat', 'HouseController@index');
 });

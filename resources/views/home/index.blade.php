@@ -11,7 +11,7 @@
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", 'ban') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="/tin-noi-bat" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -26,7 +26,7 @@
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", 'ban') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="/tin-moi" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -41,14 +41,14 @@
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("project.index") }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="/du-an-noi-bat" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
 
 	@if (0 < count($housesSale))
 		<section class="list">
-			<header><h1 class="thumb-title"><a href="{{ route('house.index', 'ban') }}">Nhà đất bán</a></h1></header>
+			<header><h1 class="thumb-title"><a href="/danh-sach-nha-dat?type=ban">Nhà đất bán</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesSale as $house)
@@ -56,14 +56,14 @@
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", 'ban') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="/danh-sach-nha-dat?type=ban" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
 
 	@if (0 < count($housesRent))
 		<section class="list">
-			<header><h1 class="thumb-title"><a href="{{ route('house.index', 'cho-thue') }}">Nhà đất cho thuê</a></h1></header>
+			<header><h1 class="thumb-title"><a href="/danh-sach-nha-dat?type=cho-thue">Nhà đất cho thuê</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
 					@foreach ($housesRent as $house)
@@ -71,7 +71,7 @@
 					@endforeach
 				</div>
 
-				<a class="btn btn-main" href="{{ route("house.index", 'cho-thue') }}" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
+				<a class="btn btn-main" href="/danh-sach-nha-dat?type=cho-thue" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif

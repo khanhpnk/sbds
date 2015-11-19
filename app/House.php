@@ -57,13 +57,34 @@ class House extends Model
     ];
 
     /**
-     * Scope a query to show house is sale or rent
+     * Xác định nhà đất là bán hay cho thuê
      *
+     * @param $query
+     * @param int $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeIsSale($query, $value)
     {
         return $query->where('is_sale', $value);
+    }
+
+    /**
+     * Xác định nhà đất là đã hết hạn hiển thị hay chưa
+     *
+     * @param $query
+     * @param boolean $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsExpired($query, $value)
+    {
+        $now = Carbon::now();
+        if (true == $value) { // Expired
+            return $query->where('start_date', '>', $now)
+                ->where('end_date', '<', $now);
+        } else if (false == $value) { // UnExpired
+            return $query->where('start_date', '<=', $now)
+                ->where('end_date', '>=', $now);
+        }
     }
 
     /**
@@ -100,25 +121,6 @@ class House extends Model
             return $query->where('end_date', '>=', Carbon::now());
         }
     }
-
-    /**
-     * Xác định nhà đất là đã hết hạn hiển thị hay chưa
-     *
-     * @param boolean $value
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeIsExpired($query, $value)
-    {
-        $now = Carbon::now();
-        if (true == $value) { // Expired
-            return $query->where('start_date', '>', $now)
-                         ->where('end_date', '<', $now);
-        } else if (false == $value) { // UnExpired
-            return $query->where('start_date', '<=', $now)
-                         ->where('end_date', '>=', $now);
-        }
-    }
-
 
     /**
      * Mutator: Slug, meta_title, meta_description should auto set

@@ -17,9 +17,7 @@
   <div class="thumb thumb-br-default clearfix">
     <div class="row">
       @if (!is_null($houseSaleRecommend))
-        @include('houses._article', ['model' => $houseSaleRecommend,
-                                     'resource' => ResourceOption::NHA_DAT,
-                                     'col' => 12, 'iw' => 184, 'ih' => 125])
+        @include('partial.resource.house._item', ['model' => $houseSaleRecommend, 'col' => 12, 'iw' => 184, 'ih' => 125])
       @endif
     </div>
   </div>
@@ -28,9 +26,7 @@
   <div class="thumb thumb-br-default clearfix">
     <div class="row">
       @if (!is_null($houseRentRecommend))
-        @include('houses._article', ['model' => $houseRentRecommend,
-                                     'resource' => ResourceOption::NHA_DAT,
-                                     'col' => 12, 'iw' => 184, 'ih' => 125])
+        @include('partial.resource.house._item', ['model' => $houseRentRecommend, 'col' => 12, 'iw' => 184, 'ih' => 125])
       @endif
     </div>
   </div>
@@ -39,9 +35,7 @@
   <div class="thumb thumb-br-default clearfix">
     <div class="row">
       @if (!is_null($houseProjectRecommend))
-        @include('projects._article', ['model' => $houseProjectRecommend,
-                                      'resource' => ResourceOption::DU_AN,
-                                      'col' => 12, 'iw' => 184, 'ih' => 125])
+        @include('partial.resource.project._item', ['model' => $houseProjectRecommend, 'col' => 12, 'iw' => 184, 'ih' => 125])
       @endif
     </div>
   </div>

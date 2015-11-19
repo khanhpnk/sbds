@@ -13,7 +13,9 @@
         </h3>
       </header>
 
-      @include('partial.resource._location')
+      <address class="thumb-address">
+        @include('partial.resource._location')
+      </address>
 
     </div>
     <div class="thumb-description">
