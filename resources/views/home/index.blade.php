@@ -2,7 +2,7 @@
 
 @section('content')
 	@if (0 < count($housesFeatured))
-		<section class="list">
+		<section>
 			<header><h1 class="thumb-title"><a href="/tin-noi-bat">Tin nổi bật</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -15,7 +15,7 @@
 	@endif
 
 	@if (0 < count($housesNew))
-		<section class="list">
+		<section>
 			<header><h1 class="thumb-title"><a href="/tin-moi">Tin mới</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -28,7 +28,7 @@
 	@endif
 
 	@if (0 < count($projectsFeatured))
-		<section class="list">
+		<section>
 			<header><h1 class="thumb-title"><a href="/du-an-noi-bat">Dự án nổi bật</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -41,7 +41,7 @@
 	@endif
 
 	@if (0 < count($housesSale))
-		<section class="list">
+		<section>
 			<header><h1 class="thumb-title"><a href="/danh-sach-nha-dat?type=ban">Nhà đất bán</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -54,7 +54,7 @@
 	@endif
 
 	@if (0 < count($housesRent))
-		<section class="list">
+		<section>
 			<header><h1 class="thumb-title"><a href="/danh-sach-nha-dat?type=cho-thue">Nhà đất cho thuê</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -67,7 +67,7 @@
 	@endif
 
 	@if (0 < count($projects))
-		<section class="list">
+		<section>
 			<header><h1 class="thumb-title"><a href="/du-an">Dự án</a></h1></header>
 			<div class="thumb thumb-br-default clearfix">
 				<div class="row">
@@ -80,6 +80,7 @@
 	@endif
 
 	<section>
+		<header><h1 class="thumb-title">Dịch vụ thiết kế thi công</h1></header>
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
 				@include('front.designs._static', ['title' => 'Dịch vụ thiết kế nhà', 'img' => 'thiet-ke-nha.jpg'])

@@ -47,6 +47,7 @@
 	@endif
 
 	<section>
+		<header><h1 class="thumb-title">Dịch vụ thiết kế thi công</h1></header>
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
 				@include('front.designs._static', ['title' => 'Dịch vụ thiết kế nhà', 'img' => 'thiet-ke-nha.jpg'])
