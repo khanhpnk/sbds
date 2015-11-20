@@ -44,13 +44,8 @@
       <div class="form-search-inner clearfix">
 
         <form class="form-search form-inline pull-right" method="GET" action="" style="display: none">
-          <div class="form-group">
-            <label class="sr-only" for="search">Tìm kiếm</label>
-            <input type="text" id="search" class="form-control" placeholder="Tìm kiếm">
-          </div>
-          <button type="submit" class="btn">
-            <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
-          </button>
+          <input type="text" id="search" class="form-control" placeholder="Tìm kiếm">
+          <button type="submit" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
         </form>
 
         <button type="button" class="btn btn-info btn-collapse-search pull-right"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></button>

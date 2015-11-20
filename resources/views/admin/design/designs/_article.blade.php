@@ -12,31 +12,10 @@
         </h3>
       </header>
 
-      {{-- */ $location = LocationHelper::full($model->city, $model->district, $model->ward) /* --}}
       <address class="thumb-address">
-        {{ $model->address }},
-        <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
-                      'city' => str_slug($location['city']),
-                      'cityId' => $model->city,
-                      'district' => str_slug($location['district']),
-                      'districtId' => $model->district,
-                      'ward' => str_slug($location['ward']),
-                      'wardId' => $model->ward]) }}">
-          {{ $location['ward'] }}
-        </a>
-        <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
-                      'city' => str_slug($location['city']),
-                      'cityId' => $model->city,
-                      'district' => str_slug($location['district']),
-                      'districtId' => $model->district]) }}">
-          {{ $location['district'] }}
-        </a>
-        <a href="{{ UrlHelper::index(ResourceOption::NHA_DAT, [
-                      'city' => str_slug($location['city']),
-                      'cityId' => $model->city]) }}">
-          {{ $location['city'] }}
-        </a>
+        @include('partial.resource._location')
       </address>
+
     </div>
     <footer class="thumb-footer-ds clearfix">
       <div class="pull-left">{{ $model->land_m2 }}m2</div>

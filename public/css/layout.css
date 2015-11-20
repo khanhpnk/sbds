@@ -71,7 +71,7 @@ i {
 }
 .user-nav-header,
 .user-nav-big-link {
-  font-size: 16px;
+  font-size: 15px;
   padding: 2px 8px;
   color: #337AB7;
   text-transform: uppercase;
@@ -98,7 +98,6 @@ i {
 /*********** *********** *********** MAIN: END RELATION SECTION MODULE *********** *********** ***********/
 /*********** *********** *********** MAIN:HOUSE THUMB MODULE *********** *********** ***********/
 .thumb {
-  border-bottom: 1px dashed #777;
   margin: 20px 0;
   padding-bottom: 20px;
 }
@@ -367,6 +366,7 @@ i {
 }
 .form-search-inner {
   opacity: 1;
+  position: relative;
 }
 .form-search-bottom {
   bottom: 0;
@@ -382,11 +382,14 @@ i {
   top: 0;
   right: 0;
   width: auto;
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+  padding: 0;
 }
-.form-search-top .form-search-inner {
-  top: 0;
-  right: 0;
-  width: auto;
+.form-search-top input {
+  border-radius: 0;
+  display: block;
 }
 .select2-container {
   min-width: 150px;
@@ -403,22 +406,16 @@ i {
 }
 .btn-collapse-search {
   border-radius: 0;
-  margin: 0 10px;
+  margin-left: 10px;
 }
 /* search2 */
 .form-search button {
   border: 0;
   background: none;
-  /** belows styles are working good */
-  padding: 2px 5px;
   margin-top: 2px;
-  position: relative;
-  left: -28px;
-  /* IE7-8 doesn't have border-radius, so don't indent the padding */
-  margin-bottom: 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 #search:focus + button {
   z-index: 3;

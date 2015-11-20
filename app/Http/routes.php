@@ -72,6 +72,9 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
             'destroy' => 'admin.article.destroy',
         ]
     ]);
+
+    Route::get('up-bai', 'ManagementController@index');
+
     Route::group(['namespace' => 'Service'], function() {
         Route::resource('cong-ty', 'CompanyController', [
             'except' => 'show', 'destroy', 'create', 'store',

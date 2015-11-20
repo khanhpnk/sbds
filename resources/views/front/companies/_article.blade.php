@@ -14,7 +14,8 @@
       </header>
     </div>
     <footer class="thumb-footer-ds clearfix">
-      <div class="pull-left">{{ $model->created_at }}</div>
+      <div class="pull-left">Mã số:0{{ $model->id }}</div>
+      <div class="pull-right">{{ $model->created_at }}</div>
     </footer>
   </div>
 </article>

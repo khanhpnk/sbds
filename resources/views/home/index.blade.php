@@ -10,8 +10,6 @@
 						@include('partial.resource.house._item_large', ['model' => $house])
 					@endforeach
 				</div>
-
-				<a class="btn btn-main" href="/tin-noi-bat" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -25,8 +23,6 @@
 						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
-
-				<a class="btn btn-main" href="/tin-moi" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -40,8 +36,6 @@
 						@include('partial.resource.project._item_large', ['model' => $project])
 					@endforeach
 				</div>
-
-				<a class="btn btn-main" href="/du-an-noi-bat" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -55,8 +49,6 @@
 						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
-
-				<a class="btn btn-main" href="/danh-sach-nha-dat?type=ban" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -70,8 +62,6 @@
 						@include('partial.resource.house._item', ['model' => $house, 'col' => 3])
 					@endforeach
 				</div>
-
-				<a class="btn btn-main" href="/danh-sach-nha-dat?type=cho-thue" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
@@ -85,8 +75,6 @@
 						@include('partial.resource.project._item', ['model' => $project, 'col' => 3])
 					@endforeach
 				</div>
-
-				<a class="btn btn-main" href="/du-an" role="button"><i class="fa fa-plus-square-o"></i> Xem thêm</a>
 			</div>
 		</section>
 	@endif
