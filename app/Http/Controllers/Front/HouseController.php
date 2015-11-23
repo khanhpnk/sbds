@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Repositories\Resource\House\IsSaleOptions;
+use App\Repositories\Resource\House\SaleTypeOptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\House;
@@ -22,13 +22,17 @@ class HouseController extends Controller
         if ($request->has('type')) {
             switch ($request->get('type')) {
                 case 'ban':
-                    $houses = $houses->isSale(IsSaleOptions::BAN);
+                    $houses = $houses->saleType(SaleTypeOptions::BAN);
                     $label = 'Nhà đất bán';
                     break;
                 case 'cho-thue':
-                    $houses = $houses->isSale(IsSaleOptions::CHO_THUE);
+                    $houses = $houses->saleType(SaleTypeOptions::CHO_THUE);
                     $label = 'Nhà đất cho thuê';
                     break;
+            }
+
+            if ($request->has('cat')) {
+                $houses = $houses->category($request->get('cat'));
             }
         }
 
@@ -81,20 +85,20 @@ class HouseController extends Controller
     {
         $housesRelation = House::orderBy('id', 'desc')
             ->isExpired(false)
-            ->isSale($house->is_sale)
+            ->saleType($house->sale_type)
             ->limit(3)->get();
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $house->user_id)->first();
 
         $preview = House::isExpired(false)
-            ->isSale($house->is_sale)
+            ->saleType($house->sale_type)
             ->where('id', '<', $house->id)
             ->orderBy('id', 'desc')
             ->first();
 
         $next = House::isExpired(false)
-            ->isSale($house->is_sale)
+            ->saleType($house->sale_type)
             ->where('id', '>', $house->id)
             ->orderBy('id', 'asc')
             ->first();

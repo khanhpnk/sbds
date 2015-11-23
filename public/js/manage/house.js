@@ -41,7 +41,7 @@ var houseModule = (function() {
   };
 
   var radioEventListener = function() {
-    $("input:radio[name=is_sale]").on("change", function () {
+    $("input:radio[name=sale_type]").on("change", function () {
       var moneyUnit; var category;
 
       switch(this.value) {
@@ -93,7 +93,7 @@ var houseModule = (function() {
         city: {required: true},
         district: {required: true},
         ward: {required: true},
-        address: {maxlength: 32},
+        address: {maxlength: 16},
         youtube: {url: true},
         description: {rangelength: [8, 6000], required: true},
         m2: {numberComma: true, maxlength: 12},

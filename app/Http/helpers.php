@@ -1,11 +1,20 @@
 <?php
 /**
- * @param int $isSale
+ * @param int $saleType
  * @return string
  */
-function saleLabel($isSale) {
-    return \App\Repositories\Resource\House\IsSaleOptions::getLabel($isSale);
+function saleTypeLabel($saleType) {
+    return \App\Repositories\Resource\House\SaleTypeOptions::getLabel($saleType);
 }
+
+/**
+ * @param int $ownerType
+ * @return string
+ */
+function ownerTypeLabel($ownerType) {
+    return \App\Repositories\Resource\House\OwnerTypeOptions::getLabel($ownerType);
+}
+
 /**
  * @param string $slug
  * @return string

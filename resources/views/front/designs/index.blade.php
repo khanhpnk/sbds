@@ -37,13 +37,49 @@
 	</section>
 
 	@if (0 < count($architectures))
-		@include('front.designs._section', ['houses' => $architectures, 'title' => 'Kiến trúc'])
+		<section>
+			<header>
+				<h1 class="thumb-title"><a href="#">Kiến trúc</a></h1>
+				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
+			</header>
+			<div class="thumb thumb-br-default clearfix">
+				<div class="row">
+					@foreach ($architectures as $house)
+						@include('front.designs._article', ['model' => $house, 'col' => 3])
+					@endforeach
+				</div>
+			</div>
+		</section>
 	@endif
 	@if (0 < count($furnitures))
-		@include('front.designs._section', ['houses' => $architectures, 'title' => 'Nội thất'])
+		<section>
+			<header>
+				<h1 class="thumb-title"><a href="#">Nội thất</a></h1>
+				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
+			</header>
+			<div class="thumb thumb-br-default clearfix">
+				<div class="row">
+					@foreach ($furnitures as $house)
+						@include('front.designs._article', ['model' => $house, 'col' => 3])
+					@endforeach
+				</div>
+			</div>
+		</section>
 	@endif
 	@if (0 < count($constructions))
-		@include('front.designs._section', ['houses' => $architectures, 'title' => 'Thi công'])
+		<section>
+			<header>
+				<h1 class="thumb-title"><a href="#">Thi công</a></h1>
+				{{--<nav class="simple-pagination">{!! $architectures->render() !!}</nav>--}}
+			</header>
+			<div class="thumb thumb-br-default clearfix">
+				<div class="row">
+					@foreach ($constructions as $house)
+						@include('front.designs._article', ['model' => $house, 'col' => 3])
+					@endforeach
+				</div>
+			</div>
+		</section>
 	@endif
 
 	<section>

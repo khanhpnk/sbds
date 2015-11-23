@@ -24,7 +24,7 @@ var projectModule = (function() {
         city: {required: true},
         district: {required: true},
         ward: {required: true},
-        address: {maxlength: 32},
+        address: {maxlength: 16},
         youtube: {url: true},
       },
       highlight: function(element) {

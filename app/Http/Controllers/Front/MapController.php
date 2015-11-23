@@ -6,7 +6,7 @@ use App\House;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MapRequest;
 use App\Project;
-use App\Repositories\Resource\House\IsSaleOptions;
+use App\Repositories\Resource\House\SaleTypeOptions;
 
 class MapController extends Controller
 {
@@ -18,14 +18,15 @@ class MapController extends Controller
     {
         if ($request->ajax()) {
             switch ($request->input('type')) {
-                case self::NHA_DAT_BAN:
-                    $markers = House::select('title', 'category', 'images', 'lat', 'lng', 'user_id')->isSale(IsSaleOptions::BAN);
-                    break;
                 case self::NHA_DAT_CHO_THUE:
-                    $markers = House::select('title', 'category', 'images', 'lat', 'lng', 'user_id')->isSale(IsSaleOptions::CHO_THUE);
+                    $markers = House::select('title', 'category', 'images', 'lat', 'lng', 'user_id')->saleType(SaleTypeOptions::CHO_THUE);
                     break;
                 case self::DU_AN:
                     $markers = Project::select('title', 'category', 'images', 'lat', 'lng', 'user_id');
+                    break;
+                case self::NHA_DAT_BAN:
+                default:
+                    $markers = House::select('title', 'category', 'images', 'lat', 'lng', 'user_id')->saleType(SaleTypeOptions::BAN);
                     break;
             }
 

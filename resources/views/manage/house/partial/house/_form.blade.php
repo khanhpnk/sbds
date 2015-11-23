@@ -9,8 +9,8 @@
       houseModule.setCheckUniqueUrl("{{ $checkUniqueUrl }}");
 			houseModule.setMoneyUnitSale({!! MoneyUnitSaleOption::getJsonOptions() !!});
       houseModule.setMoneyUnitRent({!! MoneyUnitRentOption::getJsonOptions() !!});
-      houseModule.setMoneyCategorySale({!! HouseCategorySaleOption::getJsonOptions() !!});
-      houseModule.setMoneyCategoryRent({!! HouseCategoryRentOption::getJsonOptions() !!});
+      houseModule.setMoneyCategorySale({!! \App\Repositories\Resource\House\Sale\CategoryOptions::getJsonOptions() !!});
+      houseModule.setMoneyCategoryRent({!! \App\Repositories\Resource\House\Rent\CategoryOptions::getJsonOptions() !!});
       houseModule.init();
 
       locationModule.setLocationDbJSON({
@@ -41,16 +41,16 @@
 
   <div class="row">
     <div class="col-md-2">
-      @include('partial.form._radio', ['name' => 'is_sale',
+      @include('partial.form._radio', ['name' => 'sale_type',
                                        'label' => 'Bán nhà',
-                                       'checked' => is_null($house) || (!is_null($house) && IsSaleOption::BAN == $house->is_sale) ? true : false,
-                                       'value' => IsSaleOption::BAN])
+                                       'checked' => is_null($house) || (!is_null($house) && \App\Repositories\Resource\House\SaleTypeOptions::BAN == $house->sale_type) ? true : false,
+                                       'value' => \App\Repositories\Resource\House\SaleTypeOptions::BAN])
     </div>
     <div class="col-md-2">
-      @include('partial.form._radio', ['name' => 'is_sale',
+      @include('partial.form._radio', ['name' => 'sale_type',
                                        'label' => 'Cho thuê',
-                                       'checked' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? true : false,
-                                       'value' => IsSaleOption::CHO_THUE])
+                                       'checked' => (!is_null($house) && \App\Repositories\Resource\House\SaleTypeOptions::CHO_THUE == $house->sale_type) ? true : false,
+                                       'value' => \App\Repositories\Resource\House\SaleTypeOptions::CHO_THUE])
     </div>
     <div class="col-md-4">
       @include('partial.form._text', ['model' => $house, 'name' => 'price', 'label' => 'Giá tiền', 'hideLable' => true])
@@ -58,7 +58,7 @@
     <div class="col-md-4">
       @include('partial.form._select2', ['name' => 'money_unit',
                                         'label' => 'Đơn vị',
-                                        'options' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
+                                        'options' => (!is_null($house) && \App\Repositories\Resource\House\SaleTypeOptions::CHO_THUE == $house->sale_type) ? MoneyUnitRentOption::getOptions() : MoneyUnitSaleOption::getOptions(),
                                         'value' => !is_null($house) ? $house->money_unit : null])
     </div>
   </div>
@@ -67,7 +67,7 @@
     <div class="col-md-4">
       @include('partial.form._select2', ['name' => 'category',
                                         'label' => 'Loại BĐS',
-                                        'options' => (!is_null($house) && IsSaleOption::CHO_THUE == $house->is_sale) ? HouseCategoryRentOption::getOptions() : HouseCategorySaleOption::getOptions(),
+                                        'options' => (!is_null($house) && \App\Repositories\Resource\House\SaleTypeOptions::CHO_THUE == $house->sale_type) ? \App\Repositories\Resource\House\Rent\CategoryOptions::getOptions() : \App\Repositories\Resource\House\Sale\CategoryOptions::getOptions(),
                                         'value' => !is_null($house) ? $house->category : null])
     </div>
     <div class="col-md-4">

@@ -40,6 +40,16 @@ class Project extends Model
     ];
 
     /**
+     * @param $query
+     * @param int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCategory($query, $value)
+    {
+        return $query->where('category', $value);
+    }
+
+    /**
      * Mutator: Slug, meta_title, meta_description should auto set
      *
      * @param string $value

@@ -118,6 +118,7 @@ i {
   border-top: none;
   display: block;
   font-size: 13px;
+  position: relative;
 }
 .thumb-img:hover {
   opacity: 0.8;
@@ -169,6 +170,15 @@ i {
 }
 .thumb-m2 {
   float: right;
+}
+.thumb-owner-type {
+  background-color: #f70000;
+  color: #fff;
+  left: 0;
+  opacity: 0.6;
+  padding: 0 10px;
+  position: absolute;
+  top: 0;
 }
 /* THUMB EXTEND */
 .thumb-title {

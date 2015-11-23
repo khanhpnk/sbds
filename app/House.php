@@ -13,9 +13,9 @@ class House extends Model
      * @var array
      */
     protected $fillable = [
-        'is_owner',
+        'owner_type',
         'title',
-        'is_sale',
+        'sale_type',
         'is_sold',
         'price',
         'money_unit',
@@ -63,9 +63,19 @@ class House extends Model
      * @param int $value
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeIsSale($query, $value)
+    public function scopeSaleType($query, $value)
     {
-        return $query->where('is_sale', $value);
+        return $query->where('sale_type', $value);
+    }
+
+    /**
+     * @param $query
+     * @param int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeCategory($query, $value)
+    {
+        return $query->where('category', $value);
     }
 
     /**
@@ -94,7 +104,7 @@ class House extends Model
      */
     public function scopeIsOwner($query, $value)
     {
-        return $query->where('is_owner', $value);
+        return $query->where('owner_type', $value);
     }
 
     /**

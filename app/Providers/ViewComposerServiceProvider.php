@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use App\Design;
-use App\Repositories\Resource\House\IsSaleOptions;
+use App\Repositories\Resource\House\SaleTypeOptions;
 use Illuminate\Support\ServiceProvider;
 use App\House;
 use App\Project;
-use IsSaleOption;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
@@ -43,12 +42,12 @@ class ViewComposerServiceProvider extends ServiceProvider
             // recommend
         	$view->with('houseSaleRecommend', House::orderBy('id', 'desc')
                 ->isExpired(false)
-                ->isSale(IsSaleOptions::BAN)
+                ->saleType(SaleTypeOptions::BAN)
                 ->first());
 
             $view->with('houseRentRecommend', House::orderBy('id', 'desc')
                 ->isExpired(false)
-                ->isSale(IsSaleOptions::CHO_THUE)
+                ->saleType(SaleTypeOptions::CHO_THUE)
                 ->first());
 
             $view->with('houseProjectRecommend', Project::orderBy('id', 'desc')

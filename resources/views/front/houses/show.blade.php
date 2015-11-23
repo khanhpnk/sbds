@@ -4,7 +4,7 @@
 @section('meta_description'){{ $house->meta_description }}@stop
 
 @section('breadcrumb')
-	<li><a href="/danh-sach-nha-dat?type={{ str_slug(saleLabel($house->is_sale)) }}">{{ saleLabel($house->is_sale) }}</a></li>
+	<li><a href="/danh-sach-nha-dat?type={{ str_slug(saleTypeLabel($house->sale_type)) }}">{{ saleTypeLabel($house->sale_type) }}</a></li>
 	<li class="active">{{ $house->title }}</li>
 @stop
 
@@ -51,7 +51,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8">
-					<div class="article-head-price">Giá: {{ MoneyHelper::price($house->price, $house->money_unit, $house->is_sale) }}</div>
+					<div class="article-head-price">Giá: {{ MoneyHelper::price($house->price, $house->money_unit, $house->sale_type) }}</div>
 				</div>
 				<div class="col-md-2">
 					<div class="article-head-code">MS{{ $house->id }}</div>

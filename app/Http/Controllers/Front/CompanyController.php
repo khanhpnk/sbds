@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Resource\House\OwnerTypeOptions;
 use App\User;
 use App\Company;
 use App\House;
@@ -14,8 +15,8 @@ class CompanyController extends Controller
     private function _houseList(Company $company)
     {
         return House::where('user_id', $company->user_id)
-            ->isOwner(IsOwnerOption::MOI_GIOI)
-            ->isSold(IsSoldOption::CHUA_BAN)
+            ->isOwner(OwnerTypeOptions::MOI_GIOI)
+            ->isSold(OwnerTypeOptions::CHUA_BAN)
             ->isExpired(false)
             ->orderBy('id', 'desc');
     }
@@ -23,8 +24,8 @@ class CompanyController extends Controller
     private function _soldHouseList(Company $company)
     {
         return House::where('user_id', $company->user_id)
-            ->isOwner(IsOwnerOption::MOI_GIOI)
-            ->isSold(IsSoldOption::DA_BAN)
+            ->isOwner(OwnerTypeOptions::MOI_GIOI)
+            ->isSold(OwnerTypeOptions::DA_BAN)
             ->orderBy('id', 'desc');
     }
 

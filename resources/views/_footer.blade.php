@@ -12,9 +12,9 @@
   <li class="col-md-15">
     <ul>
       <li class="footer-header">Dịch Vụ Thiết Kế</li>
-      <li><a href="#"><i class="fa fa-link"></i>Biệt thự phố</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Biệt thự vườn</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà phố</a></li>
+      <li><a href="/thiet-ke-biet-thu-pho"><i class="fa fa-link"></i>Biệt thự phố</a></li>
+      <li><a href="/thiet-ke-biet-thu-vuon"><i class="fa fa-link"></i>Biệt thự vườn</a></li>
+      <li><a href="/thiet-ke-nha-pho"><i class="fa fa-link"></i>Nhà phố</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Hiện đại</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Cổ điển</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Căn hộ</a></li>
@@ -27,43 +27,43 @@
   <li class="col-md-15">
     <ul>
       <li class="footer-header">Nhà Đất Bán</li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà riêng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Căn hộ</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà biệt thự, liền kề</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà mặt phố</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Đất nền dự án</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Đất</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Kho, nhà xưởng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Trang trại, khu nghỉ dưỡng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Thể loại khác</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_RIENG }}"><i class="fa fa-link"></i>Nhà riêng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::CAN_HO }}"><i class="fa fa-link"></i>Căn hộ</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_BIET_THU }}"></i>Nhà biệt thự, liền kề</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_MAT_PHO }}"><i class="fa fa-link"></i>Nhà mặt phố</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::DAT_NEN_DU_AN }}"><i class="fa fa-link"></i>Đất nền dự án</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::DAT }}"><i class="fa fa-link"></i>Đất</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::KHO_NHA_XUONG }}"><i class="fa fa-link"></i>Kho, nhà xưởng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::TRANG_TRAI }}"><i class="fa fa-link"></i>Trang trại, khu nghỉ dưỡng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::KHAC }}"><i class="fa fa-link"></i>Thể loại khác</a></li>
     </ul>
   </li>
   <li class="col-md-15">
     <ul>
       <li class="footer-header">Nhà Đất Cho Thuê</li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà riêng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Căn hộ</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà biệt thự, liền kề</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà mặt phố</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Đất nền dự án</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Đất</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Kho, nhà xưởng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nhà trọ</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Văn phòng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Kiot, cửa hàng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_RIENG }}"><i class="fa fa-link"></i>Nhà riêng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::CAN_HO }}"><i class="fa fa-link"></i>Căn hộ</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_BIET_THU }}"><i class="fa fa-link"></i>Nhà biệt thự, liền kề</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_MAT_PHO }}"><i class="fa fa-link"></i>Nhà mặt phố</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::DAT_NEN_DU_AN }}"><i class="fa fa-link"></i>Đất nền dự án</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::DAT }}"><i class="fa fa-link"></i>Đất</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHO_NHA_XUONG }}"><i class="fa fa-link"></i>Kho, nhà xưởng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_TRO }}"><i class="fa fa-link"></i>Nhà trọ</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::VAN_PHONG }}"><i class="fa fa-link"></i>Văn phòng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHAC }}""><i class="fa fa-link"></i>Kiot, cửa hàng</a></li>
     </ul>
   </li>
   <li class="col-md-15">
     <ul>
       <li class="footer-header">Dự Án</li>
-      <li><a href="#"><i class="fa fa-link"></i>Thương mại dịch vụ</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Du lịch nghỉ dưỡng</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Căn hộ chung cư</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Văn phòng cao ốc</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Khu công nghiệp</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Khu đô thị mới</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Khu phức hợp</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Khu dân cư</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::THUONG_MAI_DICH_VU }}"><i class="fa fa-link"></i>Thương mại dịch vụ</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::DU_LICH_NGHI_DUONG }}"><i class="fa fa-link"></i>Du lịch nghỉ dưỡng</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::CAN_HO_CHUNG_CU }}"><i class="fa fa-link"></i>Căn hộ chung cư</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::VAN_PHONG_CAO_OC }}"><i class="fa fa-link"></i>Văn phòng cao ốc</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_CONG_NGHIEP }}"><i class="fa fa-link"></i>Khu công nghiệp</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_DO_THI_MOI }}"><i class="fa fa-link"></i>Khu đô thị mới</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_PHUC_HOP }}"><i class="fa fa-link"></i>Khu phức hợp</a></li>
+      <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_DAN_CU }}"><i class="fa fa-link"></i>Khu dân cư</a></li>
     </ul>
   </li>
 </ul>

@@ -2,13 +2,13 @@
   <div class="thumb-item">
     <figure>
       <a href="{{ houseShowUrl($model->slug) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="433" height="290" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img class="thumb-img" width="429" height="310" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-big">
       <header>
         <h3 class="thumb-header-big">
-          <span class="thumb-type">{{ saleLabel($model->is_sale) }}</span>
+          <span class="thumb-type">{{ saleTypeLabel($model->sale_type) }}</span>
           <a href="{{ houseShowUrl($model->slug) }}">{{ $model->title }}</a>
         </h3>
       </header>
@@ -26,8 +26,9 @@
       </div>
     </div>
     <footer class="thumb-footer clearfix">
-      <span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->is_sale) }}</span>
+      <span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->sale_type) }}</span>
       <div class="thumb-date pull-right"><time>{{ $model->start_date }}</time></div>
     </footer>
+    <div class="thumb-owner-type">{{ ownerTypeLabel($model->owner_type) }}</div>
   </div>
 </article>

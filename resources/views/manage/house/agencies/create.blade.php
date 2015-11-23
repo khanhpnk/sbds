@@ -31,7 +31,7 @@
       <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body">
           <form accept-charset="UTF-8" enctype="multipart/form-data" action="{{ route('m.agency.store') }}" method="POST" role="form" id="houseForm">
-            <input type="hidden" id="is_owner" name="is_owner" value="{{ IsOwnerOption::MOI_GIOI  }}">
+            <input type="hidden" id="owner_type" name="owner_type" value="{{ \App\Repositories\Resource\House\OwnerTypeOptions::MOI_GIOI  }}">
             @include('manage.house.partial.house._form', [
               'submitBtnText' => 'Đăng tin ngay',
               'checkUniqueUrl' => route('agency.unique')

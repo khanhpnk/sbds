@@ -4,11 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\House;
 use App\Http\Controllers\Controller;
-use App\Repositories\Resource\House\IsSaleOptions;
+use App\Repositories\Resource\House\SaleTypeOptions;
 use Illuminate\Http\Request;
 use App\Project;
-use Illuminate\Support\Facades\DB;
-use IsOwnerOption;
 
 class ManagementController extends Controller
 {
@@ -21,10 +19,10 @@ class ManagementController extends Controller
                     $resources = House::orderBy('id', 'desc')->paginate(6);
                     break;
                 case 1: // ban
-                    $resources = House::orderBy('id', 'desc')->isSale(IsSaleOptions::BAN)->paginate(6);
+                    $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::BAN)->paginate(6);
                     break;
                 case 2: // cho thue
-                    $resources = House::orderBy('id', 'desc')->isSale(IsSaleOptions::CHO_THUE)->paginate(6);
+                    $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::CHO_THUE)->paginate(6);
                     break;
                 case 3: // du an
                     $resources = Project::orderBy('id', 'desc')->paginate(6);

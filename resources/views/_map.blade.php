@@ -18,11 +18,11 @@
         var category = {};
         switch($(this).val()) {
           case '1':
-            category = {!! HouseCategorySaleOption::getJsonOptions() !!}; break;
+            category = {!! \App\Repositories\Resource\House\Sale\CategoryOptions::getJsonOptions() !!}; break;
           case '2':
-            category = {!! HouseCategoryRentOption::getJsonOptions() !!}; break;
+            category = {!! \App\Repositories\Resource\House\Rent\CategoryOptions::getJsonOptions() !!}; break;
           case '3':
-            category = {!! ProjectCategoryOption::getJsonOptions() !!}; break;
+            category = {!! \App\Repositories\Resource\Project\CategoryOptions::getJsonOptions() !!}; break;
         }
 
         $("#category").find("option:not(:first)").remove();
@@ -55,7 +55,7 @@
           @include('partial.form._select2', ['name' => 'district', 'label' => 'Quận / huyện'])
           @include('partial.form._select2', ['name' => 'ward', 'label' => 'Xã / phường'])
           @include('partial.form._select2', ['name' => 'type', 'options' => [1 => 'NHÀ ĐẤT BÁN', 2 => 'NHÀ ĐẤT CHO THUÊ', 3 => 'DỰ ÁN']])
-          @include('partial.form._select2', ['name' => 'category', 'label' => ' -- ', 'options' => HouseCategorySaleOption::getOptions()])
+          @include('partial.form._select2', ['name' => 'category', 'label' => ' -- ', 'options' => \App\Repositories\Resource\House\Sale\CategoryOptions::getOptions()])
           <button type="submit" class="btn btn-default">SEARCH</button>
         </form>
 

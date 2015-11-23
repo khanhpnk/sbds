@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Resource\House;
 
-class IsSaleOptions
+class OwnerTypeOptions
 {
-    const BAN = 0;
-    const CHO_THUE  = 1;
+    const CHINH_CHU = 0;
+    const MOI_GIOI  = 1;
 
     /**
      * @return array
@@ -13,8 +13,8 @@ class IsSaleOptions
     public static function getOptions()
     {
         return array(
-            self::BAN        => 'Bán',
-            self::CHO_THUE  => 'Cho thuê'
+            self::CHINH_CHU => 'Chính chủ',
+            self::MOI_GIOI  => 'Môi giới'
         );
     }
 

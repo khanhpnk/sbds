@@ -2,7 +2,7 @@
   <div class="thumb-item-ds">
     <figure>
       <a class="thumb-img-ds" href="{{ projectShowUrl($model->slug) }}" title="{{ $model->title }}">
-        <img width="{{ $iw or 207 }}" height="{{ $ih or 150 }}" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img width="{{ $iw or 208 }}" height="{{ $ih or 156 }}" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-ds">
@@ -19,7 +19,8 @@
 
     </div>
     <footer class="thumb-footer-ds clearfix">
-      <div class="pull-left">{{ $model->start_date }}</div>
+      <div class="pull-left">Mã số:0{{ $model->id }}</div>
+      <div class="pull-right">{{ $model->start_date }}</div>
     </footer>
   </div>
 </article>

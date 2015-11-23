@@ -44,8 +44,8 @@ class CreateHousesTable extends Migration
             $table->tinyInteger('balcony');
             $table->tinyInteger('logia');
             $table->tinyInteger('license');
-            $table->boolean('is_owner');           // 0 owner ,1 agency
-            $table->boolean('is_sale');            // 0 sale, 1 rent
+            $table->boolean('owner_type');           // 0 owner ,1 agency
+            $table->boolean('sale_type');            // 0 sale, 1 rent
             $table->boolean('is_sold');            // 0 unsold, 1 sold
 
             $table->date('start_date');

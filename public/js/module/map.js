@@ -83,7 +83,7 @@ var frontGooglemapModule = (function() {
     // Figure out the optimal viewport
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < markers.length; i++) {
-      dropMapMarkerWithTimeout(markers[i], i * 200);
+      dropMapMarkerWithTimeout(markers[i], i * 100);
       bounds.extend(new google.maps.LatLng(markers[i].lat, markers[i].lng));
     }
     googlemap.fitBounds(bounds);
@@ -97,10 +97,6 @@ var frontGooglemapModule = (function() {
     var srcImage = "";
 
     switch (type) {
-      case "1":
-        iconImage = icons["sale"][data.category]["path"];
-        srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
-        break;
       case "2":
         iconImage = icons["rent"][data.category]["path"];
         srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
@@ -108,6 +104,11 @@ var frontGooglemapModule = (function() {
       case "3":
         iconImage = icons["project"][data.category]["path"];
         srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/project/"+data.user_id+"/large";
+        break;
+      case "1":
+      default:
+        iconImage = icons["sale"][data.category]["path"];
+        srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
         break;
     }
 

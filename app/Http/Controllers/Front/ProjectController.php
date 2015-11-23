@@ -27,6 +27,10 @@ class ProjectController extends Controller
             $projects = $projects->where('ward',  $request->get('h'));
         }
 
+        if ($request->has('cat')) {
+            $projects = $projects->category($request->get('cat'));
+        }
+
         $projects = $projects->simplePaginate(12);
 
         return view('front.projects.index', compact('projects'));

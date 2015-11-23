@@ -1,16 +1,15 @@
 <?php
 namespace App\Http\Controllers\Admin\Service;
 
-use App\Company;
 use App\Design;
 use App\Http\Controllers\Admin\BaseController;
 use App\Http\Controllers\ImageUpload;
 use App\Http\Controllers\UniqueResourceIdentifier;
 use App\Http\Requests\DesignRequest;
+use App\Repositories\Resource\Design\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
-use Model\Service\Design\SubCategory;
 
 class DesignController extends BaseController
 {

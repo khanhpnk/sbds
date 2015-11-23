@@ -18,8 +18,8 @@
 
     </div>
     <footer class="thumb-footer-ds clearfix">
-      <div class="pull-left">{{ $model->land_m2 }}m2</div>
-      <div class="pull-right">Mã số:0{{ $model->id }}</div>
+      <div class="pull-left">Mã số:0{{ $model->id }}</div>
+      <div class="pull-right">{{ $model->land_m2 }}m2</div>
     </footer>
   </div>
 </article>

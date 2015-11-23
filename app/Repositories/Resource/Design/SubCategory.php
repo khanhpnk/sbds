@@ -1,6 +1,6 @@
 <?php
 
-namespace Model\Service\Design;
+namespace App\Repositories\Resource\Design;
 
 class SubCategory
 {

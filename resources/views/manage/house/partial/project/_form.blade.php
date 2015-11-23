@@ -32,7 +32,7 @@
     <div class="col-md-4">
       @include('partial.form._select2', ['name' => 'category',
                                         'label' => 'Loại BĐS',
-                                        'options' => ProjectCategoryOption::getOptions(),
+                                        'options' => \App\Repositories\Resource\Project\CategoryOptions::getOptions(),
                                         'value' => !is_null($project) ? $project->category : null])
     </div>
     <div class="col-md-4">
