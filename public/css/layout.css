@@ -541,9 +541,7 @@ i {
   color: #22be73;
 }
 /*********** *********** MAIN *********** ***********/
-.main {
-  overflow: hidden;
-}
+/*.main { overflow: hidden; } */
 /*********** *********** FOOTER *********** ***********/
 .footer {
   margin-top: 10px;
