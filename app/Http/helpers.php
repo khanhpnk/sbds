@@ -20,7 +20,7 @@ function ownerTypeLabel($ownerType) {
  * @return string
  */
 function houseShowUrl($slug) {
-    return '/nha-dat/' . $slug;
+    return url('/nha-dat/' . $slug);
 }
 
 /**
@@ -28,6 +28,6 @@ function houseShowUrl($slug) {
  * @return string
  */
 function projectShowUrl($slug) {
-    return '/du-an/' . $slug;
+    return url('/du-an/' . $slug);
 }
 
