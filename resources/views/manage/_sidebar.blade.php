@@ -20,7 +20,7 @@
       {{--<li><a href="{{ route('admin.banner.edit') }}">+ Banner</a></li>--}}
 
       <li class="user-nav-header">Quản trị tin up bài</li>
-      <li><a href="/quan-tri/up-bai?type=0">Tất cả tin mới</a></li>
+      {{--<li><a href="/quan-tri/up-bai?type=0">Tất cả tin mới</a></li>--}}
       <li><a href="/quan-tri/up-bai?type=1">Nhà đất bán</a></li>
       <li><a href="/quan-tri/up-bai?type=2">Nhà đất cho thuê</a></li>
       <li><a href="/quan-tri/up-bai?type=3">Dự án</a></li>

@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $projects = Project::orderBy('id', 'desc')->isExpired(false);
+        $projects = Project::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
 
         if ($request->has('t')) {
             $projects = $projects->where('city', $request->get('t'));
@@ -42,6 +42,7 @@ class ProjectController extends Controller
     public function featured()
     {
         $projects = Project::orderBy('id', 'desc')
+            ->isApproved(1)
             ->isExpired(false)
             ->simplePaginate(20);
 
@@ -55,18 +56,21 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $projectsRelation = Project::orderBy('id', 'desc')
+            ->isApproved(1)
             ->isExpired(false)
             ->limit(6)->get();
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $project->user_id)->first();
 
-        $preview = Project::isExpired(false)
+        $preview = Project::isApproved(1)
+            ->isExpired(false)
             ->where('id', '<', $project->id)
             ->orderBy('id', 'desc')
             ->first();
 
-        $next = Project::isExpired(false)
+        $next = Project::isApproved(1)
+            ->isExpired(false)
             ->where('id', '>', $project->id)
             ->orderBy('id', 'asc')
             ->first();

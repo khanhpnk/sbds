@@ -13,23 +13,43 @@ class ManagementController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->has('type')) {
-            switch ($request->get('type')) {
-                case 0: // all
-                    $resources = House::orderBy('id', 'desc')->paginate(6);
-                    break;
-                case 1: // ban
-                    $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::BAN)->paginate(6);
-                    break;
-                case 2: // cho thue
-                    $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::CHO_THUE)->paginate(6);
-                    break;
-                case 3: // du an
-                    $resources = Project::orderBy('id', 'desc')->paginate(6);
-                    break;
-            }
+        $type = $request->get('type');
+        $isApproved = $request->get('isApproved', 1);
+
+        switch ($type) {
+//            case 0: // all
+//                $resources = House::orderBy('id', 'desc')->paginate(6);
+//                break;
+            case 1: // ban
+                $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::BAN);
+                break;
+            case 2: // cho thue
+                $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::CHO_THUE);
+                break;
+            case 3: // du an
+                $resources = Project::orderBy('id', 'desc');
+                break;
         }
 
-        return view('admin.managements.index', compact('resources'));
+        $resources = $resources->isApproved($isApproved)->paginate(6);
+
+        return view('admin.managements.index', compact('resources', 'type'));
+    }
+
+    public function approved($type, $id, $isApproved)
+    {
+        if (3 == $type) {
+            $resource = Project::find($id);
+        } else {
+            $resource = House::find($id);
+        }
+        $resource->update(['is_approved' => $isApproved]);
+
+        $message = 'Bài viết đã bị từ chối hiển thị';
+        if (1 == $isApproved) {
+            $message = 'Bài viết đã được cho phép hiển thị';
+        }
+
+        return redirect()->back()->with('flash_message', $message);
     }
 }

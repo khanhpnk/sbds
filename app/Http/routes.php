@@ -74,6 +74,8 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
     ]);
 
     Route::get('up-bai', 'ManagementController@index');
+    Route::put('up-bai/{type}/{id}/{is_approved?}', 'ManagementController@approved');
+
 
     Route::group(['namespace' => 'Service'], function() {
         Route::resource('cong-ty', 'CompanyController', [

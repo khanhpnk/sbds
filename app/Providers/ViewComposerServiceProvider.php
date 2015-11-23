@@ -41,16 +41,19 @@ class ViewComposerServiceProvider extends ServiceProvider
 
             // recommend
         	$view->with('houseSaleRecommend', House::orderBy('id', 'desc')
+                ->isApproved(1)
                 ->isExpired(false)
                 ->saleType(SaleTypeOptions::BAN)
                 ->first());
 
             $view->with('houseRentRecommend', House::orderBy('id', 'desc')
+                ->isApproved(1)
                 ->isExpired(false)
                 ->saleType(SaleTypeOptions::CHO_THUE)
                 ->first());
 
             $view->with('houseProjectRecommend', Project::orderBy('id', 'desc')
+                ->isApproved(1)
                 ->isExpired(false)
                 ->first());
 

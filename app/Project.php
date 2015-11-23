@@ -28,6 +28,7 @@ class Project extends Model
         'lng',
         'youtube',
         'images',
+        'is_approved'
     ];
 
     /**
@@ -47,6 +48,16 @@ class Project extends Model
     public function scopeCategory($query, $value)
     {
         return $query->where('category', $value);
+    }
+
+    /**
+     * @param $query
+     * @param int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsApproved($query, $value)
+    {
+        return $query->where('is_approved', $value);
     }
 
     /**

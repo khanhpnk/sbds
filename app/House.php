@@ -44,6 +44,7 @@ class House extends Model
         'license',
         'feature',
         'images',
+        'is_approved'
     ];
 
     /**
@@ -76,6 +77,16 @@ class House extends Model
     public function scopeCategory($query, $value)
     {
         return $query->where('category', $value);
+    }
+
+    /**
+     * @param $query
+     * @param int $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeIsApproved($query, $value)
+    {
+        return $query->where('is_approved', $value);
     }
 
     /**

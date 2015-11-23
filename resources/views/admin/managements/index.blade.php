@@ -7,8 +7,8 @@
 @section('content')
 
   <div class="message-toolbar">
-    <a class="btn btn-primary" href="#" role="button">Tin chưa duyệt</a>
-    <a class="btn btn-primary" href="#" role="button">Tin đã duyệt</a>
+    <a class="btn btn-primary" href="{{ URL::full() }}&isApproved=0" role="button">Tin chưa duyệt</a>
+    <a class="btn btn-primary" href="{{ URL::full() }}&isApproved=1" role="button">Tin đã duyệt</a>
   </div>
   <hr>
 
@@ -17,7 +17,11 @@
       <div class="thumb thumb-br-default clearfix">
         <div class="row">
           @foreach ($resources as $resource)
-            @include('admin.managements._article', ['model' => $resource])
+            @if (3 == $type)
+              @include('admin.managements._article_project', ['model' => $resource])
+            @else
+              @include('admin.managements._article', ['model' => $resource])
+            @endif
           @endforeach
         </div>
       </div>

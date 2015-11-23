@@ -16,7 +16,7 @@ class HouseController extends Controller
      */
     public function index(Request $request)
     {
-        $houses = House::orderBy('id', 'desc')->isExpired(false);
+        $houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
         $label = 'Nhà đất';
 
         if ($request->has('type')) {
@@ -57,6 +57,7 @@ class HouseController extends Controller
     public function lastest()
     {
         $houses = House::orderBy('id', 'desc')
+            ->isApproved(1)
             ->isExpired(false)
             ->simplePaginate(20);
 
@@ -69,6 +70,7 @@ class HouseController extends Controller
     public function featured()
     {
         $houses = House::orderBy('id', 'desc')
+            ->isApproved(1)
             ->isExpired(false)
             ->simplePaginate(20);
 
@@ -84,6 +86,7 @@ class HouseController extends Controller
     public function show(House $house)
     {
         $housesRelation = House::orderBy('id', 'desc')
+            ->isApproved(1)
             ->isExpired(false)
             ->saleType($house->sale_type)
             ->limit(3)->get();
@@ -91,13 +94,15 @@ class HouseController extends Controller
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $house->user_id)->first();
 
-        $preview = House::isExpired(false)
+        $preview = House::isApproved(1)
+            ->isExpired(false)
             ->saleType($house->sale_type)
             ->where('id', '<', $house->id)
             ->orderBy('id', 'desc')
             ->first();
 
-        $next = House::isExpired(false)
+        $next = House::isApproved(1)
+            ->isExpired(false)
             ->saleType($house->sale_type)
             ->where('id', '>', $house->id)
             ->orderBy('id', 'asc')
