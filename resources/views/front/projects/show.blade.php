@@ -27,6 +27,14 @@
   @include('partial.resource._contact')
 @stop
 
+@section('style')
+  <meta property="og:url"           content="{{ projectShowUrl($project->slug) }}" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="{{ $project->title }}" />
+  <meta property="og:description"   content="{{ $project->description }}" />
+  <meta property="og:image"         content="{{ ImageHelper::avatar(ResourceOption::DU_AN, $project->user_id, $project->images) }}" />
+@stop
+
 @section('content')
 
   <!-- Nav tabs -->
