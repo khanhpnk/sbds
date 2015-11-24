@@ -29,6 +29,6 @@
       <span class="thumb-price">{{ MoneyHelper::price($model->price, $model->money_unit, $model->sale_type) }}</span>
       <div class="thumb-date pull-right"><time>{{ $model->start_date }}</time></div>
     </footer>
-    <div class="thumb-owner-type">{{ ownerTypeLabel($model->owner_type) }}</div>
+    <div class="thumb-owner-type @if($model->owner_type) thumb-owner-type-cc @endif">{{ ownerTypeLabel($model->owner_type) }}</div>
   </div>
 </article>

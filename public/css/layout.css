@@ -175,10 +175,13 @@ i {
   background-color: #f70000;
   color: #fff;
   left: 0;
-  opacity: 0.6;
+  opacity: 0.7;
   padding: 0 10px;
   position: absolute;
   top: 0;
+}
+.thumb-owner-type-cc {
+  background-color: #3f6cb7;
 }
 /* THUMB EXTEND */
 .thumb-title {

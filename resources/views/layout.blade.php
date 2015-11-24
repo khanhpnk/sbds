@@ -2,11 +2,6 @@
 <html>
 <head>
   @include('_head')
-  <meta property="og:url"           content="http://house360.vn/nha-dat/nha-pho-spring-house-pham-van-dong-duc-3-tam" />
-  <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="Your Website Title" />
-  <meta property="og:description"   content="Your description" />
-  <meta property="og:image"         content="https://s3-ap-southeast-1.amazonaws.com/house360/house/28/large161650.14112015.0.jpg" />
   @section('style')
   @show
   @section('jshead')
