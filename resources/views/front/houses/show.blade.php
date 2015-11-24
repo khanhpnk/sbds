@@ -32,7 +32,7 @@
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="{{ $house->title }}" />
 	<meta property="og:description"   content="{{ $house->description }}" />
-	<meta property="og:image"         content="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" />
+	<meta property="og:image"         content="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $house->user_id, $house->images) }}" />
 @stop
 
 @section('javascript')
