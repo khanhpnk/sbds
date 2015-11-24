@@ -27,7 +27,7 @@
 	@include('partial.resource._contact')
 @stop
 
-@section('style')
+@section('fb')
 	<meta property="og:url"           content="{{ houseShowUrl($house->slug) }}" />
 	<meta property="og:type"          content="website" />
 	<meta property="og:title"         content="{{ $house->title }}" />
