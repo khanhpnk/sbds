@@ -12,14 +12,67 @@
   </a>
 </div>
 
+<script>
+  $(document).ready(function(){
+    $(".nav-dropdown").hover(
+        function() {
+          $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+          $(this).toggleClass('open');
+        },
+        function() {
+          $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+          $(this).toggleClass('open');
+        }
+    );
+  });
+</script>
 <div class="container">
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="navbar-collapse01">
     <ul class="nav navbar-nav">{{-- Leave blank --}}</ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/danh-sach-nha-dat?type=ban">NHÀ ĐẤT BÁN</a></li>
-      <li><a href="/danh-sach-nha-dat?type=cho-thue">CHO THUÊ</a></li>
-      <li><a href="/du-an">DỰ ÁN</a></li>
+      <li class="dropdown nav-dropdown">
+        <a href="/danh-sach-nha-dat?type=ban" class="dropdown-toggle" data-toggle="dropdown">NHÀ ĐẤT BÁN</a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_RIENG }}">Nhà riêng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::CAN_HO }}">Căn hộ</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_BIET_THU }}">Nhà biệt thự, liền kề</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_MAT_PHO }}">Nhà mặt phố</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::DAT_NEN_DU_AN }}">Đất nền dự án</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::DAT }}">Đất</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::KHO_NHA_XUONG }}">Kho, nhà xưởng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::TRANG_TRAI }}">Trang trại, khu nghỉ dưỡng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::KHAC }}">Thể loại khác</a></li>
+        </ul>
+      </li>
+      <li class="dropdown nav-dropdown">
+        <a href="/danh-sach-nha-dat?type=cho-thue" class="dropdown-toggle" data-toggle="dropdown">CHO THUÊ</a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_RIENG }}">Nhà riêng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::CAN_HO }}">Căn hộ</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_BIET_THU }}">Nhà biệt thự, liền kề</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_MAT_PHO }}">Nhà mặt phố</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::DAT_NEN_DU_AN }}">Đất nền dự án</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::DAT }}">Đất</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHO_NHA_XUONG }}">Kho, nhà xưởng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_TRO }}">Nhà trọ</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::VAN_PHONG }}">Văn phòng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHAC }}">Kiot, cửa hàng</a></li>
+        </ul>
+      </li>
+      <li class="dropdown nav-dropdown">
+        <a href="/du-an" class="dropdown-toggle" data-toggle="dropdown">DỰ ÁN</a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::THUONG_MAI_DICH_VU }}">Thương mại dịch vụ</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::DU_LICH_NGHI_DUONG }}">Du lịch nghỉ dưỡng</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::CAN_HO_CHUNG_CU }}">Căn hộ chung cư</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::VAN_PHONG_CAO_OC }}">Văn phòng cao ốc</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_CONG_NGHIEP }}">Khu công nghiệp</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_DO_THI_MOI }}">Khu đô thị mới</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_PHUC_HOP }}">Khu phức hợp</a></li>
+          <li><a href="/du-an?cat={{ \App\Repositories\Resource\Project\CategoryOptions::KHU_DAN_CU }}">Khu dân cư</a></li>
+        </ul>
+      </li>
       <li><a href="{{ route('front.company.index') }}">CÔNG TY</a></li>
       <li><a href="{{ route('front.design.index') }}">DỊCH VỤ</a></li>
       <li style="position: relative">

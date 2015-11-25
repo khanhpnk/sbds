@@ -29,7 +29,7 @@
       <li class="footer-header">Nhà Đất Bán</li>
       <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_RIENG }}"><i class="fa fa-link"></i>Nhà riêng</a></li>
       <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::CAN_HO }}"><i class="fa fa-link"></i>Căn hộ</a></li>
-      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_BIET_THU }}"></i>Nhà biệt thự, liền kề</a></li>
+      <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_BIET_THU }}"><i class="fa fa-link"></i>Nhà biệt thự, liền kề</a></li>
       <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::NHA_MAT_PHO }}"><i class="fa fa-link"></i>Nhà mặt phố</a></li>
       <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::DAT_NEN_DU_AN }}"><i class="fa fa-link"></i>Đất nền dự án</a></li>
       <li><a href="/danh-sach-nha-dat?type=ban&cat={{ \App\Repositories\Resource\House\Sale\CategoryOptions::DAT }}"><i class="fa fa-link"></i>Đất</a></li>
@@ -50,7 +50,7 @@
       <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHO_NHA_XUONG }}"><i class="fa fa-link"></i>Kho, nhà xưởng</a></li>
       <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_TRO }}"><i class="fa fa-link"></i>Nhà trọ</a></li>
       <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::VAN_PHONG }}"><i class="fa fa-link"></i>Văn phòng</a></li>
-      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHAC }}""><i class="fa fa-link"></i>Kiot, cửa hàng</a></li>
+      <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHAC }}"><i class="fa fa-link"></i>Kiot, cửa hàng</a></li>
     </ul>
   </li>
   <li class="col-md-15">

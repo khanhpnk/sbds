@@ -119,6 +119,7 @@ i {
   display: block;
   font-size: 13px;
   position: relative;
+  margin-bottom: 20px;
 }
 .thumb-img:hover {
   opacity: 0.8;
@@ -202,6 +203,12 @@ i {
 }
 .thumb-title-recomend {
   display: block;
+}
+/* Special Home*/
+.thumb-home .thumb-item,
+.thumb-home .thumb-item-ds,
+.thumb-home .thumb-item-s {
+  margin-bottom: 0;
 }
 /*********** *********** *********** MAIN:ARTICLE MODULE *********** *********** ***********/
 .article {}
