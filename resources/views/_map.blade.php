@@ -43,8 +43,8 @@
     <div class="form-search-container form-search-bottom">
       <div class="form-search-inner clearfix">
 
-        <form class="form-search form-inline pull-right" method="GET" action="" style="display: none">
-          <input type="text" id="search" class="form-control" placeholder="Tìm kiếm">
+        <form accept-charset="UTF-8" class="form-search form-inline pull-right" method="GET" action="/search" style="display: none">
+          <input type="text" id="search" name="search" class="form-control" placeholder="Tìm kiếm">
           <button type="submit" class="btn"><span aria-hidden="true" class="glyphicon glyphicon-search"></span></button>
         </form>
 

@@ -13,6 +13,7 @@
 
 /*********** *********** FRONTEND *********** ***********/
 Route::get('/', 'HomeController@index');
+Route::get('/search', 'HomeController@search');
 Route::resource('test', 'TestController');
 
 //// Authentication with social
