@@ -122,7 +122,9 @@ var frontGooglemapModule = (function() {
 
       google.maps.event.addListener(marker, 'click', function() {
         $('.iw-name').text(data.title);
-        $('.iw-image').attr("src", srcImage + data.images[0])
+        $('.iw-image').attr("src", srcImage + data.images[0]);
+
+        googlemap.setCenter(marker.getPosition());
         infoWindow.setContent($('.infowindow-placeholder').html());
         infoWindow.open(googlemap, marker);
       });
