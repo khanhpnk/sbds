@@ -3,7 +3,7 @@
 @yield('sidebarHook')
 
 <section class="recommend">
-  <header><h2 class="thumb-title thumb-title-recomend" style="background-color: red">Thiết kế thi công</h2></header>
+  <header><h2 class="thumb-title thumb-title-recomend" style="background-color: red"><a href="/thiet-ke-thi-cong">Thiết kế thi công</a></h2></header>
   <div class="thumb clearfix">
     <div class="row">
       @if (!is_null($designRecommend))
@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <header><h2 class="thumb-title thumb-title-recomend">Nhà đất bán</h2></header>
+  <header><h2 class="thumb-title thumb-title-recomend"><a href="/danh-sach-nha-dat?type=ban">Nhà đất bán</a></h2></header>
   <div class="thumb clearfix">
     <div class="row">
       @if (!is_null($houseSaleRecommend))
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <header><h2 class="thumb-title thumb-title-recomend">Nhà đất cho thuê</h2></header>
+  <header><h2 class="thumb-title thumb-title-recomend"><a href="/danh-sach-nha-dat?type=cho-thue">Nhà đất cho thuê</a></h2></header>
   <div class="thumb clearfix">
     <div class="row">
       @if (!is_null($houseRentRecommend))
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <header><h2 class="thumb-title thumb-title-recomend">Dự án nổi bật</h2></header>
+  <header><h2 class="thumb-title thumb-title-recomend"><a href="/du-an-noi-bat">Dự án nổi bật</a></h2></header>
   <div class="thumb clearfix">
     <div class="row">
       @if (!is_null($houseProjectRecommend))

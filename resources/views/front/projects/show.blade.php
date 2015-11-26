@@ -56,7 +56,6 @@
         </address>
       </div>
       <div class="col-md-3">
-        <div style="float: left"><i class="fa fa-print" onclick="window.print();"></i></div>
         <div class="article-head-fb-like" style="float: left">
           <div class="fb-like" data-href="{{ projectShowUrl($project->slug) }}" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
@@ -72,6 +71,8 @@
       </div>
     </div>
   </section>
+
+  <hr>
 
   <!-- Tab panes -->
   <div class="tab-content">

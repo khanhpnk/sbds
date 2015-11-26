@@ -46,7 +46,7 @@ class HouseController extends Controller
             $houses = $houses->where('ward',  $request->get('h'));
         }
 
-        $houses = $houses->simplePaginate(12);
+        $houses = $houses->paginate(12);
 
         return view('front.houses.index', compact('houses', 'label'));
     }
@@ -59,7 +59,7 @@ class HouseController extends Controller
         $houses = House::orderBy('id', 'desc')
             ->isApproved(1)
             ->isExpired(false)
-            ->simplePaginate(20);
+            ->paginate(20);
 
         return view('front.houses.lastest', compact('houses'));
     }
@@ -72,7 +72,7 @@ class HouseController extends Controller
         $houses = House::orderBy('id', 'desc')
             ->isApproved(1)
             ->isExpired(false)
-            ->simplePaginate(20);
+            ->paginate(20);
 
         return view('front.houses.lastest', compact('houses'));
     }

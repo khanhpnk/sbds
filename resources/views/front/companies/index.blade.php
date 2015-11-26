@@ -12,7 +12,7 @@
 				</div>
 			</div>
 		</section>
-		<nav class="simple-pagination">{!! $companies->render() !!}</nav>
+		<nav class="simple-pagination">{!! $companies->appends(Input::except('page'))->render() !!}</nav>
 	@else
 		Không có dữ liệu!
 	@endif

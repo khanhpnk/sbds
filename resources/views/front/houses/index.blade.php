@@ -20,7 +20,7 @@
         </div>
       </div>
     </section>
-    <nav class="simple-pagination">{!! $houses->render() !!}</nav>
+    <nav class="simple-pagination">{!! $houses->appends(Input::except('page'))->render() !!}</nav>
   @else
     Không có dữ liệu!
   @endif

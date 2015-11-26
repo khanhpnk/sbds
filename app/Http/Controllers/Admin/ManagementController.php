@@ -31,7 +31,7 @@ class ManagementController extends Controller
                 break;
         }
 
-        $resources = $resources->isApproved($isApproved)->paginate(6);
+        $resources = $resources->isApproved($isApproved)->paginate(9);
 
         return view('admin.managements.index', compact('resources', 'type'));
     }

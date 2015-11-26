@@ -36,7 +36,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::orderBy('id', 'desc')->simplePaginate(12);
+        $companies = Company::orderBy('id', 'desc')->paginate(12);
 
         return view('front.companies.index', compact('companies'));
     }
@@ -49,8 +49,8 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        $houses = $this->_houseList($company)->simplePaginate(3);
-        $housesSold = $this->_soldHouseList($company)->simplePaginate(3);
+        $houses = $this->_houseList($company)->paginate(3);
+        $housesSold = $this->_soldHouseList($company)->paginate(3);
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $company->user_id)->first();

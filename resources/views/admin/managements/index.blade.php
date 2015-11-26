@@ -26,7 +26,7 @@
         </div>
       </div>
     </section>
-    <nav class="simple-pagination">{!! $resources->render() !!}</nav>
+    <nav class="simple-pagination">{!! $resources->appends(Input::except('page'))->render() !!}</nav>
   @else
     Không có dữ liệu!
   @endif

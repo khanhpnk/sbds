@@ -31,7 +31,7 @@ class ProjectController extends Controller
             $projects = $projects->category($request->get('cat'));
         }
 
-        $projects = $projects->simplePaginate(12);
+        $projects = $projects->paginate(12);
 
         return view('front.projects.index', compact('projects'));
     }
@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $projects = Project::orderBy('id', 'desc')
             ->isApproved(1)
             ->isExpired(false)
-            ->simplePaginate(20);
+            ->paginate(20);
 
         return view('front.projects.featured', compact('projects'));
     }
