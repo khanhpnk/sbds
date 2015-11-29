@@ -74,7 +74,7 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
         ]
     ]);
 
-    Route::get('up-bai', 'ManagementController@index');
+    Route::get('up-bai/{type}', 'ManagementController@index');
     Route::put('up-bai/{type}/{id}/{is_approved?}', 'ManagementController@approved');
 
 

@@ -24,7 +24,7 @@
     <form accept-charset="UTF-8" action="{{url('quan-tri/up-bai', [$type, $model->id, 1]) }}" class="form-delete" method="POST" role="form">
       <input type="hidden" name="_method" value="PUT">
       {!! csrf_field() !!}
-      <button class="btn btn-primary" type="submit" role="button">Duyệt</button>
+      <button class="btn btn-primary" type="submit" role="button" style="width: 96px;">Duyệt</button>
     </form>
     <form accept-charset="UTF-8" action="{{url('quan-tri/up-bai', [$type, $model->id, 0]) }}" class="form-delete" method="POST" role="form">
       <input type="hidden" name="_method" value="PUT">

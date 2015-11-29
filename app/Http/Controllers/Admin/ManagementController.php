@@ -11,15 +11,11 @@ use App\Project;
 class ManagementController extends Controller
 {
 
-    public function index(Request $request)
+    public function index(Request $request, $type)
     {
-        $type = $request->get('type');
         $isApproved = $request->get('isApproved', 1);
 
         switch ($type) {
-//            case 0: // all
-//                $resources = House::orderBy('id', 'desc')->paginate(6);
-//                break;
             case 1: // ban
                 $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::BAN);
                 break;
