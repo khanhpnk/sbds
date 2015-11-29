@@ -7,8 +7,8 @@
 @section('content')
 
   <div class="message-toolbar">
-    <a class="btn btn-primary" href="{{ URL::full() }}&isApproved=0" role="button">Tin chưa duyệt</a>
-    <a class="btn btn-primary" href="{{ URL::full() }}&isApproved=1" role="button">Tin đã duyệt</a>
+    <a class="btn btn-primary" href="{{ Request::url() }}?isApproved=0" role="button">Tin chưa duyệt</a>
+    <a class="btn btn-primary" href="{{ Request::url() }}?isApproved=1" role="button">Tin đã duyệt</a>
   </div>
   <hr>
 
