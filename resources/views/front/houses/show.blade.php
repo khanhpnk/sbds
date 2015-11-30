@@ -10,10 +10,11 @@
 
 @section('fb_meta')
   	<meta property="og:url"           content="{{ houseShowUrl($house->slug) }}" />
-    <meta property="og:type"          content="website" />
+    <meta property="og:type"          content="article" />
     <meta property="og:title"         content="{{ $house->title }}" />
     <meta property="og:description"   content="{{ str_limit(strip_tags($house->description), 100) }}" />
     <meta property="og:image"         content="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $house->user_id, $house->images) }}" />
+    <meta property="fb:app_id" 		  content="674952055924751">
 @stop
 
 @section('sidebarHook')
