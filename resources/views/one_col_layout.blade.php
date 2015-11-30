@@ -2,9 +2,14 @@
 <html>
 <head>
   @include('_head')
+  
   @section('style')
   @show
+  
   @section('jshead')
+  @show
+  
+  @section('fb_meta')
   @show
 </head>
 <body>
