@@ -149,7 +149,7 @@ return [
          * Custom Service Providers...
          */
         App\Providers\ViewComposerServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Rukan\AjaxAuth\AjaxAuthServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
@@ -206,7 +206,7 @@ return [
         /*
          * Custom Facades...
          */
-        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        //'Debugbar'  => Barryvdh\Debugbar\Facade::class,
         'Image' 	=> Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'EasySocialite' => Rukan\EasySocialite\Facades\EasySocialite::class,
