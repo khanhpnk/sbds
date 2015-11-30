@@ -27,13 +27,16 @@
   @include('partial.resource._contact')
 @stop
 
-{{--@section('style')--}}
-  {{--<meta property="og:url"           content="{{ projectShowUrl($project->slug) }}" />--}}
-  {{--<meta property="og:type"          content="website" />--}}
-  {{--<meta property="og:title"         content="{{ $project->title }}" />--}}
-  {{--<meta property="og:description"   content="{{ $project->description }}" />--}}
-  {{--<meta property="og:image"         content="{{ ImageHelper::avatar(ResourceOption::DU_AN, $project->user_id, $project->images) }}" />--}}
-{{--@stop--}}
+@section('fb_meta')
+  	<meta property="og:url"           	content="{{ projectShowUrl($project->slug) }}" />
+    <meta property="og:type"          	content="article" />
+    <meta property="og:title"         	content="{{ $project->title }}" />
+    <meta property="og:description"   	content="{{ str_limit(strip_tags($project->description), 100) }}" />
+    <meta property="og:image"         	content="{{ ImageHelper::avatar(ResourceOption::DU_AN, $project->user_id, $project->images) }}" />
+    <meta property="og:image:width" 	content="675" />
+	<meta property="og:image:height" 	content="402" />
+    <meta property="fb:app_id" 		  	content="674952055924751">
+@stop
 
 @section('content')
 

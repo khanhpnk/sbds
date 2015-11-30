@@ -5,6 +5,18 @@
   <li class="active">{{ $design->title or '' }}</li>
 @stop
 
+@section('fb_meta')
+  	<meta property="og:url"           	content="{{ UrlHelper::show(ResourceOption::THIET_KE, ['slug' => $design->slug]) }}" />
+    <meta property="og:type"          	content="article" />
+    <meta property="og:title"         	content="{{ $design->title }}" />
+    <meta property="og:description"   	content="{{ str_limit(strip_tags($design->description), 100) }}" />
+    <meta property="og:image"         	content="{{ ImageHelper::avatar(ResourceOption::THIET_KE, 1, $design->images) }}" />
+    <meta property="og:image:width" 	content="675" />
+	<meta property="og:image:height" 	content="402" />
+    <meta property="fb:app_id" 		  	content="674952055924751">
+@stop
+
+
 @section('sidebarHook')
   <nav>
     <ul class="sidebar-pagination">
@@ -73,7 +85,7 @@
         </div>
         <div class="col-md-3">
           <div class="article-head-fb-like">
-            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+            <div class="fb-like" data-href="{{ UrlHelper::show(ResourceOption::THIET_KE, ['slug' => $design->slug]) }}" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
           </div>
         </div>
       </div>
