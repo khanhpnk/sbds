@@ -66,11 +66,17 @@
 
 @section('content')
   <div aria-label="Justified button group" role="group" class="btn-group btn-group-justified">
-    {{--@if (\Model\Service\Design\SubCategory::BIET_THU_PHO == $design->sub_category) active @endif--}}
-    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'biet-thu-pho') }}">Biệt thự phố</a>
-    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'biet-thu-vuon') }}">Biệt thự vườn</a>
-    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'nha-pho') }}">Nhà phố</a>
-    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', 'khac') }}">Thể loại khác</a>
+    @if (2 == $design->category)
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/hien-dai') }}">Hiện đại</a>
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/co-dien') }}">Cổ điển</a>
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/can-ho') }}">Căn hộ</a>
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/khac') }}">Thể loại khác</a>
+  	@else 
+  		<a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/biet-thu-pho') }}">Biệt thự phố</a>
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/biet-thu-vuon') }}">Biệt thự vườn</a>
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/nha-pho') }}">Nhà phố</a>
+	    <a style="border-color: #fff;" role="button" class="btn btn-primary" href="{{ route('front.design.category', $categoryUri. '/khac') }}">Thể loại khác</a>
+  	@endif
   </div>
 
   <article class="article">

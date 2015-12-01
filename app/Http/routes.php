@@ -120,7 +120,7 @@ Route::group(['namespace' => 'Front'], function() {
     Route::get('thiet-ke-thi-cong', ['uses' => 'DesignController@index', 'as' => 'front.design.index']);
     Route::get('thiet-ke-thi-cong/{thiet_ke_thi_cong}', ['uses' => 'DesignController@show', 'as' => 'front.design.show']);
     Route::get('thiet-ke-cong-ty', ['uses' => 'DesignController@description', 'as' => 'front.design.description']);
-    Route::get('thiet-ke-{sub_category_uri}', ['uses' => 'DesignController@category', 'as' => 'front.design.category']);
+    Route::get('thiet-ke/{category_uri}/{sub_category_uri}', ['uses' => 'DesignController@category', 'as' => 'front.design.category']);
 
 
     // map

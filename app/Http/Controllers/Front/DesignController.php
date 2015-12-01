@@ -31,47 +31,69 @@ class DesignController extends Controller
 
     /**
      * Display the specified resource by sub category
+     * TODO Lỗi khi ko tồn tại nbản ghi nào
      *
      * @param  int  $id
      * @return Response
      */
-    public function category($sub_category_uri)
+    public function category($categoryUri, $subCategoryUri)
     {
-        switch ($sub_category_uri) {
+    	switch ($categoryUri) {
+    		case 'kien-truc':
+    			$category = Category::KIEN_TRUC;
+    			break;
+    		case 'noi-that':
+    			$category = Category::NOI_THAT;
+    			break;
+    		case 'thi-cong':
+    			$category = Category::THI_CONG;
+    			break;
+    	}
+    	
+        switch ($subCategoryUri) {
             case 'biet-thu-pho':
+            case 'hien-dai':
                 $sub_category = SubCategory::BIET_THU_PHO;
                 break;
             case 'biet-thu-vuon':
+            case 'co-dien':
                 $sub_category = SubCategory::BIET_THU_VUON;
                 break;
             case 'nha-pho':
+            case 'can-ho':
                 $sub_category = SubCategory::NHA_PHO;
                 break;
             case 'khac':
                 $sub_category = SubCategory::KHAC;
                 break;
         }
+        
+        $design = Design::where('category', $category)
+        				->where('sub_category', $sub_category)
+        				->first();
 
-        $design = Design::where('sub_category', $sub_category)->first();
-
-        $others = Design::where('sub_category', $sub_category)
-                    ->where('id', '<>', $design->id)
-                    ->get();
-
-        $preview = Design::where('sub_category', $sub_category)
-            ->where('id', '<', $design->id)
-            ->orderBy('id', 'desc')
-            ->first();
-
-        $next = Design::where('sub_category', $sub_category)
-            ->where('id', '>', $design->id)
-            ->orderBy('id', 'asc')
-            ->first();
-
+        if ($design) {
+	        $others = Design::where('category', $category)
+	        			->where('sub_category', $sub_category)
+	                    ->where('id', '<>', $design->id)
+	                    ->get();
+	
+	        $preview = Design::where('category', $category)
+	        	->where('sub_category', $sub_category)
+	            ->where('id', '<', $design->id)
+	            ->orderBy('id', 'desc')
+	            ->first();
+	
+	        $next = Design::where('category', $category)
+	        	->where('sub_category', $sub_category)
+	            ->where('id', '>', $design->id)
+	            ->orderBy('id', 'asc')
+	            ->first();
+        }
         $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', 1)->first();
 
-        return view('front.designs.show', compact('design', 'others', 'contact', 'preview', 'next'));
+        return view('front.designs.show', compact('design', 'others', 'contact', 'preview', 'next', 'categoryUri'));
     }
 
     /**
@@ -82,26 +104,39 @@ class DesignController extends Controller
      */
     public function show(Design $design)
     {
-        $others = Design::where('sub_category', $design->sub_category)
+    	switch ($design->category) {
+    		case Category::KIEN_TRUC:
+    			$categoryUri = 'kien-truc';
+    			break;
+    		case Category::NOI_THAT:
+    			$categoryUri = 'noi-that';
+    			break;
+    		case Category::THI_CONG:
+    			$categoryUri = 'thi-cong';
+    			break;
+    	}
+    	
+        $others = Design::where('category', $design->category)
+        	->where('sub_category', $design->sub_category)
             ->where('id', '<>', $design->id)
             ->get();
 
-        $preview = Design::where('sub_category', $design->sub_category)
+        $preview = Design::where('category', $design->category)
+        	->where('sub_category', $design->sub_category)
             ->where('id', '<', $design->id)
             ->orderBy('id', 'desc')
             ->first();
 
-        $next = Design::where('sub_category', $design->sub_category)
+        $next = Design::where('category', $design->category)
+        	->where('sub_category', $design->sub_category)
             ->where('id', '>', $design->id)
             ->orderBy('id', 'asc')
             ->first();
 
-        //dd($preview, $next);
-
         $contact = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', 1)->first();
 
-        return view('front.designs.show', compact('design', 'others', 'contact', 'preview', 'next'));
+        return view('front.designs.show', compact('design', 'others', 'contact', 'preview', 'next', 'categoryUri'));
     }
 
     /**
