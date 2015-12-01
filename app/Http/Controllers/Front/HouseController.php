@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\House;
 use App\User;
+use App\Repositories\Resource\House\Rent\CategoryOptions as RentCategoryOptions;
+use App\Repositories\Resource\House\Sale\CategoryOptions as SaleCategoryOptions;
 
 class HouseController extends Controller
 {
@@ -24,10 +26,16 @@ class HouseController extends Controller
                 case 'ban':
                     $houses = $houses->saleType(SaleTypeOptions::BAN);
                     $label = 'Nhà đất bán';
+                    if ($request->has('cat')) {
+                    	$label = SaleCategoryOptions::getLabel($request->get('cat'));
+                    }
                     break;
                 case 'cho-thue':
                     $houses = $houses->saleType(SaleTypeOptions::CHO_THUE);
                     $label = 'Nhà đất cho thuê';
+                    if ($request->has('cat')) {
+                    	$label = RentCategoryOptions::getLabel($request->get('cat'));
+                    }
                     break;
             }
 

@@ -57,7 +57,8 @@
           <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHO_NHA_XUONG }}">Kho, nhà xưởng</a></li>
           <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::NHA_TRO }}">Nhà trọ</a></li>
           <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::VAN_PHONG }}">Văn phòng</a></li>
-          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHAC }}">Kiot, cửa hàng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::CUA_HANG }}">Kiot, cửa hàng</a></li>
+          <li><a href="/danh-sach-nha-dat?type=cho-thue&cat={{ \App\Repositories\Resource\House\Rent\CategoryOptions::KHAC }}">Thể loại khác</a></li>
         </ul>
       </li>
       <li class="dropdown nav-dropdown">

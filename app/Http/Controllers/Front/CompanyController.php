@@ -7,7 +7,6 @@ use App\Repositories\Resource\House\OwnerTypeOptions;
 use App\User;
 use App\Company;
 use App\House;
-use IsOwnerOption;
 use IsSoldOption;
 
 class CompanyController extends Controller
@@ -16,7 +15,7 @@ class CompanyController extends Controller
     {
         return House::where('user_id', $company->user_id)
             ->isOwner(OwnerTypeOptions::MOI_GIOI)
-            ->isSold(OwnerTypeOptions::CHUA_BAN)
+            ->isSold(IsSoldOption::CHUA_BAN)
             ->isExpired(false)
             ->orderBy('id', 'desc');
     }
@@ -25,7 +24,7 @@ class CompanyController extends Controller
     {
         return House::where('user_id', $company->user_id)
             ->isOwner(OwnerTypeOptions::MOI_GIOI)
-            ->isSold(OwnerTypeOptions::DA_BAN)
+            ->isSold(IsSoldOption::DA_BAN)
             ->orderBy('id', 'desc');
     }
 
