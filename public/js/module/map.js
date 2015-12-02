@@ -95,20 +95,24 @@ var frontGooglemapModule = (function() {
     var type = $('#type').val();
     var iconImage = "";
     var srcImage = "";
+    var url = "";
 
     switch (type) {
       case "2":
         iconImage = icons["rent"][data.category]["path"];
         srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
+        url = "/nha-dat/" + data.slug;
         break;
       case "3":
         iconImage = icons["project"][data.category]["path"];
         srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/project/"+data.user_id+"/large";
+        url = "/du-an/" + data.slug;
         break;
       case "1":
       default:
         iconImage = icons["sale"][data.category]["path"];
         srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";
+        url = "/nha-dat/" + data.slug;
         break;
     }
 
@@ -122,6 +126,7 @@ var frontGooglemapModule = (function() {
 
       google.maps.event.addListener(marker, 'click', function() {
         $('.iw-name').text(data.title);
+        $('.iw-link').attr("href", url);
         $('.iw-image').attr("src", srcImage + data.images[0]);
 
         googlemap.setCenter(marker.getPosition());

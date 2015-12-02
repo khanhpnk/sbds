@@ -486,14 +486,11 @@ i {
   right: 15px;
   z-index: 999;
 }
-.iw-container  .iw-name {
-  font-size: 20px;
+.iw-container  .iw-title {
+  font-size: 18px;
   font-weight: 400;
-  padding: 10px;
+  padding: 6px;
   margin: 0;
-  background-color: #48b5e9;
-  color: white;
-  border-radius: 2px 2px 0 0;
 }
 .collapse-search-in {top: 0}
 .form-search-block {

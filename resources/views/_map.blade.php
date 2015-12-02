@@ -8,7 +8,6 @@
       frontLocationModule.init();
 
       $(".btn-collapse-search").on('click', function () {
-        //$(".form-search").toggleClass("collapse-search-in");
         $(".form-filter").toggle();
         $(".form-search").toggle();
         $(".form-search-container").toggleClass('form-search-bottom form-search-top');
@@ -64,10 +63,12 @@
 
     <div class="infowindow-placeholder" style="display: none;">
       <div class="iw-container">
-        <h1 class="iw-name">::NAME</h1>
         <div class="iw-content">
-          <img class="iw-image" src="" alt="..." height="" width="510" class="img-responsive">
+          <a class="iw-link" href="#" target="_blank">
+          	<img class="iw-image" src="" alt="..." height="298" width="500" class="img-responsive">
+          </a>
         </div>
+        <h1 class="iw-title"><a class="iw-link" href="#" target="_blank"><span class="iw-name">::NAME</span></a></h1>
       </div>
     </div>
   </div>
