@@ -7,6 +7,8 @@ use Rukan\AjaxAuth\Requests\UserRegisterRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
 use App\User;
+use Mail;
+use App\Http\Requests\Request;
 
 trait RegistersUsers
 {
@@ -35,7 +37,9 @@ trait RegistersUsers
      */
     public function postRegister(UserRegisterRequest $request)
     {
-        Auth::login($this->create($request->all()));
+        //Auth::login($this->create($request->all()));
+    	$this->create($request->all());
+        $this->sendEmailVerified($request);
 
         return $request->ajax() ? new JsonResponse([
             'redirect' => $this->redirectAfterRegister
@@ -53,6 +57,7 @@ trait RegistersUsers
     {
         return DB::transaction(function () use ($data) {
             $userModel = User::create([
+            	'code' => md5($data['email']),
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
             ]);
@@ -60,5 +65,26 @@ trait RegistersUsers
 
             return $userModel;
         });
+    }
+    
+    public function getVerified($code)
+    {
+    	$user = User::where('code', $code)->first();
+    	if ($user) {
+    		$user->update(['verified' => 1]);
+    		Auth::loginUsingId($user->id);
+    	}
+    	
+    	return redirect($this->redirectAfterRegister);
+    }
+    
+    public function sendEmailVerified(UserRegisterRequest $request)
+    {    
+    	$email = $request->get('email');
+    	
+    	Mail::send('emails.verified', ['email' => $email, 'code' => md5($email)], function ($m) use ($email) {
+    		$m->from('house360.vn@gmail.com', 'Quản trị viên');
+    		$m->to($email)->subject('Thông báo tạo tài khoản thành công trên house360.vn!');
+    	});
     }
 }

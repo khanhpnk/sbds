@@ -83,7 +83,8 @@ trait AuthenticatesUsers
     protected function getCredentials(UserLoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
-
+        $credentials['verified'] = 1;
+        
         return $credentials;
     }
 }
