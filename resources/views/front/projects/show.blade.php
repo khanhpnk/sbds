@@ -38,6 +38,17 @@
     <meta property="fb:app_id" 		  	content="674952055924751">
 @stop
 
+@section('javascript')
+  @parent
+  <script>
+    $(function() {
+    	setTimeout(function(){ 
+    		frontGooglemapModule.showMarkerForDetail('project', {{ $project->id }})
+    	}, 6000);
+    });
+  </script>
+@stop
+
 @section('content')
 
   <!-- Nav tabs -->

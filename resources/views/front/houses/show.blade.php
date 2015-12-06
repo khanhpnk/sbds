@@ -47,7 +47,14 @@
 {{--@stop--}}
 
 @section('javascript')
-	@parent
+  @parent
+  <script>
+    $(function() {
+    	setTimeout(function(){ 
+    		frontGooglemapModule.showMarkerForDetail('house', {{ $house->id }})
+    	}, 6000);
+    });
+  </script>
 @stop
 
 @section('content')

@@ -73,6 +73,18 @@ var frontGooglemapModule = (function() {
       event.preventDefault();
     });
   };
+  
+  var showMarkerForDetail = function(type, id) {
+      $.ajax({
+        url: '/map/search-marker-for-detail',
+        type: "GET",
+        dataType: 'json',
+        data: {'id': id, 'type': type}
+      }).done(function(data) {
+        clearAllMapMarkers();
+        dropMapMarkers(data);
+      });
+  };
 
   /**
    * Drop markers for map
@@ -151,5 +163,6 @@ var frontGooglemapModule = (function() {
 
   return {
     init: init,
+    showMarkerForDetail: showMarkerForDetail,
   };
 })();

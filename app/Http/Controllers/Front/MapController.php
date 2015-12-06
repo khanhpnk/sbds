@@ -46,4 +46,20 @@ class MapController extends Controller
             return response()->json($markers->get());
         }
     }
+    
+    public function searchMarkerForDetail(MapRequest $request)
+    {
+    	if ($request->ajax()) {
+    		switch ($request->input('type')) {
+    			case 'house':
+    				$markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')->where('id', $request->input('id'));
+    				break;
+    			case 'project':
+    				$markers = Project::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')->where('id', $request->input('id'));
+    				break;
+    		}
+    
+    		return response()->json($markers->get());
+    	}
+    }
 }

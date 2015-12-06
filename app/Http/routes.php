@@ -125,6 +125,7 @@ Route::group(['namespace' => 'Front'], function() {
 
     // map
     Route::post('map/search-markers', ['uses' => 'MapController@searchMarkers', 'as' => 'front.map.search']);
+    Route::get('map/search-marker-for-detail', 'MapController@searchMarkerForDetail');
 });
 
 // Authentication with social
