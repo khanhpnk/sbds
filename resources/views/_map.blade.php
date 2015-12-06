@@ -65,10 +65,11 @@
       <div class="iw-container">
         <div class="iw-content">
           <a class="iw-link" href="#" target="_blank">
-          	<img class="iw-image" src="" alt="..." height="298" width="500" class="img-responsive">
+          	<img class="iw-image" src="" alt="..." height="260" width="437" class="img-responsive">
           </a>
         </div>
         <h1 class="iw-title"><a class="iw-link" href="#" target="_blank"><span class="iw-name">::NAME</span></a></h1>
+      	<div class="iw-price"></div>
       </div>
     </div>
   </div>

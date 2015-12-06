@@ -360,6 +360,14 @@ i {
   background-color: #fa0f0f;
   color: #000;
 }
+.iw-name {
+  color: #337ab7;
+}
+.iw-price {
+  padding: 4px;
+  color: #cd5c5c;
+  font-weight: bold;
+}
 /* map */
 /*.iw-container { margin: 25px 0 15px 20px; width: 610px; }*/
 /*.gm-style-iw { max-height: 600px; }*/

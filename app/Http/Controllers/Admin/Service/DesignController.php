@@ -10,6 +10,7 @@ use App\Repositories\Resource\Design\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
+use App\Repositories\Resource\Design\Category;
 
 class DesignController extends BaseController
 {
@@ -27,24 +28,38 @@ class DesignController extends BaseController
      *
      * @return Response
      */
-    public function index($filter = 1)
+    public function index($category = null, $subCategory = null)
     {
-        switch ($filter) {
+    	switch ($category) {
+    		case '1':
+    			$designs = Design::orderBy('id', 'desc')->where('category', Category::KIEN_TRUC);
+    			break;
+    		case '2':
+    			$designs = Design::orderBy('id', 'desc')->where('category', Category::NOI_THAT);
+    			break;
+    		case '3':
+    			$designs = Design::orderBy('id', 'desc')->where('category', Category::THI_CONG);
+    			break;
+    	}
+
+        switch ($subCategory) {
             case '1':
-                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::BIET_THU_PHO)->paginate(20);
+                $designs = $designs->where('sub_category', SubCategory::BIET_THU_PHO);
                 break;
             case '2':
-                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::BIET_THU_VUON)->paginate(20);
+                $designs = $designs->where('sub_category', SubCategory::BIET_THU_VUON);
                 break;
             case '3':
-                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::NHA_PHO)->paginate(20);
+                $designs = $designs->where('sub_category', SubCategory::NHA_PHO);
                 break;
             case '4':
-                $designs = Design::orderBy('id', 'desc')->where('sub_category', SubCategory::KHAC)->paginate(20);
+                $designs = $designs->where('sub_category', SubCategory::KHAC);
                 break;
         }
+        
+        $designs = $designs->paginate(20);
 
-        return view('admin.design.designs.index', compact('designs'));
+        return view('admin.design.designs.index', compact('designs', 'category'));
     }
 
     /**

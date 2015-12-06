@@ -32,7 +32,7 @@
       <li><a href="#">Quảng cáo ảnh 360</a></li>
 
       <li class="user-nav-header">Quản trị thiết kế thi công</li>
-      <li @if(Request::is('quan-tri/thiet-ke')) class="active" @endif><a href="{{ route('admin.design.index') }}">Dịch vụ đăng tin</a></li>
+      <li @if(Request::is('quan-tri/thiet-ke')) class="active" @endif><a href="{{ route('admin.design.create') }}">Dịch vụ đăng tin</a></li>
       <li @if(Request::is('quan-tri/thiet-ke/1')) class="active" @endif><a href="{{ route('admin.design.index', 1) }}">Thiết kế</a></li>
       <li @if(Request::is('quan-tri/thiet-ke/2')) class="active" @endif><a href="{{ route('admin.design.index', 2) }}">Nội thất</a></li>
       <li @if(Request::is('quan-tri/thiet-ke/3')) class="active" @endif><a href="{{ route('admin.design.index', 3) }}">Thi công</a></li>

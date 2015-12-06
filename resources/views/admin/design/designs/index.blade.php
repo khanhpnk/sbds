@@ -8,10 +8,17 @@
   <hr>
 
   <div class="message-toolbar">
-    <a class="btn btn-primary" href="{{ route('admin.design.index', 1) }}" role="button">Biệt thự phố</a>
-    <a class="btn btn-primary" href="{{ route('admin.design.index', 2) }}" role="button">Biệt thự vườn</a>
-    <a class="btn btn-primary" href="{{ route('admin.design.index', 3) }}" role="button">Nhà phố</a>
-    <a class="btn btn-primary" href="{{ route('admin.design.index', 4) }}" role="button">Thể loại khác</a>
+    @if (2 == $category)
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '1']) }}" role="button">Hiện đại</a>
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '2']) }}" role="button">Cổ điển</a>
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '3']) }}" role="button">Căn hộ</a>
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '4']) }}" role="button">Thể loại khác</a>
+  	@else 
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '1']) }}" role="button">Biệt thự phố</a>
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '2']) }}" role="button">Biệt thự vườn</a>
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '3']) }}" role="button">Nhà phố</a>
+	    <a class="btn btn-primary" href="{{ route('admin.design.index', [$category, '4']) }}" role="button">Thể loại khác</a>
+  	@endif
   </div>
   @if (count($designs) > 0)
     <section class="list">

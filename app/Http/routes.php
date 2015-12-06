@@ -98,7 +98,7 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
                 'destroy' => 'admin.design.destroy',
             ]
         ]);
-        Route::get('thiet-ke/{filter?}', [
+        Route::get('thiet-ke/{category?}/{sub_category?}', [
             'uses' => 'DesignController@index', 'as' => 'admin.design.index'
         ]);
 

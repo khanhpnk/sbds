@@ -19,14 +19,16 @@ class MapController extends Controller
         if ($request->ajax()) {
             switch ($request->input('type')) {
                 case self::NHA_DAT_CHO_THUE:
-                    $markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')->saleType(SaleTypeOptions::CHO_THUE);
+                    $markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id', 'price', 'money_unit', 'sale_type')
+                    	->saleType(SaleTypeOptions::CHO_THUE);
                     break;
                 case self::DU_AN:
                     $markers = Project::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id');
                     break;
                 case self::NHA_DAT_BAN:
                 default:
-                    $markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')->saleType(SaleTypeOptions::BAN);
+                    $markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id', 'price', 'money_unit', 'sale_type')
+                    	->saleType(SaleTypeOptions::BAN);
                     break;
             }
 
@@ -52,10 +54,12 @@ class MapController extends Controller
     	if ($request->ajax()) {
     		switch ($request->input('type')) {
     			case 'house':
-    				$markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')->where('id', $request->input('id'));
+    				$markers = House::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id', 'price', 'money_unit', 'sale_type')
+    					->where('id', $request->input('id'));
     				break;
     			case 'project':
-    				$markers = Project::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')->where('id', $request->input('id'));
+    				$markers = Project::select('title', 'slug', 'category', 'images', 'lat', 'lng', 'user_id')
+    					->where('id', $request->input('id'));
     				break;
     		}
     

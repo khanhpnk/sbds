@@ -95,7 +95,7 @@ var frontGooglemapModule = (function() {
     // Figure out the optimal viewport
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < markers.length; i++) {
-      dropMapMarkerWithTimeout(markers[i], i * 100);
+      dropMapMarkerWithTimeout(markers[i], i * 10);
       bounds.extend(new google.maps.LatLng(markers[i].lat, markers[i].lng));
     }
     googlemap.fitBounds(bounds);
@@ -140,6 +140,9 @@ var frontGooglemapModule = (function() {
         $('.iw-name').text(data.title);
         $('.iw-link').attr("href", url);
         $('.iw-image').attr("src", srcImage + data.images[0]);
+        if (data.price) {
+        	$('.iw-price').text('Giá: ' + priceConver(data.price, data.money_unit, data.sale_type));
+      	}
 
         googlemap.setCenter(marker.getPosition());
         infoWindow.setContent($('.infowindow-placeholder').html());
@@ -153,6 +156,37 @@ var frontGooglemapModule = (function() {
       markerManage.push(marker);
     }, timeout);
   };
+  
+  var priceConver = function ($price, $moneyUnit, $saleType) {
+	  var moneyUnitSaleOption = {
+	      1: 'Thỏa thuận',
+	      2: 'triệu',
+	      3: 'tỷ',
+	      4: 'nghìn/m2',
+	      5: 'triệu/m2',
+	  };
+	  
+	  var moneyUnitRentOption = {
+   	      1: 'Thỏa thuận',
+   	      2: 'nghìn/tháng',
+   	      3: 'triệu/tháng',
+   	      4: 'nghìn/m2/tháng',
+   	      5: 'triệu/m2/tháng',
+	  }
+	  
+	  // console.log($price, $moneyUnit, $saleType);
+	  // console.log(moneyUnitSaleOption[$moneyUnit]);
+	  
+      if (1 == $moneyUnit) { // thoa thuan
+          return moneyUnitSaleOption[$moneyUnit];
+      }
+
+      if (0 == $saleType) { // ban
+          return $price + ' ' + moneyUnitSaleOption[$moneyUnit];
+      } else if (1 == $saleType) { // cho thue
+          return $price + ' ' + moneyUnitRentOption[$moneyUnit];
+      }
+  }
 
   var clearAllMapMarkers = function() {
     for (var i = 0; i < markerManage.length; i++) {
