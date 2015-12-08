@@ -4,7 +4,6 @@
   <script src="{{ asset('js/module/location.js') }}"></script>
   <script>
     $(function() {
-      frontGooglemapModule.init();
       frontLocationModule.init();
 
       $(".btn-collapse-search").on('click', function () {

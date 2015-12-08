@@ -42,18 +42,22 @@ var frontGooglemapModule = (function() {
     }
   };
 
-  var init = function() {
-    google.maps.event.addDomListener(window, "load", function() {
+  var init = function(type = null, id = null) {
+    //google.maps.event.addDomListener(window, "load", function() {
       googlemap = new google.maps.Map(document.getElementById("map-canvas"), {
         zoom: 15,
         center: HANOI,
         scrollwheel: false
       });
+      
+      if (type && id) {
+      	showMarkerForDetail(type, id)
+      }
 
       googlemap.addListener("click", function() {
         googlemap.set("scrollwheel", true);
       });
-    });
+    //});
 
     formEventListener();
   };
@@ -197,6 +201,5 @@ var frontGooglemapModule = (function() {
 
   return {
     init: init,
-    showMarkerForDetail: showMarkerForDetail,
   };
 })();

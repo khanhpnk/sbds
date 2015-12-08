@@ -38,13 +38,11 @@
     <meta property="fb:app_id" 		  	content="674952055924751">
 @stop
 
-@section('javascript')
-  @parent
+@section('initmap')
   <script>
+  	// override map init
     $(function() {
-    	setTimeout(function(){ 
-    		frontGooglemapModule.showMarkerForDetail('project', {{ $project->id }})
-    	}, 6000);
+    	frontGooglemapModule.init('project', {{ $project->id }});
     });
   </script>
 @stop

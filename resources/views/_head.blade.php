@@ -30,3 +30,10 @@
   });
   var publicUrl = "{{ url() }}";
 </script>
+ @section('initmap')
+  <script>
+    $(function() {
+      frontGooglemapModule.init();
+    });
+  </script>
+@show

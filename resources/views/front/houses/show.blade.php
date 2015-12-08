@@ -46,13 +46,11 @@
 	{{--<meta property="og:image"         content="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $house->user_id, $house->images) }}" />--}}
 {{--@stop--}}
 
-@section('javascript')
-  @parent
+@section('initmap')
   <script>
+  	// override map init
     $(function() {
-    	setTimeout(function(){ 
-    		frontGooglemapModule.showMarkerForDetail('house', {{ $house->id }})
-    	}, 6000);
+    	frontGooglemapModule.init('house', {{ $house->id }});
     });
   </script>
 @stop
