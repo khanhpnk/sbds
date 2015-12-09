@@ -86,34 +86,37 @@ var frontGooglemapModule = (function() {
         data: {'id': id, 'type': type}
       }).done(function(data) {
         clearAllMapMarkers();
-        dropMapMarkers(data);
+        dropMapMarkers(data, type);
       });
   };
 
   /**
    * Drop markers for map
    */
-  var dropMapMarkers = function(markers) {
+  var dropMapMarkers = function(markers, type = '') {
     clearAllMapMarkers();
-
     // Figure out the optimal viewport
     var bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < markers.length; i++) {
-      dropMapMarkerWithTimeout(markers[i], i * 10);
+      dropMapMarkerWithTimeout(markers[i], i * 10, type);
       bounds.extend(new google.maps.LatLng(markers[i].lat, markers[i].lng));
     }
     googlemap.fitBounds(bounds);
   };
 
-  var dropMapMarkerWithTimeout = function(marker, timeout) {
+  var dropMapMarkerWithTimeout = function(marker, timeout, type = '') {
     var data = marker;
-
-    var type = $('#type').val();
+    var _type = $('#type').val();
+    if ('project' == type) {
+    	_type = "3";
+    } else if ('house' == type) {
+    	_type = "1";
+    }
     var iconImage = "";
     var srcImage = "";
     var url = "";
 
-    switch (type) {
+    switch (_type) {
       case "2":
         iconImage = icons["rent"][data.category]["path"];
         srcImage = "https://s3-ap-southeast-1.amazonaws.com/house360/house/"+data.user_id+"/large";

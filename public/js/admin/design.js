@@ -63,7 +63,7 @@ var designModule = (function() {
         city: {required: true},
         district: {required: true},
         ward: {required: true},
-        address: {maxlength: 16},
+        address: {maxlength: 32},
         youtube: {url: true},
       },
       highlight: function (element) {
