@@ -42,7 +42,7 @@ var frontGooglemapModule = (function() {
     }
   };
 
-  var init = function(type = null, id = null) {
+  var init = function(type, id) {
     //google.maps.event.addDomListener(window, "load", function() {
       googlemap = new google.maps.Map(document.getElementById("map-canvas"), {
         zoom: 15,
@@ -93,7 +93,7 @@ var frontGooglemapModule = (function() {
   /**
    * Drop markers for map
    */
-  var dropMapMarkers = function(markers, type = '') {
+  var dropMapMarkers = function(markers, type) {
     clearAllMapMarkers();
     // Figure out the optimal viewport
     var bounds = new google.maps.LatLngBounds();
@@ -104,7 +104,7 @@ var frontGooglemapModule = (function() {
     googlemap.fitBounds(bounds);
   };
 
-  var dropMapMarkerWithTimeout = function(marker, timeout, type = '') {
+  var dropMapMarkerWithTimeout = function(marker, timeout, type) {
     var data = marker;
     var _type = $('#type').val();
     if ('project' == type) {
