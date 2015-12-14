@@ -16,33 +16,10 @@ class HouseController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, $category = null)
     {
         $houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
         $label = 'Nhà đất';
-
-        if ($request->has('type')) {
-            switch ($request->get('type')) {
-                case 'ban':
-                    $houses = $houses->saleType(SaleTypeOptions::BAN);
-                    $label = 'Nhà đất bán';
-                    if ($request->has('cat')) {
-                    	$label = SaleCategoryOptions::getLabel($request->get('cat'));
-                    }
-                    break;
-                case 'cho-thue':
-                    $houses = $houses->saleType(SaleTypeOptions::CHO_THUE);
-                    $label = 'Nhà đất cho thuê';
-                    if ($request->has('cat')) {
-                    	$label = RentCategoryOptions::getLabel($request->get('cat'));
-                    }
-                    break;
-            }
-
-            if ($request->has('cat')) {
-                $houses = $houses->category($request->get('cat'));
-            }
-        }
 
         if ($request->has('t')) {
             $houses = $houses->where('city', $request->get('t'));
@@ -57,6 +34,79 @@ class HouseController extends Controller
         $houses = $houses->paginate(12);
 
         return view('front.houses.index', compact('houses', 'label'));
+    }
+    
+    public function sale(Request $request, $category = null)
+    {
+    	$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
+    	$houses = $houses->saleType(SaleTypeOptions::BAN);
+    	
+    	$mapCategory = [
+    			'1' => 'nha-rieng',
+    			'2' => 'can-ho',
+    			'3' => 'nha-biet-thu-lien-ke',
+    			'4' => 'nha-mat-pho',
+    			'5' => 'dat-nen-du-an',
+    			'6' => 'dat',
+    			'7' => 'kho-nha-xuong',
+    			'8' => 'trang-trai-khu-nghi-duong',
+    			'9' => 'the-loai-khac',
+    	];
+		$cat = array_search($category, $mapCategory);
+    	$label = SaleCategoryOptions::getLabel($cat);    	
+    	$houses = $houses->category(array_search($category, $mapCategory));
+    
+    	if ($request->has('t')) {
+    		$houses = $houses->where('city', $request->get('t'));
+    	}
+    	if ($request->has('q')) {
+    		$houses = $houses->where('district',  $request->get('q'));
+    	}
+    	if ($request->has('h')) {
+    		$houses = $houses->where('ward',  $request->get('h'));
+    	}
+    
+    	$houses = $houses->paginate(12);
+    
+    	return view('front.houses.index', compact('houses', 'label'));
+    }
+    
+    public function rent(Request $request, $category = null)
+    {
+    	$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
+    	$houses = $houses->saleType(SaleTypeOptions::CHO_THUE);
+    	
+    	$mapCategory = [
+    			'1' => 'nha-rieng',
+    			'2' => 'can-ho',
+    			'3' => 'nha-biet-thu-lien-ke',
+    			'4' => 'nha-mat-pho',
+    			'5' => 'dat-nen-du-an',
+    			'6' => 'dat',
+    			'7' => 'kho-nha-xuong',
+    			'8' => 'nha-tro',
+    			'9' => 'van-phong',
+    			'10' => 'kiot-cua-hang',
+    			'11' => 'the-loai-khac',
+    	];
+    	
+    	$cat = array_search($category, $mapCategory);
+    	$label = RentCategoryOptions::getLabel($cat);
+    	$houses = $houses->category(array_search($category, $mapCategory));
+
+    	if ($request->has('t')) {
+    		$houses = $houses->where('city', $request->get('t'));
+    	}
+    	if ($request->has('q')) {
+    		$houses = $houses->where('district',  $request->get('q'));
+    	}
+    	if ($request->has('h')) {
+    		$houses = $houses->where('ward',  $request->get('h'));
+    	}
+    
+    	$houses = $houses->paginate(12);
+    
+    	return view('front.houses.index', compact('houses', 'label'));
     }
 
     /**

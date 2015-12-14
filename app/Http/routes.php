@@ -137,8 +137,14 @@ Route::group(['namespace' => 'Front'], function() {
     Route::get('tin-moi', 'HouseController@lastest');
     Route::get('danh-sach-nha-dat', 'HouseController@index');
     Route::get('nha-dat/{house}', 'HouseController@show');
+    Route::get('ban-{category}', 'HouseController@sale');
+    Route::get('cho-thue-{category}', 'HouseController@rent');
 
     Route::get('du-an-noi-bat', 'ProjectController@featured');
     Route::get('du-an/{project}', 'ProjectController@show');
     Route::get('du-an', 'ProjectController@index');
+    Route::get('du-an-{category}', 'ProjectController@index');
 });
+
+
+

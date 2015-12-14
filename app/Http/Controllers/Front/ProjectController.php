@@ -13,7 +13,7 @@ class ProjectController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, $category = null)
     {
         $projects = Project::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
 
@@ -27,8 +27,19 @@ class ProjectController extends Controller
             $projects = $projects->where('ward',  $request->get('h'));
         }
 
-        if ($request->has('cat')) {
-            $projects = $projects->category($request->get('cat'));
+        if ($category) {
+        	$mapCategory = [
+        		'1' => 'thuong-mai-dich-vu',
+        		'2' => 'du-lich-nghi-duong',
+        		'3' => 'can-ho-chung-cu',
+        		'4' => 'van-phong-cao-oc',
+        		'5' => 'khu-cong-nghiep',
+        		'6' => 'khu-do-thi-moi',
+        		'7' => 'khu-phuc-hop',
+        		'8' => 'khu-dan-cu',
+        	];
+
+            $projects = $projects->category(array_search($category, $mapCategory));
         }
 
         $projects = $projects->paginate(12);

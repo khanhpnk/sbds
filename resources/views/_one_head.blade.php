@@ -30,12 +30,3 @@
   });
   var publicUrl = "{{ url() }}";
 </script>
- @section('initmap')
-  <script>
- 	@if(!Request::is('thiet-ke-thi-cong'))
-	  $(function() {
- 	    frontGooglemapModule.init();
- 	  });
-	@endif
-  </script>
-@show

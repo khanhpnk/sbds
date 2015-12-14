@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  @include('_head')
+  @include('manage._head')
   <!-- Datepicker -->
   <link href="{{ asset('vendor/pickadate/lib/compressed/themes/default.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/pickadate/lib/compressed/themes/default.date.css') }}" rel="stylesheet">
