@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Storage;
+use App\Location;
 
 class TestController extends Controller
 {
@@ -20,10 +21,50 @@ class TestController extends Controller
         //Storage::disk('s3')->put('house/file.txt', 'Contents');
 
 
+    	
 
-//        $value = \Cache::get('location');
-//        dd($value);
-        return view('tests.index');
+//        $values = \Cache::get('location');
+       
+//        $i = 1;
+//        foreach ($values as $city) {
+//        	if ($i < 60) {
+//        		$i++;
+//        		continue;
+//        	}
+//        	if ($i == 70)
+//        		break;
+       		
+// 				$cityModel = new Location();
+// 				$cityModel->value = $city['text'];
+// 				$cityModel->slug = str_slug(trim(mb_strtolower($city['text'], 'UTF-8')));
+// 				$cityModel->parent_id = 0;
+// 				$cityModel->type = 1;
+// 				$cityModel->save();
+				
+//        		foreach ($city['district'] as $district) {
+//        			$districtModel = new Location();
+//        			$districtModel->value = $district['text'];
+//        			$districtModel->slug = str_slug(trim(mb_strtolower($district['text'], 'UTF-8')));
+//        			$districtModel->parent_id = $cityModel->id;
+//        			$districtModel->type = 2;
+//        			$districtModel->save();
+       			
+//        			foreach ($district['ward'] as $ward) {
+//        				$wardModel = new Location();
+//        				$wardModel->value = $ward['text'];
+//        				$wardModel->slug = str_slug(trim(mb_strtolower($ward['text'], 'UTF-8')));
+//        				$wardModel->parent_id = $districtModel->id;
+//        				$wardModel->type = 3;
+//        				$wardModel->save();
+//        			}
+//        		}
+       		
+//        		$i++;
+//        }
+    	
+
+
+//          return view('tests.index');
     }
 
     /**

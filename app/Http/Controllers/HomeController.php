@@ -11,7 +11,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $projects = Project::orderBy('id', 'desc')->isApproved(1)->isExpired(false)->simplePaginate(4);
+        $projects = Project::orderBy('id', 'desc')
+// 				        ->join('location', function ($join) {
+// 				        	$join->on('projects.city', '=', 'location.id')
+// 				        	->where('contacts.user_id', '>', 5);
+// 				        })
+        				->isApproved(1)
+        				->isExpired(false)
+        				->simplePaginate(4);
+        
         $housesNew = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)->simplePaginate(4);
         $housesSale = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::BAN)->isExpired(false)->simplePaginate(4);
         $housesRent = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::CHO_THUE)->isExpired(false)->simplePaginate(4);

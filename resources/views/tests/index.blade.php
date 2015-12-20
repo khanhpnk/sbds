@@ -10,7 +10,7 @@
 			$(function() {
 				$('#testBtn').click(function() {
 					$.ajax({
-						url: "http://house360.vn/test",
+						url: "http://localhost:8000/test", //"http://house360.vn/test",
 						type: "POST",
 						dataType: 'json',
 						data: {mydata : locationStorageJSON}
