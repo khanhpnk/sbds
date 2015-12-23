@@ -32,6 +32,33 @@ class ImageHelper
             return "{$endpoint}/{$path}/default/".Image::MEDIUM.'.'.Image::FORMAT;
         }
     }
+    
+    public static function avatarLarge($resource, $userId, $images)
+    {
+    	$endpoint = config('filesystems.disks.s3.endpoint');
+    
+    	switch ($resource) {
+    		case ResourceOption::DU_AN:
+    			$path = config('image.paths.project');
+    			break;
+    		case ResourceOption::NHA_DAT:
+    			$path = config('image.paths.house');
+    			break;
+    		case ResourceOption::CONG_TY:
+    			$path = config('image.paths.company');
+    			break;
+    		case ResourceOption::THIET_KE:
+    			$path = config('image.paths.design');
+    			break;
+    	}
+    
+    	if (0 < count($images)) {
+    		// used first image as avatar
+    		return "{$endpoint}/{$path}/{$userId}/".Image::LARGE.$images[0];
+    	} else {
+    	return "{$endpoint}/{$path}/default/".Image::LARGE.'.'.Image::FORMAT;
+    	}
+    	}
 
     public static function getCompanyAvatar($avatar)
     {

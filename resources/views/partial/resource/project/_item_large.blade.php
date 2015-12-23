@@ -2,7 +2,7 @@
   <div class="thumb-item-ds">
     <figure>
       <a class="thumb-img-ds" href="{{ projectShowUrl($model->slug) }}" title="{{ $model->title }}">
-        <img width="429" height="310" src="{{ ImageHelper::avatar(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img width="429" height="310" src="{{ ImageHelper::avatarLarge(ResourceOption::DU_AN, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-big">

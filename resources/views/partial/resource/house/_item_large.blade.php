@@ -2,7 +2,7 @@
   <div class="thumb-item">
     <figure>
       <a href="{{ houseShowUrl($model->slug) }}" title="{{ $model->title }}">
-        <img class="thumb-img" width="429" height="310" src="{{ ImageHelper::avatar(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
+        <img class="thumb-img" width="429" height="310" src="{{ ImageHelper::avatarLarge(ResourceOption::NHA_DAT, $model->user_id, $model->images) }}" alt="{{ $model->title }}">
       </a>
     </figure>
     <div class="thumb-content-big">
