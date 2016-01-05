@@ -37,13 +37,12 @@ trait RegistersUsers
      */
     public function postRegister(UserRegisterRequest $request)
     {
-        //Auth::login($this->create($request->all()));
-    	$this->create($request->all());
+        $this->create($request->all());
         $this->sendEmailVerified($request);
 
-        return $request->ajax() ? new JsonResponse([
-            'redirect' => $this->redirectAfterRegister
-        ], 201) : redirect($this->redirectAfterRegister);
+        return new JsonResponse([
+            'message' => 'Cảm ơn bạn đã đăng ký sử dụng dịch vụ. Bạn cần truy cập email để hoàn thành việc đăng ký'
+        ], 201);
     }
 
     /**

@@ -7,7 +7,7 @@
     </figure>
     <header>
       <h3 class="thumb-title-s">
-        <a href="#" title="{{ $title }}">{{ $title }}</a>
+        <a href="/bai-viet/{{ $url }}" title="{{ $title }}">{{ $title }}</a>
       </h3>
     </header>
   </div>

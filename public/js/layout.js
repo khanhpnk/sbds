@@ -90,7 +90,7 @@ function loginAction($form) {
 
 function registerAction($form) {
 	var $btnSubmit = $('#registerBtnSubmit').button('loading');
-	var $errorMessage = $form.find('.text-danger');
+	var $message = $form.find('.text-danger');
 
 	$.ajax({
 		url: $form.attr('action'),
@@ -98,13 +98,12 @@ function registerAction($form) {
 		dataType: 'json',
 		data: $form.serialize()
 	}).done(function (data) {
-		// similar behavior as an HTTP redirect
-		window.location.replace(data.redirect);
+		$message.html(data.message);
 	}).fail(function (data) { // catch HttpResponseException
 		var $response = data.responseJSON;
 
 		$.each($response, function (i, value) {
-			$errorMessage.html(value);
+			$message.html(value);
 		});
 		$btnSubmit.button('reset');
 	});

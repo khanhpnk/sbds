@@ -2,11 +2,11 @@
   <li class="col-md-15">
     <ul>
       <li class="footer-header">HOUSE360</li>
-      <li><a href="#"><i class="fa fa-link"></i>Giới thiệu về house360</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Hướng dãn đăng tin</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Báo giá</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Tuyển dụng</a></li>
+      <li><a href="/bai-viet/gioi-thieu-ve-house360"><i class="fa fa-link"></i>Giới thiệu về house360</a></li>
+      <li><a href="/bai-viet/noi-quy-dang-tin"><i class="fa fa-link"></i>Nội quy đăng tin</a></li>
+      <li><a href="/bai-viet/huong-dan-dang-tin"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
+      <li><a href="/bai-viet/bao-gia"><i class="fa fa-link"></i>Báo giá</a></li>
+      <li><a href="/bai-viet/tuyen-dung"><i class="fa fa-link"></i>Tuyển dụng</a></li>
     </ul>
   </li>
   <li class="col-md-15">
@@ -18,10 +18,10 @@
       <li><a href="#"><i class="fa fa-link"></i>Hiện đại</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Cổ điển</a></li>
       <li><a href="#"><i class="fa fa-link"></i>Căn hộ</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Báo giá thiết kế</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Dịch vụ thiết kế nhà</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Dịch vụ thiết kế nội thất</a></li>
-      <li><a href="#"><i class="fa fa-link"></i>Dịch vụ xây và sửa nhà</a></li>
+      <li><a href="/bai-viet/bao-gia-thiet-ke"><i class="fa fa-link"></i>Báo giá thiết kế</a></li>
+      <li><a href="/bai-viet/dich-vu-thiet-ke-nha"><i class="fa fa-link"></i>Dịch vụ thiết kế nhà</a></li>
+      <li><a href="/bai-viet/dich-vu-thiet-ke-noi-that"><i class="fa fa-link"></i>Dịch vụ thiết kế nội thất</a></li>
+      <li><a href="/bai-viet/dich-vu-xay-va-sua-nha"><i class="fa fa-link"></i>Dịch vụ xây và sửa nhà</a></li>
     </ul>
   </li>
   <li class="col-md-15">
