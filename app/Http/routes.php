@@ -59,20 +59,30 @@ Route::group(['prefix' => 'm', 'namespace' => 'Manage', 'middleware' => 'auth'],
 });
 
 /*********** *********** ADMIN *********** ***********/
+Route::resource('bai-viet', 'ArticleController', [
+	'except' => 'show',
+	'names' => [
+		'create' => 'admin.article.create',
+		'store' => 'admin.article.store',
+		'update' => 'admin.article.update',
+		'edit' => 'admin.article.edit',
+		'destroy' => 'admin.article.destroy',
+	]
+]);
 Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'auth'], function() {
     Route::get('banner', ['uses' => 'BannerController@edit', 'as' => 'admin.banner.edit']);
     Route::put('banner/update', ['uses' => 'BannerController@update', 'as' => 'admin.banner.update']);
 
-    Route::resource('bai-viet', 'ArticleController', [
-        'except' => 'show',
-        'names' => [
-            'create' => 'admin.article.create',
-            'store' => 'admin.article.store',
-            'update' => 'admin.article.update',
-            'edit' => 'admin.article.edit',
-            'destroy' => 'admin.article.destroy',
-        ]
-    ]);
+//     Route::resource('bai-viet', 'ArticleController', [
+//         'except' => 'show',
+//         'names' => [
+//             'create' => 'admin.article.create',
+//             'store' => 'admin.article.store',
+//             'update' => 'admin.article.update',
+//             'edit' => 'admin.article.edit',
+//             'destroy' => 'admin.article.destroy',
+//         ]
+//     ]);
 
     Route::get('up-bai/{type}', 'ManagementController@index');
     Route::put('up-bai/{type}/{id}/{is_approved?}', 'ManagementController@approved');
