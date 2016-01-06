@@ -25,7 +25,7 @@ class ArticleController extends BaseController
             ->where('category_id', $catId)
             ->get();
 
-        return view('admin.articles.create', compact('article', 'relations', 'catId'));
+        return view('articles.create', compact('article', 'relations', 'catId'));
     }
 
     /**
@@ -55,7 +55,7 @@ class ArticleController extends BaseController
             ->where('category_id', $catId)
             ->get();
 
-        return view('admin.articles.edit', compact('article', 'relations', 'catId'));
+        return view('articles.edit', compact('article', 'relations', 'catId'));
     }
 
     /**
