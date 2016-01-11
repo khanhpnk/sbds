@@ -12,6 +12,15 @@ class Banner extends Model
      * @var array
      */
     protected $fillable = [
-        'image'
+        'images'
+    ];
+    
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+    		'images' => 'array',
     ];
 }

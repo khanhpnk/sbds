@@ -23,6 +23,7 @@ return array(
 		'house' => 'house',
         'project' => 'project',
         'design' => 'design',
+		'banner' => 'banner',
 	],
 
 	'sizes' => [

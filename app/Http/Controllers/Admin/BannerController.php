@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redirect;
 use App\Banner;
 use Library\Image;
+use App\Http\Controllers\ImageUpload;
 
 class BannerController extends BaseController
 {
-
+	use ImageUpload;
+	
+	public function __construct()
+	{
+		$this->path = config('image.paths.banner');
+	}
+	
     /**
      * Show the form for editing the resource.
      *
@@ -34,23 +41,31 @@ class BannerController extends BaseController
     {
         $banner = Banner::find(1);
 
-        if ($request->hasFile('image')) {
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $fileName = date('His.dmY') . '.' . $extension;
+		$data = $request->all();
+		$data['images'] = $banner->images ? $banner->images : [];
+		
+		$i = 0;
 
-            // Upload new image
-            $image = new Image();
-            $image->setFile($request->file('image')->getRealPath());
-            $image->setPath('banner');
-            $image->upload($fileName);
+		$files = json_decode($data['files_deleted']);
+		foreach ($files as $file) {
+			if (($key = array_search($file, $data['images'])) !== false) {
+				unset($data['images'][$key]);
+				$this->delete($file);
+			}
+		}
 
-            // Delete old image
-            $image->delete($banner->image);
+		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
+			if (!empty($tmpPath)) {
+				$fileUpload = $this->upload($tmpPath, $i++);
+				array_push($data['images'], $fileUpload);
+			}
+		}
 
-            // Save image in storage
-            $banner->image = $fileName;
-            $banner->save();
-        }
+		// Hàm unset() khiến key của array ko còn là dãy số liên tiếp
+		// Lúc này Laravel sẽ ko đối xử và lưu 'images' như kiểu array mà là kiểu Json, cần sửa chữa vấn đề này
+		$data['images'] = array_values($data['images']);
+
+		$banner->fill($data)->save();
 
         return Redirect::back()->with('flash_message', Lang::get('system.update'));
     }

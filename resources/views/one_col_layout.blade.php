@@ -28,7 +28,11 @@
   </nav>
 
   @if(Request::is('thiet-ke-*'))
+  <!-- 
     <img style="width:100%;" src=" {{ ImageHelper::link('banner/' . $banner->image) }}">
+     -->
+    {{-- gallery section --}}
+    @include('partial.resource._gallery_banner', ['model' => $banner])
   @else
     <section class="map-container">
       @include('_map')

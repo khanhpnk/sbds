@@ -86,10 +86,22 @@
 		<header><h1 class="thumb-title">Dịch vụ thiết kế thi công</h1></header>
 		<div class="thumb thumb-br-default clearfix">
 			<div class="row">
-				@include('front.designs._static', ['title' => 'Dịch vụ thiết kế nhà', 'img' => 'thiet-ke-nha.jpg'])
-				@include('front.designs._static', ['title' => 'Dịch vụ thiết nội thất', 'img' => 'thiet-ke-noi-that.jpg'])
-				@include('front.designs._static', ['title' => 'Dịch vụ xây và sửa nhà', 'img' => 'xay-sua-nha.jpg'])
-				@include('front.designs._static', ['title' => 'Báo giá', 'img' => 'bao-gia.jpg'])
+				@include('front.designs._static', [
+					'title' => 'Dịch vụ thiết kế nhà', 
+					'url' => 'dich-vu-thiet-ke-nha',
+					'img' => 'thiet-ke-nha.jpg'])
+				@include('front.designs._static', [
+					'title' => 'Dịch vụ thiết kế nội thất', 
+					'url' => 'dich-vu-thiet-ke-noi-that',
+					'img' => 'thiet-ke-noi-that.jpg'])
+				@include('front.designs._static', [
+					'title' => 'Dịch vụ xây và sửa nhà', 
+					'url' => 'dich-vu-xay-va-sua-nha',
+					'img' => 'xay-sua-nha.jpg'])
+				@include('front.designs._static', [
+					'title' => 'Báo giá thiết kế', 
+					'url' => 'bao-gia-thiet-ke',
+					'img' => 'bao-gia.jpg'])
 			</div>
 		</div>
 	</section>

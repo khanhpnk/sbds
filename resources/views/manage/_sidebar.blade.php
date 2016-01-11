@@ -17,7 +17,7 @@
   <ul class="nav user-nav">
     @can('admin')
       {{--<li><a href="{{ route('admin.company.index') }}">+ Công ty</a></li>--}}
-      {{--<li><a href="{{ route('admin.banner.edit') }}">+ Banner</a></li>--}}
+      <li><a href="{{ route('admin.banner.edit') }}">+ Banner</a></li>
 
       <li class="user-nav-header">Quản trị tin up bài</li>
       {{--<li><a href="/quan-tri/up-bai?type=0">Tất cả tin mới</a></li>--}}
