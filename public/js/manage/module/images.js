@@ -21,6 +21,10 @@ var imagesModule = (function() {
   var setImageUrl = function(val) {
     imageUrl = val;
   };
+  
+  var setImageType = function(val) {
+	imageType = val;
+  };
 
   var getFilesDeleted = function() {
     return filesDeleted;
@@ -51,6 +55,7 @@ var imagesModule = (function() {
     init: init,
     setImagesDbJSON: setImagesDbJSON,
     setImageUrl: setImageUrl,
-    getFilesDeleted: getFilesDeleted
+    getFilesDeleted: getFilesDeleted,
+    setImageType: setImageType
   };
 })();

@@ -50,14 +50,21 @@ class BannerController extends BaseController
 		foreach ($files as $file) {
 			if (($key = array_search($file, $data['images'])) !== false) {
 				unset($data['images'][$key]);
-				$this->delete($file);
+				
+				$image = new Image();
+				$image->setPath($this->path);
+				$image->delete($file);
 			}
 		}
 
 		foreach ($_FILES['images']['tmp_name'] as $tmpPath) {
 			if (!empty($tmpPath)) {
-				$fileUpload = $this->upload($tmpPath, $i++);
-				array_push($data['images'], $fileUpload);
+				$fileName = date('His.dmY') . '.' . $i++ . '.jpg';
+				$image = new Image();
+				$image->setFile($tmpPath);
+				$image->setPath($this->path);
+				$image->fit(Image::BANNER)->upload($fileName);
+				array_push($data['images'], $fileName);
 			}
 		}
 

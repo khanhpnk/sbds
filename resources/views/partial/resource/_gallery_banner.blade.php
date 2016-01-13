@@ -1,51 +1,59 @@
 @if (0 < count($model->images))
 	@section('style')
 		@parent
+		<style>
+		html,body{height:100%;}
+		.carousel,.item,.active{height:100%;}
+		.carousel-inner{height:100%;}
+		.fill{width:100%;height:100%;background-position:center;background-size:cover;}
+		
+		/* faster sliding speed */
+		.carousel-inner > .item {
+		    -webkit-transition: 0.3s ease-in-out left;
+		    -moz-transition: 0.3s ease-in-out left;
+		    -o-transition: 0.3s ease-in-out left;
+		    transition: 0.3s ease-in-out left;
+		}
+		
+		/* keep full widget on smaller screens */
+		@media (max-width: 767px) { 
+			body {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+		</style>
 	@stop
 
 	@section('javascript')
 		@parent
 		<script>
 		$(function() {
-			var options = {};                            
-	        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
-
-	        //responsive code begin
-	        //you can remove responsive code if you don't want the slider scales
-	        //while window resizing
-	        function ScaleSlider() {
-	            var parentWidth = $('#slider1_container').parent().width();
-	            if (parentWidth) {
-	                jssor_slider1.$ScaleWidth(parentWidth);
-	            }
-	            else
-	                window.setTimeout(ScaleSlider, 30);
-	        }
-	        //Scale slider after document ready
-	        ScaleSlider();
-	                                        
-	        //Scale slider while window load/resize/orientationchange.
-	        $(window).bind("load", ScaleSlider);
-	        $(window).bind("resize", ScaleSlider);
-	        $(window).bind("orientationchange", ScaleSlider);
-	        //responsive code end
+			
 		});
 		</script>
-		<script src='{{ asset('vendor/jssor.slider/js/jssor.slider.mini.js') }}'></script>
 	@stop
 
-	<section>
-		<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
-		    <!-- Slides Container -->
-		    <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
-				@foreach ($model->images as $image)
-	             	<div>
-	                	<img u="image" src="{{ config('filesystems.disks.s3.endpoint') }}/banner/{{ \Library\Image::LARGE }}{{ $image }}" />
-	            	</div>
-				@endforeach
-		    </div>
-		    <!-- Trigger -->
-		    <script>jssor_slider1_starter('slider1_container');</script>
-		</div>
-	</section>
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">	
+	  <!-- Wrapper for slides -->
+	  <div class="carousel-inner" role="listbox">
+	    <?php $i = 0; ?>
+		@foreach ($model->images as $image)
+          <div class="item <?php if($i == 0) echo 'active' ?>">
+	        <img src="{{ config('filesystems.disks.s3.endpoint') }}/banner/{{ $image }}" alt="...">
+	      </div>
+	      <?php $i++; ?>
+		@endforeach
+	  </div>
+	
+	  <!-- Controls -->
+	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    <span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    <span class="sr-only">Next</span>
+	  </a>
+	</div>
 @endif

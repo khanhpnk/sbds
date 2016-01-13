@@ -10,6 +10,7 @@
       @if (isset($banner->images))
         imagesModule.setImagesDbJSON({!! json_encode($banner->images) !!});
         imagesModule.setImageUrl("{{ ImageHelper::link(config('image.paths.banner')) }}");
+        imagesModule.setImageType("");
       @endif
 
       bannerModule.init();
