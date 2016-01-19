@@ -32,7 +32,7 @@
 </script>
  @section('initmap')
   <script>
- 	@if(!Request::is('thiet-ke-thi-cong'))
+ 	@if(!Request::is('thiet-ke-thi-cong*'))
 	  $(function() {
  	    frontGooglemapModule.init();
  	  });

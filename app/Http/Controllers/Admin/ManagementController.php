@@ -13,7 +13,7 @@ class ManagementController extends Controller
 
     public function index(Request $request, $type)
     {
-        $isApproved = $request->get('isApproved', 1);
+        $isApproved = $request->get('isApproved', 0);
 
         switch ($type) {
             case 1: // ban

@@ -28,7 +28,7 @@ trait AuthenticatesUsers
      *
      * @var string
      */
-    protected $loginPath = 'auth/login';
+    protected $loginPath = '/';
 
     /**
      * Show the application login form.

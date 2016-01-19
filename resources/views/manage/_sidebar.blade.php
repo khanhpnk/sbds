@@ -36,7 +36,7 @@
       <li @if(Request::is('quan-tri/thiet-ke/1')) class="active" @endif><a href="{{ route('admin.design.index', 1) }}">Thiết kế</a></li>
       <li @if(Request::is('quan-tri/thiet-ke/2')) class="active" @endif><a href="{{ route('admin.design.index', 2) }}">Nội thất</a></li>
       <li @if(Request::is('quan-tri/thiet-ke/3')) class="active" @endif><a href="{{ route('admin.design.index', 3) }}">Thi công</a></li>
-      <li @if(Request::is('quan-tri/thiet-ke/4')) class="active" @endif><a href="{{ route('admin.design.index', 4) }}">Quản trị thông tin khác dịch vụ</a></li>
+      <li @if(Request::is('quan-tri/thiet-ke/4')) class="active" @endif><a href="#">Quản trị thông tin khác dịch vụ</a></li>
 
       <li class="user-nav-header">Thông tin chung HOUSE</li>
       <li @if(Request::is('m/user/profile*')) class="active" @endif><a href="{{ route('profile.edit') }}">Thay đổi thông tin cá nhân</a></li>

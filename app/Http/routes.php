@@ -143,12 +143,15 @@ Route::get('social-login/{provider?}', 'Auth\AuthController@socialLogin');
 
 
 Route::group(['namespace' => 'Front'], function() {
+	Route::get('nha-dat-ban', 'HouseController@sell');
+	Route::get('cho-thue', 'HouseController@rent');
+	
     Route::get('tin-noi-bat', 'HouseController@featured');
     Route::get('tin-moi', 'HouseController@lastest');
     Route::get('danh-sach-nha-dat', 'HouseController@index');
     Route::get('nha-dat/{house}', 'HouseController@show');
     Route::get('ban-{category}', 'HouseController@sale');
-    Route::get('cho-thue-{category}', 'HouseController@rent');
+    Route::get('cho-thue-{category}', 'HouseController@rentCat');
 
     Route::get('du-an-noi-bat', 'ProjectController@featured');
     Route::get('du-an/{project}', 'ProjectController@show');

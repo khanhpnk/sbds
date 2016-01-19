@@ -27,10 +27,7 @@
     @include('_nav')
   </nav>
 
-  @if(Request::is('thiet-ke-*'))
-  <!-- 
-    <img style="width:100%;" src=" {{ ImageHelper::link('banner/' . $banner->image) }}">
-     -->
+  @if(Request::is('thiet-ke-thi-cong'))
     {{-- gallery section --}}
     @include('partial.resource._gallery_banner', ['model' => $banner])
   @else

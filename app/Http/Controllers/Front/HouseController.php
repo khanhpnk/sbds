@@ -12,6 +12,24 @@ use App\Repositories\Resource\House\Sale\CategoryOptions as SaleCategoryOptions;
 
 class HouseController extends Controller
 {
+	public function sell()
+	{
+		$label = 'Nhà đất bán';
+		$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)
+					->saleType(SaleTypeOptions::BAN)->paginate(12);
+		
+		return view('front.houses.index', compact('houses', 'label'));
+	}
+	
+	public function rent()
+	{
+		$label = 'Cho thuê';
+		$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)
+					->saleType(SaleTypeOptions::CHO_THUE)->paginate(12);
+		
+		return view('front.houses.index', compact('houses', 'label'));
+	}
+	
     /**
      * @param Request $request
      * @return \Illuminate\View\View
@@ -71,7 +89,7 @@ class HouseController extends Controller
     	return view('front.houses.index', compact('houses', 'label'));
     }
     
-    public function rent(Request $request, $category = null)
+    public function rentCat(Request $request, $category = null)
     {
     	$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
     	$houses = $houses->saleType(SaleTypeOptions::CHO_THUE);

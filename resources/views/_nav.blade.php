@@ -32,7 +32,7 @@
     <ul class="nav navbar-nav">{{-- Leave blank --}}</ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown nav-dropdown">
-        <a href="/danh-sach-nha-dat" class="dropdown-toggle" data-toggle="dropdown">NHÀ ĐẤT BÁN</a>
+        <a href="/nha-dat-ban">NHÀ ĐẤT BÁN</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="/ban-nha-rieng">Nhà riêng</a></li>
           <li><a href="/ban-can-ho">Căn hộ</a></li>
@@ -46,7 +46,7 @@
         </ul>
       </li>
       <li class="dropdown nav-dropdown">
-        <a href="/danh-sach-nha-dat" class="dropdown-toggle" data-toggle="dropdown">CHO THUÊ</a>
+        <a href="/cho-thue">CHO THUÊ</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="/cho-thue-nha-rieng">Nhà riêng</a></li>
           <li><a href="/cho-thue-can-ho">Căn hộ</a></li>
@@ -62,7 +62,7 @@
         </ul>
       </li>
       <li class="dropdown nav-dropdown">
-        <a href="/du-an" class="dropdown-toggle" data-toggle="dropdown">DỰ ÁN</a>
+        <a href="/du-an">DỰ ÁN</a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="/du-an-thuong-mai-dich-vu">Thương mại dịch vụ</a></li>
           <li><a href="/du-an-du-lich-nghi-duong">Du lịch nghỉ dưỡng</a></li>

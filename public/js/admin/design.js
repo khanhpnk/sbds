@@ -59,7 +59,7 @@ var designModule = (function() {
         sub_category: {required: true, digits: true},
 
         title: {rangelength: [8, 60], required: true},
-        description: {rangelength: [8, 6000], required: true},
+        //description: {rangelength: [8, 6000], required: true},
         city: {required: true},
         district: {required: true},
         ward: {required: true},
