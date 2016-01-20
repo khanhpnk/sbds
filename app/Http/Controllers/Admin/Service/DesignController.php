@@ -95,7 +95,7 @@ class DesignController extends BaseController
         $data['company_id'] = 1;
         Design::create($data);
 
-        return redirect('quan-tri/thiet-ke-thi-cong')->with('flash_message', Lang::get('system.store'));
+        return redirect('quan-tri/thiet-ke-thi-cong/create')->with('flash_message', Lang::get('system.store'));
     }
 
     /**
@@ -143,7 +143,7 @@ class DesignController extends BaseController
 
         $design->fill($data)->save();
 
-        return redirect('quan-tri/thiet-ke-thi-cong')->with('flash_message', Lang::get('system.update'));
+        return redirect('quan-tri/thiet-ke-thi-cong/create')->with('flash_message', Lang::get('system.update'));
     }
 
     /**
