@@ -159,7 +159,7 @@ class DesignController extends BaseController
         }
         $design->delete();
 
-        return redirect('quan-tri/thiet-ke-thi-cong')->with('flash_message', Lang::get('system.destroy'));
+        return redirect('quan-tri/thiet-ke-thi-cong/create')->with('flash_message', Lang::get('system.destroy'));
     }
 
     /**

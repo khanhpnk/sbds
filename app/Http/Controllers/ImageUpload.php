@@ -16,7 +16,7 @@ trait ImageUpload
         $image->setFile($file);
         $image->setPath($this->path);
 
-        $image->fit(Image::LARGE)->upload(Image::LARGE."{$fileName}");
+        $image->upload(Image::LARGE."{$fileName}");
         $image->fit(Image::MEDIUM)->upload(Image::MEDIUM."{$fileName}");
         $image->fit(Image::SMALL)->upload(Image::SMALL."{$fileName}");
 
