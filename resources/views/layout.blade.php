@@ -27,7 +27,7 @@
     @include('_nav')
   </nav>
 
-  @if(!Request::is('thiet-ke*'))
+  @if(!Request::is('thiet-ke-thi-cong'))
     <section class="map-container">
       @include('_map')
     </section>
