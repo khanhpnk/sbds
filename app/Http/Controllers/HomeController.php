@@ -17,12 +17,18 @@ class HomeController extends Controller
 // 				        	->where('contacts.user_id', '>', 5);
 // 				        })
         				->isApproved(1)
-        				->isExpired(false)
+        				//->isExpired(false)
         				->simplePaginate(4);
         
-        $housesNew = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)->simplePaginate(4);
-        $housesSale = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::BAN)->isExpired(false)->simplePaginate(4);
-        $housesRent = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::CHO_THUE)->isExpired(false)->simplePaginate(4);
+        $housesNew = House::orderBy('id', 'desc')->isApproved(1)
+            //->isExpired(false)
+            ->simplePaginate(4);
+        $housesSale = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::BAN)
+            //->isExpired(false)
+            ->simplePaginate(4);
+        $housesRent = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::CHO_THUE)
+            //->isExpired(false)
+            ->simplePaginate(4);
 
         $houseNotIn = [];
         foreach ($housesNew as $house) {
@@ -34,11 +40,11 @@ class HomeController extends Controller
         	$projectNotIn[] = $project->id;
         }
         
-        $housesFeatured = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)
+        $housesFeatured = House::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
 	        ->whereNotIn('id', $houseNotIn)
 	        ->simplePaginate(2);
         
-        $projectsFeatured = Project::orderBy('id', 'desc')->isApproved(1)->isExpired(false)
+        $projectsFeatured = Project::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
 	        ->whereNotIn('id', $projectNotIn)
 	        ->simplePaginate(2);
         
@@ -50,7 +56,7 @@ class HomeController extends Controller
         $label = 'Kết quả tìm kiếm';
         $houses = House::orderBy('id', 'desc')
             ->isApproved(1)
-            ->isExpired(false)
+            //->isExpired(false)
             ->where('title', 'like', "%{$request->get('search')}%")
             ->simplePaginate(12);
 

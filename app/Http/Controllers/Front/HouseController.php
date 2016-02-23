@@ -15,7 +15,7 @@ class HouseController extends Controller
 	public function sell()
 	{
 		$label = 'Nhà đất bán';
-		$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)
+		$houses = House::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
 					->saleType(SaleTypeOptions::BAN)->paginate(12);
 		
 		return view('front.houses.index', compact('houses', 'label'));
@@ -24,7 +24,7 @@ class HouseController extends Controller
 	public function rent()
 	{
 		$label = 'Cho thuê';
-		$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false)
+		$houses = House::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
 					->saleType(SaleTypeOptions::CHO_THUE)->paginate(12);
 		
 		return view('front.houses.index', compact('houses', 'label'));
@@ -36,7 +36,7 @@ class HouseController extends Controller
      */
     public function index(Request $request, $category = null)
     {
-        $houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
+        $houses = House::orderBy('id', 'desc')->isApproved(1);//->isExpired(false);
         $label = 'Nhà đất';
 
         if ($request->has('t')) {
@@ -56,7 +56,7 @@ class HouseController extends Controller
     
     public function sale(Request $request, $category = null)
     {
-    	$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
+    	$houses = House::orderBy('id', 'desc')->isApproved(1);//->isExpired(false);
     	$houses = $houses->saleType(SaleTypeOptions::BAN);
     	
     	$mapCategory = [
@@ -91,7 +91,7 @@ class HouseController extends Controller
     
     public function rentCat(Request $request, $category = null)
     {
-    	$houses = House::orderBy('id', 'desc')->isApproved(1)->isExpired(false);
+    	$houses = House::orderBy('id', 'desc')->isApproved(1);//->isExpired(false);
     	$houses = $houses->saleType(SaleTypeOptions::CHO_THUE);
     	
     	$mapCategory = [
@@ -134,7 +134,7 @@ class HouseController extends Controller
     {
         $houses = House::orderBy('id', 'desc')
             ->isApproved(1)
-            ->isExpired(false)
+            //->isExpired(false)
             ->paginate(20);
 
         return view('front.houses.lastest', compact('houses'));
@@ -147,7 +147,7 @@ class HouseController extends Controller
     {
         $houses = House::orderBy('id', 'desc')
             ->isApproved(1)
-            ->isExpired(false)
+            //->isExpired(false)
             ->paginate(20);
 
         return view('front.houses.lastest', compact('houses'));
@@ -163,7 +163,7 @@ class HouseController extends Controller
     {
         $housesRelation = House::orderBy('id', 'desc')
             ->isApproved(1)
-            ->isExpired(false)
+            //->isExpired(false)
             ->saleType($house->sale_type)
             ->limit(3)->get();
 
@@ -171,14 +171,14 @@ class HouseController extends Controller
             ->where('user_id', $house->user_id)->first();
 
         $preview = House::isApproved(1)
-            ->isExpired(false)
+            //->isExpired(false)
             ->saleType($house->sale_type)
             ->where('id', '<', $house->id)
             ->orderBy('id', 'desc')
             ->first();
 
         $next = House::isApproved(1)
-            ->isExpired(false)
+            //->isExpired(false)
             ->saleType($house->sale_type)
             ->where('id', '>', $house->id)
             ->orderBy('id', 'asc')
