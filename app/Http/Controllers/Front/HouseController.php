@@ -14,17 +14,19 @@ class HouseController extends Controller
 {
 	public function sell()
 	{
+		$houseModel = new House();
 		$label = 'Nhà đất bán';
-		$houses = House::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
-					->saleType(SaleTypeOptions::BAN)->paginate(12);
+		$houses = $houseModel->getHouses()
+			->saleType(SaleTypeOptions::BAN)->paginate(12);
 		
 		return view('front.houses.index', compact('houses', 'label'));
 	}
 	
 	public function rent()
 	{
+		$houseModel = new House();
 		$label = 'Cho thuê';
-		$houses = House::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
+		$houses = $houseModel->getHouses()
 					->saleType(SaleTypeOptions::CHO_THUE)->paginate(12);
 		
 		return view('front.houses.index', compact('houses', 'label'));
@@ -36,29 +38,42 @@ class HouseController extends Controller
      */
     public function index(Request $request, $category = null)
     {
-        $houses = House::orderBy('id', 'desc')->isApproved(1);//->isExpired(false);
-        $label = 'Nhà đất';
+		$houseModel = new House();
+		$label = 'Nhà đất';
+		$options = [];
 
-        if ($request->has('t')) {
-            $houses = $houses->where('city', $request->get('t'));
-        }
-        if ($request->has('q')) {
-            $houses = $houses->where('district',  $request->get('q'));
-        }
-        if ($request->has('h')) {
-            $houses = $houses->where('ward',  $request->get('h'));
-        }
-
-        $houses = $houses->paginate(12);
+		if ($request->has('t')) {
+			$options['citySlug'] = $request->get('t');
+		}
+		if ($request->has('q')) {
+			$options['districtSlug'] = $request->get('q');
+		}
+		if ($request->has('h')) {
+			$options['wardSlug'] = $request->get('h');
+		}
+		$houses = $houseModel->getHouses($options)->paginate(12);
 
         return view('front.houses.index', compact('houses', 'label'));
     }
     
     public function sale(Request $request, $category = null)
     {
-    	$houses = House::orderBy('id', 'desc')->isApproved(1);//->isExpired(false);
-    	$houses = $houses->saleType(SaleTypeOptions::BAN);
-    	
+		$houseModel = new House();
+		$options = [];
+
+		if ($request->has('t')) {
+			$options['citySlug'] = $request->get('t');
+		}
+		if ($request->has('q')) {
+			$options['districtSlug'] = $request->get('q');
+		}
+		if ($request->has('h')) {
+			$options['wardSlug'] = $request->get('h');
+		}
+
+		$houses = $houseModel->getHouses($options)
+			->saleType(SaleTypeOptions::BAN);
+
     	$mapCategory = [
     			'1' => 'nha-rieng',
     			'2' => 'can-ho',
@@ -73,17 +88,6 @@ class HouseController extends Controller
 		$cat = array_search($category, $mapCategory);
     	$label = SaleCategoryOptions::getLabel($cat);    	
     	$houses = $houses->category(array_search($category, $mapCategory));
-    
-    	if ($request->has('t')) {
-    		$houses = $houses->where('city', $request->get('t'));
-    	}
-    	if ($request->has('q')) {
-    		$houses = $houses->where('district',  $request->get('q'));
-    	}
-    	if ($request->has('h')) {
-    		$houses = $houses->where('ward',  $request->get('h'));
-    	}
-    
     	$houses = $houses->paginate(12);
     
     	return view('front.houses.index', compact('houses', 'label'));
@@ -91,8 +95,21 @@ class HouseController extends Controller
     
     public function rentCat(Request $request, $category = null)
     {
-    	$houses = House::orderBy('id', 'desc')->isApproved(1);//->isExpired(false);
-    	$houses = $houses->saleType(SaleTypeOptions::CHO_THUE);
+		$houseModel = new House();
+		$options = [];
+
+		if ($request->has('t')) {
+			$options['citySlug'] = $request->get('t');
+		}
+		if ($request->has('q')) {
+			$options['districtSlug'] = $request->get('q');
+		}
+		if ($request->has('h')) {
+			$options['wardSlug'] = $request->get('h');
+		}
+
+		$houses = $houseModel->getHouses($options)
+			->saleType(SaleTypeOptions::CHO_THUE);
     	
     	$mapCategory = [
     			'1' => 'nha-rieng',
@@ -111,17 +128,6 @@ class HouseController extends Controller
     	$cat = array_search($category, $mapCategory);
     	$label = RentCategoryOptions::getLabel($cat);
     	$houses = $houses->category(array_search($category, $mapCategory));
-
-    	if ($request->has('t')) {
-    		$houses = $houses->where('city', $request->get('t'));
-    	}
-    	if ($request->has('q')) {
-    		$houses = $houses->where('district',  $request->get('q'));
-    	}
-    	if ($request->has('h')) {
-    		$houses = $houses->where('ward',  $request->get('h'));
-    	}
-    
     	$houses = $houses->paginate(12);
     
     	return view('front.houses.index', compact('houses', 'label'));
@@ -132,10 +138,8 @@ class HouseController extends Controller
      */
     public function lastest()
     {
-        $houses = House::orderBy('id', 'desc')
-            ->isApproved(1)
-            //->isExpired(false)
-            ->paginate(20);
+		$houseModel = new House();
+		$houses = $houseModel->getHouses()->paginate(20);
 
         return view('front.houses.lastest', compact('houses'));
     }
@@ -145,10 +149,8 @@ class HouseController extends Controller
      */
     public function featured()
     {
-        $houses = House::orderBy('id', 'desc')
-            ->isApproved(1)
-            //->isExpired(false)
-            ->paginate(20);
+		$houseModel = new House();
+		$houses = $houseModel->getHouses()->paginate(20);
 
         return view('front.houses.lastest', compact('houses'));
     }
@@ -161,27 +163,22 @@ class HouseController extends Controller
      */
     public function show(House $house)
     {
-        $housesRelation = House::orderBy('id', 'desc')
-            ->isApproved(1)
-            //->isExpired(false)
+		$houseModel = new House();
+        $housesRelation = $houseModel->getHouses()
             ->saleType($house->sale_type)
             ->limit(3)->get();
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $house->user_id)->first();
 
-        $preview = House::isApproved(1)
-            //->isExpired(false)
+        $preview = $houseModel->getPreviewHouses()
             ->saleType($house->sale_type)
-            ->where('id', '<', $house->id)
-            ->orderBy('id', 'desc')
+            ->where('houses.id', '<', $house->id)
             ->first();
 
-        $next = House::isApproved(1)
-            //->isExpired(false)
+        $next = $houseModel->getNextHouses()
             ->saleType($house->sale_type)
-            ->where('id', '>', $house->id)
-            ->orderBy('id', 'asc')
+            ->where('houses.id', '>', $house->id)
             ->first();
 
         return view('front.houses.show', compact('house', 'housesRelation', 'contactInfo', 'preview', 'next'));

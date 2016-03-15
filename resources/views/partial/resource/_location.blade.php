@@ -2,12 +2,12 @@
 @if (! empty($model->address))
   {{ $model->address }} -
 @endif
-<a href="/danh-sach-nha-dat?t={{ $model->city }}&q={{ $model->city }}&h={{ $model->ward }}">
-  {{ $location['ward'] }}
+<a href="/danh-sach-nha-dat?t={{ $model->citySlug }}&q={{ $model->districtSlug }}&h={{ $model->wardSlug }}">
+  {{ $model->cityName }}
 </a> -
-<a href="/danh-sach-nha-dat?t={{ $model->city }}&q={{ $model->city }}">
-  {{ $location['district'] }}
+<a href="/danh-sach-nha-dat?t={{ $model->citySlug }}&q={{ $model->districtSlug }}">
+  {{ $model->districtName }}
 </a> -
-<a href="/danh-sach-nha-dat?t={{ $model->city }}">
-  {{ $location['city'] }}
+<a href="/danh-sach-nha-dat?t={{ $model->citySlug }}">
+  {{ $model->wardName }}
 </a>

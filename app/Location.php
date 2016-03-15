@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'parent_id',
-        'type',
-    	'slug',
-        'value',
-    ];
+//    /**
+//     * The attributes that are mass assignable.
+//     *
+//     * @var array
+//     */
+//    protected $fillable = [
+//        'id',
+//        'parent_id',
+//        'type',
+//    	'slug',
+//        'value',
+//    ];
 }
