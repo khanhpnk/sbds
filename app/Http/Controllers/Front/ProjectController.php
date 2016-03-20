@@ -10,22 +10,34 @@ use App\User;
 class ProjectController extends Controller
 {
     /**
+     * @var Project
+     */
+    private $projectModel;
+
+    public function __construct()
+    {
+        $this->projectModel = new Project();
+    }
+
+    /**
      * @param Request $request
      * @return \Illuminate\View\View
      */
     public function index(Request $request, $category = null)
     {
-        $projects = Project::orderBy('id', 'desc')->isApproved(1); //->isExpired(false);
+        $options = [];
 
         if ($request->has('t')) {
-            $projects = $projects->where('city', $request->get('t'));
+            $options['citySlug'] = $request->get('t');
         }
         if ($request->has('q')) {
-            $projects = $projects->where('district',  $request->get('q'));
+            $options['districtSlug'] = $request->get('q');
         }
         if ($request->has('h')) {
-            $projects = $projects->where('ward',  $request->get('h'));
+            $options['wardSlug'] = $request->get('h');
         }
+
+        $projects = $this->projectModel->getProjects($options);
 
         if ($category) {
         	$mapCategory = [
@@ -52,10 +64,7 @@ class ProjectController extends Controller
      */
     public function featured()
     {
-        $projects = Project::orderBy('id', 'desc')
-            ->isApproved(1)
-            //->isExpired(false)
-            ->paginate(20);
+        $projects = $this->projectModel->getProjects()->paginate(20);
 
         return view('front.projects.featured', compact('projects'));
     }
@@ -66,22 +75,17 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $projectsRelation = Project::orderBy('id', 'desc')
-            ->isApproved(1)
-            //->isExpired(false)
-            ->limit(6)->get();
+        $projectsRelation = $this->projectModel->getProjects()->limit(6)->get();
 
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $project->user_id)->first();
 
         $preview = Project::isApproved(1)
-            //->isExpired(false)
             ->where('id', '<', $project->id)
             ->orderBy('id', 'desc')
             ->first();
 
         $next = Project::isApproved(1)
-            //->isExpired(false)
             ->where('id', '>', $project->id)
             ->orderBy('id', 'asc')
             ->first();

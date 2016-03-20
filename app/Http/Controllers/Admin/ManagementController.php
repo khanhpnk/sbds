@@ -10,6 +10,21 @@ use App\Project;
 
 class ManagementController extends Controller
 {
+    /**
+     * @var House
+     */
+    private $houseModel;
+
+    /**
+     * @var Project
+     */
+    private $projectModel;
+
+    public function __construct()
+    {
+        $this->houseModel = new House();
+        $this->projectModel = new Project();
+    }
 
     public function index(Request $request, $type)
     {
@@ -17,13 +32,13 @@ class ManagementController extends Controller
 
         switch ($type) {
             case 1: // ban
-                $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::BAN);
+                $resources = $this->houseModel->getHouses()->saleType(SaleTypeOptions::BAN);
                 break;
             case 2: // cho thue
-                $resources = House::orderBy('id', 'desc')->saleType(SaleTypeOptions::CHO_THUE);
+                $resources = $this->houseModel->getHouses()->saleType(SaleTypeOptions::CHO_THUE);
                 break;
             case 3: // du an
-                $resources = Project::orderBy('id', 'desc');
+                $resources = $this->projectModel->getProjects();
                 break;
         }
 

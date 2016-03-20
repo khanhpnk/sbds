@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\House;
+use App\Project;
+use App\Design;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -15,6 +18,29 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+
+    /**
+     * @var House
+     */
+    private $houseModel;
+
+    /**
+     * @var Project
+     */
+    private $projectModel;
+
+    /**
+     * @var Design
+     */
+    private $designModel;
+
+    public function __construct($app)
+    {
+        parent::__construct($app);
+        $this->houseModel = new House();
+        $this->projectModel = new Project();
+        $this->designModel = new Design();
+    }
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -31,17 +57,17 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Company::where('slug', $value)->firstOrFail();
         });
         $router->bind('thiet-ke-thi-cong', function($value) {
-            return \App\Design::where('slug', $value)->firstOrFail();
+            return $this->designModel->getDesigns()->where('designs.slug', $value)->firstOrFail();
         });
 
         $router->bind('house', function($value) {
-            return \App\House::where('slug', $value)->firstOrFail();
+            return $this->houseModel->getHouses()->where('houses.slug', $value)->firstOrFail();
         });
         $router->bind('company', function($value) {
             return \App\Company::where('slug', $value)->firstOrFail();
         });
         $router->bind('project', function($value) {
-            return \App\Project::where('slug', $value)->firstOrFail();
+            return $this->projectModel->getProjects()->where('projects.slug', $value)->firstOrFail();
         });
 
         $router->model('owner', 'App\House');

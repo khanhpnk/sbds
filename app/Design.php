@@ -87,4 +87,41 @@ class Design extends Model
 
         return $value;
     }
+
+    public function getDesigns(array $options = array())
+    {
+        $designs = $this->select(
+            \DB::raw('
+                designs.*,
+                c.value AS cityName,
+                d.value AS districtName,
+                w.value AS wardName,
+                c.slug AS citySlug,
+                d.slug AS districtSlug,
+                w.slug AS wardSlug
+            '))
+            ->leftJoin('locations AS c', function ($join) {
+                $join->on('designs.city', '=', 'c.id')
+                    ->where('c.type', '=', 1);
+            })
+            ->leftJoin('locations AS d', function ($join) {
+                $join->on('designs.district', '=', 'd.id')
+                    ->where('d.type', '=', 2);
+            })
+            ->leftJoin('locations AS w', function ($join) {
+                $join->on('designs.district', '=', 'w.id')
+                    ->where('w.type', '=', 3);
+            });
+        if (isset($options['citySlug'])) {
+            $designs = $designs->where('c.slug', $options['citySlug']);
+        }
+        if (isset($options['districtSlug'])) {
+            $designs = $designs->where('d.slug',  $options['districtSlug']);
+        }
+        if (isset($options['wardSlug'])) {
+            $designs = $designs->where('w.slug',  $options['wardSlug']);
+        }
+
+        return $designs->orderBy('designs.id', 'desc');
+    }
 }

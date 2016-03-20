@@ -13,15 +13,25 @@ use App\User;
 class DesignController extends Controller
 {
     /**
+     * @var Design
+     */
+    private $designModel;
+
+    public function __construct()
+    {
+        $this->designModel = new Design();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index()
     {
-        $architectures = Design::where('designs.category', Category::KIEN_TRUC)->limit(4)->get();
-        $furnitures = Design::where('designs.category', Category::NOI_THAT)->limit(4)->get();
-        $constructions = Design::where('designs.category', Category::THI_CONG)->limit(4)->get();
+        $architectures = $this->designModel->getDesigns()->where('designs.category', Category::KIEN_TRUC)->limit(4)->get();
+        $furnitures = $this->designModel->getDesigns()->where('designs.category', Category::NOI_THAT)->limit(4)->get();
+        $constructions = $this->designModel->getDesigns()->where('designs.category', Category::THI_CONG)->limit(4)->get();
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')->where('user_id', 1)->first();
         $company = Company::where('companies.user_id', '1')->first();
         $banner = Banner::find(1);
@@ -68,14 +78,14 @@ class DesignController extends Controller
                 break;
         }
         
-        $design = Design::where('category', $category)
+        $design = $this->designModel->getDesigns()->where('category', $category)
         				->where('sub_category', $sub_category)
         				->first();
 
         if ($design) {
-	        $others = Design::where('category', $category)
+	        $others = $this->designModel->getDesigns()->where('category', $category)
 	        			->where('sub_category', $sub_category)
-	                    ->where('id', '<>', $design->id)
+	                    ->where('designs.id', '<>', $design->id)
 	                    ->get();
 	
 	        $preview = Design::where('category', $category)
@@ -116,9 +126,9 @@ class DesignController extends Controller
     			break;
     	}
     	
-        $others = Design::where('category', $design->category)
+        $others = $this->designModel->getDesigns()->where('category', $design->category)
         	->where('sub_category', $design->sub_category)
-            ->where('id', '<>', $design->id)
+            ->where('designs.id', '<>', $design->id)
             ->get();
 
         $preview = Design::where('category', $design->category)

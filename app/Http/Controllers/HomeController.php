@@ -9,44 +9,40 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * @var House
+     */
+    private $houseModel;
+
+    /**
+     * @var Project
+     */
+    private $projectModel;
+
+    public function __construct()
+    {
+        $this->houseModel = new House();
+        $this->projectModel = new Project();
+    }
+
     public function index()
     {
-        $projects = Project::orderBy('id', 'desc')
-// 				        ->join('location', function ($join) {
-// 				        	$join->on('projects.city', '=', 'location.id')
-// 				        	->where('contacts.user_id', '>', 5);
-// 				        })
-        				->isApproved(1)
-        				//->isExpired(false)
-        				->simplePaginate(4);
-        
-        $housesNew = House::orderBy('id', 'desc')->isApproved(1)
-            //->isExpired(false)
-            ->simplePaginate(4);
-        $housesSale = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::BAN)
-            //->isExpired(false)
-            ->simplePaginate(4);
-        $housesRent = House::orderBy('id', 'desc')->isApproved(1)->saleType(SaleTypeOptions::CHO_THUE)
-            //->isExpired(false)
-            ->simplePaginate(4);
+        $projects   = $this->projectModel->getProjects()->simplePaginate(4);
+        $housesNew  = $this->houseModel->getHouses()->simplePaginate(4);
+        $housesSale = $this->houseModel->getHouses()->saleType(SaleTypeOptions::BAN)->simplePaginate(4);
+        $housesRent = $this->houseModel->getHouses()->saleType(SaleTypeOptions::CHO_THUE)->simplePaginate(4);
 
         $houseNotIn = [];
         foreach ($housesNew as $house) {
         	$houseNotIn[] = $house->id;
         }
-        
+        $housesFeatured = $this->houseModel->getHouses()->whereNotIn('houses.id', $houseNotIn)->simplePaginate(2);
+
         $projectNotIn = [];
         foreach ($projects as $project) {
-        	$projectNotIn[] = $project->id;
+            $projectNotIn[] = $project->id;
         }
-        
-        $housesFeatured = House::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
-	        ->whereNotIn('id', $houseNotIn)
-	        ->simplePaginate(2);
-        
-        $projectsFeatured = Project::orderBy('id', 'desc')->isApproved(1)//->isExpired(false)
-	        ->whereNotIn('id', $projectNotIn)
-	        ->simplePaginate(2);
+        $projectsFeatured = $this->projectModel->getProjects()->whereNotIn('projects.id', $projectNotIn)->simplePaginate(2);
         
         return view('home.index', compact('housesFeatured', 'projectsFeatured', 'housesNew', 'projects', 'housesSale', 'housesRent'));
     }
@@ -54,9 +50,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $label = 'Kết quả tìm kiếm';
-        $houses = House::orderBy('id', 'desc')
-            ->isApproved(1)
-            //->isExpired(false)
+        $houses = $this->houseModel->getHouses()
             ->where('title', 'like', "%{$request->get('search')}%")
             ->simplePaginate(12);
 

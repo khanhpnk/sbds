@@ -36,7 +36,7 @@ class HouseController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function index(Request $request, $category = null)
+    public function index(Request $request)
     {
 		$houseModel = new House();
 		$label = 'Nhà đất';
@@ -171,12 +171,12 @@ class HouseController extends Controller
         $contactInfo = User::join('profiles', 'users.id', '=', 'profiles.user_id')
             ->where('user_id', $house->user_id)->first();
 
-        $preview = $houseModel->getPreviewHouses()
+        $preview = $houseModel
             ->saleType($house->sale_type)
             ->where('houses.id', '<', $house->id)
             ->first();
 
-        $next = $houseModel->getNextHouses()
+        $next = $houseModel
             ->saleType($house->sale_type)
             ->where('houses.id', '>', $house->id)
             ->first();

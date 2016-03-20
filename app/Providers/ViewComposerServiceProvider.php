@@ -2,14 +2,37 @@
 
 namespace App\Providers;
 
-use App\Design;
 use App\Repositories\Resource\House\SaleTypeOptions;
 use Illuminate\Support\ServiceProvider;
 use App\House;
 use App\Project;
+use App\Design;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
+    /**
+     * @var House
+     */
+    private $houseModel;
+
+    /**
+     * @var Project
+     */
+    private $projectModel;
+
+    /**
+     * @var Design
+     */
+    private $designModel;
+
+    public function __construct($app)
+    {
+        parent::__construct($app);
+        $this->houseModel = new House();
+        $this->projectModel = new Project();
+        $this->designModel = new Design();
+    }
+
     /**
      * Bootstrap the application services.
      *
@@ -40,25 +63,17 @@ class ViewComposerServiceProvider extends ServiceProvider
         view()->composer('_sidebar', function($view) {
 
             // recommend
-        	$view->with('houseSaleRecommend', House::orderBy('id', 'desc')
-                ->isApproved(1)
-                //->isExpired(false)
+        	$view->with('houseSaleRecommend', $this->houseModel->getHouses()
                 ->saleType(SaleTypeOptions::BAN)
                 ->first());
 
-            $view->with('houseRentRecommend', House::orderBy('id', 'desc')
-                ->isApproved(1)
-                //->isExpired(false)
+            $view->with('houseRentRecommend', $this->houseModel->getHouses()
                 ->saleType(SaleTypeOptions::CHO_THUE)
                 ->first());
 
-            $view->with('houseProjectRecommend', Project::orderBy('id', 'desc')
-                ->isApproved(1)
-                //->isExpired(false)
-                ->first());
+            $view->with('houseProjectRecommend', $this->projectModel->getProjects()->first());
 
-            $view->with('designRecommend', Design::orderBy('id', 'desc')
-                ->first());
+            $view->with('designRecommend', $this->designModel->getDesigns()->first());
         });
     }
 }

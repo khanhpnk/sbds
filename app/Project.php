@@ -133,4 +133,41 @@ class Project extends Model
     {
         return (new \DateTime($value))->format('d/m/Y');
     }
+
+    public function getProjects(array $options = array())
+    {
+        $projects = $this->select(
+            \DB::raw('
+                projects.*,
+                c.value AS cityName,
+                d.value AS districtName,
+                w.value AS wardName,
+                c.slug AS citySlug,
+                d.slug AS districtSlug,
+                w.slug AS wardSlug
+            '))
+            ->leftJoin('locations AS c', function ($join) {
+                $join->on('projects.city', '=', 'c.id')
+                    ->where('c.type', '=', 1);
+            })
+            ->leftJoin('locations AS d', function ($join) {
+                $join->on('projects.district', '=', 'd.id')
+                    ->where('d.type', '=', 2);
+            })
+            ->leftJoin('locations AS w', function ($join) {
+                $join->on('projects.district', '=', 'w.id')
+                    ->where('w.type', '=', 3);
+            });
+        if (isset($options['citySlug'])) {
+            $projects = $projects->where('c.slug', $options['citySlug']);
+        }
+        if (isset($options['districtSlug'])) {
+            $projects = $projects->where('d.slug',  $options['districtSlug']);
+        }
+        if (isset($options['wardSlug'])) {
+            $projects = $projects->where('w.slug',  $options['wardSlug']);
+        }
+
+        return $projects->orderBy('projects.id', 'desc')->isApproved(1);
+    }
 }
