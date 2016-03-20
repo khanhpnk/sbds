@@ -16,11 +16,18 @@ class DesignController extends BaseController
 {
     use ImageUpload, UniqueResourceIdentifier;
 
+    /**
+     * @var Design
+     */
+    private $designModel;
+
     public function __construct()
     {
         if (isset(Auth::user()->id)) {
             $this->path = config('image.paths.design').'/'.Auth::user()->id;
         }
+
+        $this->designModel = new Design();
     }
 
     /**
@@ -32,13 +39,13 @@ class DesignController extends BaseController
     {
     	switch ($category) {
     		case '1':
-    			$designs = Design::orderBy('id', 'desc')->where('category', Category::KIEN_TRUC);
+    			$designs = $this->designModel->getDesigns()->where('category', Category::KIEN_TRUC);
     			break;
     		case '2':
-    			$designs = Design::orderBy('id', 'desc')->where('category', Category::NOI_THAT);
+    			$designs = $this->designModel->getDesigns()->where('category', Category::NOI_THAT);
     			break;
     		case '3':
-    			$designs = Design::orderBy('id', 'desc')->where('category', Category::THI_CONG);
+    			$designs = $this->designModel->getDesigns()->where('category', Category::THI_CONG);
     			break;
     	}
 
