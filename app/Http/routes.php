@@ -1,5 +1,7 @@
 <?php
 
+Route::get('thong-ke', 'ChartController@index');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

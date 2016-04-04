@@ -7,6 +7,7 @@
       <li><a href="/bai-viet/huong-dan-dang-tin"><i class="fa fa-link"></i>Hướng dẫn đăng tin</a></li>
       <li><a href="/bai-viet/bao-gia"><i class="fa fa-link"></i>Báo giá</a></li>
       <li><a href="/bai-viet/tuyen-dung"><i class="fa fa-link"></i>Tuyển dụng</a></li>
+       <li><a href="/thong-ke"><i class="fa fa-link"></i>Thống kê</a></li>
     </ul>
   </li>
   <li class="col-md-15">

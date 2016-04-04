@@ -26,7 +26,10 @@
         "psr-4": {
             "App\\": "app/",
             "Rukan\\AjaxAuth\\": "packages/rukan/ajax-auth/src",
-            "Rukan\\EasySocialite\\": "packages/rukan/easy-socialite/src"
+            "Rukan\\EasySocialite\\": "packages/rukan/easy-socialite/src",
+            "Kan\\Facebook\\": "packages/kan/facebook/src",
+            "Kan\\Core\\": "packages/kan/core/src",
+            "Kan\\Library\\": "packages/kan/library/src"
         }
     },
     "autoload-dev": {
@@ -55,7 +58,7 @@
     "config": {
         "preferred-install": "dist",
         "github-oauth": {
-            "github.com": "7e27c2dc385c1b3e528ad6cdd1741d007703b007"
+
         }
     }
 }
