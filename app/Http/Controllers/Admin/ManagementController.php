@@ -32,13 +32,13 @@ class ManagementController extends Controller
 
         switch ($type) {
             case 1: // ban
-                $resources = $this->houseModel->getHouses()->saleType(SaleTypeOptions::BAN);
+                $resources = $this->houseModel->getHousesManagement()->saleType(SaleTypeOptions::BAN);
                 break;
             case 2: // cho thue
-                $resources = $this->houseModel->getHouses()->saleType(SaleTypeOptions::CHO_THUE);
+                $resources = $this->houseModel->getHousesManagement()->saleType(SaleTypeOptions::CHO_THUE);
                 break;
             case 3: // du an
-                $resources = $this->projectModel->getProjects();
+                $resources = $this->projectModel->getProjectsManagement();
                 break;
         }
 

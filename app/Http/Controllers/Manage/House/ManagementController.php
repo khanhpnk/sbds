@@ -37,15 +37,15 @@ class ManagementController extends Controller
         $userId = Auth::user()->id;
         switch ($filter) {
             case ConstHelper::URI_CHINH_CHU:
-                $resources = $this->houseModel->getHouses()->isOwner(OwnerTypeOptions::CHINH_CHU)
+                $resources = $this->houseModel->getHousesManagement()->isOwner(OwnerTypeOptions::CHINH_CHU)
                             ->where('user_id', $userId)->paginate(6);
                 break;
             case ConstHelper::URI_MOI_GIOI:
-                $resources = $this->houseModel->getHouses()->isOwner(OwnerTypeOptions::MOI_GIOI)
+                $resources = $this->houseModel->getHousesManagement()->isOwner(OwnerTypeOptions::MOI_GIOI)
                             ->where('user_id', $userId)->paginate(6);
                 break;
             case ConstHelper::URI_DU_AN:
-                $resources = $this->projectModel->getProjects()
+                $resources = $this->projectModel->getProjectsManagement()
                             ->where('user_id', $userId)->paginate(6);
                 break;
         }

@@ -219,4 +219,41 @@ class House extends Model
 
         return $houses->orderBy('houses.id', 'desc')->isApproved(1);
     }
+    
+    public function getHousesManagement(array $options = array())
+    {
+        $houses = $this->select(
+            \DB::raw('
+                houses.*,
+                c.value AS cityName,
+                d.value AS districtName,
+                w.value AS wardName,
+                c.slug AS citySlug,
+                d.slug AS districtSlug,
+                w.slug AS wardSlug
+            '))
+                ->leftJoin('locations AS c', function ($join) {
+                    $join->on('houses.city', '=', 'c.id')
+                    ->where('c.type', '=', 1);
+                })
+                ->leftJoin('locations AS d', function ($join) {
+                    $join->on('houses.district', '=', 'd.id')
+                    ->where('d.type', '=', 2);
+                })
+                ->leftJoin('locations AS w', function ($join) {
+                    $join->on('houses.district', '=', 'w.id')
+                    ->where('w.type', '=', 3);
+                });
+                    if (isset($options['citySlug'])) {
+                        $houses = $houses->where('c.slug', $options['citySlug']);
+                    }
+                    if (isset($options['districtSlug'])) {
+                        $houses = $houses->where('d.slug',  $options['districtSlug']);
+                    }
+                    if (isset($options['wardSlug'])) {
+                        $houses = $houses->where('w.slug',  $options['wardSlug']);
+                    }
+    
+                    return $houses->orderBy('houses.id', 'desc');
+    }
 }
