@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use App\House;
 use App\Project;
 use App\Design;
+use App\Article;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+    /**
+     * @var House
+     */
+    private $articleModel;
+    
     /**
      * @var House
      */
@@ -37,9 +43,15 @@ class RouteServiceProvider extends ServiceProvider
     public function __construct($app)
     {
         parent::__construct($app);
+        
+        $this->articleModel = new Article();
         $this->houseModel = new House();
         $this->projectModel = new Project();
         $this->designModel = new Design();
+    }
+    private function getArticle() 
+    {
+        return $this->articleModel;
     }
 
     /**
@@ -50,8 +62,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        $router->bind('bai_viet', function($value) {
-            return \App\Article::where('slug', $value)->firstOrFail();
+        $router->bind('article', function($value) {
+            return $this->getArticle()->where('slug', $value)->firstOrFail();
         });
         $router->bind('cong-ty', function($value) {
             return \App\Company::where('slug', $value)->firstOrFail();

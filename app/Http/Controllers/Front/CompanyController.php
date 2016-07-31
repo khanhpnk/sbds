@@ -17,6 +17,7 @@ class CompanyController extends Controller
             ->isOwner(OwnerTypeOptions::MOI_GIOI)
             ->isSold(IsSoldOption::CHUA_BAN)
             //->isExpired(false)
+            ->isApproved(1)
             ->orderBy('id', 'desc');
     }
 
@@ -25,6 +26,7 @@ class CompanyController extends Controller
         return House::where('user_id', $company->user_id)
             ->isOwner(OwnerTypeOptions::MOI_GIOI)
             ->isSold(IsSoldOption::DA_BAN)
+            ->isApproved(1)
             ->orderBy('id', 'desc');
     }
 

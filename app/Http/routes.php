@@ -75,17 +75,6 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
     Route::get('banner', ['uses' => 'BannerController@edit', 'as' => 'admin.banner.edit']);
     Route::put('banner/update', ['uses' => 'BannerController@update', 'as' => 'admin.banner.update']);
 
-//     Route::resource('bai-viet', 'ArticleController', [
-//         'except' => 'show',
-//         'names' => [
-//             'create' => 'admin.article.create',
-//             'store' => 'admin.article.store',
-//             'update' => 'admin.article.update',
-//             'edit' => 'admin.article.edit',
-//             'destroy' => 'admin.article.destroy',
-//         ]
-//     ]);
-
     Route::get('up-bai/{type}', 'ManagementController@index');
     Route::put('up-bai/{type}/{id}/{is_approved?}', 'ManagementController@approved');
 
@@ -120,7 +109,7 @@ Route::group(['prefix' => 'quan-tri', 'namespace' => 'Admin', 'middleware' => 'a
 });
 /*********** *********** FRONT *********** ***********/
 Route::group(['namespace' => 'Front'], function() {
-    Route::get('bai-viet/{bai_viet}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
+    Route::get('bai-viet/{article}', ['uses' => 'ArticleController@show', 'as' => 'front.article.show']);
     Route::get('danh-sach-bai-viet/{filter}', ['uses' => 'ArticleController@index', 'as' => 'front.article.index']);
 
     /* Company */
