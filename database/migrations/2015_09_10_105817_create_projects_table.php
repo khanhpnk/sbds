@@ -35,6 +35,7 @@ class CreateProjectsTable extends Migration
             $table->double('lng', 16, 6);       // FLOAT(10, 6)
             $table->string('youtube');
             $table->text('images');             // JSON
+            $table->tinyInteger('is_approved');
             $table->timestamps();
 			/*
             $table->foreign('user_id')

@@ -52,7 +52,7 @@ class CreateHousesTable extends Migration
             $table->date('end_date');
             $table->string('feature');          // JSON
             $table->text('images');             // JSON
-
+            $table->tinyInteger('is_approved');
             $table->timestamps();
 			/*
             $table->foreign('user_id')

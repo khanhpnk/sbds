@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('provider_id');
             $table->string('email_provider');
             $table->boolean('verified')->default(0);
+            $table->tinyInteger('role');
+            $table->string('code');
             $table->rememberToken();
             $table->timestamps();
         });
