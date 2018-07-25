@@ -4,7 +4,7 @@ class UserHelper
 {
     public static function avatar()
     {
-        $endpoint = config('filesystems.disks.s3.endpoint');
+        $endpoint = url('upload');
         $path = config('image.paths.user');
         $user = Auth::user();
 

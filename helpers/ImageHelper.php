@@ -8,7 +8,7 @@ class ImageHelper
 
     public static function avatar($resource, $userId, $images)
     {
-        $endpoint = config('filesystems.disks.s3.endpoint');
+        $endpoint = url('upload');
 
         switch ($resource) {
             case ResourceOption::DU_AN:
@@ -35,7 +35,7 @@ class ImageHelper
     
     public static function avatarLarge($resource, $userId, $images)
     {
-    	$endpoint = config('filesystems.disks.s3.endpoint');
+    	$endpoint = url('upload');
     
     	switch ($resource) {
     		case ResourceOption::DU_AN:
@@ -62,7 +62,7 @@ class ImageHelper
 
     public static function getCompanyAvatar($avatar)
     {
-        $endpoint = config('filesystems.disks.s3.endpoint');
+        $endpoint = url('upload');
         $path = config('image.paths.company');
 
         if (!empty($avatar)) {
@@ -75,7 +75,7 @@ class ImageHelper
 
     public static function url($resource, $userId, $image, $size)
     {
-        $endpoint = config('filesystems.disks.s3.endpoint');
+        $endpoint = url('upload');
 
         switch ($resource) {
             case ResourceOption::DU_AN:
@@ -94,7 +94,7 @@ class ImageHelper
 
     public static function link($path)
     {
-        $endpoint = config('filesystems.disks.s3.endpoint');
+        $endpoint = url('upload');
 
         return $endpoint.'/'.$path;
     }

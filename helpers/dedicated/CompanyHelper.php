@@ -4,7 +4,7 @@ class CompanyHelper
 {
     public static function avatar($avatar = '')
     {
-        $endpoint = config('filesystems.disks.s3.endpoint');
+        $endpoint = url('upload');
         $path = config('image.paths.company');
 
         if (empty($avatar)) {
