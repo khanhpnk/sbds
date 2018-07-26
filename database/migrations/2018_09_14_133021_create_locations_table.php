@@ -13,11 +13,10 @@ class CreateLocationsTable extends Migration
     public function up()
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('value'); // cityName
-            $table->string('slug'); // citySlug
-            $table->tinyInteger('type');
-            $table->timestamps();
+            $table->smallIncrements('id');
+            $table->string('value', 64);
+            $table->string('slug', 64);
+            $table->unsignedTinyInteger('type'); // {1:city, 2:district, 3:ward}
         });
     }
 

@@ -109,7 +109,7 @@ class Design extends Model
                     ->where('d.type', '=', 2);
             })
             ->leftJoin('locations AS w', function ($join) {
-                $join->on('designs.district', '=', 'w.id')
+                $join->on('designs.ward', '=', 'w.id')
                     ->where('w.type', '=', 3);
             });
         if (isset($options['citySlug'])) {

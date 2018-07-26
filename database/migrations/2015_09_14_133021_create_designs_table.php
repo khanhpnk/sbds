@@ -31,9 +31,9 @@ class CreateDesignsTable extends Migration
             $table->string('build_m2');
             $table->string('number_of_floors');
             $table->string('frontage_m2');
-            $table->tinyInteger('city');
-            $table->tinyInteger('district');
-            $table->tinyInteger('ward');
+            $table->unsignedSmallInteger('city');
+            $table->unsignedSmallInteger('district');
+            $table->unsignedSmallInteger('ward');
             $table->string('address');
             $table->double('lat', 16, 6);       // FLOAT(10, 6)
             $table->double('lng', 16, 6);       // FLOAT(10, 6)

@@ -150,5 +150,8 @@ Route::group(['namespace' => 'Front'], function() {
     Route::get('du-an-{category}', 'ProjectController@index');
 });
 
+Route::get('test', function () {
+
+});
 
 

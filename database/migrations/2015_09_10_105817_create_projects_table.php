@@ -27,9 +27,9 @@ class CreateProjectsTable extends Migration
             $table->tinyInteger('category');
             $table->date('start_date');
             $table->date('end_date');
-            $table->tinyInteger('city');
-            $table->tinyInteger('district');
-            $table->tinyInteger('ward');
+            $table->unsignedSmallInteger('city');
+            $table->unsignedSmallInteger('district');
+            $table->unsignedSmallInteger('ward');
             $table->string('address');
             $table->double('lat', 16, 6);       // FLOAT(10, 6)
             $table->double('lng', 16, 6);       // FLOAT(10, 6)

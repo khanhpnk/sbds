@@ -155,7 +155,7 @@ class Project extends Model
                     ->where('d.type', '=', 2);
             })
             ->leftJoin('locations AS w', function ($join) {
-                $join->on('projects.district', '=', 'w.id')
+                $join->on('projects.ward', '=', 'w.id')
                     ->where('w.type', '=', 3);
             });
         if (isset($options['citySlug'])) {

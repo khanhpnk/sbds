@@ -31,9 +31,9 @@ class CreateHousesTable extends Migration
             $table->integer('m2');
             $table->tinyInteger('money_unit');
             $table->tinyInteger('category');
-            $table->tinyInteger('city');
-            $table->tinyInteger('district');
-            $table->tinyInteger('ward');
+            $table->unsignedSmallInteger('city');
+            $table->unsignedSmallInteger('district');
+            $table->unsignedSmallInteger('ward');
             $table->tinyInteger('toilet');
             $table->tinyInteger('floors');
             $table->tinyInteger('direction');
